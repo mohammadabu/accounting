@@ -2,6 +2,8 @@ from odoo import models, fields, api, _
 from datetime import datetime, timedelta
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import pytz
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class ImportInventory(models.TransientModel):
@@ -20,7 +22,9 @@ class ImportInventory(models.TransientModel):
         default='create')
 
     def import_data_through_cron(self):
-        print('dsadas')
+        asset_type = self.env['account.asset.category'].sudo().search([],limit=1)
+        _logger.info('asset_type')
+        _logger.info(asset_type)
         # self.ensure_one()
         # cron_obj = self.env['ir.cron']
         # now_time = datetime.now() + timedelta(seconds=1)
