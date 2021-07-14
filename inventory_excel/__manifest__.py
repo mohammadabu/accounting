@@ -4,7 +4,7 @@
     'depends': ["stock","web_notify"],
     'data': [
         #'views/hr_attendance.xml',
-        #'wizard/import_attendances_data_view.xml',
+        'wizard/import_inventory_data_view.xml',
         'views/import_inventory_history_view.xml',
         'views/import_inventory_master_view.xml',
         'security/ir.model.access.csv',

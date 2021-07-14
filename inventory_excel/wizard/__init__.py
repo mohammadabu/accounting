@@ -1,1 +1,1 @@
-from . import import_attendances_data
+from . import import_inventory_data

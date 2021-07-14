@@ -1,7 +1,7 @@
 <odoo>
 	<record id="import_part_popup" model="ir.ui.view">
-        <field name="name">import.attendances.popup</field>
-        <field name="model">import.attendances</field>
+        <field name="name">import.inventory.popup</field>
+        <field name="model">import.inventory</field>
         <field name="arch" type="xml">
             <form>
                  <field name="state" invisible="1"/>
@@ -27,15 +27,15 @@
         </field>
     </record>
 
-    <record id="action_import_attendances" model="ir.actions.act_window">
-        <field name="name">Import Attendances</field>
-        <field name="res_model">import.attendances</field>
+    <record id="action_import_inventory" model="ir.actions.act_window">
+        <field name="name">Import Inventory</field>
+        <field name="res_model">import.inventory</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
 
-    <menuitem id="main_menu_import_attendances" name="Import Attendances Data" parent="hr_attendance.menu_hr_attendance_root" sequence="100"/>
+    <menuitem id="main_menu_import_inventory" name="Import Inventory Data" parent="stock.menu_stock_root" sequence="100"/>
 
-    <menuitem id="menu_import_attendances" name="Import"  parent="main_menu_import_attendances"  action="action_import_attendances"
+    <menuitem id="menu_import_inventory" name="Import"  parent="main_menu_import_inventory"  action="action_import_inventory"
     sequence="1"/>
 </odoo>
