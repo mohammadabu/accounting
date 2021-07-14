@@ -23,6 +23,27 @@ class ImportInventory(models.TransientModel):
 
     def import_data_through_cron(self):
         asset_type = self.env['account.asset.category'].sudo().search([],limit=1)
+        if len(asset_type) > 0:
+            asset_type = asset_type.id
+        else:
+            asset_type = False      
+
+        
+        category_id = 4 #فئات المنتج
+
+        product_master = self.env['product.template'].create({
+            'name': 'ألات تصوير',
+            'sale_ok': False,
+            'purchase_ok': True,
+            'can_be_expensed': False,
+            'type': 'consu',
+            'categ_id': 4,
+            'list_price': 0.0,
+            'asset_category_id': asset_type,
+        })
+
+
+
         _logger.info('asset_type')
         _logger.info(asset_type)
         # self.ensure_one()
