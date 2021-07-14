@@ -38,8 +38,8 @@
 
         <!--Action-->
         <record id="action_import_inventory_master" model="ir.actions.act_window">
-            <field name="name">Imported Attendances Status</field>
-            <field name="res_model">import.attendances.master</field>
+            <field name="name">Imported Inventory Status</field>
+            <field name="res_model">import.inventory.master</field>
             <field name="view_mode">tree,form</field>
         </record>
 
