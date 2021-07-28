@@ -43,6 +43,8 @@ class ImportInventory(models.TransientModel):
         })
 
 
+        
+
 
         _logger.info('asset_type')
         _logger.info(asset_type)
