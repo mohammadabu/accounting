@@ -151,10 +151,14 @@ class MainImportInventory(models.Model):
                                                     'type':'consu'
                                                 }
                                                 self.env['product.template'].sudo().create(product_vals)
-                                            total_success_import_record += 1
+                                                total_success_import_record += 1
+                                            else:
+                                                total_failed_record += 1
+                                                list_of_failed_record += "<h1>| Error at Line :" + str(rownum1 + 1) +"  => Product exist | </h1>" 
+                                                _logger.error("Error at %s" % e)   
                                         except Exception as e:    
                                             total_failed_record += 1
-                                            list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) +" | " 
+                                            list_of_failed_record += "<h1>| Error at Line :" + str(rownum1 + 1) + "   (" + e + ") | </h1>" 
                                             _logger.error("Error at %s" % e)   
             except Exception as e:
                 list_of_failed_record += str(e)
@@ -182,7 +186,7 @@ class MainImportInventory(models.Model):
                     'total_success_count': total_success_import_record,
                     'total_failed_count': total_failed_record,
                     'file': file_data,
-                    'file_name': 'report_importazione.txt',
+                    'file_name': 'report_importazione.html',
                     'type': part_master.type,
                     'import_file_name': part_master.filename,
                     'start_date': start_date_in_user_tz,
