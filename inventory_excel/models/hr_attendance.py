@@ -130,9 +130,9 @@ class MainImportInventory(models.Model):
                                             # check if product exists 
                                             check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
                                             _logger.info(check_productId)
-                                            _logger.info(item_description)
-                                            # if not check_productId:
-                                            #     asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
+                                            if not check_productId:
+                                                asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
+                                                _logger.info(item_description)
                                             #     asset_category_id = False
                                             #     if asset_cat:
                                             #         asset_category_id = asset_cat.id
