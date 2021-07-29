@@ -9,22 +9,9 @@ import tempfile
 _logger = logging.getLogger(__name__)
 
 
-class ResPartner(models.Model):
+class MainImportInventory(models.Model):
 
     _inherit = 'product.template'
-
-    notes = fields.Char()
-    def remove_finish_import_crons(self):
-        master_partners = self.env['import.attendances.master'].search(
-            ['|', ('status', '=', 'imported'), ('status', '=', 'failed')])
-        # Remove completed crons
-        for master_part in master_partners:
-            if master_part.cron_id:
-                master_part.cron_id.unlink()
-        # Remove the Import status lines
-        imported_master_part = self.env['import.attendances.master'].search(
-            [('status', '=', 'imported')])
-        imported_master_part.unlink()
     @api.model
     def convert24(self,str1):
         time_arr = {
@@ -57,6 +44,7 @@ class ResPartner(models.Model):
         else:
             
             return str(time_arr[hours]) + ":" + minutes          
+    
     def import_data(self, part_master_id=False):
         if part_master_id:
             part_master = self.env[
