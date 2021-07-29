@@ -85,12 +85,12 @@ class MainImportInventory(models.Model):
                     # xl_sheet = xl_workbook.sheet_by_name(sheet_names[0])
                     for sheet in wb.sheets():
                         _logger.info(sheet.name)
-                        if sheet.name == "دليل استرشادي":
-                            for rownum in range(sheet.nrows):
-                                _logger.info(rownum)
-                                _logger.info(sheet.row_values(rownum))
-                                item = sheet.row_values(rownum)
-                                _logger.info(item)
+                        # if sheet.name == "دليل استرشادي":
+                        for rownum in range(sheet.nrows):
+                            _logger.info(rownum)
+                            _logger.info(sheet.row_values(rownum))
+                            item = sheet.row_values(rownum)
+                            _logger.info(item)
 
                     # #     # Sales data xlsx
                     #     first_row = 0
