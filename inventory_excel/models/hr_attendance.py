@@ -54,7 +54,7 @@ class MainImportInventory(models.Model):
             list_of_failed_record = ''
             datafile = part_master.file
             file_name = str(part_master.filename)
-            attendance_obj = self.env['hr.attendance']
+            category_obj = self.env['product.category']
             state_obj = self.env['res.country.state']
             country_obj = self.env['res.country']
             try:
@@ -106,11 +106,6 @@ class MainImportInventory(models.Model):
                                         if "الحساب الرئيسي " in item1:
                                             main_account_row = idx1
                                     break    
-                            # _logger.info("first_row")        
-                            # _logger.info(first_row)
-                            # _logger.info(item_code_row)
-                            # _logger.info(item_description_row)
-                            # _logger.info(main_account_row)
                             for rownum1 in range(sheet.nrows): 
                                 item_y = sheet.row_values(rownum1)           
                                 if rownum1 > first_row:
@@ -123,6 +118,25 @@ class MainImportInventory(models.Model):
                                         _logger.info(item_description)
                                         _logger.info(main_account)
                                         _logger.info('-------------------')
+                                        # check if category exists:
+                                        check_catId = self.env['product.category'].sudo().search([('name','=',main_account)])
+                                        cat_id = False
+                                        if check_catId:
+                                            cat_id = check_catId.id
+                                        else:    
+                                            # create category
+                                            category_vals = {
+                                                'name': emp_name_info.id,
+                                                'parent_id': full_date_check_in,
+                                                'check_out': full_date_check_out
+                                            }
+                                            cat_id = self.env['product.category'].sudo().create(category_vals)
+                                            
+
+
+
+                                        
+
                     #                 if check_in:
                     #                     split_check_in = check_in.split(" ")
                     #                     if len(split_check_in) > 1:
