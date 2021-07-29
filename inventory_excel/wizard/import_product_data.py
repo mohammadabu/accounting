@@ -6,10 +6,10 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class ImportInventory(models.TransientModel):
+class ImportProduct(models.TransientModel):
 
-    _name = 'import.inventory'
-    _description = "Import Inventory"
+    _name = 'import.product'
+    _description = "Import Product"
 
     name = fields.Char('File name')
     file = fields.Binary('File')
@@ -43,7 +43,7 @@ class ImportInventory(models.TransientModel):
         self.ensure_one()
         cron_obj = self.env['ir.cron']
         now_time = datetime.now() + timedelta(seconds=1)
-        attendances_master = self.env['import.inventory.master'].create({
+        product_master = self.env['import.product.master'].create({
             'file': self.file,
             'filename': self.name,
             'type': self.type,
@@ -61,13 +61,13 @@ class ImportInventory(models.TransientModel):
             DEFAULT_SERVER_DATETIME_FORMAT)
 
         self.state = 'done'
-        self.pool.get("product.category").import_data(self,attendances_master.id)
+        self.pool.get("product.category").import_data(self,product_master.id)
         return {
-            'name': _('Import Attendances'),
+            'name': _('Import Product'),
             'view_type': 'form',
             'view_mode': 'form',
             'view_id': False,
-            'res_model': 'import.inventory',
+            'res_model': 'import.product',
             'domain': [],
             'context': dict(self._context, active_ids=self.ids),
             'type': 'ir.actions.act_window',
