@@ -91,8 +91,8 @@ class MainImportInventory(models.Model):
                             item_description_row = 0
                             main_account_row = 0
                             for rownum in range(sheet.nrows):
-                                _logger.info(rownum)
-                                _logger.info(sheet.row_values(rownum))
+                                # _logger.info(rownum)
+                                # _logger.info(sheet.row_values(rownum))
                                 item = sheet.row_values(rownum)
                                 if "الحساب الرئيسي " in item and "ITEM_DESCRIPTION" in item and "ITEM_CODE" in item:
                                     first_row = rownum
@@ -104,6 +104,7 @@ class MainImportInventory(models.Model):
                                         if item1 == "الحساب الرئيسي ":
                                             main_account_row = idx1
                                     break    
+                            _logger.info("first_row")        
                             _logger.info(first_row)
                             _logger.info(item_code_row)
                             _logger.info(item_description_row)
