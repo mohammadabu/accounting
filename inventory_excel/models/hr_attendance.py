@@ -114,35 +114,34 @@ class MainImportInventory(models.Model):
                                     main_account = item_y[main_account_row]     
                                     if item_code != "" and item_description != "" and main_account != "":
                                         try:
-                                            _logger.info('test')
                                             # check if category exists:
-                                            # check_catId = self.env['product.category'].sudo().search([('name','=',main_account)])
-                                            # cat_id = False
-                                            # if check_catId:
-                                            #     cat_id = check_catId.id
-                                            # else:    
-                                                # _logger.info('test')
-                                                # create category
-                                                # parent_id_all = self.env['product.category'].sudo().search([('name','=','All')])
-                                                # category_vals = {
-                                                #     'name': main_account,
-                                                #     'parent_id': parent_id_all.id,
-                                                # }
-                                                # cat_id = self.env['product.category'].sudo().create(category_vals).id
+                                            check_catId = self.env['product.category'].sudo().search([('name','=',main_account)])
+                                            cat_id = False
+                                            if check_catId:
+                                                cat_id = check_catId.id
+                                            else:    
+                                                _logger.info('test')
+                                                create category
+                                                parent_id_all = self.env['product.category'].sudo().search([('name','=','All')])
+                                                category_vals = {
+                                                    'name': main_account,
+                                                    'parent_id': parent_id_all.id,
+                                                }
+                                                cat_id = self.env['product.category'].sudo().create(category_vals).id
                                             # check if product exists 
-                                            # check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
-                                            # _logger.info(check_productId)
-                                            # if not check_productId:
-                                            #     asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
-                                            #     _logger.info(item_description)
-                                            #     asset_category_id = False
-                                            #     if asset_cat:
-                                            #         asset_category_id = asset_cat.id
-                                            #     else:
-                                            #         asset_vals = {
-                                            #             'name': 'الاصول الثابتة',
-                                            #         }
-                                            #         asset_category_id = self.env['account.asset.category'].sudo().create(asset_vals).id
+                                            check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
+                                            if not check_productId:
+                                                asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
+                                                _logger.info(item_description)
+                                                asset_category_id = False
+                                                if asset_cat:
+                                                    asset_category_id = asset_cat.id
+                                                else:
+                                                    asset_vals = {
+                                                        'name': 'الاصول الثابتة',
+                                                    }
+                                                    asset_category_id = self.env['account.asset.category'].sudo().create(asset_vals).id
+                                                _logger.info(check_productId)
                                                 # product_vals = {
                                                 #     'name': item_description,
                                                 #     'purchase_ok': True,
@@ -158,8 +157,8 @@ class MainImportInventory(models.Model):
                                             _logger.error("Error at %s" % str(rownum1))   
             except Exception as e:
                 list_of_failed_record += str(e)
-            _logger.info("list_of_failed_record")
-            _logger.info(list_of_failed_record)
+            # _logger.info("list_of_failed_record")
+            # _logger.info(list_of_failed_record)
 
 
             # try:
