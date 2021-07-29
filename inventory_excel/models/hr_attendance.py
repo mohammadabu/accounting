@@ -144,7 +144,7 @@ class MainImportInventory(models.Model):
                                                     'purchase_ok': True,
                                                     'categ_id':cat_id,
                                                     'asset_category_id':asset_category_id,
-                                                    'type':
+                                                    # 'type':''
                                                 }
                                                 product_id = self.env['product.category'].sudo().create(product_vals).id
                                             total_success_import_record += 1
