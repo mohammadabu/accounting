@@ -183,14 +183,13 @@ class HrPropertyName(models.Model):
 
     @api.onchange('property_selection')
     def onchange_property_selection(self):
-        # if self.property_selection == 'asset':
-        #     asset_obj = self.env['ir.module.module'].search([('name', '=', 'account_asset_asset')])
-        #     if asset_obj.state != 'installed':
-        #         self.asset_true = False
-        #         raise UserError(_('No asset module found. Kindly install the asset module.'))
-        #     else:
-        #         self.asset_true = True
-        self.asset_true = True
+        if self.property_selection == 'asset':
+            asset_obj = self.env['ir.module.module'].search([('name', '=', 'account_asset_asset')])
+            if asset_obj.state != 'installed':
+                self.asset_true = False
+                raise UserError(_('No asset module found. Kindly install the asset module.'))
+            else:
+                self.asset_true = True
 
     @api.onchange('product_id')
     def onchange_product(self):
