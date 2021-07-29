@@ -97,11 +97,11 @@ class MainImportInventory(models.Model):
                                 if "الحساب الرئيسي " in item and "ITEM_DESCRIPTION" in item and "ITEM_CODE" in item:
                                     first_row = rownum
                                     for idx1,item1 in enumerate(item):
-                                        if item1 == "ITEM_CODE":
+                                        if "ITEM_CODE" in item1:
                                             item_code_row = idx1
-                                        if item1 == "ITEM_DESCRIPTION":
+                                        if "ITEM_DESCRIPTION" in item1:
                                             item_description_row = idx1
-                                        if item1 == "الحساب الرئيسي ":
+                                        if "الحساب الرئيسي " in item1:
                                             main_account_row = idx1
                                     break    
                             _logger.info("first_row")        
