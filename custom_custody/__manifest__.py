@@ -21,7 +21,7 @@
 #
 ###################################################################################
 {
-    'name': 'Open HRMS Custody',
+    'name': 'Custom Open HRMS Custody',
     'version': '13.0.1.0.0',
     'summary': """Manage the company properties when it is in the custody of an employee""",
     'description': 'Manage the company properties when it is in the custody of an employee',
