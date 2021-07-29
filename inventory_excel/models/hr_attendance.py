@@ -94,6 +94,7 @@ class MainImportInventory(models.Model):
                                 # _logger.info(rownum)
                                 # _logger.info(sheet.row_values(rownum))
                                 item = sheet.row_values(rownum)
+                                _logger.info(item)
                                 if "الحساب الرئيسي " in item and "ITEM_DESCRIPTION" in item:
                                     first_row = rownum
                                     _logger.info("first_row")
