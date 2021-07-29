@@ -142,14 +142,14 @@ class MainImportInventory(models.Model):
                                                     }
                                                     asset_category_id = self.env['account.asset.category'].sudo().create(asset_vals).id
                                                 _logger.info(check_productId)
-                                                # product_vals = {
-                                                #     'name': item_description,
-                                                #     'purchase_ok': True,
-                                                #     'categ_id':cat_id,
-                                                #     'asset_category_id':asset_category_id,
-                                                #     'type':'consu'
-                                                # }
-                                                # product_id = self.env['product.category'].sudo().create(product_vals).id
+                                                product_vals = {
+                                                    'name': item_description,
+                                                    'purchase_ok': True,
+                                                    'categ_id':cat_id,
+                                                    'asset_category_id':asset_category_id,
+                                                    'type':'consu'
+                                                }
+                                                self.env['product.category'].sudo().create(product_vals)
                                             total_success_import_record += 1
                                         except:    
                                             total_failed_record += 1
