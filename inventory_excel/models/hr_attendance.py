@@ -84,7 +84,7 @@ class MainImportInventory(models.Model):
                     # _logger.info(wb.sheets())
                     # xl_sheet = xl_workbook.sheet_by_name(sheet_names[0])
                     for sheet in wb.sheets():
-                        _logger.info(sheet.name)
+                        # _logger.info(sheet.name)
                         if sheet.name == "دليل استرشادي ":
                             first_row = 0
                             item_code_row = 0
@@ -94,10 +94,10 @@ class MainImportInventory(models.Model):
                                 # _logger.info(rownum)
                                 # _logger.info(sheet.row_values(rownum))
                                 item = sheet.row_values(rownum)
-                                _logger.info(item)
+                                # _logger.info(item)
                                 if "الحساب الرئيسي " in item and "ITEM_CODE\nكود الصنف" in item:
                                     first_row = rownum
-                                    _logger.info("first_row")
+                                    # _logger.info("first_row")
                                     for idx1,item1 in enumerate(item):
                                         if "ITEM_CODE" in item1:
                                             item_code_row = idx1
@@ -113,77 +113,45 @@ class MainImportInventory(models.Model):
                                     item_description = item_y[item_description_row] 
                                     main_account = item_y[main_account_row]     
                                     if item_code != "" and item_description != "" and main_account != "":
-                                        # _logger.info('-------------------')
-                                        # _logger.info(int(item_code))
-                                        # _logger.info(item_description)
-                                        # _logger.info(main_account)
-                                        # _logger.info('-------------------')
-                                        # check if category exists:
-                                        check_catId = self.env['product.category'].sudo().search([('name','=',main_account)])
-                                        cat_id = False
-                                        if check_catId:
-                                            cat_id = check_catId.id
-                                        else:    
-                                            # create category
-                                            parent_id_all = self.env['product.category'].sudo().search([('name','=','All')])
-                                            category_vals = {
-                                                'name': main_account,
-                                                'parent_id': parent_id_all.id,
-                                            }
-                                            cat_id = self.env['product.category'].sudo().create(category_vals)
-                                            
-                                        _logger.info("cat_id")
-                                        _logger.info(cat_id)
-
-                                        
-
-                    #                 if check_in:
-                    #                     split_check_in = check_in.split(" ")
-                    #                     if len(split_check_in) > 1:
-                    #                         try:
-                    #                             date = date.replace("/","-",3)
-                    #                             new_time = self.pool.get("hr.attendance").convert24(self,split_check_in)
-                    #                             new_time = new_time.replace("\u200f","")
-                    #                             full_date_time = date + " " + new_time + ":00"
-                    #                             full_date_check_in = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
-                    #                         except Exception as e:
-                    #                             _logger.info("----error in------")   
-                    #                             _logger.info(e) 
-                    #                 if check_out:
-                    #                     split_check_out = check_out.split(" ")
-                    #                     if len(split_check_out) > 1:  
-                    #                         try:
-                    #                             date = date.replace("/","-",3)
-                    #                             new_time = self.pool.get("hr.attendance").convert24(self,split_check_out)
-                    #                             full_date_time = date + " " + new_time + ":00"
-                    #                             full_date_check_out = datetime.strptime(full_date_time, '%Y-%m-%d %H:%M:%S')
-                    #                         except Exception as e:
-                    #                             _logger.info("----error out------")    
-                    #                             _logger.info(e)   
-                    #             # if  full_date_check_in != False or full_date_check_out != False:
-                    #             if  full_date_check_in != False :
-                    #                 try:
-                    #                     emp_name_info = self.env['hr.employee'].sudo().search([('name','=',emp_name)])
-                    #                     attendance_vals = {
-                    #                         'employee_id': emp_name_info.id,
-                    #                         'check_in': full_date_check_in,
-                    #                         'check_out': full_date_check_out
-                    #                     }
-                    #                     self.env['hr.attendance'].sudo().create(attendance_vals)
-                    #                     _logger.info(full_date_check_in)
-                    #                     _logger.info(full_date_check_out)
-                    #                     _logger.info(emp_name)
-                    #                     _logger.info(emp_name_info)  
-                    #                     total_success_import_record += 1  
-                    #                 except Exception as e:
-                    #                     total_failed_record += 1
-                    #                     list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) + " |"
-                    #                     _logger.error("Error at %s" % str(rownum1))    
-                    #             else:
-                    #                 if emp_name != "":
-                    #                     total_failed_record += 1
-                    #                     list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) + " |"
-                    #                     _logger.error("Error at %s" % str(rownum1))                         
+                                        try:
+                                            # check if category exists:
+                                            check_catId = self.env['product.category'].sudo().search([('name','=',main_account)])
+                                            cat_id = False
+                                            if check_catId:
+                                                cat_id = check_catId.id
+                                            else:    
+                                                # create category
+                                                parent_id_all = self.env['product.category'].sudo().search([('name','=','All')])
+                                                category_vals = {
+                                                    'name': main_account,
+                                                    'parent_id': parent_id_all.id,
+                                                }
+                                                cat_id = self.env['product.category'].sudo().create(category_vals).id
+                                            # check if product exists 
+                                            check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
+                                            if not check_productId:
+                                                asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
+                                                asset_category_id = False
+                                                if asset_cat:
+                                                    asset_category_id = asset_cat.id
+                                                else:
+                                                    asset_vals = {
+                                                        'name': 'الاصول الثابتة',
+                                                    }
+                                                    asset_category_id = self.env['product.category'].sudo().create(asset_vals).id
+                                                product_vals = {
+                                                    'name': item_description,
+                                                    'purchase_ok': True,
+                                                    'categ_id':cat_id,
+                                                    'asset_category_id':asset_category_id,
+                                                    'type':
+                                                }
+                                                product_id = self.env['product.category'].sudo().create(product_vals).id
+                                            total_success_import_record += 1
+                                        except Exception as e:    
+                                            total_failed_record += 1
+                                            list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) + e +" | " 
+                                            _logger.error("Error at %s" % str(rownum1))   
             except Exception as e:
                 list_of_failed_record += str(e)
             _logger.info("list_of_failed_record")
