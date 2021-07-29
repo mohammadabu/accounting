@@ -128,8 +128,8 @@ class MainImportInventory(models.Model):
                                                 }
                                                 cat_id = self.env['product.category'].sudo().create(category_vals).id
                                             # check if product exists 
-                                            check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
-                                            _logger.info(check_productId)
+                                            # check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
+                                            # _logger.info(check_productId)
                                             # if not check_productId:
                                             #     asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
                                             #     _logger.info(item_description)
