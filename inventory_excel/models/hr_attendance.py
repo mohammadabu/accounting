@@ -86,35 +86,28 @@ class MainImportInventory(models.Model):
                     for sheet in wb.sheets():
                         _logger.info(sheet.name)
                         if sheet.name == "دليل استرشادي ":
+                            first_row = 0
+                            item_code_row = 0
+                            item_description_row = 0
+                            main_account_row = 0
                             for rownum in range(sheet.nrows):
                                 _logger.info(rownum)
                                 _logger.info(sheet.row_values(rownum))
                                 item = sheet.row_values(rownum)
-                                _logger.info(item)
-
-                    # #     # Sales data xlsx
-                    #     first_row = 0
-                    #     emp_name_row = 0
-                    #     date_row = 0
-                    #     check_in_row = 0
-                    #     check_out_row = 0
-                    #     for rownum in range(sheet.nrows):
-                    #         # _logger.info(rownum)
-                    #         # _logger.info(sheet.row_values(rownum))
-                    #         item = sheet.row_values(rownum)
-                    #         if "اسم الموظف" in item and "التاريخ" in item and "وقت دخول" in item and "وقت الخروج" in item:
-                    #             first_row = rownum
-                    #             for idx1,item1 in enumerate(item):
-                    #                 if item1 == "اسم الموظف":
-                    #                     emp_name_row = idx1
-                    #                 if item1 == "التاريخ":
-                    #                     date_row = idx1
-                    #                 if item1 == "وقت دخول":
-                    #                     check_in_row = idx1
-                    #                 if item1 == "وقت الخروج":
-                    #                     check_out_row = idx1
-                    #             break    
-
+                                if "الحساب الرئيسي " in item and "ITEM_DESCRIPTION" in item and "ITEM_CODE" in item:
+                                    first_row = rownum
+                                    for idx1,item1 in enumerate(item):
+                                        if item1 == "ITEM_CODE":
+                                            item_code_row = idx1
+                                        if item1 == "ITEM_DESCRIPTION":
+                                            item_description_row = idx1
+                                        if item1 == "الحساب الرئيسي ":
+                                            main_account_row = idx1
+                                    break    
+                            _logger.info(first_row)
+                            _logger.info(item_code_row)
+                            _logger.info(item_description_row)
+                            _logger.info(main_account_row)
                     #     for rownum1 in range(sheet.nrows): 
                     #         item_y = sheet.row_values(rownum1)           
                     #         if rownum1 > first_row:
