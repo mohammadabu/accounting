@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_import_inventory_his,Access Import Inventory History,model_import_inventory_history,,1,1,1,1
-access_import_inventory_master,Access Import Inventory Master,model_import_inventory_master,,1,1,1,1
+access_import_product_his,Access Import Product History,model_import_product_history,,1,1,1,1
+access_import_product_master,Access Import Product Master,model_import_product_master,,1,1,1,1

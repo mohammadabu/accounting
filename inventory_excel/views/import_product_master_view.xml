@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="import_inventory_master_tree_view" model="ir.ui.view">
-            <field name="name">import.inventory.master.tree.view</field>
-            <field name="model">import.inventory.master</field>
+        <record id="import_product_master_tree_view" model="ir.ui.view">
+            <field name="name">import.product.master.tree.view</field>
+            <field name="model">import.product.master</field>
             <field name="arch" type="xml">
                 <tree create="false" import="false">
                     <field name="filename"/>
@@ -13,10 +13,9 @@
                 </tree>
             </field>
         </record>
-
-        <record id="import_inventory_master_form_view" model="ir.ui.view">
-            <field name="name">import.inventory.master.form.view</field>
-            <field name="model">import.inventory.master</field>
+        <record id="import_product_master_form_view" model="ir.ui.view">
+            <field name="name">import.product.master.form.view</field>
+            <field name="model">import.product.master</field>
             <field name="arch" type="xml">
                 <form create="false" import="false" edit="false">
                     <group>
@@ -35,17 +34,15 @@
                 </form>
             </field>
         </record>
-
-        <!--Action-->
-        <record id="action_import_inventory_master" model="ir.actions.act_window">
-            <field name="name">Imported Inventory Status</field>
-            <field name="res_model">import.inventory.master</field>
+        <record id="action_import_product_master" model="ir.actions.act_window">
+            <field name="name">Imported Product Status</field>
+            <field name="res_model">import.product.master</field>
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="Inventory Import Status" action="action_import_inventory_master" id="menu_import_inventory_master"
+        <menuitem name="Product Import Status" action="action_import_product_master" id="menu_import_product_master"
                   sequence="3"
-                  parent="main_menu_import_inventory"/>
+                  parent="main_menu_import_product"/>
 
     </data>
 </odoo>

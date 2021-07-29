@@ -2,10 +2,9 @@
 <odoo>
     <data>
 
-         <!--Form for Import Orders History tree view-->
-        <record id="import_inventory_history_tree_view" model="ir.ui.view">
-            <field name="name">import.inventory.history.tree</field>
-            <field name="model">import.inventory.history</field>
+        <record id="import_product_history_tree_view" model="ir.ui.view">
+            <field name="name">import.product.history.tree</field>
+            <field name="model">import.product.history</field>
             <field name="arch" type="xml">
                 <tree create="false" import="false">
                     <field name="file_name" invisible="1"/>
@@ -21,10 +20,9 @@
             </field>
         </record>
 
-        <!--Form for Import Orders History-->
-        <record id="import_inventory_history_form_view" model="ir.ui.view">
-            <field name="name">import.inventory.history.form</field>
-            <field name="model">import.inventory.history</field>
+        <record id="import_product_history_form_view" model="ir.ui.view">
+            <field name="name">import.product.history.form</field>
+            <field name="model">import.product.history</field>
             <field name="arch" type="xml">
                 <form create="false" import="false" edit="false">
                     <group>
@@ -46,16 +44,15 @@
             </field>
         </record>
 
-        <!--Action-->
-        <record id="action_import_inventory_history" model="ir.actions.act_window">
-            <field name="name">Imported Inventory History</field>
-            <field name="res_model">import.inventory.history</field>
+        <record id="action_import_product_history" model="ir.actions.act_window">
+            <field name="name">Imported Product History</field>
+            <field name="res_model">import.product.history</field>
             <field name="view_mode">tree,form</field>
             <field name="target">current</field>
         </record>
 
-        <menuitem name="Import inventory History" action="action_import_inventory_history" id="menu_import_inventory_history"
-                  sequence="2" parent="main_menu_import_inventory"/>
+        <menuitem name="Import Product History" action="action_import_product_history" id="menu_import_product_history"
+                  sequence="2" parent="main_menu_import_product"/>
 
     </data>
 </odoo>

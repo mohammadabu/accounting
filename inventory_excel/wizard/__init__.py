@@ -1,1 +1,1 @@
-from . import import_inventory_data
+from . import import_product_data
