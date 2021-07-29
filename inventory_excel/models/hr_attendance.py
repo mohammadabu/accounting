@@ -130,17 +130,17 @@ class MainImportInventory(models.Model):
                                             # check if product exists 
                                             check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
                                             _logger.info(check_productId)
-                                            if not check_productId:
-                                                asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
-                                                _logger.info(item_description)
-                                                asset_category_id = False
-                                                if asset_cat:
-                                                    asset_category_id = asset_cat.id
-                                                else:
-                                                    asset_vals = {
-                                                        'name': 'الاصول الثابتة',
-                                                    }
-                                                    asset_category_id = self.env['account.asset.category'].sudo().create(asset_vals).id
+                                            # if not check_productId:
+                                            #     asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
+                                            #     _logger.info(item_description)
+                                            #     asset_category_id = False
+                                            #     if asset_cat:
+                                            #         asset_category_id = asset_cat.id
+                                            #     else:
+                                            #         asset_vals = {
+                                            #             'name': 'الاصول الثابتة',
+                                            #         }
+                                            #         asset_category_id = self.env['account.asset.category'].sudo().create(asset_vals).id
                                                 # product_vals = {
                                                 #     'name': item_description,
                                                 #     'purchase_ok': True,
