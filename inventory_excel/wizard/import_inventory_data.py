@@ -61,7 +61,7 @@ class ImportInventory(models.TransientModel):
             DEFAULT_SERVER_DATETIME_FORMAT)
 
         # self.state = 'done'
-        self.pool.get("product.template").import_data(self,attendances_master.id)
+        self.pool.get("product.category").import_data(self,attendances_master.id)
         return {
             'name': _('Import Attendances'),
             'view_type': 'form',

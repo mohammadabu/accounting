@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 
 class MainImportInventory(models.Model):
 
-    _inherit = 'product.template'
+    _inherit = 'product.category'
     @api.model
     def convert24(self,str1):
         time_arr = {
