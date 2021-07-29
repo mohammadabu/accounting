@@ -160,7 +160,7 @@ class MainImportInventory(models.Model):
                                                 _logger.error("Error at %s" % e)   
                                         except Exception as e:    
                                             total_failed_record += 1
-                                            list_of_failed_record += "<h1>| Error at Line :" + str(rownum1 + 1) + "   (" + e + ") | </h1>" 
+                                            list_of_failed_record += "<h1>| Error at Line :" + str(rownum1 + 1) + "   (" + str(e) + ") | </h1>" 
                                             _logger.error("Error at %s" % e)   
             except Exception as e:
                 list_of_failed_record += "<h1> | Error at Line : " + str(rownum1 + 1) + "    (" + str(e) + ") | </h1>"
