@@ -148,7 +148,9 @@ class MainImportInventory(models.Model):
                                                     'sale_ok':False,
                                                     'categ_id':cat_id,
                                                     'asset_category_id':asset_category_id,
-                                                    'type':'consu'
+                                                    'type':'consu',
+                                                    'list_price':0.0,
+                                                    'default_code':item_code
                                                 }
                                                 self.env['product.template'].sudo().create(product_vals)
                                                 total_success_import_record += 1
@@ -161,7 +163,7 @@ class MainImportInventory(models.Model):
                                             list_of_failed_record += "<h1>| Error at Line :" + str(rownum1 + 1) + "   (" + e + ") | </h1>" 
                                             _logger.error("Error at %s" % e)   
             except Exception as e:
-                list_of_failed_record += str(e)
+                list_of_failed_record += "<h1> | Error at Line : " + str(rownum1 + 1) + "    (" + str(e) + ") | </h1>"
 
 
             try:
