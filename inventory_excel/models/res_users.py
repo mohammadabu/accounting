@@ -27,10 +27,10 @@ from odoo import models
 class ResUsers(models.Model):
     _inherit = 'res.users'
 
-    def notify_inventory_info(self, message, user, sticky=False):
-        self._notify_partner_channel(message, user, sticky)
+    def notify_product_info(self, message, user, sticky=False):
+        self._notify_product_channel(message, user, sticky)
 
-    def _notify_partner_channel(self, message, user, sticky):
+    def _notify_product_channel(self, message, user, sticky):
         user.notify_info(
-            message=message, title="Notification for Import Inventory",
+            message=message, title="Notification for Import Product",
             sticky=True)

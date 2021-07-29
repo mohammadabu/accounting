@@ -9,46 +9,13 @@ import tempfile
 _logger = logging.getLogger(__name__)
 
 
-class MainImportInventory(models.Model):
+class MainImportProduct(models.Model):
 
-    _inherit = 'product.category'
-    @api.model
-    def convert24(self,str1):
-        time_arr = {
-            "00":12,
-            "01":13,
-            "02":14,
-            "03":15,
-            "04":16,
-            "05":17,
-            "06":18,
-            "07":19,
-            "08":20,
-            "09":21,
-            "10":22,
-            "11":23,
-            "12":00
-        }
-        check_in_time = str1[0]
-        check_in_time = check_in_time.replace("\u200f","")
-        check_in_time_split = check_in_time.split(":")
-        hours = check_in_time_split[0]
-        minutes = check_in_time_split[1]
-        check_in_zone = str1[1]
-        if check_in_zone == "ص" and hours == "12":
-            return "00:"+minutes
-        elif check_in_zone == "ص":
-            return hours+":"+ minutes
-        elif check_in_zone == "م" and hours == "12":
-            return "12"+":"+ minutes
-        else:
-            
-            return str(time_arr[hours]) + ":" + minutes          
-    
+    _inherit = 'product.category'    
     def import_data(self, part_master_id=False):
         if part_master_id:
             part_master = self.env[
-                'import.inventory.master'].browse(part_master_id)
+                'import.product.master'].browse(part_master_id)
             total_success_import_record = 0
             total_failed_record = 0
             list_of_failed_record = ''
@@ -70,8 +37,6 @@ class MainImportInventory(models.Model):
                             "Please Select an .xls or its compatible file to Import.")
                     temp_path = tempfile.gettempdir()
                     file_data = base64.decodestring(datafile)
-                    # _logger.info("file_data")
-                    # _logger.info(file_data)
                     fp = open(temp_path + '/xsl_file.xls', 'wb+')
                     fp.write(file_data)
                     fp.close()
@@ -80,24 +45,16 @@ class MainImportInventory(models.Model):
                     header_list = []
                     headers_dict = {}
                     sheet_names = wb.sheet_names()
-                    # _logger.info("list_of_failed_record")
-                    # _logger.info(wb.sheets())
-                    # xl_sheet = xl_workbook.sheet_by_name(sheet_names[0])
                     for sheet in wb.sheets():
-                        # _logger.info(sheet.name)
                         if sheet.name == "دليل استرشادي ":
                             first_row = 0
                             item_code_row = 0
                             item_description_row = 0
                             main_account_row = 0
                             for rownum in range(sheet.nrows):
-                                # _logger.info(rownum)
-                                # _logger.info(sheet.row_values(rownum))
                                 item = sheet.row_values(rownum)
-                                # _logger.info(item)
                                 if "الحساب الرئيسي " in item and "ITEM_CODE\nكود الصنف" in item:
                                     first_row = rownum
-                                    # _logger.info("first_row")
                                     for idx1,item1 in enumerate(item):
                                         if "ITEM_CODE" in item1:
                                             item_code_row = idx1
@@ -184,7 +141,7 @@ class MainImportInventory(models.Model):
                 end_date_in_user_tz = datetime.strftime(pytz.utc.localize(
                     now_time).astimezone(local),
                     DEFAULT_SERVER_DATETIME_FORMAT)
-                self.env['import.inventory.history'].create({
+                self.env['import.product.history'].create({
                     'total_success_count': total_success_import_record,
                     'total_failed_count': total_failed_record,
                     'file': file_data,
@@ -196,11 +153,11 @@ class MainImportInventory(models.Model):
                     'operation': part_master.operation,
                 })
                 if part_master.user_id:
-                    message = "Import process is completed. Check in Imported inventory History if all the inventory have" \
+                    message = "Import process is completed. Check in Imported product History if all the products have" \
                               " been imported correctly. </br></br> Imported File: %s </br>" \
                               "Imported by: %s" % (
                                   part_master.filename, part_master.user_id.name)
-                    part_master.user_id.notify_inventory_info(
+                    part_master.user_id.notify_product_info(
                         message, part_master.user_id, sticky=True)
                 self._cr.commit()
             except Exception as e:

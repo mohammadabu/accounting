@@ -1,10 +1,10 @@
 from odoo import models, fields
 
 
-class ImportInventoryMaster(models.Model):
+class ImportProductMaster(models.Model):
 
-    _name = 'import.inventory.master'
-    _description = "Import Inventory Status"
+    _name = 'import.product.master'
+    _description = "Import Product Status"
     _rec_name = 'file'
 
     file = fields.Binary('File')

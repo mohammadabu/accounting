@@ -1,10 +1,10 @@
 from odoo import models, fields
 
 
-class ImportInventoryHistory(models.Model):
+class ImportProductHistory(models.Model):
 
-    _name = 'import.inventory.history'
-    _description = "Import Inventory History"
+    _name = 'import.product.history'
+    _description = "Import Product History"
 
     total_success_count = fields.Integer('Success')
     total_failed_count = fields.Integer('Failed')
