@@ -129,6 +129,7 @@ class MainImportInventory(models.Model):
                                                 cat_id = self.env['product.category'].sudo().create(category_vals).id
                                             # check if product exists 
                                             check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
+                                            _logger.info(check_productId)
                                             if not check_productId:
                                                 asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
                                                 asset_category_id = False
@@ -144,7 +145,7 @@ class MainImportInventory(models.Model):
                                                     'purchase_ok': True,
                                                     'categ_id':cat_id,
                                                     'asset_category_id':asset_category_id,
-                                                    # 'type':''
+                                                    'type':'consu'
                                                 }
                                                 product_id = self.env['product.category'].sudo().create(product_vals).id
                                             total_success_import_record += 1
