@@ -99,20 +99,18 @@ class MainImportInventory(models.Model):
                                     first_row = rownum
                                     _logger.info("first_row")
                                     for idx1,item1 in enumerate(item):
-                                        _logger.info(idx1)
-                                        _logger.info(item1)
-                                        # if "ITEM_CODE" in item1:
-                                        #     item_code_row = idx1
-                                        # if "ITEM_DESCRIPTION" in item1:
-                                        #     item_description_row = idx1
-                                        # if "الحساب الرئيسي " in item1:
-                                        #     main_account_row = idx1
+                                        if "ITEM_CODE" in item1:
+                                            item_code_row = idx1
+                                        if "ITEM_DESCRIPTION" in item1:
+                                            item_description_row = idx1
+                                        if "الحساب الرئيسي " in item1:
+                                            main_account_row = idx1
                                     break    
-                            # _logger.info("first_row")        
-                            # _logger.info(first_row)
-                            # _logger.info(item_code_row)
-                            # _logger.info(item_description_row)
-                            # _logger.info(main_account_row)
+                            _logger.info("first_row")        
+                            _logger.info(first_row)
+                            _logger.info(item_code_row)
+                            _logger.info(item_description_row)
+                            _logger.info(main_account_row)
                     #     for rownum1 in range(sheet.nrows): 
                     #         item_y = sheet.row_values(rownum1)           
                     #         if rownum1 > first_row:
