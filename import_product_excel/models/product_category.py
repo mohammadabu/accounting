@@ -107,7 +107,7 @@ class MainImportProduct(models.Model):
                                                     'asset_category_id':asset_category_id,
                                                     'type':'consu',
                                                     'list_price':0.0,
-                                                    'default_code':item_code
+                                                    'default_code':int(item_code)
                                                 }
                                                 self.env['product.template'].sudo().create(product_vals)
                                                 total_success_import_record += 1

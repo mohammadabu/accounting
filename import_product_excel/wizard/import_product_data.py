@@ -20,7 +20,7 @@ class ImportProduct(models.TransientModel):
     operation = fields.Selection(
         [('create', 'Create Record'), ('update', 'Update Record')],
         default='create')
-
+            
     def import_data_through_cron(self):
         # asset_type = self.env['account.asset.category'].sudo().search([],limit=1)
         # if len(asset_type) > 0:

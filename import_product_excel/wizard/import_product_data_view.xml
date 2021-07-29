@@ -10,6 +10,7 @@
                     <field name="type" required="1" invisible="1"/>
                     <field name="operation" invisible="1"/>
                     <field name="file" widget="binary" height="64" filename="name" required="1"/>
+                    <field name="test"/>
                 </group>
                 <footer states="init">
                     <button name="import_data_through_cron"  type="object" string="Import"
