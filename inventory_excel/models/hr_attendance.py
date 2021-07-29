@@ -157,13 +157,13 @@ class MainImportInventory(models.Model):
                                             else:
                                                 total_failed_record += 1
                                                 list_of_failed_record += "<h1>| Error at Line :" + str(rownum1 + 1) +"  => Product exist | </h1>" 
-                                                _logger.error("Error at %s" % e)   
+                                                _logger.error("<h1>| Error at Line :" + str(rownum1 + 1) +"  => Product exist | </h1>")   
                                         except Exception as e:    
                                             total_failed_record += 1
                                             list_of_failed_record += "<h1>| Error at Line :" + str(rownum1 + 1) + "   (" + str(e) + ") | </h1>" 
                                             _logger.error("Error at %s" % e)   
-            except Exception as e:
-                list_of_failed_record += "<h1> | Error at Line : " + str(rownum1 + 1) + "    (" + str(e) + ") | </h1>"
+            except Exception as e1:
+                list_of_failed_record += "<h1> | Error at Line : " + str(rownum1 + 1) + "    (" + str(e1) + ") | </h1>"
 
 
             try:
