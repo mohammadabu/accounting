@@ -152,9 +152,9 @@ class MainImportInventory(models.Model):
                                                 # }
                                                 # product_id = self.env['product.category'].sudo().create(product_vals).id
                                             total_success_import_record += 1
-                                        except Exception as e:    
+                                        except:    
                                             total_failed_record += 1
-                                            list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) + e +" | " 
+                                            list_of_failed_record += "| Error at Line :" + str(rownum1 + 1) +" | " 
                                             _logger.error("Error at %s" % str(rownum1))   
             except Exception as e:
                 list_of_failed_record += str(e)
