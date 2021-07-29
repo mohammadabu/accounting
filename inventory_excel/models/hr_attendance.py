@@ -145,6 +145,7 @@ class MainImportInventory(models.Model):
                                                 product_vals = {
                                                     'name': item_description,
                                                     'purchase_ok': True,
+                                                    'sale_ok':False,
                                                     'categ_id':cat_id,
                                                     'asset_category_id':asset_category_id,
                                                     'type':'consu'
@@ -157,48 +158,46 @@ class MainImportInventory(models.Model):
                                             _logger.error("Error at %s" % e)   
             except Exception as e:
                 list_of_failed_record += str(e)
-            # _logger.info("list_of_failed_record")
-            # _logger.info(list_of_failed_record)
 
 
-            # try:
-            #     file_data = base64.b64encode(
-            #         list_of_failed_record.encode('utf-8'))
-            #     part_master.status = 'imported'
-            #     datetime_object = datetime.strptime(
-            #         str(part_master.create_date), '%Y-%m-%d %H:%M:%S.%f')
-            #     start_date = datetime.strftime(
-            #         datetime_object, DEFAULT_SERVER_DATETIME_FORMAT)
-            #     self._cr.commit()
-            #     now_time = datetime.now()
-            #     user_tz = self.env.user.tz or str(pytz.utc)
-            #     local = pytz.timezone(user_tz)
-            #     start_date_in_user_tz = datetime.strftime(pytz.utc.localize(
-            #         datetime.strptime(str(start_date), DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(
-            #         local), DEFAULT_SERVER_DATETIME_FORMAT)
-            #     end_date_in_user_tz = datetime.strftime(pytz.utc.localize(
-            #         now_time).astimezone(local),
-            #         DEFAULT_SERVER_DATETIME_FORMAT)
-            #     self.env['import.attendances.history'].create({
-            #         'total_success_count': total_success_import_record,
-            #         'total_failed_count': total_failed_record,
-            #         'file': file_data,
-            #         'file_name': 'report_importazione.txt',
-            #         'type': part_master.type,
-            #         'import_file_name': part_master.filename,
-            #         'start_date': start_date_in_user_tz,
-            #         'end_date': end_date_in_user_tz,
-            #         'operation': part_master.operation,
-            #     })
-            #     if part_master.user_id:
-            #         message = "Import process is completed. Check in Imported attendances History if all the attendances have" \
-            #                   " been imported correctly. </br></br> Imported File: %s </br>" \
-            #                   "Imported by: %s" % (
-            #                       part_master.filename, part_master.user_id.name)
-            #         part_master.user_id.notify_partner_info(
-            #             message, part_master.user_id, sticky=True)
-            #     self._cr.commit()
-            # except Exception as e:
-            #     part_master.status = 'failed'
-            #     _logger.error(e)
-            #     self._cr.commit()
+            try:
+                file_data = base64.b64encode(
+                    list_of_failed_record.encode('utf-8'))
+                part_master.status = 'imported'
+                datetime_object = datetime.strptime(
+                    str(part_master.create_date), '%Y-%m-%d %H:%M:%S.%f')
+                start_date = datetime.strftime(
+                    datetime_object, DEFAULT_SERVER_DATETIME_FORMAT)
+                self._cr.commit()
+                now_time = datetime.now()
+                user_tz = self.env.user.tz or str(pytz.utc)
+                local = pytz.timezone(user_tz)
+                start_date_in_user_tz = datetime.strftime(pytz.utc.localize(
+                    datetime.strptime(str(start_date), DEFAULT_SERVER_DATETIME_FORMAT)).astimezone(
+                    local), DEFAULT_SERVER_DATETIME_FORMAT)
+                end_date_in_user_tz = datetime.strftime(pytz.utc.localize(
+                    now_time).astimezone(local),
+                    DEFAULT_SERVER_DATETIME_FORMAT)
+                self.env['import.inventory.history'].create({
+                    'total_success_count': total_success_import_record,
+                    'total_failed_count': total_failed_record,
+                    'file': file_data,
+                    'file_name': 'report_importazione.txt',
+                    'type': part_master.type,
+                    'import_file_name': part_master.filename,
+                    'start_date': start_date_in_user_tz,
+                    'end_date': end_date_in_user_tz,
+                    'operation': part_master.operation,
+                })
+                if part_master.user_id:
+                    message = "Import process is completed. Check in Imported inventory History if all the inventory have" \
+                              " been imported correctly. </br></br> Imported File: %s </br>" \
+                              "Imported by: %s" % (
+                                  part_master.filename, part_master.user_id.name)_notify_inventory_channel
+                    part_master.user_id.notify_inventory_info(
+                        message, part_master.user_id, sticky=True)
+                self._cr.commit()
+            except Exception as e:
+                part_master.status = 'failed'
+                _logger.error(e)
+                self._cr.commit()
