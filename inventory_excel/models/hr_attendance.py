@@ -113,11 +113,11 @@ class MainImportInventory(models.Model):
                                     item_description = item_y[item_description_row] 
                                     main_account = item_y[main_account_row]     
                                     if item_code != "" and item_description != "" and main_account != "":
-                                        _logger.info('-------------------')
-                                        _logger.info(int(item_code))
-                                        _logger.info(item_description)
-                                        _logger.info(main_account)
-                                        _logger.info('-------------------')
+                                        # _logger.info('-------------------')
+                                        # _logger.info(int(item_code))
+                                        # _logger.info(item_description)
+                                        # _logger.info(main_account)
+                                        # _logger.info('-------------------')
                                         # check if category exists:
                                         check_catId = self.env['product.category'].sudo().search([('name','=',main_account)])
                                         cat_id = False
@@ -132,8 +132,8 @@ class MainImportInventory(models.Model):
                                             }
                                             cat_id = self.env['product.category'].sudo().create(category_vals)
                                             
-
-
+                                        _logger.info("cat_id")
+                                        _logger.info(cat_id)
 
                                         
 
