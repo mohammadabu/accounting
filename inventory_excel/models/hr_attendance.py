@@ -130,24 +130,24 @@ class MainImportInventory(models.Model):
                                             # check if product exists 
                                             check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
                                             _logger.info(check_productId)
-                                            if not check_productId:
-                                                asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
-                                                asset_category_id = False
-                                                if asset_cat:
-                                                    asset_category_id = asset_cat.id
-                                                else:
-                                                    asset_vals = {
-                                                        'name': 'الاصول الثابتة',
-                                                    }
-                                                    asset_category_id = self.env['product.category'].sudo().create(asset_vals).id
-                                                product_vals = {
-                                                    'name': item_description,
-                                                    'purchase_ok': True,
-                                                    'categ_id':cat_id,
-                                                    'asset_category_id':asset_category_id,
-                                                    'type':'consu'
-                                                }
-                                                product_id = self.env['product.category'].sudo().create(product_vals).id
+                                            # if not check_productId:
+                                            #     asset_cat = self.env['account.asset.category'].sudo().search([('name','=','الاصول الثابتة')])
+                                            #     asset_category_id = False
+                                            #     if asset_cat:
+                                            #         asset_category_id = asset_cat.id
+                                            #     else:
+                                            #         asset_vals = {
+                                            #             'name': 'الاصول الثابتة',
+                                            #         }
+                                            #         asset_category_id = self.env['product.category'].sudo().create(asset_vals).id
+                                            #     product_vals = {
+                                            #         'name': item_description,
+                                            #         'purchase_ok': True,
+                                            #         'categ_id':cat_id,
+                                            #         'asset_category_id':asset_category_id,
+                                            #         'type':'consu'
+                                            #     }
+                                            #     product_id = self.env['product.category'].sudo().create(product_vals).id
                                             total_success_import_record += 1
                                         except Exception as e:    
                                             total_failed_record += 1
