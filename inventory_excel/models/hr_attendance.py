@@ -122,11 +122,11 @@ class MainImportInventory(models.Model):
                                             else:    
                                                 # create category
                                                 parent_id_all = self.env['product.category'].sudo().search([('name','=','All')])
-                                                category_vals = {
-                                                    'name': main_account,
-                                                    'parent_id': parent_id_all.id,
-                                                }
-                                                cat_id = self.env['product.category'].sudo().create(category_vals).id
+                                                # category_vals = {
+                                                #     'name': main_account,
+                                                #     'parent_id': parent_id_all.id,
+                                                # }
+                                                # cat_id = self.env['product.category'].sudo().create(category_vals).id
                                             # check if product exists 
                                             # check_productId = self.env['product.template'].sudo().search([('name','=',item_description)])
                                             # _logger.info(check_productId)
