@@ -114,11 +114,12 @@ class MainImportInventory(models.Model):
                                     main_account = item_y[main_account_row]     
                                     if item_code != "" and item_description != "" and main_account != "":
                                         try:
+                                            _logger.info('test')
                                             # check if category exists:
-                                            check_catId = self.env['product.category'].sudo().search([('name','=',main_account)])
-                                            cat_id = False
-                                            if check_catId:
-                                                cat_id = check_catId.id
+                                            # check_catId = self.env['product.category'].sudo().search([('name','=',main_account)])
+                                            # cat_id = False
+                                            # if check_catId:
+                                            #     cat_id = check_catId.id
                                             else:    
                                                 _logger.info('test')
                                                 # create category
