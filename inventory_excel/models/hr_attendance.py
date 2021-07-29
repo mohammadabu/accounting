@@ -58,31 +58,30 @@ class MainImportInventory(models.Model):
             state_obj = self.env['res.country.state']
             country_obj = self.env['res.country']
             try:
-                _logger.info("list_of_failed_record")
-                # if not datafile or not \
-                #         file_name.lower().endswith(('.xls', '.xlsx')):
-                #     list_of_failed_record += "Please Select an .xls file to Import."
-                #     _logger.error(
-                #         "Please Select an .xls file to Import.")
-                # if part_master.type == 'xlsx':
-                #     if not datafile or not file_name.lower().endswith(('.xls', '.xlsx',)):
-                #         list_of_failed_record += "Please Select an .xls or its compatible file to Import."
-                #         _logger.error(
-                #             "Please Select an .xls or its compatible file to Import.")
-                #     temp_path = tempfile.gettempdir()
-                #     file_data = base64.decodestring(datafile)
-                #     _logger.info("file_data")
-                #     _logger.info(file_data)
-                #     fp = open(temp_path + '/xsl_file.xls', 'wb+')
-                #     fp.write(file_data)
-                #     fp.close()
-                #     wb = open_workbook(temp_path + '/xsl_file.xls')
-                #     data_list = []
-                #     header_list = []
-                #     headers_dict = {}
-                #     sheet_names = wb.sheet_names()
-                #     _logger.info("list_of_failed_record")
-                #     _logger.info(sheet_names)
+                if not datafile or not \
+                        file_name.lower().endswith(('.xls', '.xlsx')):
+                    list_of_failed_record += "Please Select an .xls file to Import."
+                    _logger.error(
+                        "Please Select an .xls file to Import.")
+                if part_master.type == 'xlsx':
+                    if not datafile or not file_name.lower().endswith(('.xls', '.xlsx',)):
+                        list_of_failed_record += "Please Select an .xls or its compatible file to Import."
+                        _logger.error(
+                            "Please Select an .xls or its compatible file to Import.")
+                    temp_path = tempfile.gettempdir()
+                    file_data = base64.decodestring(datafile)
+                    _logger.info("file_data")
+                    _logger.info(file_data)
+                    fp = open(temp_path + '/xsl_file.xls', 'wb+')
+                    fp.write(file_data)
+                    fp.close()
+                    wb = open_workbook(temp_path + '/xsl_file.xls')
+                    data_list = []
+                    header_list = []
+                    headers_dict = {}
+                    sheet_names = wb.sheet_names()
+                    _logger.info("list_of_failed_record")
+                    _logger.info(sheet_names)
                     # for sheet in wb.sheets():
                     #     _logger.info(sheet.nrows)
                     # #     # Sales data xlsx
