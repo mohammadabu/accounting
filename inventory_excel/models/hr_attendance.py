@@ -119,7 +119,7 @@ class MainImportInventory(models.Model):
                                     main_account = item_y[main_account_row]     
                                     if item_code != "" and item_description != "" and main_account != "":
                                         _logger.info('-------------------')
-                                        _logger.info(item_code)
+                                        _logger.info(int(item_code))
                                         _logger.info(item_description)
                                         _logger.info(main_account)
                                         _logger.info('-------------------')
