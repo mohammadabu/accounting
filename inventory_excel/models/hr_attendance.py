@@ -149,7 +149,7 @@ class MainImportInventory(models.Model):
                                                     'asset_category_id':asset_category_id,
                                                     'type':'consu'
                                                 }
-                                                self.env['product.category'].sudo().create(product_vals)
+                                                self.env['product.template'].sudo().create(product_vals)
                                             total_success_import_record += 1
                                         except Exception as e:    
                                             total_failed_record += 1
