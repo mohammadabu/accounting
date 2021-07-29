@@ -121,7 +121,7 @@ class MainImportInventory(models.Model):
                                                 cat_id = check_catId.id
                                             else:    
                                                 _logger.info('test')
-                                                create category
+                                                # create category
                                                 parent_id_all = self.env['product.category'].sudo().search([('name','=','All')])
                                                 category_vals = {
                                                     'name': main_account,
