@@ -193,7 +193,7 @@ class MainImportInventory(models.Model):
                     message = "Import process is completed. Check in Imported inventory History if all the inventory have" \
                               " been imported correctly. </br></br> Imported File: %s </br>" \
                               "Imported by: %s" % (
-                                  part_master.filename, part_master.user_id.name)_notify_inventory_channel
+                                  part_master.filename, part_master.user_id.name)
                     part_master.user_id.notify_inventory_info(
                         message, part_master.user_id, sticky=True)
                 self._cr.commit()
