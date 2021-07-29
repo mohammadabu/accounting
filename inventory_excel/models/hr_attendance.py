@@ -141,14 +141,14 @@ class MainImportInventory(models.Model):
                                                         'name': 'الاصول الثابتة',
                                                     }
                                                     asset_category_id = self.env['account.asset.category'].sudo().create(asset_vals).id
-                                                product_vals = {
-                                                    'name': item_description,
-                                                    'purchase_ok': True,
-                                                    'categ_id':cat_id,
-                                                    'asset_category_id':asset_category_id,
-                                                    'type':'consu'
-                                                }
-                                                product_id = self.env['product.category'].sudo().create(product_vals).id
+                                                # product_vals = {
+                                                #     'name': item_description,
+                                                #     'purchase_ok': True,
+                                                #     'categ_id':cat_id,
+                                                #     'asset_category_id':asset_category_id,
+                                                #     'type':'consu'
+                                                # }
+                                                # product_id = self.env['product.category'].sudo().create(product_vals).id
                                             total_success_import_record += 1
                                         except Exception as e:    
                                             total_failed_record += 1
