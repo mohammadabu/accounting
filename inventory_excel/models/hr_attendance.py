@@ -81,7 +81,8 @@ class MainImportInventory(models.Model):
                     headers_dict = {}
                     sheet_names = wb.sheet_names()
                     _logger.info("list_of_failed_record")
-                    _logger.info(sheet_names)
+                    _logger.info(wb.sheets())
+                    # xl_sheet = xl_workbook.sheet_by_name(sheet_names[0])
                     # for sheet in wb.sheets():
                     #     _logger.info(sheet.nrows)
                     # #     # Sales data xlsx
