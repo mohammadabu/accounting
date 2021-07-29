@@ -125,10 +125,10 @@ class MainImportInventory(models.Model):
                                             cat_id = check_catId.id
                                         else:    
                                             # create category
+                                            parent_id_all = self.env['product.category'].sudo().search([('name','=','All')])
                                             category_vals = {
-                                                'name': emp_name_info.id,
-                                                'parent_id': full_date_check_in,
-                                                'check_out': full_date_check_out
+                                                'name': main_account,
+                                                'parent_id': parent_id_all.id,
                                             }
                                             cat_id = self.env['product.category'].sudo().create(category_vals)
                                             
