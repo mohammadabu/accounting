@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model='ir.ui.view' id='custody_item_form_view'>
+            <field name="name">custody.item.form</field>
+            <field name="model">hr.custody.items</field>
+            <field name="arch" type="xml">
+                <form string="Items">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="products" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="description" string="Description">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>        
+        <record id="hr_custody_tree_view" model="ir.ui.view">
+            <field name="name">hr.custody.items.tree</field>
+            <field name="model">hr.custody.items</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="products"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model='ir.actions.act_window' id='wizard_return_date_act'>
+            <field name="name">Custody Request</field>
+            <field name="res_model">wizard.return.date</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="wizard_return_date_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="hr_custody_main_menu"
+                name="Custody" sequence="20"/>
+    </data>
+</odoo>

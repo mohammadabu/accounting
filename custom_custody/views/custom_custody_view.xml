@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_custody_form_view" model="ir.ui.view">
+            <field name="name">hr.custody.form</field>
+            <field name="model">hr.custody</field>
+            <field name="arch" type="xml">
+                <form string="Custody">
+                    <sheet>
+                        <h1>
+                            <field name="name" readonly="1" nolabel="1"/>
+                        </h1>
+                    </sheet>
+                    <!-- <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div> -->
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_custody_tree_view" model="ir.ui.view">
+            <field name="name">hr.custody.tree</field>
+            <field name="model">hr.custody</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_custody_search_view" model="ir.ui.view">
+            <field name="name">hr.custody.search</field>
+            <field name="model">hr.custody</field>
+            <field name="arch" type="xml">
+                <search string="Custody">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_hr_custody" model="ir.actions.act_window">
+            <field name="name">Custody</field>
+            <field name="res_model">hr.custody</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_custody_search_view"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to Create a New Record.
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="hr_custody_main_menu"
+                  name="Custody" sequence="20"/>
+
+        <!-- <menuitem id="hr_custody_menu" parent="hr_custody_main_menu"
+                  name="Custody Management" sequence="20"/>
+
+        <menuitem action="action_hr_custody" id="hr_custody_menu" parent="hr_custody.hr_custody_main_menu"
+                  name="Custody Request" sequence="1"/> -->
+
+        <!--<menuitem action="action_hr_property" id="hr_property_menu" parent="hr_custody.hr_custody_main_menu"
+                  name="Property" sequence="5" groups="hr.group_hr_manager"/> -->
+    </data>
+</odoo>
