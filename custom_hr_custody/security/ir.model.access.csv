@@ -1,5 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_custody_manager,Access custody manager,model_hr_custody,,1,1,1,1
-access_custody_items,Access custody items,model_hr_custody_items,,1,1,1,1
+access_custody_items_manager,Access custody items manager,model_hr_custody_items,stock.group_stock_manager,1,1,1,1
+access_custody_items,Access custody items,model_hr_custody_items,,1,0,0,0
 access_custody_lines,Access custody Lines,model_hr_custody_lines,,1,1,1,1
 
