@@ -7,6 +7,7 @@
             <field name="arch" type="xml">
                 <form string="Custody">
                     <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved"/>
                         <button string="Send For Approval" type="object" name="sent"
                                 class="oe_highlight"
                                 attrs="{'invisible': [('state','not in',('draft'))]}"/>   
@@ -19,12 +20,11 @@
                                 context="{'reject_id':id,'model_id':'hr.custody'}"/>   
                         <button string="Set to Draft" type="object" name="set_to_draft"
                                 attrs="{'invisible': [('state','not in',('rejected'))]}"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved"/>
                     </header>
                     <sheet>
+                        <field name="state" invisible="1"/>
                         <h1>
                             <field name="name" />
-                            <field name="state" invisible="1"/>
                         </h1>
                         <group>
                             <group>
@@ -62,6 +62,7 @@
             <field name="model">hr.custody</field>
             <field name="arch" type="xml">
                 <tree>
+                    <field name="state" invisible="1"/>
                     <field name="name"/>
                     <field name="employee"/>
                     <field name="reason"/>
@@ -74,6 +75,7 @@
             <field name="model">hr.custody</field>
             <field name="arch" type="xml">
                 <search string="Custody">
+                    <field name="state" invisible="1"/>
                     <field name="name"/>
                     <field name="employee"/>
                     <field name="reason"/>
