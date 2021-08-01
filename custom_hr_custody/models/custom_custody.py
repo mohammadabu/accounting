@@ -12,7 +12,7 @@ class HrCustomCustody(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
 
-    name = fields.Char(required="1",required=True, readonly=True , states={'draft': [('readonly', False)]})
+    name = fields.Char(required=True, readonly=True , states={'draft': [('readonly', False)]})
     employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]})
     employee = fields.Many2one('hr.employee',required=True, readonly=True,states={'draft': [('readonly', False)]})
     reason = fields.Char(required="1")
