@@ -14,12 +14,11 @@ class HrCustomCustody(models.Model):
 
     name = fields.Char(required=True, readonly=True , states={'draft': [('readonly', False)]})
     employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]})
-    employee = fields.Many2one('hr.employee',required=True, readonly=True,states={'draft': [('readonly', False)]})
     reason = fields.Char(required="1")
     notes = fields.Text()
     state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
-                              ('returned', 'Returned'), ('rejected', 'Refused')], string='Status', default='draft',
-                             track_visibility='always')
+                            ('rejected', 'Refused')], string='Status', default='draft',
+                            track_visibility='always')
 
     custody_lines = fields.One2many('hr.custody.lines', 'custody_id')      
 
