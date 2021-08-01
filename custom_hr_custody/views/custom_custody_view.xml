@@ -14,7 +14,7 @@
                                 class="oe_highlight"
                                 attrs="{'invisible': [('state','not in',('to_approve'))]}"/>     
                         <button string="Refuse" groups="hr.group_hr_manager" type="action"
-                                name="%(hr_custody.wizard_reason_act)d"
+                                name="%(custom_hr_custody.wizard_reason_act)d"
                                 attrs="{'invisible': [('state','not in',('to_approve'))]}" class="btn-primary"
                                 context="{'reject_id':id,'model_id':'hr.custody'}"/>             
                         <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved,returned"/>
