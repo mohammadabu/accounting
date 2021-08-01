@@ -35,6 +35,7 @@
                         </group>
                         <notebook>
                             <page name="custody_lines" string="Items of custody">
+                                <field name="state" invisible="1" />
                                 <field name="custody_lines" attrs="{'readonly':[('state','not in',('draft',))]}">
                                     <tree editable="bottom">
                                         <field name="custody_item" />
