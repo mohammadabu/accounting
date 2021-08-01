@@ -13,4 +13,6 @@ class HrCustomCustody(models.Model):
 
 
     name = fields.Char()
-    
+    employee = fields.Many2one('hr.employee')
+    reason = fields.Char()
+    notes = fields.Text()
