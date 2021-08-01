@@ -27,9 +27,6 @@ class HrCustomCustody(models.Model):
         self.state = 'to_approve'                         
 
     def approve(self):
-        for custody in self.env['hr.custody'].search([('name', '=', self.name.id)]):
-            if custody.state == "approved":
-                raise UserError(_("Custody is not available now"))
         self.state = 'approved'    
 
 class HrCustomCustodyLines(models.Model):
