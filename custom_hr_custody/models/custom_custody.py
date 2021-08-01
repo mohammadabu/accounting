@@ -19,3 +19,12 @@ class HrCustomCustody(models.Model):
     state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
                               ('returned', 'Returned'), ('rejected', 'Refused')], string='Status', default='draft',
                              track_visibility='always')
+
+    def sent(self):
+        self.state = 'to_approve'                         
+
+    def approve(self):
+        for custody in self.env['hr.custody'].search([('name', '=', self.name.id)]):
+            if custody.state == "approved":
+                raise UserError(_("Custody is not available now"))
+        self.state = 'approved'    

@@ -7,6 +7,13 @@
             <field name="arch" type="xml">
                 <form string="Custody">
                     <header>
+                        <button string="Send For Approval" type="object" name="sent"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('state','not in',('draft'))]}"/>   
+                        <button string="Approve" groups="hr.group_hr_manager" type="object" name="approve"
+                                class="oe_highlight"
+                                attrs="{'invisible': ['|',('state','not in',('to_approve')),
+                                ('renew_return_date','=',True)]}"/>          
                         <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved,returned"/>
                     </header>
                     <sheet>
