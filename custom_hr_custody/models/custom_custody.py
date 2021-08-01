@@ -31,6 +31,9 @@ class HrCustomCustody(models.Model):
     def approve(self):
         self.state = 'approved'    
 
+    def set_to_draft(self):
+        self.state = 'draft'    
+
 class HrCustomCustodyLines(models.Model):
 
     _name = 'hr.custody.lines' 
