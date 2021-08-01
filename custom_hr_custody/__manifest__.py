@@ -3,7 +3,7 @@
     'version': '13.0.1.0.0',
     'depends': ['hr', 'mail', 'om_account_asset', 'product'],
     'data': [
-        # 'security/custody_security.xml',
+        'security/custody_security.xml',
         'views/wizard_reason_view.xml',
         # 'views/custody_view.xml',
         'views/custom_custody_view.xml',
