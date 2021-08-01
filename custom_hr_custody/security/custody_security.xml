@@ -3,6 +3,7 @@
     <record id="hr_rule_custody_user" model="ir.rule">
         <field name="name">Custody user role</field>
         <field name="model_id" ref="model_hr_custody"/>
+        <field name="groups" eval="[(4,ref(''))]"/>
         <field name="perm_read" eval = "1"/>
         <field name="perm_write" eval = "1"/>
         <field name="perm_create" eval = "1"/>
