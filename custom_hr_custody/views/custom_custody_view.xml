@@ -24,6 +24,7 @@
                     <sheet>
                         <h1>
                             <field name="name" />
+                            <field name="state" invisible="1"/>
                         </h1>
                         <group>
                             <group>
