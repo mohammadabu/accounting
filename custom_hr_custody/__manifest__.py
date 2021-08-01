@@ -13,7 +13,7 @@
         # 'reports/custody_report.xml'
         'security/ir.model.access.csv',
     ],
-    'images': ['static/description/banner.png'],
+    # 'images': ['static/description/banner.png'],
     'installable': True,
     'auto_install': False,
     'application': False,
