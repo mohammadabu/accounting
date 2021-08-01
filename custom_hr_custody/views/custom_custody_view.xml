@@ -28,7 +28,7 @@
                         <notebook>
                             <page name="custody_lines" string="Items of custody">
                                 <field name="custody_lines">
-                                    <tree>
+                                    <tree editable="bottom">
                                         <field name="custody_item" />
                                         <field name="custody_qty" />
                                         <field name="custody_id"  invisible="1"/>

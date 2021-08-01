@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_custody,Access custody,model_hr_custody,,1,1,1,1
 access_custody_items,Access custody items,model_hr_custody_items,,1,1,1,1
+access_custody_lines,Access custody Lines,model_hr_custody_lines,,1,1,1,1
+
