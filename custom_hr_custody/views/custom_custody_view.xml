@@ -55,14 +55,12 @@
         <menuitem id="hr_custody_main_menu"
                   name="Custody" sequence="20"/>
 
-        <!-- <menuitem id="hr_custody_menu" parent="hr_custody_main_menu"
-                  name="Custody Management" sequence="20"/> -->
 
         <menuitem action="action_hr_custody" id="hr_custody_menu" parent="custom_hr_custody.hr_custody_main_menu"
                   name="Custody Request" sequence="1"/>          
 
         <!--<menuitem action="action_hr_custody" id="hr_custody_menu" parent="hr_custody.hr_custody_main_menu"
-                  name="Custody Request" sequence="1"/> -->
+                  name="Custody Request" sequence="1" /> -->
 
         <!--<menuitem action="action_hr_property" id="hr_property_menu" parent="hr_custody.hr_custody_main_menu"
                   name="Property" sequence="5" groups="hr.group_hr_manager"/> -->

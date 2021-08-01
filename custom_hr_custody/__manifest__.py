@@ -7,6 +7,7 @@
         # 'views/wizard_reason_view.xml',
         # 'views/custody_view.xml',
         'views/custom_custody_view.xml',
+        'views/custom_items_view.xml',
         # 'views/hr_employee_view.xml',
         # 'views/notification_mail.xml',
         # 'reports/custody_report.xml'

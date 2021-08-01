@@ -8,7 +8,7 @@ from odoo.exceptions import Warning, UserError
 class HrCustomCustodyItems(models.Model):
 
     _name = 'hr.custody.items'
-    _description = 'Hr Custody Items '
+    _description = 'Hr Custody Items'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
 

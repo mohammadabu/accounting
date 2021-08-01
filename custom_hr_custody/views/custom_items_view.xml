@@ -26,7 +26,7 @@
                 </form>
             </field>
         </record>        
-        <record id="hr_custody_tree_view" model="ir.ui.view">
+        <record id="custody_item_tree_view" model="ir.ui.view">
             <field name="name">hr.custody.items.tree</field>
             <field name="model">hr.custody.items</field>
             <field name="arch" type="xml">
@@ -37,15 +37,18 @@
             </field>
         </record>
 
-        <record model='ir.actions.act_window' id='wizard_return_date_act'>
-            <field name="name">Custody Request</field>
-            <field name="res_model">wizard.return.date</field>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="wizard_return_date_form"/>
-            <field name="target">new</field>
+        <record id="action_hr_custody_item" model="ir.actions.act_window">
+            <field name="name">Custody Items</field>
+            <field name="res_model">hr.custody.items</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to Create a New Record.
+                </p>
+            </field>
         </record>
 
-        <menuitem id="hr_custody_main_menu"
-                name="Custody" sequence="20"/>
+        <menuitem action="action_hr_custody_item" id="hr_custody_item_menu" parent="custom_hr_custody.hr_custody_main_menu"
+                  name="Custody Items" sequence="2"/>     
     </data>
 </odoo>
