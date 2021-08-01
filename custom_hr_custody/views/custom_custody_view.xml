@@ -53,7 +53,8 @@
 
 
         <menuitem id="hr_custody_main_menu"
-                  name="Custody" sequence="20"/>
+                web_icon="custom_hr_custody,static/description/custody_icon.png"
+                name="Custody" sequence="20"/>
 
 
         <menuitem action="action_hr_custody" id="hr_custody_menu" parent="custom_hr_custody.hr_custody_main_menu"
