@@ -16,3 +16,6 @@ class HrCustomCustody(models.Model):
     employee = fields.Many2one('hr.employee',required="1")
     reason = fields.Char(required="1")
     notes = fields.Text()
+    state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
+                              ('returned', 'Returned'), ('rejected', 'Refused')], string='Status', default='draft',
+                             track_visibility='always')
