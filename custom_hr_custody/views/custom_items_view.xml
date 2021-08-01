@@ -48,7 +48,7 @@
             </field>
         </record>
 
-        <menuitem action="action_hr_custody_item" id="hr_custody_item_menu" parent="custom_hr_custody.hr_custody_main_menu"
+        <menuitem action="action_hr_custody_item" groups="stock.group_stock_manager" id="hr_custody_item_menu" parent="custom_hr_custody.hr_custody_main_menu"
                   name="Custody Items" sequence="2"/>     
     </data>
 </odoo>
