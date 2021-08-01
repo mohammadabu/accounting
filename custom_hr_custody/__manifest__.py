@@ -4,7 +4,7 @@
     'depends': ['hr', 'mail', 'om_account_asset', 'product'],
     'data': [
         # 'security/custody_security.xml',
-        # 'views/wizard_reason_view.xml',
+        'views/wizard_reason_view.xml',
         # 'views/custody_view.xml',
         'views/custom_custody_view.xml',
         'views/custom_items_view.xml',
