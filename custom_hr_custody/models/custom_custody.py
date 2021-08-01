@@ -21,7 +21,7 @@ class HrCustomCustody(models.Model):
                               ('returned', 'Returned'), ('rejected', 'Refused')], string='Status', default='draft',
                              track_visibility='always')
 
-    custody_lines = fields.One2many('hr.custody.lines', 'Custody Lines')                         
+    custody_lines = fields.One2many('hr.custody.lines', 'custody_id')                         
 
     def sent(self):
         self.state = 'to_approve'                         
