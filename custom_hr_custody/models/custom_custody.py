@@ -12,13 +12,16 @@ class HrCustomCustody(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
 
-    name = fields.Char(required="1")
-    employee = fields.Many2one('hr.employee',required="1")
+    name = fields.Char(required="1",required=True, readonly=True , states={'draft': [('readonly', False)]})
+    employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]})
+    employee = fields.Many2one('hr.employee',required=True, readonly=True,states={'draft': [('readonly', False)]})
     reason = fields.Char(required="1")
     notes = fields.Text()
     state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
                               ('returned', 'Returned'), ('rejected', 'Refused')], string='Status', default='draft',
                              track_visibility='always')
+
+    custody_lines = fields.One2many('hr.custody.lines', 'Custody Lines')                         
 
     def sent(self):
         self.state = 'to_approve'                         
@@ -28,3 +31,10 @@ class HrCustomCustody(models.Model):
             if custody.state == "approved":
                 raise UserError(_("Custody is not available now"))
         self.state = 'approved'    
+
+class HrCustomCustodyLines(models.Model):
+
+    _name = 'hr.custody.lines'        
+    custody_item = fields.Many2one('hr.custody.items',string="Items") 
+    custody_qty = fields.Integer(string="Quantity")
+    custody_id = fields.Many2one('hr.custody',string="Custody Id") 

@@ -26,6 +26,15 @@
                             </group>
                         </group>
                         <notebook>
+                            <page name="custody_lines" string="Items of custody">
+                                <field name="custody_lines">
+                                    <tree>
+                                        <field name="custody_item" />
+                                        <field name="custody_qty" />
+                                        <field name="custody_id"  invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
                             <page name="notes" string="Notes">
                                 <field name="notes"/>
                             </page>
