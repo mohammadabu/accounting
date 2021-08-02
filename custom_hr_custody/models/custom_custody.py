@@ -39,6 +39,7 @@ class HrCustomCustodyLines(models.Model):
     _sql_constraints = [('custody_item', 'unique (custody_id,custody_item)',     
                  'Duplicate Items in Custody line not allowed !')]
 
+    custody_item = fields.Many2one('hr.custody.items',string="Items") 
     custody_qty = fields.Integer(string="Quantity")
     custody_id = fields.Many2one('hr.custody',string="Custody Id") 
     
