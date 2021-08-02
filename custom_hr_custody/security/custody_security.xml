@@ -1,10 +1,15 @@
 <?xml version="1.0" ?>
 <odoo>
 
+    <record id='custody_manager_group' model='res.groups'>
+        <field name="name">Custody Manager</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+
     <record id="hr_rule_custody_manager" model="ir.rule">
         <field name="name">Custody manager role</field>
         <field name="model_id" ref="model_hr_custody" />
-        <field name="groups" eval="[(4,ref('custom_hr_custody.custdy_manager_group'))]"/>
+        <field name="groups" eval="[(4,ref('custom_hr_custody.custody_manager_group'))]"/>
         <field name="perm_read" eval = "1"/>
         <field name="perm_write" eval = "1"/>
         <field name="perm_create" eval = "1"/>
@@ -12,11 +17,6 @@
         <field name="domain_force">
             [(1,'=',1)]
         </field>
-    </record>
-
-    <record id='custdy_manager_group' model='res.groups'>
-        <field name="name">Custody Manager</field>
-        <field name="category_id" ref="base.module_category_hidden" />
     </record>
 
     <record id="hr_custody_personal_rule_manager" model="ir.rule">
