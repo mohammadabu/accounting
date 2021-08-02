@@ -14,5 +14,8 @@ class HrCustomCustodyItems(models.Model):
 
     name = fields.Char()
     products = fields.Many2one('product.template')
+    quantity = fields.Char()
+    custody_quantity = fields.Char()
+    amount_remaining = fields.Char()
     description = fields.Text()
     
