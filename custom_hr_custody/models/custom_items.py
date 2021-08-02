@@ -14,7 +14,7 @@ class HrCustomCustodyItems(models.Model):
 
     @api.model
     def getItemQuantity(self):
-        product_id = self.products
+        product_id = self.products.id
         stock_move = self.env['stock.move.line'].sudo().search([('state','=','done'),('product_id','=',product_id)])
         qty = 0
         for line in stock_move:
