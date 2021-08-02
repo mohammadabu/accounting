@@ -31,7 +31,7 @@ class HrCustomCustodyItems(models.Model):
             if qty < 0 :
                qty = 0 
             rec.quantity = qty
-            rec.custody_quantity = qty_used
+            rec.custody_quantity = qty_used - this_required_quantity
             rec.amount_remaining = qty - (qty_used + this_required_quantity)
 
     name = fields.Char()
