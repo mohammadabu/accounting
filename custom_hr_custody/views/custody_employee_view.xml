@@ -9,11 +9,13 @@
                     <page name="custody_information" string="Custody Information" groups="hr.group_hr_user">
                         <group>
                             <field name="employee_custody" readonly="1"/>
-                            <!-- <field name="employee_custody" readonly="1">
+                            <field name="employee_custody" readonly="1">
                                 <tree>
-                                    <field name="name" />
+                                    <field name="custody_item" />
+                                    <field name="custody_item" />
+                                    <field name="custody_id" invisible="1" />
                                 </tree>
-                            </field> -->
+                            </field>
                         </group>
                     </page>
                 </xpath>
