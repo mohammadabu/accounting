@@ -9,10 +9,10 @@
                     <page name="custody_information" string="Custody Information" groups="hr.group_hr_user">
                         <group>
                             <field name="employee_custody" readonly="1">
-                                    <tree >
-                                        <field name="name" />
-                                        <field name="custody_lines" />
-                                    </tree>
+                                <tree>
+                                    <field name="name" />
+                                    <field name="custody_lines" />
+                                </tree>
                             </field>
                         </group>
                     </page>
