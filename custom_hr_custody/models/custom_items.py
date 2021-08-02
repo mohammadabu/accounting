@@ -23,15 +23,15 @@ class HrCustomCustodyItems(models.Model):
             for line in stock_move:
                 qty = qty + int(line.qty_done)
             # check product custody qty
-            custody_items = self.env['hr.custody.items'].sudo().search([('products','=',product_id)])
+            custody_items = self.env['hr.custody.items'].sudo().search([('products','=',product_id),('id','!=',self.id)])
             for item in custody_items:
                 qty_used = qty_used + int(item.required_quantity)    
             this_required_quantity =  rec.required_quantity
-            # qty_used = qty_used - this_required_quantity
             if qty < 0 :
                qty = 0 
             rec.quantity = qty
-            rec.custody_quantity = qty_used - this_required_quantity
+            # rec.custody_quantity = qty_used - this_required_quantity
+            rec.custody_quantity = qty_used
             # rec.amount_remaining = qty - (qty_used + this_required_quantity)
             rec.amount_remaining = this_required_quantity + (qty_used - this_required_quantity)
 
