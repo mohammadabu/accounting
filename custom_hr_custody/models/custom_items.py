@@ -39,4 +39,4 @@ class HrCustomCustodyItems(models.Model):
             qty = 0
             for line in stock_move:
                 qty = qty + int(line.qty_done)
-            rec.quantity = qty
+        self.quantity = qty
