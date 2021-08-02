@@ -25,9 +25,8 @@ class HrCustomCustodyItems(models.Model):
             custody_items = self.env['hr.custody.items'].sudo().search([('products','=',product_id)])
             for item in custody_items:
                 qty_used = qty_used + int(item.required_quantity)    
-            # this_required_quantity =  rec.required_quantity
-            # qty = qty - qty_used
-            # qty = qty + this_required_quantity
+            this_required_quantity =  rec.required_quantity
+            qty_used = qty_used - this_required_quantity
             if qty < 0 :
                qty = 0 
         self.quantity = qty
