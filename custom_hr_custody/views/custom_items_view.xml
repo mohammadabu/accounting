@@ -18,9 +18,9 @@
                                 <field name="quantity" />
                                 <field name="custody_quantity" />
                                 <field name="required_quantity" />
+                                <field name="amount_remaining" />
                             </group>
                             <group>
-                                <field name="amount_remaining" />
                             </group>
                         </group>
                         <notebook>

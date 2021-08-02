@@ -15,6 +15,7 @@ class HrCustomCustodyItems(models.Model):
     def onchange_products(self):        
         qty = 0
         qty_used = 0
+        this_required_quantity = 0
         for rec in self:
             # check product inventory qty 
             product_id = rec.products.id
@@ -31,12 +32,13 @@ class HrCustomCustodyItems(models.Model):
                qty = 0 
         self.quantity = qty
         self.custody_quantity = qty_used
+        self.amount_remaining = custody_quantity + this_required_quantity
 
     name = fields.Char()
     products = fields.Many2one('product.template')
     quantity = fields.Integer(compute="onchange_products")
     custody_quantity = fields.Integer(compute="onchange_products")
     required_quantity = fields.Integer(required=True,default=1)
-    amount_remaining = fields.Char()
+    amount_remaining = fields.Integer(compute="onchange_products")
     description = fields.Text()
 
