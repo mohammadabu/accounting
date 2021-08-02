@@ -13,10 +13,10 @@ class HrCustomCustodyItems(models.Model):
 
     @api.onchange('products','required_quantity')
     def onchange_products(self):        
-        qty = 0
-        qty_used = 0
-        this_required_quantity = 0
         for rec in self:
+            qty = 0
+            qty_used = 0
+            this_required_quantity = 0
             # check product inventory qty 
             product_id = rec.products.id
             stock_move = self.env['stock.move.line'].sudo().search([('state','=','done'),('product_id','=',product_id)])
