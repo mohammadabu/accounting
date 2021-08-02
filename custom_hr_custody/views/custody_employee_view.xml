@@ -8,9 +8,7 @@
                 <xpath expr="//form/sheet/notebook/page[@name='personal_information']" position="after">
                     <page name="custody_information" string="Custody Information" groups="hr.group_hr_user">
                         <group>
-                            <group string="Custody Information">
-                                <field name="employee_custody"/>
-                            </group>
+                            <field name="employee_custody"/>
                         </group>
                     </page>
                 </xpath>
