@@ -11,9 +11,10 @@ class HrCustomCustodyItems(models.Model):
     _description = 'Hr Custody Items'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    @api.onchange('products')
+    @api.onchange('products','required_quantity')
     def onchange_products(self):        
         qty = 0
+        qty_used = 0
         for rec in self:
             # check product inventory qty 
             product_id = rec.products.id
@@ -21,22 +22,22 @@ class HrCustomCustodyItems(models.Model):
             for line in stock_move:
                 qty = qty + int(line.qty_done)
             # check product custody qty
-            qty_used = 0
             custody_items = self.env['hr.custody.items'].sudo().search([('products','=',product_id)])
             for item in custody_items:
-                qty_used = qty_used + int(item.required_quantity)   
-            this_required_quantity =  rec.required_quantity
-            qty = qty - qty_used
-            qty = qty + this_required_quantity
+                qty_used = qty_used + int(item.required_quantity)    
+            # this_required_quantity =  rec.required_quantity
+            # qty = qty - qty_used
+            # qty = qty + this_required_quantity
             if qty < 0 :
                qty = 0 
         self.quantity = qty
+        self.custody_quantity = qty_used
 
     name = fields.Char()
     products = fields.Many2one('product.template')
     quantity = fields.Integer(compute="onchange_products")
+    custody_quantity = fields.Integer(compute="onchange_products")
     required_quantity = fields.Integer(required=True,default=1)
-    custody_quantity = fields.Char()
     amount_remaining = fields.Char()
     description = fields.Text()
 
