@@ -3,7 +3,8 @@
 from datetime import date, datetime, timedelta
 from odoo import models, fields, api, _
 from odoo.exceptions import Warning, UserError
-
+import logging
+_logger = logging.getLogger(__name__)
 
 class HrCustomCustodyItems(models.Model):
 
@@ -20,13 +21,20 @@ class HrCustomCustodyItems(models.Model):
             # check product inventory qty 
             product_id = rec.products.id
             stock_move = self.env['stock.move.line'].sudo().search([('state','=','done'),('product_id','=',product_id)])
+            _logger.info("---------stock_move-------------")
             for line in stock_move:
+                _logger.info(int(line.qty_done))
                 qty = qty + int(line.qty_done)
+            _logger.info("---------stock_move-------------")    
+
             # check product custody qty
             cust_id = self.id or 0
+            _logger.info("---------stock_move-------------")
             custody_items = self.env['hr.custody.items'].sudo().search([('products','=',product_id),('id','!=',cust_id)])
             for item in custody_items:
+                _logger.info(int(item.required_quantity)  )
                 qty_used = qty_used + int(item.required_quantity)    
+            _logger.info("---------stock_move-------------")
             this_required_quantity =  rec.required_quantity
             if qty < 0 :
                qty = 0 
