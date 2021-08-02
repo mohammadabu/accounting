@@ -16,10 +16,10 @@
                             <group>
                                 <field name="products" />
                                 <field name="quantity" />
+                                <field name="custody_quantity" />
                                 <field name="required_quantity" />
                             </group>
                             <group>
-                                <field name="custody_quantity" />
                                 <field name="amount_remaining" />
                             </group>
                         </group>
