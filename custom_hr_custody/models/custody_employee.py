@@ -9,7 +9,7 @@ class HrEmployeeCustody(models.Model):
     @api.model
     def getAllEmployeeCustody(self):
         employee_id = self.id
-        custody = self.env['hr.custody.lines'].sudo().search([('employee','=',employee_id)])
+        custody = self.env['hr.custody.lines'].sudo().search([('custody_id.employee','=',employee_id)])
         self.employee_custody = custody
         # if self.parent_opportunity.id != False:
         #     custody = self.env['hr.custody.lines'].sudo().search(['&','|',('default_access_emails','like','#'+str(self.env.uid)+'#'),'|',('stage_access_emails','like','#'+str(self.env.uid)+'#'),'|',('assigned_resources_access_emails','like','#'+str(self.env.uid)+'#'),('owner_ownerManager_emails','like','#'+str(self.env.uid)+'#'),('parent_opportunity','=',self.parent_opportunity.id),('id','!=',self.id)])
