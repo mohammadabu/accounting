@@ -27,7 +27,7 @@ class HrCustomCustodyItems(models.Model):
             for item in custody_items:
                 qty_used = qty_used + int(item.required_quantity)    
             this_required_quantity =  rec.required_quantity
-            qty_used = qty_used - this_required_quantity
+            # qty_used = qty_used - this_required_quantity
             if qty < 0 :
                qty = 0 
             rec.quantity = qty
