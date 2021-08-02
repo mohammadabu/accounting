@@ -33,10 +33,10 @@ class HrCustomCustodyItems(models.Model):
     def onchange_products(self):
         # current_stage =  self._origin.project_stage.internal_id
         # current_field = self._origin
+        qty = 0
         for rec in self:
             product_id = rec.products.id
             stock_move = self.env['stock.move.line'].sudo().search([('state','=','done'),('product_id','=',product_id)])
-            qty = 0
             for line in stock_move:
                 qty = qty + int(line.qty_done)
         self.quantity = qty
