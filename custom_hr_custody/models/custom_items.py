@@ -23,8 +23,20 @@ class HrCustomCustodyItems(models.Model):
 
     name = fields.Char()
     products = fields.Many2one('product.template')
-    quantity = fields.Integer(compute='getItemQuantity')
+    quantity = fields.Integer(readonly=True,default=0)
     custody_quantity = fields.Char()
     amount_remaining = fields.Char()
     description = fields.Text()
     
+
+    @api.onchange('products')
+    def onchange_products(self):
+        # current_stage =  self._origin.project_stage.internal_id
+        # current_field = self._origin
+        for rec in self:
+            product_id = rec.products.id
+            stock_move = self.env['stock.move.line'].sudo().search([('state','=','done'),('product_id','=',product_id)])
+            qty = 0
+            for line in stock_move:
+                qty = qty + int(line.qty_done)
+            rec.quantity = qty
