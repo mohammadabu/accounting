@@ -30,9 +30,9 @@ class HrCustomCustodyItems(models.Model):
             qty_used = qty_used - this_required_quantity
             if qty < 0 :
                qty = 0 
-        self.quantity = qty
-        self.custody_quantity = qty_used
-        self.amount_remaining = qty_used + this_required_quantity
+            rec.quantity = qty
+            rec.custody_quantity = qty_used
+            rec.amount_remaining = qty_used + this_required_quantity
 
     name = fields.Char()
     products = fields.Many2one('product.template')
