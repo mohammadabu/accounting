@@ -64,7 +64,7 @@ class HrCustomCustodyItems(models.Model):
             rec.custody_used = custody_used
             rec.amount_remaining = qty - (qty_used + this_required_quantity)
 
-    name = fields.Char()
+    name = fields.Char(required=True)
     products = fields.Many2one('product.template')
     quantity = fields.Integer(compute="onchange_products")
     custody_quantity = fields.Integer(compute="onchange_products")
