@@ -113,5 +113,4 @@ class HrCustomCustodyItems(models.Model):
     def unlink(self):
         rtn = super(HrCustomCustodyItems, self).unlink()
         raise exceptions.ValidationError(rtn)
-        raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
         return rtn    
