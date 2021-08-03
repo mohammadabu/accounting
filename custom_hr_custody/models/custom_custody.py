@@ -11,9 +11,15 @@ class HrCustomCustody(models.Model):
     _description = 'Hr Custody'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-
+    def _getDefaultEmployee(self):
+        user_id = self.env.user
+        employee = self.env['hr_employee'].sudo().search([('user_id','=',user_id)])
+        if len(employee) > 0 :
+            return employee[0]
+        else:
+            return False    
     name = fields.Char(required=True, readonly=True , states={'draft': [('readonly', False)]})
-    employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]})
+    employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]},default=_getDefaultEmployee)
     reason = fields.Char(required="1")
     notes = fields.Text()
     state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
