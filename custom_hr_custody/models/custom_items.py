@@ -85,4 +85,33 @@ class HrCustomCustodyItems(models.Model):
         _logger.info("---------write-------------")
         if required_quantity < custody_used:
             raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
+        elif amount_remaining > 0:
+            raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
         return rtn    
+
+    @api.model
+    def create(self,vals):
+        required_quantity = 0
+        custody_used = 0 
+        amount_remaining = 0 
+        try:     
+            required_quantity = vals['name'] 
+            custody_used = vals['custody_used'] 
+            amount_remaining = vals['amount_remaining'] 
+        except:
+            required_quantity = 0
+            custody_used = 0 
+            amount_remaining = 0 
+
+        _logger.info("---------create-------------")
+        _logger.info(required_quantity)
+        _logger.info(custody_used)
+        _logger.info(amount_remaining)
+        _logger.info("---------create-------------")
+
+        if required_quantity < custody_used:
+            raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
+        elif amount_remaining > 0:
+            raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
+        rtn = super(HrCustomCustodyItems,self).create(vals)
+        return rtn     
