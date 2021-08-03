@@ -109,9 +109,9 @@ class HrCustomCustodyItems(models.Model):
         return rtn     
 
 
-    def unlink(self, cr, uid, ids, context=None):
-        for current_id in ids:
-            # current_id = self.id
+    def unlink(self):
+        for current in self:
+            current_id = current.id
             _logger.info("--------------------------custody_used_item---------------------------------------") 
             _logger.info(current_id)
             used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',current_id)])
