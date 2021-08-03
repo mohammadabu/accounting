@@ -95,7 +95,7 @@ class HrCustomCustodyItems(models.Model):
         custody_used = 0 
         amount_remaining = 0 
         try:     
-            required_quantity = vals['name'] 
+            required_quantity = vals['required_quantity'] 
             custody_used = vals['custody_used'] 
             amount_remaining = vals['amount_remaining'] 
         except:
