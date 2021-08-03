@@ -21,6 +21,7 @@ class HrCustomCustodyItems(models.Model):
         for rec in self:
             qty = 0
             qty_used = 0
+            custody_used = 0
             this_required_quantity = 0
             # check product inventory qty 
             product_id = rec.products.id
@@ -41,6 +42,18 @@ class HrCustomCustodyItems(models.Model):
                 _logger.info(int(item.required_quantity))
                 qty_used = qty_used + int(item.required_quantity)    
             _logger.info("---------stock_move-------------")
+
+
+
+           # check custody used 
+            _logger.info("---------custody used-------------")
+            if current_id != False:
+                custody_used_item = self.env['hr.custody.lines'].sudo().search([('custody_item.id','=',product_id),('custody_id.state','=','approved')])                
+                for used_item in custody_used_item:
+                    _logger.info(used_item.custody_qty)
+            _logger.info("---------custody used-------------")
+
+
             this_required_quantity =  rec.required_quantity
             if qty < 0 :
                qty = 0 
@@ -52,6 +65,7 @@ class HrCustomCustodyItems(models.Model):
     products = fields.Many2one('product.template')
     quantity = fields.Integer(compute="onchange_products")
     custody_quantity = fields.Integer(compute="onchange_products")
+    custody_used = fields.Integer(compute="onchange_products")
     required_quantity = fields.Integer(required=True,default=1)
     amount_remaining = fields.Integer(compute="onchange_products")
     description = fields.Text()
