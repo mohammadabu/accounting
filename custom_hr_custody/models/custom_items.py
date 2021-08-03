@@ -117,7 +117,7 @@ class HrCustomCustodyItems(models.Model):
         _logger.info(custody_used_item)
         if len(custody_used_item) > 0:
             _logger.info(len(custody_used_item))
-             raise exceptions.ValidationError(_("It cannot be deleted. You must delete all data related to it"))               
+            raise exceptions.ValidationError(_("It cannot be deleted. You must delete all data related to it"))               
         # _logger.info("sasadsdasdasadsdadssadsda")
         # _logger.info(custody_used_item)
         # _logger.info(current_id)
