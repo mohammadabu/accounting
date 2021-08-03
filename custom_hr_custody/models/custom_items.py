@@ -13,7 +13,8 @@ class HrCustomCustodyItems(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     @api.onchange('products','required_quantity')
-    def onchange_products(self):        
+    def onchange_products(self):   
+        current_id = self._origin.id     
         for rec in self:
             qty = 0
             qty_used = 0
@@ -35,7 +36,7 @@ class HrCustomCustodyItems(models.Model):
             custody_items = self.env['hr.custody.items'].sudo().search([('products','=',product_id),('id','!=',cust_id)])
             _logger.info(custody_items)
             for item in custody_items:
-                _logger.info(item.id)
+                _logger.info(current_id)
                 _logger.info(cust_id)
                 if item.id != cust_id:
                     _logger.info(int(item.required_quantity))
