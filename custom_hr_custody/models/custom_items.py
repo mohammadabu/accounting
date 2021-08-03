@@ -104,6 +104,7 @@ class HrCustomCustodyItems(models.Model):
             amount_remaining = 0 
 
         _logger.info("---------create-------------")
+        _logger.info(vals)
         _logger.info(required_quantity)
         _logger.info(custody_used)
         _logger.info(amount_remaining)
