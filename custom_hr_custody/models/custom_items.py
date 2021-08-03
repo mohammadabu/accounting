@@ -32,8 +32,6 @@ class HrCustomCustodyItems(models.Model):
             _logger.info("---------stock_move-------------")    
 
 
-
-
             # check product custody qty
             _logger.info("---------stock_move-------------")
             custody_items = self.env['hr.custody.items'].sudo().search([('products','=',product_id),('id','!=',current_id)])
@@ -43,20 +41,12 @@ class HrCustomCustodyItems(models.Model):
                 _logger.info(int(item.required_quantity))
                 qty_used = qty_used + int(item.required_quantity)    
             _logger.info("---------stock_move-------------")
-
-
-
-
-
             this_required_quantity =  rec.required_quantity
-
             if qty < 0 :
                qty = 0 
             rec.quantity = qty
-            # rec.custody_quantity = qty_used - this_required_quantity
             rec.custody_quantity = qty_used
-            # rec.amount_remaining = qty - (qty_used + this_required_quantity)
-            rec.amount_remaining = this_required_quantity + (qty_used - this_required_quantity)
+            rec.amount_remaining = qty - (qty_used - this_required_quantity)
 
     name = fields.Char()
     products = fields.Many2one('product.template')
