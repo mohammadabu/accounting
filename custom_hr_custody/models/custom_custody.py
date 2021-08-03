@@ -79,7 +79,7 @@ class HrCustomCustody(models.Model):
     def unlink(self):
         for current in self:
             current_id = current.id
-            used_item = self.env['hr.custody.lines'].sudo().search([('custody_id','=',current_id)]).unlink()
+            self.env['hr.custody.lines'].sudo().search([('custody_id','=',current_id)]).unlink()
         rtn = super(HrCustomCustody, self).unlink()
         return rtn
 
