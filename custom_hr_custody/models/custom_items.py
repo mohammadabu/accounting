@@ -35,6 +35,8 @@ class HrCustomCustodyItems(models.Model):
             custody_items = self.env['hr.custody.items'].sudo().search([('products','=',product_id)])
             _logger.info(custody_items)
             for item in custody_items:
+                _logger.info(item)
+                _logger.info(int(item.required_quantity))
                 qty_used = qty_used + int(item.required_quantity)    
             _logger.info("---------stock_move-------------")
 
