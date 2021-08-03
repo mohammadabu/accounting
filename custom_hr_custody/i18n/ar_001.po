@@ -375,7 +375,7 @@ msgstr "منتجات"
 #: model:ir.model.fields,field_description:custom_hr_custody.field_hr_custody_items__quantity
 #: model:ir.model.fields,field_description:custom_hr_custody.field_hr_custody_lines__custody_qty
 msgid "Quantity"
-msgstr ""
+msgstr "الكمية"
 
 #. module: custom_hr_custody
 #: model:ir.model.fields,field_description:custom_hr_custody.field_hr_custody__reason
