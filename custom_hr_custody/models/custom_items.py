@@ -110,7 +110,7 @@ class HrCustomCustodyItems(models.Model):
         return rtn     
 
 
-    def unlink(self):
-        rtn = super(HrCustomCustodyItems, self).unlink()
-        raise exceptions.ValidationError(rtn)
-        return rtn    
+    # def unlink(self):
+    #     rtn = super(HrCustomCustodyItems, self).unlink()
+    #     raise exceptions.ValidationError(rtn)
+    #     return rtn    
