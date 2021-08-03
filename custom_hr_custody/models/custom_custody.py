@@ -12,7 +12,7 @@ class HrCustomCustody(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     def _getDefaultEmployee(self):
-        user_id = self.env.user
+        user_id = self.env.user.id
         employee = self.env['hr.employee'].sudo().search([('user_id','=',user_id)],limit=1)
         if len(employee) > 0 :
             return employee.id
