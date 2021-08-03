@@ -11,7 +11,6 @@ class HrCustomCustodyItems(models.Model):
     _name = 'hr.custody.items'
     _description = 'Hr Custody Items'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    @api.depends('products','required_quantity')
     @api.onchange('products','required_quantity')
     def onchange_products(self):
         current_id = self._origin.id   
@@ -67,9 +66,9 @@ class HrCustomCustodyItems(models.Model):
     products = fields.Many2one('product.template')
     quantity = fields.Integer(compute="onchange_products")
     custody_quantity = fields.Integer(compute="onchange_products")
-    custody_used = fields.Integer(store=True,compute="onchange_products")
+    custody_used = fields.Integer(compute="onchange_products")
     required_quantity = fields.Integer(required=True,default=1)
-    amount_remaining = fields.Integer(store=True,compute="onchange_products")
+    amount_remaining = fields.Integer(compute="onchange_products")
     description = fields.Text()
 
 
@@ -94,6 +93,7 @@ class HrCustomCustodyItems(models.Model):
         required_quantity = 0
         custody_used = 0 
         amount_remaining = 0 
+        rtn = super(HrCustomCustodyItems,self).create(vals)
         try:     
             required_quantity = vals['required_quantity'] 
             custody_used = vals['custody_used'] 
@@ -105,7 +105,7 @@ class HrCustomCustodyItems(models.Model):
 
         _logger.info("---------create-------------")
         _logger.info(vals)
-        _logger.info(self.required_quantity)
+        _logger.info(rtn)
         _logger.info(required_quantity)
         _logger.info(custody_used)
         _logger.info(amount_remaining)
@@ -115,5 +115,4 @@ class HrCustomCustodyItems(models.Model):
             raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         elif amount_remaining > 0:
             raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
-        rtn = super(HrCustomCustodyItems,self).create(vals)
         return rtn     
