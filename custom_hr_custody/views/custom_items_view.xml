@@ -18,6 +18,7 @@
                                 <field name="quantity" />
                                 <field name="custody_quantity" />
                                 <field name="required_quantity"/>
+                                <field name="custody_used"  />
                                 <field name="amount_remaining" invisible="1" />
                             </group>
                             <group>
