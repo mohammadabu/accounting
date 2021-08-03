@@ -112,8 +112,9 @@ class HrCustomCustodyItems(models.Model):
     def unlink(self):
         rtn = super(HrCustomCustodyItems, self).unlink()
         current_id = self.id
-        custody_used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',current_id)])
         _logger.info("custody_used_item")
+        _logger.info(current_id)
+        custody_used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',current_id)])
         _logger.info(custody_used_item)
         if len(custody_used_item) > 0:
             _logger.info(len(custody_used_item))
