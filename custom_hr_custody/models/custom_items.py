@@ -13,7 +13,9 @@ class HrCustomCustodyItems(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     @api.onchange('products','required_quantity')
-    def onchange_products(self):   
+    def onchange_products(self):
+        current_id = self._origin.id   
+        _logger.info(current_id)
         for rec in self:
             qty = 0
             qty_used = 0
