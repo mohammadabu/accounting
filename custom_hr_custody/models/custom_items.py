@@ -110,7 +110,7 @@ class HrCustomCustodyItems(models.Model):
         _logger.info(custody_used)
         _logger.info(amount_remaining)
         _logger.info("---------create-------------")
-
+        raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         if required_quantity < custody_used:
             raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         elif amount_remaining > 0:
