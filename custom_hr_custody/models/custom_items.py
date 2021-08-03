@@ -111,7 +111,9 @@ class HrCustomCustodyItems(models.Model):
 
     def unlink(self):
         rtn = super(HrCustomCustodyItems, self).unlink()
-        raise exceptions.ValidationError(rtn)
+        _logger.info("sasadsdasdasadsdadssadsda")
+        _logger.info(self)
+        _logger.info(rtn)
         # custody_used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',current_id),('custody_id.state','=','approved')])                
         raise exceptions.ValidationError("dsadsa")
         return rtn    
