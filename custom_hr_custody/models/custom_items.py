@@ -96,23 +96,23 @@ class HrCustomCustodyItems(models.Model):
         rtn = super(HrCustomCustodyItems,self).create(vals)
         
         try:     
-            required_quantity = vals['required_quantity'] 
-            custody_used = vals['custody_used'] 
-            amount_remaining = vals['amount_remaining'] 
+            required_quantity = rtn.required_quantity 
+            custody_used = rtn.custody_used
+            amount_remaining = rtn.amount_remaining
         except:
             required_quantity = 0
             custody_used = 0 
             amount_remaining = 0 
 
-        _logger.info("---------create-------------")
-        _logger.info(vals)
-        _logger.info(rtn.id)
-        _logger.info(rtn.required_quantity)
-        _logger.info(rtn.amount_remaining)
-        _logger.info(required_quantity)
-        _logger.info(custody_used)
-        _logger.info(amount_remaining)
-        _logger.info("---------create-------------")
+        # _logger.info("---------create-------------")
+        # _logger.info(vals)
+        # _logger.info(rtn.id)
+        # _logger.info(rtn.required_quantity)
+        # _logger.info(rtn.amount_remaining)
+        # _logger.info(required_quantity)
+        # _logger.info(custody_used)
+        # _logger.info(amount_remaining)
+        # _logger.info("---------create-------------")
         raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         if required_quantity < custody_used:
             raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
