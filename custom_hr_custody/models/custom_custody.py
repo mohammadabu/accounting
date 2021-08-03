@@ -63,8 +63,8 @@ class HrCustomCustody(models.Model):
                 raise exceptions.ValidationError(_('Some items are not available, please check with the Inventory Department'))
             _logger.info("---------required_quantity------------")  
         except Exception as e:
-            # raise exceptions.ValidationError(e)
-            raise exceptions.ValidationError(_('A problem has occurred, please check with the HR Department'))
+            raise exceptions.ValidationError(e)
+            # raise exceptions.ValidationError(_('A problem has occurred, please check with the HR Department'))
 
 
     @api.model
