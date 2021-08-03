@@ -28,7 +28,7 @@ class HrCustomCustodyItems(models.Model):
             _logger.info("---------stock_move-------------")    
 
             # check product custody qty
-            cust_id = self.id or 0
+            cust_id = rec.id or 0
             _logger.info("---------stock_move-------------")
             custody_items = self.env['hr.custody.items'].sudo().search([('products','=',product_id),('id','!=',cust_id)])
             _logger.info(custody_items)
