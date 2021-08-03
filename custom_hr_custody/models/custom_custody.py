@@ -41,10 +41,8 @@ class HrCustomCustody(models.Model):
         self.state = 'draft'    
 
     @api.model
-    def create(self,vals):
-        rtn = super(HrCustomCustody,self).create(vals)
-        try:     
-            custody_lines = rtn.custody_lines 
+    def checkValidData(self,custody_lines):
+        try:      
             _logger.info("---------required_quantity------------")
             error = 0
             for line in custody_lines:
@@ -54,12 +52,49 @@ class HrCustomCustody(models.Model):
                 for used_item in custody_used_item:  
                     qty_used = qty_used + int(used_item.custody_qty)            
                 required_quantity = line.custody_item.required_quantity
-                _logger.info(qty_used)
-                _logger.info(required_quantity)      
+                line_qty = line.custody_item.custody_qty
+                if (required_quantity - qty_used) <= 0 :
+                    error = 1
+                elif (required_quantity - qty_used) - line_qty < 0:
+                    error = 1
+                if error == 1:
+                    break
+            if  error == 1:
+                raise exceptions.ValidationError(_('Some items are not available, please check with the Inventory Department'))
             _logger.info("---------required_quantity------------")  
         except Exception as e:
-            raise exceptions.ValidationError(e)
-            # raise exceptions.ValidationError(_('A problem has occurred, please check with the HR Department'))
+            # raise exceptions.ValidationError(e)
+            raise exceptions.ValidationError(_('A problem has occurred, please check with the HR Department'))
+
+
+    @api.model
+    def create(self,vals):
+        rtn = super(HrCustomCustody,self).create(vals)
+        custody_lines = rtn.custody_lines
+        self.pool.get("hr.custody").checkValidData(self,custody_lines)
+        # try:      
+        #     _logger.info("---------required_quantity------------")
+        #     error = 0
+        #     for line in custody_lines:
+        #         qty_used = 0
+        #         custody_used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',line.custody_item.id),('custody_id.state','=','approved')])  
+        #         _logger.info(custody_used_item)
+        #         for used_item in custody_used_item:  
+        #             qty_used = qty_used + int(used_item.custody_qty)            
+        #         required_quantity = line.custody_item.required_quantity
+        #         line_qty = line.custody_item.custody_qty
+        #         if (required_quantity - qty_used) <= 0 :
+        #             error = 1
+        #         elif (required_quantity - qty_used) - line_qty < 0:
+        #             error = 1
+        #         if error == 1:
+        #             break
+        #     if  error == 1:
+        #         raise exceptions.ValidationError(_('Some items are not available, please check with the Inventory Department'))
+        #     _logger.info("---------required_quantity------------")  
+        # except Exception as e:
+        #     # raise exceptions.ValidationError(e)
+        #     raise exceptions.ValidationError(_('A problem has occurred, please check with the HR Department'))
         return rtn
 
 
