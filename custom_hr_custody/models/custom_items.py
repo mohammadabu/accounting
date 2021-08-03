@@ -108,6 +108,7 @@ class HrCustomCustodyItems(models.Model):
         _logger.info(vals)
         _logger.info(rtn.id)
         _logger.info(rtn.required_quantity)
+        _logger.info(rtn.amount_remaining)
         _logger.info(required_quantity)
         _logger.info(custody_used)
         _logger.info(amount_remaining)
