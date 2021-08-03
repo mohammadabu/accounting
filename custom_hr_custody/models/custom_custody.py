@@ -45,18 +45,14 @@ class HrCustomCustody(models.Model):
         rtn = super(HrCustomCustody,self).create(vals)
         try:     
             custody_lines = rtn.custody_lines 
-            _logger.info('create create create')
-            _logger.info(custody_lines)
             error = 0
+            _logger.info("---------required_quantity------------")
             for line in custody_lines:
                 custody_used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',line.custody_item.id),('custody_id.state','=','approved')])                
                 required_quantity = line.custody_item.required_quantity
                 _logger.info(required_quantity)   
-                _logger.info(custody_used_item)    
-            # _logger.info('create create create')    
-            # custody_used = rtn.custody_used
-            # amount_remaining = rtn.amount_remaining
-            # raise exceptions.ValidationError("test")
+                _logger.info(custody_used_item)   
+            _logger.info("---------required_quantity------------")  
         except Exception as e:
             raise exceptions.ValidationError(e)
             # raise exceptions.ValidationError(_('A problem has occurred, please check with the HR Department'))
