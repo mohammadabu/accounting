@@ -84,5 +84,5 @@ class HrCustomCustodyItems(models.Model):
         _logger.info(amount_remaining)
         _logger.info("---------write-------------")
         if required_quantity < custody_used:
-            raise exceptions.ValidationError('The required quantity is less than the quantity used')
+            raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         return rtn    
