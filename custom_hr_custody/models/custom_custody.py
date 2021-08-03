@@ -45,12 +45,13 @@ class HrCustomCustody(models.Model):
         try:     
             custody_lines = rtn.custody_lines 
             _logger.info('create create create')
-            for line in custody_lines:
-                _logger.info(line.custody_item)   
-                _logger.info(line.custody_qty)    
-            _logger.info('create create create')    
-            custody_used = rtn.custody_used
-            amount_remaining = rtn.amount_remaining
+            _logger.info(custody_lines)
+            # for line in custody_lines:
+            #     _logger.info(line.custody_item)   
+            #     _logger.info(line.custody_qty)    
+            # _logger.info('create create create')    
+            # custody_used = rtn.custody_used
+            # amount_remaining = rtn.amount_remaining
             raise exceptions.ValidationError("test")
         except:
             raise exceptions.ValidationError(_('A problem has occurred, please check with the HR Department'))
