@@ -102,7 +102,6 @@ class HrCustomCustodyItems(models.Model):
             required_quantity = 0
             custody_used = 0 
             amount_remaining = 0 
-        raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         if required_quantity < custody_used:
             raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         elif amount_remaining > 0:
