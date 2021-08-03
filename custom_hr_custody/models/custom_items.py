@@ -55,7 +55,6 @@ class HrCustomCustodyItems(models.Model):
                     _logger.info(used_item.custody_qty)
             _logger.info("---------custody used-------------")
 
-
             this_required_quantity =  rec.required_quantity
             if qty < 0 :
                qty = 0 
