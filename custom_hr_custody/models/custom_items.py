@@ -15,7 +15,9 @@ class HrCustomCustodyItems(models.Model):
     @api.onchange('products','required_quantity')
     def onchange_products(self):
         current_id = self._origin.id   
+        _logger.info("current_id")
         _logger.info(current_id)
+        _logger.info("current_id")
         for rec in self:
             qty = 0
             qty_used = 0
