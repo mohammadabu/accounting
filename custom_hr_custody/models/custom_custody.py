@@ -13,7 +13,7 @@ class HrCustomCustody(models.Model):
 
     def _getDefaultEmployee(self):
         user_id = self.env.user
-        employee = self.env['hr_employee'].sudo().search([('user_id','=',user_id)])
+        employee = self.env['hr.employee'].sudo().search([('user_id','=',user_id)])
         if len(employee) > 0 :
             return employee[0]
         else:
