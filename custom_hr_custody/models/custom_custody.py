@@ -79,9 +79,12 @@ class HrCustomCustody(models.Model):
     def unlink(self):
         for current in self:
             current_id = current.id
+            if current.state == "approved" or current.state == "rejected":
+                raise exceptions.ValidationError(_('You cannot delete if this is the state (Approved,Refused)'))
             self.env['hr.custody.lines'].sudo().search([('custody_id','=',current_id)]).unlink()
         rtn = super(HrCustomCustody, self).unlink()
         return rtn
+
 
 
 

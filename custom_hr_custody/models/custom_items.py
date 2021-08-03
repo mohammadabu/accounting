@@ -118,7 +118,8 @@ class HrCustomCustodyItems(models.Model):
             _logger.info(used_item)
             if len(used_item) > 0:
                 raise exceptions.ValidationError(_("It cannot be deleted. You must delete all data related to it"))   
-                break            
+
+
             _logger.info("--------------------------custody_used_item---------------------------------------") 
         rtn = super(HrCustomCustodyItems, self).unlink()
         return rtn   
