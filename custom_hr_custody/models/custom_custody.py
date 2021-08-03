@@ -51,6 +51,7 @@ class HrCustomCustody(models.Model):
             _logger.info('create create create')    
             custody_used = rtn.custody_used
             amount_remaining = rtn.amount_remaining
+            raise exceptions.ValidationError("test")
         except:
             raise exceptions.ValidationError(_('A problem has occurred, please check with the HR Department'))
          
