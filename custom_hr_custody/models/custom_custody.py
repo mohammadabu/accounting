@@ -41,7 +41,7 @@ class HrCustomCustody(models.Model):
 
     @api.model
     def create(self,vals):
-        rtn = super(HrCustomCustodyItems,self).create(vals)
+        rtn = super(HrCustomCustody,self).create(vals)
         try:     
             custody_lines = rtn.custody_lines 
             _logger.info('create create create')
