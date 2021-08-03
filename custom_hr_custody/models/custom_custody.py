@@ -52,7 +52,8 @@ class HrCustomCustody(models.Model):
                 for used_item in custody_used_item:  
                     qty_used = qty_used + int(used_item.custody_qty)            
                 required_quantity = line.custody_item.required_quantity
-                line_qty = line.custody_item.custody_qty
+                line_qty = line.custody_qty
+                # custody_qty = 1
                 if (required_quantity - qty_used) <= 0 :
                     error = 1
                 elif (required_quantity - qty_used) - line_qty < 0:
