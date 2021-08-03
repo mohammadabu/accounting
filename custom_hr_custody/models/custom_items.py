@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from datetime import date, datetime, timedelta
-from odoo import models, fields, api, _
-from odoo.exceptions import Warning, UserError
+from odoo import models, fields,exceptions, api, _
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -72,3 +71,11 @@ class HrCustomCustodyItems(models.Model):
     amount_remaining = fields.Integer(compute="onchange_products")
     description = fields.Text()
 
+
+    def write(self,values):
+        rtn = super(HrCustomCustodyItems,self).write(values)
+        required_quantity = int(self.required_quantity)
+        custody_used = int(self.custody_used)
+        amount_remaining = int(self.amount_remaining)
+        if required_quantity < custody_used:
+            raise exceptions.ValidationError_('The required quantity is less than the quantity used')
