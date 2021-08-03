@@ -112,11 +112,13 @@ class HrCustomCustodyItems(models.Model):
     def unlink(self):
         rtn = super(HrCustomCustodyItems, self).unlink()
         current_id = self.id
-        custody_used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',current_id)])                
-        _logger.info("sasadsdasdasadsdadssadsda")
-        _logger.info(custody_used_item)
-        _logger.info(current_id)
-        _logger.info(self)
-        _logger.info(rtn)
+        custody_used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',current_id)])
+        if custody_used_item:
+             raise exceptions.ValidationError(_("It cannot be deleted. You must delete all data related to it"))               
+        # _logger.info("sasadsdasdasadsdadssadsda")
+        # _logger.info(custody_used_item)
+        # _logger.info(current_id)
+        # _logger.info(self)
+        # _logger.info(rtn)
         raise exceptions.ValidationError("dsadsa")
         return rtn    
