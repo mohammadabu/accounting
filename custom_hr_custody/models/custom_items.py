@@ -11,7 +11,7 @@ class HrCustomCustodyItems(models.Model):
     _name = 'hr.custody.items'
     _description = 'Hr Custody Items'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-
+    @api.depends('products','required_quantity')
     @api.onchange('products','required_quantity')
     def onchange_products(self):
         current_id = self._origin.id   
