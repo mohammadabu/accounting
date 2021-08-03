@@ -94,6 +94,7 @@ class HrCustomCustodyItems(models.Model):
         custody_used = 0 
         amount_remaining = 0 
         rtn = super(HrCustomCustodyItems,self).create(vals)
+        
         try:     
             required_quantity = vals['required_quantity'] 
             custody_used = vals['custody_used'] 
@@ -105,7 +106,8 @@ class HrCustomCustodyItems(models.Model):
 
         _logger.info("---------create-------------")
         _logger.info(vals)
-        _logger.info(rtn)
+        _logger.info(rtn.id)
+        _logger.info(rtn.required_quantity)
         _logger.info(required_quantity)
         _logger.info(custody_used)
         _logger.info(amount_remaining)
