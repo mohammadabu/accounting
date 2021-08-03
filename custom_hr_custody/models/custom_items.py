@@ -115,7 +115,7 @@ class HrCustomCustodyItems(models.Model):
         _logger.info("custody_used_item") 
         _logger.info(current_id)
         used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',current_id)])
-        used_item_new = self.env['hr.custody.lines'].sudo().search([('custody_item','=',current_id)])
+        used_item_new = self.env['hr.custody.lines'].sudo().search([('id','=',current_id)])
         _logger.info(used_item_new)
         if len(used_item_new) > 0:
             _logger.info(len(used_item_new))
