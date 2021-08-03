@@ -52,7 +52,7 @@ class HrCustomCustody(models.Model):
                 custody_used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',line.custody_item.id),('custody_id.state','=','approved')])  
                 _logger.info(custody_used_item)
                 for used_item in custody_used_item:  
-                    qty_used = qty_used + int(used_item.required_quantity)            
+                    qty_used = qty_used + int(used_item.custody_qty)            
                 required_quantity = line.custody_item.required_quantity
                 _logger.info(qty_used)
                 _logger.info(required_quantity)      
