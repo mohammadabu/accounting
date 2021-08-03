@@ -115,9 +115,9 @@ class HrCustomCustodyItems(models.Model):
         _logger.info("custody_used_item") 
         _logger.info(current_id)
         used_item = self.env['hr.custody.lines'].sudo().search([('custody_item','=',current_id)])
-        _logger.info(custody_used_item)
-        if len(custody_used_item) > 0:
-            _logger.info(len(custody_used_item))
+        _logger.info(used_item)
+        if len(used_item) > 0:
+            _logger.info(len(used_item))
             raise exceptions.ValidationError(_("It cannot be deleted. You must delete all data related to it"))               
         # _logger.info("sasadsdasdasadsdadssadsda")
         # _logger.info(custody_used_item)
