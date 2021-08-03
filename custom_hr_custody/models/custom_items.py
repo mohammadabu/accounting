@@ -94,7 +94,6 @@ class HrCustomCustodyItems(models.Model):
         custody_used = 0 
         amount_remaining = 0 
         rtn = super(HrCustomCustodyItems,self).create(vals)
-        
         try:     
             required_quantity = rtn.required_quantity 
             custody_used = rtn.custody_used
@@ -103,19 +102,16 @@ class HrCustomCustodyItems(models.Model):
             required_quantity = 0
             custody_used = 0 
             amount_remaining = 0 
-
-        # _logger.info("---------create-------------")
-        # _logger.info(vals)
-        # _logger.info(rtn.id)
-        # _logger.info(rtn.required_quantity)
-        # _logger.info(rtn.amount_remaining)
-        # _logger.info(required_quantity)
-        # _logger.info(custody_used)
-        # _logger.info(amount_remaining)
-        # _logger.info("---------create-------------")
         raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         if required_quantity < custody_used:
             raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         elif amount_remaining > 0:
             raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
         return rtn     
+
+
+    def unlink(self):
+        rtn = super(HrCustomCustodyItems, self).unlink()
+        raise exceptions.ValidationError(rtn)
+        raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
+        return rtn    
