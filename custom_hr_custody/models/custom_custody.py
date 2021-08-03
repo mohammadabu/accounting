@@ -3,6 +3,7 @@
 from datetime import date, datetime, timedelta
 from odoo import models, fields, api,exceptions
 from odoo.tools.translate import _
+import logging
 _logger = logging.getLogger(__name__)
 
 class HrCustomCustody(models.Model):
