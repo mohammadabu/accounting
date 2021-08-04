@@ -103,7 +103,7 @@ msgstr "معرف العهدة"
 #. module: custom_hr_custody
 #: model_terms:ir.ui.view,arch_db:custom_hr_custody.custom_custody_employee
 msgid "Custody Information"
-msgstr "معلومات العدة"
+msgstr "معلومات العهدة"
 
 #. module: custom_hr_custody
 #: model:ir.actions.act_window,name:custom_hr_custody.action_hr_custody_item
