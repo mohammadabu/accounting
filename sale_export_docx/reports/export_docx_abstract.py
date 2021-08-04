@@ -69,7 +69,7 @@ class ExportDocxAbstract(models.AbstractModel):
         _logger.info(template_path)
         _logger.info("----------------------template_path-------------------------")
         _logger.info("----------------------document-------------------------")
-        _logger.info(base64.b64decode(document))
+        _logger.info(base64.b64encode(document))
         _logger.info("----------------------document-------------------------")
         # Define variables
         _logger.info("----------------------generate_variables-------------------------")
