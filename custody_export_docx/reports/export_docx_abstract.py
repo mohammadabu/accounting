@@ -65,18 +65,10 @@ class ExportDocxAbstract(models.AbstractModel):
 
         # Open a document base on template
         document = DocxTemplate(template_path)
-        _logger.info("----------------------template_path-------------------------")
-        _logger.info(template_path)
-        _logger.info("----------------------template_path-------------------------")
-        _logger.info("----------------------document-------------------------")
-        _logger.info(document)
-        _logger.info("----------------------document-------------------------")
+
         # Define variables
-        _logger.info("----------------------generate_variables-------------------------")
         context = self.generate_variables(objs)
-        _logger.info(context)
-        _logger.info("----------------------generate_variables-------------------------")
-        _logger.info(context)
+
         # Render data to template
         document.render(context)
 
