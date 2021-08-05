@@ -40,8 +40,8 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             [1,'mohammad',200],
             [2,'emad',300],
             [3,'abusubhia',400],
-        ]
-        menuTable = document.add_table(row=1,cols=3)
+        ] 
+        menuTable = document.add_table(rows=1,cols=3)
         table.style = 'Table Grid'
         hdr_cells = table.rows[0].cells
         hdr_cells[0].text = 'ID'
