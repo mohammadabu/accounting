@@ -46,8 +46,6 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         menuTable = document.add_table(rows=1,cols=3)
         menuTable.style = 'Table Grid'
         
-        for row in menuTable.rows:
-            row.height = Cm(0.7)
 
         hdr_cells = menuTable.rows[0].cells
         hdr_cells[0].text = 'ID'
@@ -64,6 +62,9 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             row_Cells[2].height = Cm(4)
             row_Cells[2].width = Cm(7.82)
             row_Cells[2].text = str(price)
+
+        for row in menuTable.rows:
+            row.height = Cm(0.7)    
         self.pool.get("report.custody_export_docx.custodian_receipt_docx").modifyBorder(self,menuTable)
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + "_" + "2131232132131321321" + ".docx"
         document.save(path_docx)
