@@ -155,7 +155,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         return num
 
 
-    def set_cell_border(self ,cell: _Cell, **kwargs):
+    def set_cell_border(self ,cell, **kwargs):
         """
         Set cell`s border
         Usage:
