@@ -1,0 +1,26 @@
+<odoo>
+    <record id="document_form_request_users_only" model="ir.rule">
+        <field name="name">Document Form Request Users Only</field>
+        <field name="model_id" ref="model_hr_employee_approval_employee_form" />
+        <field name="groups" eval="[(4,ref('hr.group_hr_user'))]"/>
+        <field name="perm_read" eval = "1"/>
+        <field name="perm_write" eval = "1"/>
+        <field name="perm_create" eval = "1"/>
+        <field name="perm_unlink" eval = "1"/>
+        <field name="domain_force">
+            [('employee_id.user_id','=',user.id)]
+        </field>
+    </record>
+    <record id="document_form_request_admin_only" model="ir.rule">
+        <field name="name">Document Form Request Admin Only</field>
+        <field name="model_id" ref="model_hr_employee_approval_employee_form" />
+        <field name="groups" eval="[(4,ref('hr.group_hr_manager'))]"/>
+        <field name="perm_read" eval = "1"/>
+        <field name="perm_write" eval = "1"/>
+        <field name="perm_create" eval = "1"/>
+        <field name="perm_unlink" eval = "1"/>
+        <field name="domain_force">
+            [('state','!=','draft')]
+        </field>
+    </record>
+</odoo>

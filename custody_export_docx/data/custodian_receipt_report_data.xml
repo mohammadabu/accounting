@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+                id="custodian_receipt_docx"
+                model="hr.custody.export.docx.wizard"
+                string="Custodian Receipt Form"
+                report_type="docx"
+                name="custody_export_docx.custodian_receipt_docx"
+                file="custodian_receipt"
+                print_report_name="نموذج استلام عهده"
+                attachment_use="False"
+        />
+    </data>
+</odoo>
+
+
+

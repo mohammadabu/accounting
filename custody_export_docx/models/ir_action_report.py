@@ -15,7 +15,7 @@ class IrActionReport(models.Model):
         report_model = self.env.get(report_model_name)
         if report_model is None:
             raise UserError(_("%s model was not found" % report_model_name))
-        return report_model.with_context(active_model=self.model).create_docx_report(  # noqa
+        return report_model.with_context(active_model=self.model).create_docx_report( 
             docids, data
         )
 

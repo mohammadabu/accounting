@@ -4,11 +4,10 @@ from odoo.addons.web.controllers import main as report
 from odoo.http import content_disposition, route, request
 from odoo.tools.safe_eval import safe_eval
 import werkzeug
-
+import logging
 import json
 import time
-
-
+_logger = logging.getLogger(__name__)
 class ReportController(report.ReportController):
     @route([
         '/report/<converter>/<reportname>',
@@ -44,9 +43,13 @@ class ReportController(report.ReportController):
                     obj = request.env[report.model].browse(docids)
                     if report.print_report_name:
                         filepart = safe_eval(report.print_report_name, {'object': obj, 'time': time})
+                        # _logger.info('--------filepart----------')
+                        # _logger.info(filepart)
+                        # _logger.info(filepart.encode('utf-8'))
             pdf = report.with_context(context).render_qweb_pdf(docids, data=data)[0]
             pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf)),
-                              ('Content-Disposition', 'filename="%s.pdf"' % filepart.encode('utf-8'))]
+                              ('Content-Disposition', 'filename="%s.pdf"' % filepart)]
+            # ('Content-Disposition', 'filename="%s.pdf"' % filepart.encode('utf-8'))]                  
             return request.make_response(pdf, headers=pdfhttpheaders)
         if converter == 'text':
             text = report.with_context(context).render_qweb_text(docids, data=data)[0]

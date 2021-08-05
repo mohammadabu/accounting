@@ -1,0 +1,137 @@
+# -*- coding: utf-8 -*-
+
+from num2words import num2words
+from sys import platform
+from subprocess import Popen
+from docx2pdf import convert
+from datetime import datetime, date
+import os
+import base64
+import logging
+from odoo import models, tools,_
+from docx import Document
+from docx.enum.style import WD_STYLE_TYPE
+from docx.shared import Pt, RGBColor, Inches , Cm
+from docx.oxml.ns import qn
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+import docx
+_logger = logging.getLogger(__name__)
+
+try:
+    from docxtpl import DocxTemplate
+except ImportError:
+    _logger.debug('Can not import DocxTemplate')
+
+class CustodianReceiptExportDocx(models.AbstractModel):
+    _name = 'report.custody_export_docx.custodian_receipt_docx'
+    _inherit = 'export.docx.abstract'
+    _description = 'Custodian Receipt Export Docx'
+
+
+
+    def generate_docx_report(self, data, objs):
+        timestamp = str(int(datetime.timestamp(datetime.now())))
+        path_docx = '/var/lib/odoo/.local/share/Odoo/'
+        # employee_id = objs.id
+        # employee_data = self.pool.get("report.custody_export_docx.job_definition_docx").generate_variables(self,employee_id)
+
+
+        path_docx = path_docx + '/EmployeeDocx_' + timestamp + "_" + str(employee_id) + ".docx"
+        document.save(path_docx)
+        
+        report_doxc_path = path_docx
+        with open(report_doxc_path, mode='rb') as file:
+            fileContent = file.read()
+
+        try:
+            os.remove(report_doxc_path)
+        except Exception as e:
+            _logger.warning(repr(e))
+
+        return fileContent
+
+    def generate_variables(self, employee_id):
+        hr_department = self.env['hr.department'].sudo().search([('internal_id','=','HR and Administration')])
+        employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)])
+        identification_id = employee_info.identification_id
+        identification_id_ar = self.pool.get("report.custody_export_docx.job_definition_docx").convertNumEnToAr(self,identification_id)
+        iqama_number = employee_info.iqama_number
+        iqama_job_ar = employee_info.iqama_job_ar
+        iqama_job_en = employee_info.iqama_job_en
+        job_ar = employee_info.job_ar
+        job_en = employee_info.job_en
+        employee_name_ar = employee_info.employee_name_ar
+        employee_name_en = employee_info.name
+        employee_nationality = employee_info.country_id.code or ''
+        join_date = employee_info.date_joining or '0000/00'
+        hr_manager = ""
+        if hr_department.manager_id != False:
+            hr_manager = hr_department.manager_id.employee_name_ar
+        if join_date != '0000/00' and join_date != False:
+            join_date = str(join_date).split("-")
+            join_date = join_date[0] + "/" + join_date[1]
+        join_date_ar = self.pool.get("report.custody_export_docx.job_definition_docx").convertNumEnToAr(self,join_date)
+        iqama_number_ar = False
+        if iqama_number != False:  
+            iqama_number_ar = self.pool.get("report.custody_export_docx.job_definition_docx").convertNumEnToAr(self,iqama_number)
+
+        if iqama_number == False:
+            iqama_number = ""
+
+        if iqama_job_ar == False:
+            iqama_job_ar = ""
+
+        if iqama_job_en == False:
+            iqama_job_en = ""
+
+        if job_ar == False:
+            job_ar = ""
+
+        if job_en == False:
+            job_en = ""    
+
+        if employee_name_ar == False:
+            employee_name_ar = ""  
+
+        if employee_name_en == False:
+            employee_name_en = ""      
+
+        if identification_id != False:
+            identification_id = ""
+
+        employee_date_array = {}
+        employee_date_array['iqama_number_ar'] = iqama_number_ar
+        employee_date_array['iqama_number'] = iqama_number
+        employee_date_array['iqama_job_ar'] = iqama_job_ar
+        employee_date_array['iqama_job_en'] = iqama_job_en
+        employee_date_array['job_ar'] = job_ar
+        employee_date_array['job_en'] = job_en
+        employee_date_array['employee_name_ar'] = employee_name_ar
+        employee_date_array['employee_name_en'] = employee_name_en
+        employee_date_array['employee_nationality'] = employee_nationality
+        employee_date_array['join_date'] = join_date
+        employee_date_array['join_date_ar'] = join_date_ar
+        employee_date_array['hr_manager'] = hr_manager
+        employee_date_array['identification_id'] = identification_id
+        employee_date_array['identification_id_ar'] = identification_id_ar
+        return employee_date_array            
+
+
+    def get_report_name(self, objs):
+        timestamp = str(int(datetime.timestamp(datetime.now())))
+        report_name = f'{objs.sale_order_id.id}_{objs.report_template_id.id}_{timestamp}_report.docx'
+        return report_name
+
+
+    def convertNumEnToAr(self,num):
+        num = num.replace("1", "١", 15)
+        num = num.replace("2", "٢", 15)
+        num = num.replace("3", "٣", 15)
+        num = num.replace("4", "٤", 15)
+        num = num.replace("5", "٥", 15)
+        num = num.replace("6", "٦", 15)
+        num = num.replace("7", "٧", 15)
+        num = num.replace("8", "٨", 15)
+        num = num.replace("9", "٩", 15)
+        num = num.replace("0", "٠", 15)
+        return num
