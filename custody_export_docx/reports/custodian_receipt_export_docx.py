@@ -51,11 +51,10 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         hdr_cells[2].text = 'Price'
         for ID, name, price in record:
             row_Cells = menuTable.add_row().cells
-            self.pool.get("report.custody_export_docx.custodian_receipt_docx").set_cell_border(self,row_Cells[0])
             row_Cells[0].text = str(ID)
             row_Cells[1].text = name
             row_Cells[2].text = str(price)
-
+        self.pool.get("report.custody_export_docx.custodian_receipt_docx").modifyBorder(self,menuTable)
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + "_" + "2131232132131321321" + ".docx"
         document.save(path_docx)
         
@@ -156,42 +155,28 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         num = num.replace("0", "٠", 15)
         return num
 
+def modifyBorder(self,table):
+    tbl = table._tbl # get xml element in table
+    for cell in tbl.iter_tcs():
+        tcPr = cell.tcPr # get tcPr element, in which we can define style of borders
+        tcBorders = OxmlElement('w:tcBorders')
+        top = OxmlElement('w:top')
+        top.set(qn('w:val'), 'nil')
+        
+        left = OxmlElement('w:left')
+        left.set(qn('w:val'), 'nil')
+        
+        bottom = OxmlElement('w:bottom')
+        bottom.set(qn('w:val'), 'nil')
+        bottom.set(qn('w:sz'), '4')
+        bottom.set(qn('w:space'), '0')
+        bottom.set(qn('w:color'), 'auto')
 
-    def set_cell_border(self ,cell, **kwargs):
-        """
-        Set cell`s border
-        Usage:
+        right = OxmlElement('w:right')
+        right.set(qn('w:val'), 'nil')
 
-        set_cell_border(
-            cell,
-            top={"sz": 12, "val": "single", "color": "#FF0000", "space": "0"},
-            bottom={"sz": 12, "color": "#00FF00", "val": "single"},
-            start={"sz": 24, "val": "dashed", "shadow": "true"},
-            end={"sz": 12, "val": "dashed"},
-        )
-        """
-        tc = cell._tc
-        tcPr = tc.get_or_add_tcPr()
-
-        # check for tag existnace, if none found, then create one
-        tcBorders = tcPr.first_child_found_in("w:tcBorders")
-        if tcBorders is None:
-            tcBorders = OxmlElement('w:tcBorders')
-            tcPr.append(tcBorders)
-
-        # list over all available tags
-        for edge in ('start', 'top', 'end', 'bottom', 'insideH', 'insideV'):
-            edge_data = kwargs.get(edge)
-            if edge_data:
-                tag = 'w:{}'.format(edge)
-
-                # check for tag existnace, if none found, then create one
-                element = tcBorders.find(qn(tag))
-                if element is None:
-                    element = OxmlElement(tag)
-                    tcBorders.append(element)
-
-                # looks like order of attributes is important
-                for key in ["sz", "val", "color", "space", "shadow"]:
-                    if key in edge_data:
-                        element.set(qn('w:{}'.format(key)), str(edge_data[key]))
+        tcBorders.append(top)
+        tcBorders.append(left)
+        tcBorders.append(bottom)
+        tcBorders.append(right)
+        tcPr.append(tcBorders)
