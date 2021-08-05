@@ -164,16 +164,16 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             top.set(qn('w:val'), 'double')
             
             left = OxmlElement('w:left')
-            left.set(qn('w:val'), 'dashed')
+            left.set(qn('w:val'), 'double')
             
             bottom = OxmlElement('w:bottom')
-            bottom.set(qn('w:val'), 'single')
+            bottom.set(qn('w:val'), 'double')
             bottom.set(qn('w:sz'), '4')
             bottom.set(qn('w:space'), '0')
             bottom.set(qn('w:color'), 'auto')
 
             right = OxmlElement('w:right')
-            right.set(qn('w:val'), 'single')
+            right.set(qn('w:val'), 'double')
 
             tcBorders.append(top)
             tcBorders.append(left)
