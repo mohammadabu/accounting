@@ -45,6 +45,10 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         ] 
         menuTable = document.add_table(rows=1,cols=3)
         menuTable.style = 'Table Grid'
+        
+        for row in menuTable.rows:
+            row.height = Cm(0.7)
+
         hdr_cells = menuTable.rows[0].cells
         hdr_cells[0].text = 'ID'
         hdr_cells[1].text = 'Name'
