@@ -34,9 +34,26 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
         # employee_id = objs.id
         # employee_data = self.pool.get("report.custody_export_docx.job_definition_docx").generate_variables(self,employee_id)
+        document = docx.Document()
+        document.add_heading('hello world')
+        record = [
+            [1,'mohammad',200],
+            [2,'emad',300],
+            [3,'abusubhia',400],
+        ]
+        menuTable = document.add_table(row=1,cols=3)
+        table.style = 'Table Grid'
+        hdr_cells = table.rows[0].cells
+        hdr_cells[0].text = 'ID'
+        hdr_cells[1].text = 'Name'
+        hdr_cells[2].text = 'Price'
+        for ID, name, price in record:
+            row_Cells = table.add_row().cells
+            row_Cells[0].text = str(ID)
+            row_Cells[1].text = name
+            row_Cells[2].text = price
 
-
-        path_docx = path_docx + '/EmployeeDocx_' + timestamp + "_" + str(employee_id) + ".docx"
+        path_docx = path_docx + '/EmployeeDocx_' + timestamp + "_" + "2131232132131321321" + ".docx"
         document.save(path_docx)
         
         report_doxc_path = path_docx
