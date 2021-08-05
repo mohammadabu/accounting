@@ -42,13 +42,13 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             [3,'abusubhia',400],
         ] 
         menuTable = document.add_table(rows=1,cols=3)
-        table.style = 'Table Grid'
-        hdr_cells = table.rows[0].cells
+        menuTable.style = 'Table Grid'
+        hdr_cells = menuTable.rows[0].cells
         hdr_cells[0].text = 'ID'
         hdr_cells[1].text = 'Name'
         hdr_cells[2].text = 'Price'
         for ID, name, price in record:
-            row_Cells = table.add_row().cells
+            row_Cells = menuTable.add_row().cells
             row_Cells[0].text = str(ID)
             row_Cells[1].text = name
             row_Cells[2].text = price
