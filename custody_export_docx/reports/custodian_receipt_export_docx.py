@@ -160,6 +160,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         for cell in tbl.iter_tcs():
             tcPr = cell.tcPr # get tcPr element, in which we can define style of borders
             tcBorders = OxmlElement('w:tcBorders')
+            
             top = OxmlElement('w:top')
             top.set(qn('w:val'), 'double')
             
@@ -168,9 +169,9 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             
             bottom = OxmlElement('w:bottom')
             bottom.set(qn('w:val'), 'double')
-            bottom.set(qn('w:sz'), '4')
-            bottom.set(qn('w:space'), '0')
-            bottom.set(qn('w:color'), 'auto')
+            # bottom.set(qn('w:sz'), '4')
+            # bottom.set(qn('w:space'), '0')
+            # bottom.set(qn('w:color'), 'auto')
 
             right = OxmlElement('w:right')
             right.set(qn('w:val'), 'double')
