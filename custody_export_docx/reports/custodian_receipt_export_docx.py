@@ -52,9 +52,12 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         for ID, name, price in record:
             row_Cells = menuTable.add_row().cells
             row_Cells[0].width = Cm(7.82)
+            row_Cells[0].height = Cm(4)
             row_Cells[0].text = str(ID)
             row_Cells[1].width = Cm(7.82)
+            row_Cells[1].height = Cm(4)
             row_Cells[1].text = name
+            row_Cells[2].height = Cm(4)
             row_Cells[2].width = Cm(7.82)
             row_Cells[2].text = str(price)
         self.pool.get("report.custody_export_docx.custodian_receipt_docx").modifyBorder(self,menuTable)
