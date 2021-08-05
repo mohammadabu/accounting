@@ -14,6 +14,8 @@ from docx.enum.style import WD_STYLE_TYPE
 from docx.shared import Pt, RGBColor, Inches , Cm
 from docx.oxml.ns import qn
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 import docx
 _logger = logging.getLogger(__name__)
 
