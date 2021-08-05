@@ -51,7 +51,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             row_Cells = menuTable.add_row().cells
             row_Cells[0].text = str(ID)
             row_Cells[1].text = name
-            row_Cells[2].text = price
+            row_Cells[2].text = str(price)
 
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + "_" + "2131232132131321321" + ".docx"
         document.save(path_docx)
