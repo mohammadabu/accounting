@@ -37,8 +37,12 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
         custody_id = objs.id
         custody_data = self.pool.get("report.custody_export_docx.custodian_receipt_docx").generate_variables(self,custody_id)
-        _logger.info("custody_data")
-        _logger.info(custody_data)
+        employee_name = custody_data['employee_name']
+        department = custody_data['department']
+        business_support_manager = custody_data['business_support_manager']
+        custody_lines = custody_data['custody_lines']
+        job_id = custody_data['job_id']
+
         document = docx.Document()
         font_headerTable = document.styles.add_style('font_headerTable', WD_STYLE_TYPE.CHARACTER)
         font_headerTable.font.rtl = True
@@ -123,7 +127,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
         hdr_cells_item = menuTable.rows[1].cells
 
-        hdr_cells_item[0].text = "custody_data.job_id"
+        hdr_cells_item[0].text = job_id
         hdr_cells_item[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         paragraph_item_0 = hdr_cells_item[0].paragraphs[0]
         run_item_0 = paragraph_item_0.runs
@@ -142,7 +146,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
 
 
-        hdr_cells_item[2].text = "custody_data.department"
+        hdr_cells_item[2].text = department
         hdr_cells_item[2].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         paragraph_item_2 = hdr_cells_item[2].paragraphs[0]
         run_item_2 = paragraph_item_2.runs
@@ -160,7 +164,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         paragraph_item_3.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 
-        hdr_cells_item[4].text = "custody_data.employee_name"
+        hdr_cells_item[4].text = employee_name
         hdr_cells_item[4].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         paragraph_item_4 = hdr_cells_item[4].paragraphs[0]
         run_item_4 = paragraph_item_4.runs
