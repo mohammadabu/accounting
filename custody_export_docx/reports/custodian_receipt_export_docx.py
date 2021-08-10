@@ -105,8 +105,8 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         paragraph_headerTable_1.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
         hijri_text_msg = "التاريخ : "
-        hijri_text_msg = date_text_msg + date_from_hijri
-        hijri_text_msg = date_text_msg + " هـ"
+        hijri_text_msg = hijri_text_msg + date_from_hijri
+        hijri_text_msg = hijri_text_msg + " هـ"
 
         # headerTable_cells_1[1].text = "التاريخ : ١/١/١٤٤٢ هـ"
         headerTable_cells_1[1].text = hijri_text_msg
