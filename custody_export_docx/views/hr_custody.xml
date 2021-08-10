@@ -19,9 +19,6 @@
                         </group>
                     </page>
                 </xpath>
-                <xpath expr="//field[@name='reason']" position="after">
-                    <field name="delivery_date"/>
-                </xpath>
             </field>
         </record>
     </data>

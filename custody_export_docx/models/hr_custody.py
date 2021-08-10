@@ -21,7 +21,6 @@ class HrCustodyDocuments(models.Model):
     _inherit = 'hr.custody'
 
     custodian_receipt = fields.Char()
-    delivery_date = fields.Date()
 
     def generate_custodian_receipt_form(self):
         return self.pool.get("hr.custody.export.docx.wizard").action_export_custody_docx_report(self)

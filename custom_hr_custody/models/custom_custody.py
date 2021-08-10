@@ -30,7 +30,8 @@ class HrCustomCustody(models.Model):
     custody_lines = fields.One2many('hr.custody.lines', 'custody_id',ondelete='cascade')      
 
     rejected_reason = fields.Text(string='Rejected Reason', copy=False, readonly=1, help="Reason for the rejection")                   
-
+    # new
+    delivery_date = fields.Date()
     def sent(self):
         self.state = 'to_approve'                         
 
