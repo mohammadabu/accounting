@@ -768,7 +768,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
     def generate_variables(self, custody_id):
         custody_info = self.env['hr.custody'].sudo().search([('id','=',custody_id)])
-        employee_id = custody_info.employee
+        employee_id = custody_info.employee.id
         employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)])
         job_id = employee_info.job_id.name
         employee_name = employee_info.name
