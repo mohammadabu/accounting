@@ -37,11 +37,11 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
         custody_id = objs.id
         custody_data = self.pool.get("report.custody_export_docx.custodian_receipt_docx").generate_variables(self,custody_id)
-        employee_name = custody_data['employee_name']
-        department = custody_data['department']
-        business_support_manager = custody_data['business_support_manager']
+        employee_name = str(custody_data['employee_name'])
+        department = str(custody_data['department'])
+        business_support_manager = str(custody_data['business_support_manager'])
         custody_lines = custody_data['custody_lines']
-        job_id = custody_data['job_id']
+        job_id = str(custody_data['job_id'])
 
         document = docx.Document()
         font_headerTable = document.styles.add_style('font_headerTable', WD_STYLE_TYPE.CHARACTER)
