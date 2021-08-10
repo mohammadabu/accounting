@@ -31,7 +31,7 @@
                                 <field name="employee" />
                                 <field name="reason" />
                                 <!-- # new -->
-                                <field name="delivery_date"/>
+                                <field name="delivery_date" required="1"/>
                                 <field name="rejected_reason" attrs="{'invisible': [('state','not in',('rejected'))]}"/>
                             </group>
                         </group>
