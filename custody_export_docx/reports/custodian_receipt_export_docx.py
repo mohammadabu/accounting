@@ -57,7 +57,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         delivery_date_day = day_name[delivery_date_day]
 
         delivery_date_split = delivery_date.split("-")
-        delivery_date = delivery_date_split[2] + "/" + delivery_date_split[1] + "/" + delivery_date_split[0]
+        delivery_date = delivery_date_split[0] + "/" + delivery_date_split[1] + "/" + delivery_date_split[2]
 
         document = docx.Document()
         font_headerTable = document.styles.add_style('font_headerTable', WD_STYLE_TYPE.CHARACTER)
