@@ -323,10 +323,12 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         #     note = str(line.custody_note)
         #     count = count + 1
 
-        for ID, name, price,tt,ttt in record:
+        # for ID, name, price,tt,ttt in record:
+        for line in custody_lines:  
+            item = str(line.custody_item.name)  
             row_Cells_sub_dynamic = subTable.add_row().cells
 
-            row_Cells_sub_dynamic[0].text = ID
+            row_Cells_sub_dynamic[0].text = item
 
             row_Cells_sub_dynamic[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_0 = row_Cells_sub_dynamic[0].paragraphs[0]
@@ -335,16 +337,16 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             sub_dynamic_paragraph_0.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 
-            row_Cells_sub_dynamic[1].text = name
+            row_Cells_sub_dynamic[1].text = "name"
 
-            row_Cells_sub_dynamic[1].text = ID
+            row_Cells_sub_dynamic[1].text = "ID"
             row_Cells_sub_dynamic[1].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_1 = row_Cells_sub_dynamic[1].paragraphs[0]
             sub_dynamic_run_1 = sub_dynamic_paragraph_1.runs
             sub_dynamic_run_1[0].style = font_headerTable_2
             sub_dynamic_paragraph_1.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
-            row_Cells_sub_dynamic[2].text = price
+            row_Cells_sub_dynamic[2].text = "price"
 
             row_Cells_sub_dynamic[2].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_2 = row_Cells_sub_dynamic[2].paragraphs[0]
@@ -353,7 +355,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             sub_dynamic_paragraph_2.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 
-            row_Cells_sub_dynamic[3].text = tt
+            row_Cells_sub_dynamic[3].text = "tt"
 
             row_Cells_sub_dynamic[3].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_3 = row_Cells_sub_dynamic[3].paragraphs[0]
@@ -362,7 +364,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             sub_dynamic_paragraph_3.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 
-            row_Cells_sub_dynamic[4].text = ttt
+            row_Cells_sub_dynamic[4].text = "ttt"
 
             row_Cells_sub_dynamic[4].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_4 = row_Cells_sub_dynamic[4].paragraphs[0]
@@ -393,8 +395,8 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
         # start akrar cell
         row_Cells_sub_akrar = subTable.add_row().cells
-        akrar_a = subTable.cell(3 + len(record), 0)
-        akrar_b = subTable.cell(3 + len(record), 4) 
+        akrar_a = subTable.cell(3 + len(custody_lines), 0)
+        akrar_b = subTable.cell(3 + len(custody_lines), 4) 
         akrar_a.merge(akrar_b)  
 
         row_Cells_sub_akrar[0].text = 'إقـرار'
@@ -442,8 +444,8 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
 
         
-        akrar_a_1 = subTable.cell(4 + len(record), 0)
-        akrar_b_1 = subTable.cell(4 + len(record), 4) 
+        akrar_a_1 = subTable.cell(4 + len(custody_lines), 0)
+        akrar_b_1 = subTable.cell(4 + len(custody_lines), 4) 
         akrar_a_1.merge(akrar_b_1)  
 
 
@@ -467,7 +469,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         for row in subTable.rows:
             if count == 1: 
                 row.height = Cm(0.8)  
-            elif 5 + len(record) == count:
+            elif 5 + len(custody_lines) == count:
                 row.height = Cm(3)  
             else:
                 row.height = Cm(0.7)   
