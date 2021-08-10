@@ -123,7 +123,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
         hdr_cells_item = menuTable.rows[1].cells
 
-        hdr_cells_item[0].text = 'مدير قسم العناية بالعملاء وإدارة الحسابات'
+        hdr_cells_item[0].text = custody_data.job_id
         hdr_cells_item[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         paragraph_item_0 = hdr_cells_item[0].paragraphs[0]
         run_item_0 = paragraph_item_0.runs
@@ -142,7 +142,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
 
 
-        hdr_cells_item[2].text = 'الإدارة العامة / الادارة العامة للعمليات / إدارة العمليات / العناية بالعملاء وادارة الحسابات'
+        hdr_cells_item[2].text = custody_data.department
         hdr_cells_item[2].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         paragraph_item_2 = hdr_cells_item[2].paragraphs[0]
         run_item_2 = paragraph_item_2.runs
@@ -160,7 +160,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         paragraph_item_3.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 
-        hdr_cells_item[4].text = 'أسامة عبدالله أحمد الزهراني'
+        hdr_cells_item[4].text = custody_data.employee_name
         hdr_cells_item[4].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         paragraph_item_4 = hdr_cells_item[4].paragraphs[0]
         run_item_4 = paragraph_item_4.runs
