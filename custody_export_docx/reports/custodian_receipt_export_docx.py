@@ -433,11 +433,15 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         p_runner_4.style = font_headerTable_3
         p_runner_5 = p.add_run(" م ")
         p_runner_5.style = font_headerTable_3
-        # last_runner_7_1 = last_p7.add_run('سسسسسسسس')
-        # font_7_1 = last_runner_7_1.font
-        # font_7_1.color.rgb = RGBColor(255,255,255)   
-        # last_runner_8 = last_p7.add_run('الموافق ')
-        # last_runner_8.style = font_headerTable_3
+        p_runner_6 = p.add_run("بحالة جيدة،")
+        p_runner_6.style = font_headerTable_3
+
+        p_runner_7 = p.add_run("وأتعهد بالمحافظة عليها وان لا أتنازل عنها لأي شخص آخر وسأقوم بإعادتها عند طلبها أو عند ترك العمل أو دفع قيمة ما تسببت في تلفه وسأكون عرضة للمسائلة في حين مخالفتي للإقرار.")
+        p_runner_7.bold = True
+        font_runer_7 = p_runner_7.font
+        font_runer_7.color.rgb = RGBColor(255,0,0)
+        p_runner_7.style = font_headerTable_3
+
 
 
 
