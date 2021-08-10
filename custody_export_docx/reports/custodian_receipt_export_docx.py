@@ -244,7 +244,6 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             ['2','6','[300030001] آلة تصوير Canon ir601n','[300030001] آلة تصوير Canon ir601n','1'],
             ['2','6','[300030001] آلة تصوير Canon ir601n','[300030001] آلة تصوير Canon ir601n','2'],
             ['2','4','[300030001] آلة تصوير Canon ir601n','[300030001] آلة تصوير Canon ir601n','3'],
-            ['2','4','[300030001] آلة تصوير Canon ir601n','[300030001] آلة تصوير Canon ir601n','3'],
         ] 
 
         subTable = document.add_table(rows=2,cols=5)
