@@ -123,7 +123,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
         hdr_cells_item = menuTable.rows[1].cells
 
-        hdr_cells_item[0].text = str(custody_data.job_id)
+        hdr_cells_item[0].text = "custody_data.job_id"
         hdr_cells_item[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         paragraph_item_0 = hdr_cells_item[0].paragraphs[0]
         run_item_0 = paragraph_item_0.runs
