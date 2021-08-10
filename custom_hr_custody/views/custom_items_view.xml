@@ -15,7 +15,8 @@
                         <group>
                             <group>
                                 <field name="products" />
-                                <field name="products_category"/>
+                                <!-- # new -->
+                                <field name="products_category" attrs="{'invisible': [('products_category', '=', '')]}"/>
                                 <field name="quantity" />
                                 <field name="custody_quantity" />
                                 <field name="required_quantity"/>
