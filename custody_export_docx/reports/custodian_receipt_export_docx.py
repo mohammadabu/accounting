@@ -322,7 +322,6 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             item = str(line.custody_item.name)
             qty = str(line.custody_qty)
             note = str(line.custody_note)
-            count = count + 1
             row_Cells_sub_dynamic = subTable.add_row().cells
 
             row_Cells_sub_dynamic[0].text = note
@@ -366,6 +365,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             sub_dynamic_run_4 = sub_dynamic_paragraph_4.runs
             sub_dynamic_run_4[0].style = font_headerTable_2
             sub_dynamic_paragraph_4.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+            count = count + 1
 
         # end dynmic
 
