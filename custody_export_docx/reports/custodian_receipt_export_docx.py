@@ -123,7 +123,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
         hdr_cells_item = menuTable.rows[1].cells
 
-        hdr_cells_item[0].text = custody_data.job_id
+        hdr_cells_item[0].text = str(custody_data.job_id)
         hdr_cells_item[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         paragraph_item_0 = hdr_cells_item[0].paragraphs[0]
         run_item_0 = paragraph_item_0.runs
@@ -771,7 +771,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         employee_id = custody_info.employee.id
         employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)])
         job_id = employee_info.job_id.id
-        job_id = self.env['hr.job'].sudo().search([('id','=',job_id)],limit=1).name
+        # job_id = self.env['hr.job'].sudo().search([('id','=',job_id)],limit=1).name
         employee_name = employee_info.name
         department = employee_info.department_id.name
         custody_lines = custody_info.custody_lines
