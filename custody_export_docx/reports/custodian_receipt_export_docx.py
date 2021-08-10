@@ -12,10 +12,11 @@ from odoo import models, tools,_
 from docx import Document
 from docx.enum.style import WD_STYLE_TYPE
 from docx.shared import Pt, RGBColor, Inches , Cm
-from docx.oxml.ns import qn
+from docx.oxml.ns import qn,nsdecls
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-from docx.oxml import OxmlElement
-from docx.oxml.ns import qn
+from docx.dml.color import ColorFormat
+from docx.enum.table import WD_TABLE_DIRECTION,WD_ALIGN_VERTICAL,WD_TABLE_ALIGNMENT
+from docx.oxml import OxmlElement,parse_xml
 import docx
 _logger = logging.getLogger(__name__)
 
@@ -233,6 +234,8 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             tcBorders.append(right)
             tcPr.append(tcBorders)
             count = count + 1
+
+
             
              
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + "_" + "2131232132131321321" + ".docx"
