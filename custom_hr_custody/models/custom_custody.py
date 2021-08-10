@@ -97,7 +97,7 @@ class HrCustomCustodyLines(models.Model):
 
     custody_item = fields.Many2one('hr.custody.items',string="Items")
     # new
-    custody_products_category = fields.Many2one('product.category','Products Category', related='custody_item.categ_id',readonly=True)
+    # custody_products_category = fields.Many2one('product.category','Products Category', related='custody_item.categ_id',readonly=True)
     custody_qty = fields.Integer(string="Quantity")
     custody_id = fields.Many2one('hr.custody',string="Custody Id") 
     # new
