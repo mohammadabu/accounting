@@ -430,7 +430,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         p_runner_1.style = font_headerTable_3
         p_runner_2 = p.add_run(delivery_date_day)
         p_runner_2.style = font_headerTable_3
-        p_runner_3 = p.add_run("الموافق ")
+        p_runner_3 = p.add_run(" الموافق ")
         p_runner_3.style = font_headerTable_3
         p_runner_4 = p.add_run(delivery_date)
         p_runner_4.style = font_headerTable_3
