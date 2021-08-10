@@ -17,6 +17,7 @@ from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.dml.color import ColorFormat
 from docx.enum.table import WD_TABLE_DIRECTION,WD_ALIGN_VERTICAL,WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement,parse_xml
+from hijri_converter import convert
 import docx
 _logger = logging.getLogger(__name__)
 
@@ -35,6 +36,11 @@ class CustodianReceiptExportDocx(models.AbstractModel):
     def generate_docx_report(self, data, objs):
         timestamp = str(int(datetime.timestamp(datetime.now())))
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
+        date_now = datetime.today().strftime('%Y/%m/%d')
+        _logger.info(date_now)
+        # date_from =  str(from_date).replace('-','/')
+        # date_from_split = str(from_date).split('-')
+        # date_from_hijri = convert.Gregorian(int(date_from_split[0]), int(date_from_split[1]), int(date_from_split[2])).to_hijri()
         custody_id = objs.id
         custody_data = self.pool.get("report.custody_export_docx.custodian_receipt_docx").generate_variables(self,custody_id)
         employee_name = str(custody_data['employee_name'])
@@ -247,11 +253,6 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
         #table 2
 
-        record = [
-            ['2','6','[300030001] آلة تصوير Canon ir601n','[300030001] آلة تصوير Canon ir601n','1'],
-            ['2','6','[300030001] آلة تصوير Canon ir601n','[300030001] آلة تصوير Canon ir601n','2'],
-            ['2','4','[300030001] آلة تصوير Canon ir601n','[300030001] آلة تصوير Canon ir601n','3'],
-        ] 
 
         subTable = document.add_table(rows=2,cols=5)
         subTable.direction = WD_TABLE_DIRECTION.RTL
@@ -315,10 +316,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
 
         # dynamic
-        
 
-
-        # for ID, name, price,tt,ttt in record:
         count = 1
         for line in custody_lines:  
             item = str(line.custody_item.name)  
