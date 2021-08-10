@@ -358,7 +358,8 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             sub_dynamic_paragraph_3.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 
-            row_Cells_sub_dynamic[4].text = str(count)
+            # row_Cells_sub_dynamic[4].text = str(count)
+            row_Cells_sub_dynamic[4].text = "sdasadsdasadsaddsa"
 
             row_Cells_sub_dynamic[4].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_4 = row_Cells_sub_dynamic[4].paragraphs[0]
