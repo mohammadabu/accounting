@@ -775,11 +775,11 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         department = employee_info.department_id.name
         custody_lines = custody_info.custody_lines
 
-
-        # job_position = self.env['hr.job'].sudo().search([('name','=','مدير قسم دعم الأعمال')],limit=1)
-        # job_position_id = job_position.id
-        # employee_info_supp = self.env['hr.employee'].sudo().search([('job_id','=',job_position_id)],limit=1)
-        # business_support_manager = employee_info_supp.name
+        # not working 
+        job_position = self.env['hr.job'].sudo().search([('name','=','مدير قسم دعم الأعمال')],limit=1)
+        job_position_id = job_position.id
+        employee_info_supp = self.env['hr.employee'].sudo().search([('job_id','=',job_position_id)],limit=1)
+        business_support_manager = employee_info_supp.name
 
         employee_date_array = {}
         employee_date_array['employee_name'] = employee_name
