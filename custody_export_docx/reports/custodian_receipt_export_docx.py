@@ -33,13 +33,12 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
 
     def generate_docx_report(self, data, objs):
-        _logger.info(data)
-        _logger.info(objs)
         timestamp = str(int(datetime.timestamp(datetime.now())))
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
-        employee_id = objs.id
-        _logger.info(employee_id)
-        # employee_data = self.pool.get("report.custody_export_docx.custodian_receipt_docx").generate_variables(self,employee_id)
+        custody_id = objs.id
+        custody_data = self.pool.get("report.custody_export_docx.custodian_receipt_docx").generate_variables(self,custody_id)
+        _logger.info("custody_data")
+        _logger.info(custody_data)
         document = docx.Document()
         font_headerTable = document.styles.add_style('font_headerTable', WD_STYLE_TYPE.CHARACTER)
         font_headerTable.font.rtl = True
@@ -767,70 +766,27 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
         return fileContent
 
-    def generate_variables(self, employee_id):
-        hr_department = self.env['hr.department'].sudo().search([('internal_id','=','HR and Administration')])
+    def generate_variables(self, custody_id):
+        custody_info = self.env['hr.custody'].sudo().search([('id','=',custody_id)])
+        employee_id = custody_info.employee
         employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)])
-        identification_id = employee_info.identification_id
-        identification_id_ar = self.pool.get("report.custody_export_docx.job_definition_docx").convertNumEnToAr(self,identification_id)
-        iqama_number = employee_info.iqama_number
-        iqama_job_ar = employee_info.iqama_job_ar
-        iqama_job_en = employee_info.iqama_job_en
-        job_ar = employee_info.job_ar
-        job_en = employee_info.job_en
-        employee_name_ar = employee_info.employee_name_ar
-        employee_name_en = employee_info.name
-        employee_nationality = employee_info.country_id.code or ''
-        join_date = employee_info.date_joining or '0000/00'
-        hr_manager = ""
-        if hr_department.manager_id != False:
-            hr_manager = hr_department.manager_id.employee_name_ar
-        if join_date != '0000/00' and join_date != False:
-            join_date = str(join_date).split("-")
-            join_date = join_date[0] + "/" + join_date[1]
-        join_date_ar = self.pool.get("report.custody_export_docx.job_definition_docx").convertNumEnToAr(self,join_date)
-        iqama_number_ar = False
-        if iqama_number != False:  
-            iqama_number_ar = self.pool.get("report.custody_export_docx.job_definition_docx").convertNumEnToAr(self,iqama_number)
+        job_id = employee_info.job_id.name
+        employee_name = employee_info.name
+        department = employee_info.department_id.name
+        custody_lines = custody_info.custody_lines
 
-        if iqama_number == False:
-            iqama_number = ""
 
-        if iqama_job_ar == False:
-            iqama_job_ar = ""
-
-        if iqama_job_en == False:
-            iqama_job_en = ""
-
-        if job_ar == False:
-            job_ar = ""
-
-        if job_en == False:
-            job_en = ""    
-
-        if employee_name_ar == False:
-            employee_name_ar = ""  
-
-        if employee_name_en == False:
-            employee_name_en = ""      
-
-        if identification_id != False:
-            identification_id = ""
+        job_position = self.env['hr.job'].sudo().search([('name','=','مدير قسم دعم الأعمال')],limit=1)
+        job_position_id = job_position.id
+        employee_info_supp = self.env['hr.employee'].sudo().search([('job_id','=',job_position_id)],limit=1)
+        business_support_manager = employee_info_supp.name
 
         employee_date_array = {}
-        employee_date_array['iqama_number_ar'] = iqama_number_ar
-        employee_date_array['iqama_number'] = iqama_number
-        employee_date_array['iqama_job_ar'] = iqama_job_ar
-        employee_date_array['iqama_job_en'] = iqama_job_en
-        employee_date_array['job_ar'] = job_ar
-        employee_date_array['job_en'] = job_en
-        employee_date_array['employee_name_ar'] = employee_name_ar
-        employee_date_array['employee_name_en'] = employee_name_en
-        employee_date_array['employee_nationality'] = employee_nationality
-        employee_date_array['join_date'] = join_date
-        employee_date_array['join_date_ar'] = join_date_ar
-        employee_date_array['hr_manager'] = hr_manager
-        employee_date_array['identification_id'] = identification_id
-        employee_date_array['identification_id_ar'] = identification_id_ar
+        employee_date_array['employee_name'] = employee_name
+        employee_date_array['department'] = department
+        employee_date_array['business_support_manager'] = business_support_manager
+        employee_date_array['custody_lines'] = custody_lines
+        employee_date_array['job_id'] = job_id
         return employee_date_array            
 
 
