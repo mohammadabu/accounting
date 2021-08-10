@@ -37,35 +37,204 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         # employee_id = objs.id
         # employee_data = self.pool.get("report.custody_export_docx.job_definition_docx").generate_variables(self,employee_id)
         document = docx.Document()
-        document.add_heading('hello world')
-        record = [
-            [1,'mohammad',200],
-            [2,'emad',300],
-            [3,'abusubhia',400],
-        ] 
-        menuTable = document.add_table(rows=1,cols=3)
-        menuTable.style = 'Table Grid'
+        font_headerTable = document.styles.add_style('font_headerTable', WD_STYLE_TYPE.CHARACTER)
+        font_headerTable.font.rtl = True
+        font_headerTable.font.size = Pt(16)
+        font_headerTable.font.bold = True
+        font_headerTable.font.name = 'Arial'
+
+        font_headerTable_1 = document.styles.add_style('font_headerTable_1', WD_STYLE_TYPE.CHARACTER)
+        font_headerTable_1.font.rtl = True
+        font_headerTable_1.font.size = Pt(12)
+        font_headerTable_1.font.bold = True
+        font_headerTable_1.font.name = 'Arial' 
+
+        font_headerTable_2 = document.styles.add_style('font_headerTable_2', WD_STYLE_TYPE.CHARACTER)
+        font_headerTable_2.font.rtl = True
+        font_headerTable_2.font.size = Pt(10)
+        font_headerTable_2.font.name = 'Arial' 
+
+        font_headerTable_3 = document.styles.add_style('font_headerTable_3', WD_STYLE_TYPE.CHARACTER)
+        font_headerTable_3.font.rtl = True
+        font_headerTable_3.font.size = Pt(10)
+        font_headerTable_3.font.bold = True
+        font_headerTable_3.font.name = 'Arial' 
+
+        # start Header Table  
+        headerTable = document.add_table(rows=2,cols=2)
+
+        headerTable.direction = WD_TABLE_DIRECTION.RTL
+        headerTable_a_1 = headerTable.cell(0, 0)
+        headerTable_b_1 = headerTable.cell(0, 1) 
+        headerTable_a_1.merge(headerTable_b_1) 
+
+        headerTable_cells = headerTable.rows[0].cells
+        headerTable_cells[0].text = 'نموذج استلام عهده'
+        headerTable_cells[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+        paragraph_headerTable = headerTable_cells[0].paragraphs[0]
+        run_headerTable = paragraph_headerTable.runs
+        run_headerTable[0].style = font_headerTable
+        paragraph_headerTable.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
         
+    
+        headerTable_cells_1 = headerTable.rows[1].cells
+
+        headerTable_cells_1[0].text = "التاريخ : ١ / ١ / ٢٠٢١ م"
+        paragraph_headerTable_1 = headerTable_cells_1[0].paragraphs[0]
+        run_headerTable_1 = paragraph_headerTable_1.runs
+        run_headerTable_1[0].style = font_headerTable_1
+        paragraph_headerTable_1.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+        headerTable_cells_1[1].text = "التاريخ : ١/١/١٤٤٢ هـ"
+        paragraph_headerTable_2 = headerTable_cells_1[1].paragraphs[0]
+        run_headerTable_2 = paragraph_headerTable_2.runs
+        run_headerTable_2[0].style = font_headerTable_1
+        paragraph_headerTable_2.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
+
+        # End Header Table 
+
+        menuTable = document.add_table(rows=2,cols=6)
+        menuTable.direction = WD_TABLE_DIRECTION.RTL
+        menuTable.autofit = False 
+        menuTable.allow_autofit = False
+        menuTable.alignment = WD_TABLE_ALIGNMENT.CENTER
+
+        a = menuTable.cell(0, 0)
+        b = menuTable.cell(0,5)
+        A = a.merge(b)        
+        menuTable.style = 'Table Grid'
 
         hdr_cells = menuTable.rows[0].cells
-        hdr_cells[0].text = 'ID'
-        hdr_cells[1].text = 'Name'
-        hdr_cells[2].text = 'Price'
-        for ID, name, price in record:
-            row_Cells = menuTable.add_row().cells
-            row_Cells[0].width = Cm(7.82)
-            row_Cells[0].height = Cm(4)
-            row_Cells[0].text = str(ID)
-            row_Cells[1].width = Cm(7.82)
-            row_Cells[1].height = Cm(4)
-            row_Cells[1].text = name
-            row_Cells[2].height = Cm(4)
-            row_Cells[2].width = Cm(7.82)
-            row_Cells[2].text = str(price)
 
+        hdr_cells[0].text = 'بيانات المستلم'
+        hdr_cells[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+
+        shading_elm_2 = parse_xml(r'<w:shd {} w:fill="#e5e5e5"/>'.format(nsdecls('w')))
+        hdr_cells[0]._tc.get_or_add_tcPr().append(shading_elm_2)
+
+        paragraph_header = hdr_cells[0].paragraphs[0]
+        run_header = paragraph_header.runs
+        run_header[0].style = font_headerTable_1
+        paragraph_header.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+
+        hdr_cells_item = menuTable.rows[1].cells
+
+        hdr_cells_item[0].text = 'مدير قسم العناية بالعملاء وإدارة الحسابات'
+        hdr_cells_item[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+        paragraph_item_0 = hdr_cells_item[0].paragraphs[0]
+        run_item_0 = paragraph_item_0.runs
+        run_item_0[0].style = font_headerTable_2
+        paragraph_item_0.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+        hdr_cells_item[1].text = 'المسمى الوظيفي'
+
+        hdr_cells_item[1].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+        shading_cells_item_1 = parse_xml(r'<w:shd {} w:fill="#e5e5e5"/>'.format(nsdecls('w')))
+        hdr_cells_item[1]._tc.get_or_add_tcPr().append(shading_cells_item_1)
+        paragraph_item_1 = hdr_cells_item[1].paragraphs[0]
+        run_item_1 = paragraph_item_1.runs
+        run_item_1[0].style = font_headerTable_3
+        paragraph_item_1.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+
+
+        hdr_cells_item[2].text = 'الإدارة العامة / الادارة العامة للعمليات / إدارة العمليات / العناية بالعملاء وادارة الحسابات'
+        hdr_cells_item[2].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+        paragraph_item_2 = hdr_cells_item[2].paragraphs[0]
+        run_item_2 = paragraph_item_2.runs
+        run_item_2[0].style = font_headerTable_2
+        paragraph_item_2.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+
+        hdr_cells_item[3].text = 'الإدارة'
+        hdr_cells_item[3].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+        shading_cells_item_3 = parse_xml(r'<w:shd {} w:fill="#e5e5e5"/>'.format(nsdecls('w')))
+        hdr_cells_item[3]._tc.get_or_add_tcPr().append(shading_cells_item_3)
+        paragraph_item_3 = hdr_cells_item[3].paragraphs[0]
+        run_item_3 = paragraph_item_3.runs
+        run_item_3[0].style = font_headerTable_3
+        paragraph_item_3.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+
+        hdr_cells_item[4].text = 'أسامة عبدالله أحمد الزهراني'
+        hdr_cells_item[4].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+        paragraph_item_4 = hdr_cells_item[4].paragraphs[0]
+        run_item_4 = paragraph_item_4.runs
+        run_item_4[0].style = font_headerTable_2
+        paragraph_item_4.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+
+        hdr_cells_item[5].text = 'اسـم المـوظف'
+        hdr_cells_item[5].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
+        shading_cells_item = parse_xml(r'<w:shd {} w:fill="#e5e5e5"/>'.format(nsdecls('w')))
+        hdr_cells_item[5]._tc.get_or_add_tcPr().append(shading_cells_item)
+        paragraph_item_5 = hdr_cells_item[5].paragraphs[0]
+        run_item_5 = paragraph_item_5.runs
+        run_item_5[0].style = font_headerTable_3
+        paragraph_item_5.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+
+
+        for cell in menuTable.columns[0].cells:
+            cell.width = Cm(4.8)
+        for cell in menuTable.columns[1].cells:
+            cell.width = Cm(2.7)
+        for cell in menuTable.columns[2].cells:
+            cell.width = Cm(4.1)        
+        for cell in menuTable.columns[3].cells:
+            cell.width = Cm(1.3)
+        for cell in menuTable.columns[4].cells:
+            cell.width = Cm(3.2)
+        for cell in menuTable.columns[5].cells:
+            cell.width = Cm(2.1)            
+
+
+        count = 1
         for row in menuTable.rows:
-            row.height = Cm(0.7)    
-        self.pool.get("report.custody_export_docx.custodian_receipt_docx").modifyBorder(self,menuTable)
+            if count == 2: 
+                row.height = Cm(1.7)  
+            else:
+                row.height = Cm(0.7)   
+            count = count + 1      
+
+        tbl = menuTable._tbl
+        count = 1
+        for cell in tbl.iter_tcs():
+            tcPr = cell.tcPr
+            tcBorders = OxmlElement('w:tcBorders')
+
+            top = OxmlElement('w:top')
+            top.set(qn('w:val'), 'double')
+
+            if count != 1:
+                bottom = OxmlElement('w:bottom')
+                bottom.set(qn('w:val'), 'double')
+
+            if count != 1 and count != 2:
+                left = OxmlElement('w:left')
+                left.set(qn('w:val'), 'single')
+            else:
+                left = OxmlElement('w:left')
+                left.set(qn('w:val'), 'double')
+
+            if count != 1 and count != 7:
+                right = OxmlElement('w:right')
+                right.set(qn('w:val'), 'single')
+            else :
+                right = OxmlElement('w:right')
+                right.set(qn('w:val'), 'double')    
+
+                
+
+            tcBorders.append(top)
+            tcBorders.append(left)
+            if count != 1:
+                tcBorders.append(bottom)
+            tcBorders.append(right)
+            tcPr.append(tcBorders)
+            count = count + 1
+            
+             
         path_docx = path_docx + '/EmployeeDocx_' + timestamp + "_" + "2131232132131321321" + ".docx"
         document.save(path_docx)
         
@@ -153,42 +322,3 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         return report_name
 
 
-    def convertNumEnToAr(self,num):
-        num = num.replace("1", "١", 15)
-        num = num.replace("2", "٢", 15)
-        num = num.replace("3", "٣", 15)
-        num = num.replace("4", "٤", 15)
-        num = num.replace("5", "٥", 15)
-        num = num.replace("6", "٦", 15)
-        num = num.replace("7", "٧", 15)
-        num = num.replace("8", "٨", 15)
-        num = num.replace("9", "٩", 15)
-        num = num.replace("0", "٠", 15)
-        return num
-
-    def modifyBorder(self,table):
-        tbl = table._tbl # get xml element in table
-        for cell in tbl.iter_tcs():
-            tcPr = cell.tcPr # get tcPr element, in which we can define style of borders
-            tcBorders = OxmlElement('w:tcBorders')
-            
-            top = OxmlElement('w:top')
-            top.set(qn('w:val'), 'double')
-            
-            left = OxmlElement('w:left')
-            left.set(qn('w:val'), 'double')
-            
-            bottom = OxmlElement('w:bottom')
-            bottom.set(qn('w:val'), 'double')
-            # bottom.set(qn('w:sz'), '4')
-            # bottom.set(qn('w:space'), '0')
-            # bottom.set(qn('w:color'), 'auto')
-
-            right = OxmlElement('w:right')
-            right.set(qn('w:val'), 'double')
-
-            tcBorders.append(top)
-            tcBorders.append(left)
-            tcBorders.append(bottom)
-            tcBorders.append(right)
-            tcPr.append(tcBorders)
