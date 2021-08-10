@@ -37,7 +37,8 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         _logger.info(objs)
         timestamp = str(int(datetime.timestamp(datetime.now())))
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
-        # employee_id = objs.id
+        employee_id = objs.id
+        _logger.info(employee_id)
         # employee_data = self.pool.get("report.custody_export_docx.custodian_receipt_docx").generate_variables(self,employee_id)
         document = docx.Document()
         font_headerTable = document.styles.add_style('font_headerTable', WD_STYLE_TYPE.CHARACTER)

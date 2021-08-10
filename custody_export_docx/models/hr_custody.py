@@ -31,5 +31,5 @@ class SalaryDefinitionExportDocxWizard(models.TransientModel):
     _description = 'Docx Export Wizard'
 
     @api.model
-    def action_export_custody_docx_report(self):
+    def action_export_custody_docx_report(self,id):
         return self.env.ref('custody_export_docx.custodian_receipt_docx').report_action(self)    
