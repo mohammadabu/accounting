@@ -648,9 +648,9 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         font_7 = last_runner_7.font
         font_7.color.rgb = RGBColor(255,255,255)       
 
-        last_runner_9 = last_p3.add_run(')')
+        last_runner_9 = last_p3.add_run(' )')
         last_runner_9.style = font_headerTable_3
-        last_runner_10 = last_p3.add_run('(')
+        last_runner_10 = last_p3.add_run('( ')
         last_runner_10.style = font_headerTable_3
 
         last_runner_8 = last_p3.add_run(': لا، للأسباب التالية  ')
