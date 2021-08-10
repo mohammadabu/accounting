@@ -673,7 +673,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         paragraph_item_1_1.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 
-        last_hdr_cells_2[2].text = 'مشاري بن رجاء المحلسي'
+        last_hdr_cells_2[2].text = business_support_manager
         last_hdr_cells_2[2].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
         paragraph_item_1_1 = last_hdr_cells_2[2].paragraphs[0]
         run_item_1_1 = paragraph_item_1_1.runs
