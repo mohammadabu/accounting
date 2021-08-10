@@ -54,8 +54,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         delivery_date = str(custody_data['delivery_date'])
         delivery_date_day = datetime.strptime(delivery_date, '%Y-%m-%d').weekday()
         day_name= ['الاثنين', 'الثلاثاء', 'الاربعاء', 'الخميس', 'الجمعة', 'السبت','الاحد']
-        _logger.info("delivery_date_day")
-        _logger.info(day_name[delivery_date_day])
+        delivery_date_day = day_name[delivery_date_day]
 
 
 
@@ -422,21 +421,18 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         akrar_paragraph_header.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
         row_Cells_sub_akrar_1 = subTable.add_row().cells
-        date_rec = ""
-        day_rec = "الاحد"
-        
-        
+                
         p = row_Cells_sub_akrar_1[0].add_paragraph("")
         p.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
         p.paragraph_format.line_spacing = 1.5
 
         p_runner_1 = p.add_run('أقر أنا الموقع أدناه بأنني استلمت العُهد الموضحة أعلاه في يوم ')
         p_runner_1.style = font_headerTable_3
-        p_runner_2 = p.add_run("الاحد ")
+        p_runner_2 = p.add_run(delivery_date_day)
         p_runner_2.style = font_headerTable_3
         p_runner_3 = p.add_run("الموافق ")
         p_runner_3.style = font_headerTable_3
-        p_runner_4 = p.add_run("2020/03/03")
+        p_runner_4 = p.add_run(delivery_date)
         p_runner_4.style = font_headerTable_3
         p_runner_5 = p.add_run(" م ")
         p_runner_5.style = font_headerTable_3
