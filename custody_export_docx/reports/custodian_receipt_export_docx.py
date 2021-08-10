@@ -42,8 +42,8 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         date_from_hijri = convert.Gregorian(int(date_from_split[0]), int(date_from_split[1]), int(date_from_split[2])).to_hijri()
         date_from_hijri = str(date_from_hijri)
         date_from_hijri = date_from_hijri.replace("-", "/", 10)
-        _logger.info(date_now)
-        _logger.info(date_from_hijri)
+        # _logger.info(date_now)
+        # _logger.info(date_from_hijri)
         custody_id = objs.id
         custody_data = self.pool.get("report.custody_export_docx.custodian_receipt_docx").generate_variables(self,custody_id)
         employee_name = str(custody_data['employee_name'])
@@ -51,6 +51,12 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         business_support_manager = str(custody_data['business_support_manager'])
         custody_lines = custody_data['custody_lines']
         job_id = str(custody_data['job_id'])
+        delivery_date = custody_data['delivery_date']
+        delivery_date_day = datetime.strptime(delivery_date, '%Y-%m-%d').weekday()
+        _logger.info("delivery_date_day")
+        _logger.info(delivery_date_day)
+
+
 
         document = docx.Document()
         font_headerTable = document.styles.add_style('font_headerTable', WD_STYLE_TYPE.CHARACTER)
@@ -417,6 +423,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         row_Cells_sub_akrar_1 = subTable.add_row().cells
         date_rec = ""
         day_rec = "الاحد"
+        
         
         p = row_Cells_sub_akrar_1[0].add_paragraph("")
         p.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
@@ -826,7 +833,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         employee_name = employee_info.name
         department = employee_info.department_id.name
         custody_lines = custody_info.custody_lines
-
+        delivery_date = custody_info.delivery_date
         # not working 
         job_position = self.env['hr.job'].sudo().search([('name','=','مدير قسم دعم الأعمال')],limit=1)
         job_position_id = job_position.id
@@ -839,6 +846,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         employee_date_array['business_support_manager'] = business_support_manager
         employee_date_array['custody_lines'] = custody_lines
         employee_date_array['job_id'] = job_id
+        employee_date_array['delivery_date'] = delivery_date
         return employee_date_array            
 
 
