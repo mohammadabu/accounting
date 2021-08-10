@@ -326,7 +326,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             note = str(line.custody_note)
             row_Cells_sub_dynamic = subTable.add_row().cells
 
-            row_Cells_sub_dynamic[0].text = str(count)
+            row_Cells_sub_dynamic[0].text = note
 
             row_Cells_sub_dynamic[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_0 = row_Cells_sub_dynamic[0].paragraphs[0]
@@ -336,7 +336,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
 
 
-            row_Cells_sub_dynamic[1].text = item
+            row_Cells_sub_dynamic[1].text = qty
             row_Cells_sub_dynamic[1].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_1 = row_Cells_sub_dynamic[1].paragraphs[0]
             sub_dynamic_run_1 = sub_dynamic_paragraph_1.runs
@@ -352,7 +352,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             sub_dynamic_paragraph_2.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 
-            row_Cells_sub_dynamic[3].text = qty
+            row_Cells_sub_dynamic[3].text = item
 
             row_Cells_sub_dynamic[3].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_3 = row_Cells_sub_dynamic[3].paragraphs[0]
@@ -361,7 +361,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             sub_dynamic_paragraph_3.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
 
-            row_Cells_sub_dynamic[4].text = note
+            row_Cells_sub_dynamic[4].text = str(count)
 
             row_Cells_sub_dynamic[4].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_4 = row_Cells_sub_dynamic[4].paragraphs[0]
