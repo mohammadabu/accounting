@@ -51,7 +51,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         business_support_manager = str(custody_data['business_support_manager'])
         custody_lines = custody_data['custody_lines']
         job_id = str(custody_data['job_id'])
-        delivery_date = custody_data['delivery_date']
+        delivery_date = str(custody_data['delivery_date'])
         delivery_date_day = datetime.strptime(delivery_date, '%Y-%m-%d').weekday()
         _logger.info("delivery_date_day")
         _logger.info(delivery_date_day)
