@@ -19,7 +19,7 @@
                         </group>
                     </page>
                 </xpath>
-                <xpath expr="//field[name='reason']" position="inside">
+                <xpath expr="//field[@name='reason']" position="after">
                     <field name="delivery_date"/>
                 </xpath>
             </field>
