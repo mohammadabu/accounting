@@ -423,8 +423,16 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         p.paragraph_format.line_spacing = 1.5
         p.paragraph_format.right_indent = Cm(0.6)
 
-        p_runner_1 = p.add_run('أقر أنا الموقع أدناه بأنني استلمت العُهد الموضحة أعلاه في يوم')
+        p_runner_1 = p.add_run('أقر أنا الموقع أدناه بأنني استلمت العُهد الموضحة أعلاه في يوم ')
         p_runner_1.style = font_headerTable_3
+        p_runner_2 = p.add_run("الاحد ")
+        p_runner_2.style = font_headerTable_3
+        p_runner_3 = p.add_run("الموافق ")
+        p_runner_3.style = font_headerTable_3
+        p_runner_4 = p.add_run("2020/03/03")
+        p_runner_4.style = font_headerTable_3
+        p_runner_5 = p.add_run(" م ")
+        p_runner_5.style = font_headerTable_3
         # last_runner_7_1 = last_p7.add_run('سسسسسسسس')
         # font_7_1 = last_runner_7_1.font
         # font_7_1.color.rgb = RGBColor(255,255,255)   
