@@ -329,6 +329,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         count = 1
         for line in custody_lines:  
             item = str(line.custody_item.name)  
+            type_item = str(line.custody_products_category.name)
             qty = str(line.custody_qty)
             note = str(line.custody_note)
             row_Cells_sub_dynamic = subTable.add_row().cells
@@ -350,7 +351,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             sub_dynamic_run_1[0].style = font_headerTable_2
             sub_dynamic_paragraph_1.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
-            row_Cells_sub_dynamic[2].text = item
+            row_Cells_sub_dynamic[2].text = type_item
 
             row_Cells_sub_dynamic[2].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_2 = row_Cells_sub_dynamic[2].paragraphs[0]
