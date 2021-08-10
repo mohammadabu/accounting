@@ -64,6 +64,8 @@ class HrCustomCustodyItems(models.Model):
 
     name = fields.Char(required=True)
     products = fields.Many2one('product.template')
+    products_category = fields.Many2one('product.category','Products Category', related='products.categ_id',readonly=True)
+
     quantity = fields.Integer(compute="onchange_products")
     custody_quantity = fields.Integer(compute="onchange_products")
     custody_used = fields.Integer(compute="onchange_products")

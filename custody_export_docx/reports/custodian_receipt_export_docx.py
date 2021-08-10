@@ -97,7 +97,6 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         date_text_msg = "التاريخ : "
         date_text_msg = date_text_msg + date_now
         date_text_msg = date_text_msg + " م"
-        # headerTable_cells_1[0].text = "التاريخ : ١ / ١ / ٢٠٢١ م"
         headerTable_cells_1[0].text = date_text_msg
         paragraph_headerTable_1 = headerTable_cells_1[0].paragraphs[0]
         run_headerTable_1 = paragraph_headerTable_1.runs
@@ -108,7 +107,6 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         hijri_text_msg = hijri_text_msg + date_from_hijri
         hijri_text_msg = hijri_text_msg + " هـ"
 
-        # headerTable_cells_1[1].text = "التاريخ : ١/١/١٤٤٢ هـ"
         headerTable_cells_1[1].text = hijri_text_msg
         paragraph_headerTable_2 = headerTable_cells_1[1].paragraphs[0]
         run_headerTable_2 = paragraph_headerTable_2.runs
