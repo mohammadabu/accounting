@@ -38,9 +38,10 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
         date_now = datetime.today().strftime('%Y/%m/%d')
         _logger.info(date_now)
-        # date_from =  str(from_date).replace('-','/')
-        # date_from_split = str(from_date).split('-')
-        # date_from_hijri = convert.Gregorian(int(date_from_split[0]), int(date_from_split[1]), int(date_from_split[2])).to_hijri()
+        date_from_split = str(date_now).split('/')
+        date_from_hijri = convert.Gregorian(int(date_from_split[0]), int(date_from_split[1]), int(date_from_split[2])).to_hijri()
+        _logger.info(date_now)
+        _logger.info(date_from_hijri)
         custody_id = objs.id
         custody_data = self.pool.get("report.custody_export_docx.custodian_receipt_docx").generate_variables(self,custody_id)
         employee_name = str(custody_data['employee_name'])
