@@ -61,6 +61,7 @@ class HrCustomCustodyItems(models.Model):
             rec.custody_quantity = qty_used
             rec.custody_used = custody_used
             rec.amount_remaining = qty - (qty_used + this_required_quantity)
+            # new 
             if rec.products != False:
                 rec.name = rec.products.name
 
