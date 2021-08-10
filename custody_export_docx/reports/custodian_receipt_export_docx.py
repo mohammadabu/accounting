@@ -94,7 +94,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         
     
         headerTable_cells_1 = headerTable.rows[1].cells
-        date_now = date_now.replace("/"," / ",10)
+        # date_now = date_now.replace("/"," / ")
         date_text_msg = "التاريخ : "
         date_text_msg = date_text_msg + date_now
         date_text_msg = date_text_msg + " م"
