@@ -53,8 +53,9 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         job_id = str(custody_data['job_id'])
         delivery_date = str(custody_data['delivery_date'])
         delivery_date_day = datetime.strptime(delivery_date, '%Y-%m-%d').weekday()
+        day_name= ['الاثنين', 'الثلاثاء', 'الاربعاء', 'الخميس', 'الجمعة', 'السبت','الاحد']
         _logger.info("delivery_date_day")
-        _logger.info(delivery_date_day)
+        _logger.info(day_name[delivery_date_day])
 
 
 
