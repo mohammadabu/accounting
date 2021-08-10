@@ -61,6 +61,8 @@ class HrCustomCustodyItems(models.Model):
             rec.custody_quantity = qty_used
             rec.custody_used = custody_used
             rec.amount_remaining = qty - (qty_used + this_required_quantity)
+            if rec.product != False:
+                rec.name = rec.product.name
 
     name = fields.Char(required=True)
     products = fields.Many2one('product.template')
@@ -73,7 +75,6 @@ class HrCustomCustodyItems(models.Model):
     required_quantity = fields.Integer(required=True,default=1)
     amount_remaining = fields.Integer(compute="onchange_products")
     description = fields.Text()
-
 
     def write(self,values):
         rtn = super(HrCustomCustodyItems,self).write(values)
