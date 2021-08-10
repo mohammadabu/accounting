@@ -415,13 +415,12 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         akrar_paragraph_header.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
 
         row_Cells_sub_akrar_1 = subTable.add_row().cells
-        date_rec = "23/05/2021 م  الموافق  الاحد "
+        date_rec = ""
         day_rec = "الاحد"
         
         p = row_Cells_sub_akrar_1[0].add_paragraph("")
         p.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
         p.paragraph_format.line_spacing = 1.5
-        # p.paragraph_format.right_indent = Cm(0.6)
 
         p_runner_1 = p.add_run('أقر أنا الموقع أدناه بأنني استلمت العُهد الموضحة أعلاه في يوم ')
         p_runner_1.style = font_headerTable_3
