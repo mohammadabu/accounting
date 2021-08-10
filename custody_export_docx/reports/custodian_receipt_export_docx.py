@@ -95,7 +95,11 @@ class CustodianReceiptExportDocx(models.AbstractModel):
     
         headerTable_cells_1 = headerTable.rows[1].cells
 
-        headerTable_cells_1[0].text = "التاريخ : ١ / ١ / ٢٠٢١ م"
+        date_text_msg = "التاريخ : "
+        date_text_msg = date_text_msg + date_now
+        date_text_msg = date_text_msg + "م"
+        # headerTable_cells_1[0].text = "التاريخ : ١ / ١ / ٢٠٢١ م"
+        headerTable_cells_1[0].text = date_text_msg
         paragraph_headerTable_1 = headerTable_cells_1[0].paragraphs[0]
         run_headerTable_1 = paragraph_headerTable_1.runs
         run_headerTable_1[0].style = font_headerTable_1
