@@ -417,20 +417,40 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         row_Cells_sub_akrar_1 = subTable.add_row().cells
         date_rec = "23/05/2021 م  الموافق  الاحد "
         day_rec = "الاحد"
-        paragraph_marge = ('أقر أنا الموقع أدناه بأنني استلمت العُهد الموضحة أعلاه في يوم %s بحالة جديدة، ') % (date_rec)
-        p = row_Cells_sub_akrar_1[0].add_paragraph(paragraph_marge)
-        run_manager = p.runs
-        font_manager = run_manager[0].font
-        font_manager.size = Pt(10)
-        font_manager.bold = True
+        
+        p = row_Cells_sub_akrar_1[0].add_paragraph("")
         p.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
-        runner = p.add_run("وأتعهد بالمحافظة عليها وان لا أتنازل عنها لأي شخص آخر وسأقوم بإعادتها عند طلبها أو عند ترك العمل أو دفع قيمة ما تسببت في تلفه وسأكون عرضة للمسائلة في حين مخالفتي للإقرار.")
-        runner.bold = True
-        font = runner.font
-        font.color.rgb = RGBColor(255,0,0)
-        runner.style = font_headerTable_3
+        p.paragraph_format.line_spacing = 1.5
+        p.paragraph_format.right_indent = Cm(0.6)
+
+        p_runner_1 = p.add_run('أقر أنا الموقع أدناه بأنني استلمت العُهد الموضحة أعلاه في يوم')
+        p_runner_1.style = font_headerTable_3
+        # last_runner_7_1 = last_p7.add_run('سسسسسسسس')
+        # font_7_1 = last_runner_7_1.font
+        # font_7_1.color.rgb = RGBColor(255,255,255)   
+        # last_runner_8 = last_p7.add_run('الموافق ')
+        # last_runner_8.style = font_headerTable_3
+
+
+
+
+        # "أقر أنا الموقع أدناه بأنني استلمت العُهد الموضحة أعلاه في يوم "
+        # paragraph_marge = ('أقر أنا الموقع أدناه بأنني استلمت العُهد الموضحة أعلاه في يوم %s بحالة جديدة، ') % (date_rec)
+        # p = row_Cells_sub_akrar_1[0].add_paragraph(paragraph_marge)
+        # run_manager = p.runs
+        # font_manager = run_manager[0].font
+        # font_manager.size = Pt(10)
+        # font_manager.bold = True
+        # p.alignment = WD_PARAGRAPH_ALIGNMENT.RIGHT
+        # runner = p.add_run("وأتعهد بالمحافظة عليها وان لا أتنازل عنها لأي شخص آخر وسأقوم بإعادتها عند طلبها أو عند ترك العمل أو دفع قيمة ما تسببت في تلفه وسأكون عرضة للمسائلة في حين مخالفتي للإقرار.")
+        # runner.bold = True
+        # font = runner.font
+        # font.color.rgb = RGBColor(255,0,0)
+        # runner.style = font_headerTable_3
         
         
+
+
         p1 = row_Cells_sub_akrar_1[0].add_paragraph("\n")
 
         run_manager_p1 = p1.runs
