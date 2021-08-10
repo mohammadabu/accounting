@@ -37,9 +37,11 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         timestamp = str(int(datetime.timestamp(datetime.now())))
         path_docx = '/var/lib/odoo/.local/share/Odoo/'
         date_now = datetime.today().strftime('%Y/%m/%d')
-        _logger.info(date_now)
-        date_from_split = str(date_now).split('/')
+        date_now = str(date_now)
+        date_from_split = date_now.split('/')
         date_from_hijri = convert.Gregorian(int(date_from_split[0]), int(date_from_split[1]), int(date_from_split[2])).to_hijri()
+        date_from_hijri = str(date_from_hijri)
+        date_from_hijri = date_from_hijri.replace("-", "/", 10)
         _logger.info(date_now)
         _logger.info(date_from_hijri)
         custody_id = objs.id
