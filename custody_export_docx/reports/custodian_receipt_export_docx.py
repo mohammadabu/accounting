@@ -246,6 +246,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
         paragraph_format.line_spacing = 0.06
 
         #table 2
+
         record = [
             ['2','6','[300030001] آلة تصوير Canon ir601n','[300030001] آلة تصوير Canon ir601n','1'],
             ['2','6','[300030001] آلة تصوير Canon ir601n','[300030001] آلة تصوير Canon ir601n','2'],
@@ -314,6 +315,12 @@ class CustodianReceiptExportDocx(models.AbstractModel):
 
 
         # dynamic
+        _logger.info("dynamic custody_lines")
+        for line in custody_lines:
+            _logger.info(line.custody_item)
+            _logger.info(line.custody_qty)
+            _logger.info(line.custody_note)
+
 
         for ID, name, price,tt,ttt in record:
             row_Cells_sub_dynamic = subTable.add_row().cells
