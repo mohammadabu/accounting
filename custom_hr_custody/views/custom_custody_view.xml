@@ -40,6 +40,7 @@
                                     <tree editable="bottom">
                                         <field name="custody_item" />
                                         <field name="custody_qty" />
+                                        <field name="custody_note"/>
                                         <field name="custody_id"  invisible="1"/>
                                     </tree>
                                 </field>

@@ -98,4 +98,4 @@ class HrCustomCustodyLines(models.Model):
     custody_item = fields.Many2one('hr.custody.items',string="Items") 
     custody_qty = fields.Integer(string="Quantity")
     custody_id = fields.Many2one('hr.custody',string="Custody Id") 
-    
+    custody_note = fields.Char(string="Note")
