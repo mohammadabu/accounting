@@ -326,7 +326,7 @@ class CustodianReceiptExportDocx(models.AbstractModel):
             note = str(line.custody_note)
             row_Cells_sub_dynamic = subTable.add_row().cells
 
-            row_Cells_sub_dynamic[0].text = count
+            row_Cells_sub_dynamic[0].text = str(count)
 
             row_Cells_sub_dynamic[0].vertical_alignment = WD_ALIGN_VERTICAL.CENTER
             sub_dynamic_paragraph_0 = row_Cells_sub_dynamic[0].paragraphs[0]
