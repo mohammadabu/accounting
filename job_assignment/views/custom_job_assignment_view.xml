@@ -19,7 +19,7 @@
                                 />             
                         <button string="Refuse" groups="hr.group_hr_manager"
                                 type="object" name="refuse"
-                                attrs="{'invisible': [('state','not in',('direct_manager'))]}" class="btn-primary"
+                                attrs="{'invisible': ['|',('state','not in',('direct_manager')),('is_direct_manager','=','yes')]}" class="btn-primary"
                                 />
                         <button string="Refuse" 
                                 type="object" name="refuse"
