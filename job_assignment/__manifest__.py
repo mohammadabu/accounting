@@ -4,7 +4,6 @@
     'depends': ['hr', 'mail','hr_holidays'],
     'data': [
         'views/custom_job_assignment_view.xml',
-        'data/data.xml',
         # 'views/custody_employee_view.xml',
         # 'views/custom_custody_view.xml',
         # 'views/custom_items_view.xml',
