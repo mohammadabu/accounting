@@ -100,7 +100,7 @@
                   id="custom_hr_emp_job_assignment"
                   parent="hr.menu_hr_root"
                   action="action_job_assignment"
-                  sequence="100"/>
+                  sequence="91"/>
 
     </data>
 </odoo>
