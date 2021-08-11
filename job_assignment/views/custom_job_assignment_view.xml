@@ -23,7 +23,7 @@
                                 />
                         <button string="Refuse" 
                                 type="object" name="refuse"
-                                attrs="{'invisible': [('state','not in',('to_approve','direct_manager')),('is_direct_manager','=','no')]}" class="btn-primary"
+                                attrs="{'invisible': ['|',('state','not in',('to_approve','direct_manager')),('is_direct_manager','=','no')]}" class="btn-primary"
                                 />
                         <button string="Set to Draft" type="object" name="set_to_draft"
                                 attrs="{'invisible': [('state','not in',('rejected'))]}"/>
