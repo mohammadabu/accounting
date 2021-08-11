@@ -73,10 +73,12 @@ class HrCustomJobAssignment(models.Model):
 
     def sent(self):
         self.state = 'to_approve'                         
-
-    def approve(self):
-        self.state = 'approved'    
-
+    def approve_direct_manager(self):
+        self.state = 'direct_manager'    
+    def approve_hr_manager(self):
+        self.state = 'hr_manager'
+    def refuse(self):
+        self.state = 'rejected'
     def set_to_draft(self):
         self.state = 'draft'    
 
