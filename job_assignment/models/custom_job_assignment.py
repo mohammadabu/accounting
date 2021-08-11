@@ -19,7 +19,7 @@ class HrCustomJobAssignment(models.Model):
             return employee.id
         else:
             return False 
-
+    
     name = fields.Char(required=True, readonly=True)
     employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]},default=_getDefaultEmployee)
     state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
@@ -28,9 +28,25 @@ class HrCustomJobAssignment(models.Model):
 
     date_from = fields.Date(required=True)
     date_to = fields.Date(required=True)
-    duration = fields.Char(readonly=True)
+    duration = fields.Char(compute="_compute_expected_duration")
     time_request = fields.Datetime(string="Time of the request",default=datetime.now(),readonly=True)
     note = fields.Text()
+
+    
+    @api.onchange('date_from','date_to')
+    def _compute_expected_duration(self):
+        for rec in self:
+            from_date = rec.date_from
+            to_date = rec.date_to
+            if from_date != False and to_date != False:
+                duration = to_date - from_date
+                duration = duration.days
+                if duration >= 0:
+                    duration = duration + 1
+                rec.duration = str(duration) + " " + _("days")
+            else:
+                rec.duration = "0 "+ _("days")
+
 
     def sent(self):
         self.state = 'to_approve'                         
