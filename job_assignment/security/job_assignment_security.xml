@@ -17,7 +17,8 @@
     <record id="hr_job_assignment_personal_rule_manager" model="ir.rule">
         <field name="name">Employee Job Assignment Manager</field>
         <field ref="job_assignment.model_hr_job_assignment" name="model_id"/>
-        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+        <!-- <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/> -->
+        <field name="groups" eval="[(4, ref('hr.group_hr_manager'))]"/>
         <field name="domain_force">['|',('employee.user_id.id', '=', user.id),('employee.parent_id.user_id.id','=',user.id)]</field>
     </record>
     
