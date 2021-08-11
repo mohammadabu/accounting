@@ -12,6 +12,14 @@ class HrCustomJobAssignment(models.Model):
     _description = 'Hr Job Assignment'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    def _getDefaultEmployee(self):
+        user_id = self.env.user.id
+        employee = self.env['hr.employee'].sudo().search([('user_id','=',user_id)],limit=1)
+        if len(employee) > 0 :
+            return employee.id
+        else:
+            return False 
+
     name = fields.Char(required=True, readonly=True)
     employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]},default=_getDefaultEmployee)
     state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
