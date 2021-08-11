@@ -11,9 +11,9 @@
                         <button string="Send For Approval" type="object" name="sent"
                                 class="oe_highlight"
                                 attrs="{'invisible': [('state','not in',('draft'))]}"/>   
-                        <button string="Approve" groups="hr.group_hr_manager" type="object" name="approve"
+                        <button string="Direct Manager Approve" attrs="{'invisible': ['|',('is_direct_manager', '=', 'no'),('state','not in',('to_approve'))]}" type="object" name="approve"
                                 class="oe_highlight"
-                                attrs="{'invisible': [('state','not in',('to_approve'))]}"/>     
+                                />     
                         <!-- <button string="Refuse" groups="hr.group_hr_manager" type="action"
                                 name="%(custom_hr_custody.wizard_reason_act)d"
                                 attrs="{'invisible': [('state','not in',('to_approve','approved'))]}" class="btn-primary"
