@@ -22,9 +22,9 @@ class HrCustomJobAssignment(models.Model):
     
     name = fields.Char(required=True)
     employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]},default=_getDefaultEmployee)
-    state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
-                            ('rejected', 'Refused')], string='Status', default='draft',
-                            track_visibility='always',readonly=True)
+    state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('direct_manager', 'Direct Manager Approved'),
+                            ('hr_manager', 'Hr Approved'),('rejected', 'Refused')],
+                            string='Status', default='draft',track_visibility='always',readonly=True)
 
     date_from = fields.Date(required=True)
     date_to = fields.Date(required=True)
@@ -33,6 +33,25 @@ class HrCustomJobAssignment(models.Model):
     note = fields.Text(required=True)
     attachments = fields.Binary()
     
+    is_direct_manager = fields.Selection(
+        [
+            ('yes', 'yes'),
+            ('no','no')
+        ]
+        ,compute='_compute_is_direct_manager'
+    )
+
+    @api.depends('employee')
+    def _compute_is_direct_manager(self):
+        if self.employee.parent_id != False:
+            if self.employee.parent_id.user_id.id == self.env.user.id:
+                self.is_direct_manager = 'yes'
+            else:
+                self.is_direct_manager = 'no'
+        else:
+            self.is_direct_manager = 'no' 
+
+
     @api.onchange('date_from','date_to') 
     def _compute_expected_duration(self):
         for rec in self:
