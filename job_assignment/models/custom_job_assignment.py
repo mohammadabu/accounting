@@ -40,15 +40,18 @@ class HrCustomJobAssignment(models.Model):
             to_date = rec.date_to
             if from_date != False and to_date != False:
                 duration = to_date - from_date
+                count = 0
                 for i in range(duration.days + 1):
                     dayRange = from_date + timedelta(days=i)
                     dayRange_day = dayRange.strftime("%A")
-                    _logger.info("day range")
-                    _logger.info(dayRange)
-                    _logger.info(dayRange_day)
-                duration = duration.days
-                if duration >= 0:
-                    duration = duration + 1
+                    if dayRange_day != "Friday" and dayRange_day != "Saturday":
+                        count = count + 1
+                    # _logger.info("day range")
+                    # _logger.info(dayRange)
+                    # _logger.info(dayRange_day)
+                duration = count
+                # if duration >= 0:
+                #     duration = duration + 1
                 rec.duration = str(duration) + " " + _("days")
             else:
                 rec.duration = "0 "+ _("days")
