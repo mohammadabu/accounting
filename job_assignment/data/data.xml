@@ -5,6 +5,8 @@
             <field name="validation_type">no_validation</field>
             <field name="allocation_type">no</field>
             <field name="request_unit">day</field>
+            <field name="type">paid_time_off</field>
+            <field name="color_name">red</field>
         </record>
     </data>    
 </odoo>
