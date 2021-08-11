@@ -61,6 +61,11 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
+                    <field name="employee"/>
+                    <field name="date_from" />
+                    <field name="date_to" />
+                    <field name="time_request"/>
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -71,6 +76,11 @@
             <field name="arch" type="xml">
                 <search string="Job Assignment">
                     <field name="name"/>
+                    <field name="employee"/>
+                    <field name="date_from" />
+                    <field name="date_to" />
+                    <field name="time_request"/>
+                    <field name="state"/>
                 </search>
             </field>
         </record>
