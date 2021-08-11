@@ -27,6 +27,11 @@
                         </h1>
                         <group>
                             <field name="employee"/>
+                            <field name="duration_assignment"/>
+                            <field name="date_from" attrs="{'invisible': [('duration_assignment', '=', 'hours')],'required':[('duration_assignment', '=', 'days')]}"/>
+                            <field name="date_to" attrs="{'invisible': [('duration_assignment', '=', 'hours')],'required':[('duration_assignment', '=', 'days')]}"/>
+                            <field name="hour_from" attrs="{'invisible': [('duration_assignment', '=', 'days')],'required':[('duration_assignment', '=', 'hours')]}"/>
+                            <field name="hour_to" attrs="{'invisible': [('duration_assignment', '=', 'days')],'required':[('duration_assignment', '=', 'hours')]}"/>
                         </group>
                     </sheet>
                     <div class="oe_chatter">
