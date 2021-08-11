@@ -7,8 +7,8 @@
             <field name="arch" type="xml">
                 <form string="Custody">
                     <header>
-                        <!-- <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved"/>
-                        <button string="Send For Approval" type="object" name="sent"
+                        <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved"/>
+                        <!-- <button string="Send For Approval" type="object" name="sent"
                                 class="oe_highlight"
                                 attrs="{'invisible': [('state','not in',('draft'))]}"/>   
                         <button string="Approve" groups="hr.group_hr_manager" type="object" name="approve"
@@ -25,6 +25,9 @@
                         <h1>
                             <field name="name" />
                         </h1>
+                        <group>
+                            <field name="employee"/>
+                        </group>
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
@@ -65,21 +68,11 @@
             </field>
         </record>
 
-
         <menuitem name="Job Assignment"
                   id="custom_hr_emp_job_assignment"
                   parent="hr.menu_hr_root"
                   action="action_job_assignment"
                   sequence="100"/>
 
-
-
-        <!-- <menuitem id="hr_custody_main_menu"
-                web_icon="custom_hr_custody,static/description/custody_icon.png"
-                name="Custody" sequence="20"/>
-
-
-        <menuitem action="action_hr_custody" id="hr_custody_menu" parent="custom_hr_custody.hr_custody_main_menu"
-                  name="Custody Request" sequence="1"/>           -->
     </data>
 </odoo>
