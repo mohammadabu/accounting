@@ -20,7 +20,7 @@ class HrCustomJobAssignment(models.Model):
         else:
             return False 
     
-    name = fields.Char(required=True, readonly=True)
+    name = fields.Char(required=True)
     employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]},default=_getDefaultEmployee)
     state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
                             ('rejected', 'Refused')], string='Status', default='draft',
