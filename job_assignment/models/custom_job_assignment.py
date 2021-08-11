@@ -41,7 +41,7 @@ class HrCustomJobAssignment(models.Model):
             if from_date != False and to_date != False:
                 duration = to_date - from_date
                 for i in range(duration.days + 1):
-                    dayRange = sdate + timedelta(days=i)
+                    dayRange = from_date + timedelta(days=i)
                     _logger.info("day range")
                     _logger.info(dayRange)
                 duration = duration.days
