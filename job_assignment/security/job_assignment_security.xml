@@ -10,7 +10,7 @@
         <field name="perm_create" eval = "1"/>
         <field name="perm_unlink" eval = "1"/>
         <field name="domain_force">
-            [('1','=',1)]
+            [(1,'=',1)]
         </field>
     </record>
 
