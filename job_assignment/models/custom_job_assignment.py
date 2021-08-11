@@ -37,6 +37,16 @@ class HrCustomJobAssignment(models.Model):
 
     note = fields.Text()
 
+    def sent(self):
+        self.state = 'to_approve'                         
+
+    def approve(self):
+        self.state = 'approved'    
+
+    def set_to_draft(self):
+        self.state = 'draft'    
+
+
 
     # hour_from = fields.Selection([
     #     ('0', '12:00 AM'), ('0.5', '0:30 AM'),
