@@ -5,7 +5,6 @@
             <field name="validation_type">no_validation</field>
             <field name="allocation_type">no</field>
             <field name="request_unit">day</field>
-            <field name="type">paid_time_off</field>
         </record>
     </data>    
 </odoo>
