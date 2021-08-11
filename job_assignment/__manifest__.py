@@ -7,7 +7,7 @@
         # 'views/custody_employee_view.xml',
         # 'views/custom_custody_view.xml',
         # 'views/custom_items_view.xml',
-        # 'security/custody_security.xml',
+        'security/job_assignment_security.xml',
         'security/ir.model.access.csv',
     ],
 }
