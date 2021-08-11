@@ -33,7 +33,7 @@ class HrCustomJobAssignment(models.Model):
     note = fields.Text()
 
     
-    @api.onchange('date_from','date_to')
+    @api.onchange('date_from','date_to') 
     def _compute_expected_duration(self):
         for rec in self:
             from_date = rec.date_from
@@ -42,8 +42,10 @@ class HrCustomJobAssignment(models.Model):
                 duration = to_date - from_date
                 for i in range(duration.days + 1):
                     dayRange = from_date + timedelta(days=i)
+                    dayRange_day = dayRange.strftime("%A")
                     _logger.info("day range")
                     _logger.info(dayRange)
+                    _logger.info(dayRange_day)
                 duration = duration.days
                 if duration >= 0:
                     duration = duration + 1
