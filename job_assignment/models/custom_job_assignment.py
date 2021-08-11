@@ -35,6 +35,8 @@ class HrCustomJobAssignment(models.Model):
     date_from = fields.Date()
     date_to = fields.Date()
 
+    note = fields.Text()
+
 
     hour_from = fields.Selection([
         ('0', '12:00 AM'), ('0.5', '0:30 AM'),

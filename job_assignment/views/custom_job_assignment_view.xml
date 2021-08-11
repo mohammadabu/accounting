@@ -35,6 +35,7 @@
                                 <field name="hour_to" attrs="{'invisible': [('duration_assignment', '=', 'days')],'required':[('duration_assignment', '=', 'hours')]}"/>
                             </group>
                             <group>
+                                <field name="note"/>
                             </group>
                         </group>
                     </sheet>
