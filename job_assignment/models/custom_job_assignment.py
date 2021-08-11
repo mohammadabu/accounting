@@ -30,8 +30,8 @@ class HrCustomJobAssignment(models.Model):
     date_to = fields.Date(required=True)
     duration = fields.Char(compute="_compute_expected_duration")
     time_request = fields.Datetime(string="Time of the request",default=datetime.now(),readonly=True)
-    note = fields.Text()
-
+    note = fields.Text(required=True)
+    attachments = fields.Binary()
     
     @api.onchange('date_from','date_to') 
     def _compute_expected_duration(self):
@@ -46,12 +46,7 @@ class HrCustomJobAssignment(models.Model):
                     dayRange_day = dayRange.strftime("%A")
                     if dayRange_day != "Friday" and dayRange_day != "Saturday":
                         count = count + 1
-                    # _logger.info("day range")
-                    # _logger.info(dayRange)
-                    # _logger.info(dayRange_day)
                 duration = count
-                # if duration >= 0:
-                #     duration = duration + 1
                 rec.duration = str(duration) + " " + _("days")
             else:
                 rec.duration = "0 "+ _("days")

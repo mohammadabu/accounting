@@ -31,10 +31,11 @@
                                 <field name="date_from" />
                                 <field name="date_to" />
                                 <field name="duration"/>
-                                <field name="time_request"/>
                             </group>
                             <group>
                                 <field name="note"/>
+                                <field name="time_request"/>
+                                <field name="attachments"/>
                             </group>
                         </group>
                     </sheet>
