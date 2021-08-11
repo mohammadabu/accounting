@@ -43,7 +43,7 @@
                                 <field name="note"/>
                                 <field name="time_request"/>
                                 <field name="attachments"/>
-                                <field name="is_direct_manager"/>
+                                <field name="is_direct_manager" invisible="1"/>
                             </group>
                         </group>
                     </sheet>
