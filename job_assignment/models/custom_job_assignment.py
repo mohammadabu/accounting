@@ -43,6 +43,8 @@ class HrCustomJobAssignment(models.Model):
 
     mandate_city = fields.Char()
 
+    leave_id = fields.Many2one('hr.leave')
+
     @api.depends('employee')
     def _compute_is_direct_manager(self):
         if self.employee.parent_id != False:
@@ -92,9 +94,19 @@ class HrCustomJobAssignment(models.Model):
                 'request_unit':'day'
             }
             check_leave_type = self.env['hr.leave.type'].sudo().create(leave_type_vals)
+        check_leave_type = check_leave_type.id
         _logger.info("check_leave_type")
         _logger.info(check_leave_type)    
-        # Create 
+        # Create Leave
+        if self.leave_id == False:
+            leave_vals = {
+                'employee_id':self.employee.id,
+                'holiday_status_id': check_leave_type,
+                'request_date_from': self.date_from,
+                'request_date_to': self.date_to,
+            }
+            leave = self.env['hr.leave'].sudo().create(leave_vals)
+            self.leave_id = leave.id
     def refuse(self):
         self.state = 'rejected'
     def set_to_draft(self):
