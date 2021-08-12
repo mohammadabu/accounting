@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <record id="hr_rule_mandate_manager" model="ir.rule">
+        <field name="name">Mandate manager role</field>
+        <field name="model_id" ref="model_hr_mandate" />
+        <field name="groups" eval="[(4,ref('hr.group_hr_manager'))]"/>
+        <field name="perm_read" eval = "1"/>
+        <field name="perm_write" eval = "1"/>
+        <field name="perm_create" eval = "1"/>
+        <field name="perm_unlink" eval = "1"/>
+        <field name="domain_force">
+            [(1,'=',1)]
+        </field>
+    </record>
+
+    <record id="hr_mandate_personal_rule_manager" model="ir.rule">
+        <field name="name">Employee Mandate Manager</field>
+        <field name="model_id" ref="model_hr_mandate" />
+        <field name="perm_read" eval = "1"/>
+        <field name="perm_write" eval = "1"/>
+        <field name="perm_create" eval = "1"/>
+        <field name="perm_unlink" eval = "1"/>
+        <field name="domain_force">
+            ['|',('employee.user_id.id', '=', user.id),('employee.parent_id.user_id.id','=',user.id)]
+        </field>
+    </record>
+    
+</odoo>
