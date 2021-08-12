@@ -98,7 +98,10 @@ class HrCustomJobAssignment(models.Model):
         _logger.info("check_leave_type")
         _logger.info(check_leave_type)    
         # Create Leave
+        _logger.info("Create Leave")
+        _logger.info(self.leave_id)
         if self.leave_id == False:
+            _logger.info("self.leave_id")
             leave_vals = {
                 'employee_id':self.employee.id,
                 'holiday_status_id': check_leave_type,
