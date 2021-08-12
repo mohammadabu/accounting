@@ -113,27 +113,27 @@ class HrCustomCustodyItems(models.Model):
             raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
 
 
-    @api.model
-    def create(self,vals):
-        required_quantity = 0
-        custody_used = 0 
-        amount_remaining = 0 
-        rtn = super(HrCustomCustodyItems,self).create(vals)
-        try:     
-            required_quantity = rtn.required_quantity 
-            custody_used = rtn.custody_used
-            amount_remaining = rtn.amount_remaining
-        except:
-            required_quantity = 0
-            custody_used = 0 
-            amount_remaining = 0 
-        if required_quantity < custody_used:
-            raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
-            return False
-        elif amount_remaining < 0:
-            raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
-            return False
-        return rtn     
+    # @api.model
+    # def create(self,vals):
+    #     required_quantity = 0
+    #     custody_used = 0 
+    #     amount_remaining = 0 
+    #     rtn = super(HrCustomCustodyItems,self).create(vals)
+    #     try:     
+    #         required_quantity = rtn.required_quantity 
+    #         custody_used = rtn.custody_used
+    #         amount_remaining = rtn.amount_remaining
+    #     except:
+    #         required_quantity = 0
+    #         custody_used = 0 
+    #         amount_remaining = 0 
+    #     if required_quantity < custody_used:
+    #         raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
+    #         return False
+    #     elif amount_remaining < 0:
+    #         raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
+    #         return False
+    #     return rtn     
 
 
     def unlink(self):
