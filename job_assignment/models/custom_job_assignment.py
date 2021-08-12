@@ -98,11 +98,6 @@ class HrCustomJobAssignment(models.Model):
             }
             check_leave_type = self.env['hr.leave.type'].sudo().create(leave_type_vals)
         check_leave_type = check_leave_type.id
-        _logger.info("check_leave_type")
-        _logger.info(check_leave_type)    
-        # Create Leave
-        _logger.info("Create Leave")
-        _logger.info(self.leave_id)
         if not self.leave_id:
             _logger.info("self.leave_id")
             leave_vals = {
@@ -115,6 +110,8 @@ class HrCustomJobAssignment(models.Model):
             }
             leave = self.env['hr.leave'].sudo().create(leave_vals)
             self.leave_id = leave.id
+        else:
+            self.leave_id.write({'state': 'confirm'})   
     def refuse(self):
         self.state = 'rejected'
     def set_to_draft(self):
