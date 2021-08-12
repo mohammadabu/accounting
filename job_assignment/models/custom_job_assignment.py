@@ -79,6 +79,22 @@ class HrCustomJobAssignment(models.Model):
         self.state = 'direct_manager'    
     def approve_hr_manager(self):
         self.state = 'hr_manager'
+        # Check If leave type exist
+        check_leave_type = self.env['hr.leave.type'].sudo().search([('internal_assignment','=','job_assignment')])
+        if len(check_leave_type) <= 0:
+            leave_type_vals = {
+                'internal_assignment':'job_assignment',
+                'name': 'مهمة عمل',
+                'validation_type': 'no_validation',
+                'type': 'paid_time_off',
+                'allocation_type':'no',
+                'color_name':'red',
+                'request_unit':'day'
+            }
+            check_leave_type = self.env['hr.leave.type'].sudo().create(leave_type_vals)
+        _logger.info("check_leave_type")
+        _logger.info(check_leave_type)    
+        # Create 
     def refuse(self):
         self.state = 'rejected'
     def set_to_draft(self):
