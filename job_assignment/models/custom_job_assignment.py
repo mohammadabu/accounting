@@ -29,6 +29,7 @@ class HrCustomJobAssignment(models.Model):
     date_from = fields.Date(required=True)
     date_to = fields.Date(required=True)
     duration = fields.Char(compute="_compute_expected_duration")
+    duration_int = fields.Char(compute="_compute_expected_duration")
     time_request = fields.Datetime(string="Time of the request",default=datetime.now(),readonly=True)
     note = fields.Text(required=True)
     attachments = fields.Binary()
@@ -71,8 +72,10 @@ class HrCustomJobAssignment(models.Model):
                         count = count + 1
                 duration = count
                 rec.duration = str(duration) + " " + _("days")
+                rec.duration_int = str(duration)
             else:
                 rec.duration = "0 "+ _("days")
+                rec.duration_int = 0
 
 
     def sent(self):
@@ -107,8 +110,8 @@ class HrCustomJobAssignment(models.Model):
                 'holiday_status_id': check_leave_type,
                 'request_date_from': self.date_from,
                 'request_date_to': self.date_to,
-                'number_of_days': self.duration,
-                'number_of_days_display': self.duration
+                'number_of_days': self.duration_int,
+                'number_of_days_display': self.duration_int
             }
             leave = self.env['hr.leave'].sudo().create(leave_vals)
             self.leave_id = leave.id
