@@ -139,7 +139,7 @@ class HrCustomCustodyItems(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         _logger.info("field.required_quantity")
-        _logger.info(vals_list)
+        _logger.info(self.required_quantity)
         # field_ids = {vals['field_id'] for vals in vals_list}
         # _logger.info("field.required_quantity")
         # _logger.info(field.required_quantity)
@@ -151,7 +151,7 @@ class HrCustomCustodyItems(models.Model):
             #                       'Please modify them through Python code, '
             #                       'preferably through a custom addon!'))
         # recs = super().create(vals_list)
-        rtn = super(HrCustomCustodyItems,self).create(vals)
+        rtn = super(HrCustomCustodyItems,self).create(vals_list)
         # self.flush()
         # self.pool.setup_models(self._cr)
         return rtn
