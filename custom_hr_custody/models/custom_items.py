@@ -94,23 +94,23 @@ class HrCustomCustodyItems(models.Model):
         return rtn    
 
 
-    @api.constrains('required_quantity','custody_used','amount_remaining')
-    def _validate_work_hours(self):
-        required_quantity = 0
-        custody_used = 0 
-        amount_remaining = 0 
-        try:     
-            required_quantity = self.required_quantity 
-            custody_used = self.custody_used
-            amount_remaining = self.amount_remaining
-        except:
-            required_quantity = 0
-            custody_used = 0 
-            amount_remaining = 0 
-        if required_quantity < custody_used:
-            raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
-        elif amount_remaining < 0:
-            raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
+    # @api.constrains('required_quantity','custody_used','amount_remaining')
+    # def _validate_work_hours(self):
+    #     required_quantity = 0
+    #     custody_used = 0 
+    #     amount_remaining = 0 
+    #     try:     
+    #         required_quantity = self.required_quantity 
+    #         custody_used = self.custody_used
+    #         amount_remaining = self.amount_remaining
+    #     except:
+    #         required_quantity = 0
+    #         custody_used = 0 
+    #         amount_remaining = 0 
+    #     if required_quantity < custody_used:
+    #         raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
+    #     elif amount_remaining < 0:
+    #         raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
 
 
     @api.model
