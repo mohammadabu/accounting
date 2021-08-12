@@ -100,7 +100,7 @@ class HrCustomJobAssignment(models.Model):
         # Create Leave
         _logger.info("Create Leave")
         _logger.info(self.leave_id)
-        if self.leave_id == False:
+        if not self.leave_id:
             _logger.info("self.leave_id")
             leave_vals = {
                 'employee_id':self.employee.id,
