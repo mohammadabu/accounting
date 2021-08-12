@@ -79,8 +79,12 @@ class HrCustomJobAssignment(models.Model):
 
 
     def sent(self):
-        self.state = 'to_approve'                         
+        self.state = 'to_approve'     
+        if self.leave_id:
+            self.leave_id.write({'state': 'confirm'})                    
     def approve_direct_manager(self):
+        if self.leave_id:
+            self.leave_id.write({'state': 'confirm'})
         self.state = 'direct_manager'    
     def approve_hr_manager(self):
         self.state = 'hr_manager'
@@ -106,15 +110,20 @@ class HrCustomJobAssignment(models.Model):
                 'request_date_from': self.date_from,
                 'request_date_to': self.date_to,
                 'number_of_days': self.duration_int,
-                'number_of_days_display': self.duration_int
+                'number_of_days_display': self.duration_int,
+                'state':'validate'
             }
             leave = self.env['hr.leave'].sudo().create(leave_vals)
             self.leave_id = leave.id
         else:
-            self.leave_id.write({'state': 'confirm'})   
+            self.leave_id.write({'state': 'validate'})   
     def refuse(self):
         self.state = 'rejected'
+        if self.leave_id:
+            self.leave_id.write({'state': 'confirm'})
     def set_to_draft(self):
+        if self.leave_id:
+            self.leave_id.write({'state': 'confirm'})
         self.state = 'draft'    
 
 
