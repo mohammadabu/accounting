@@ -93,7 +93,7 @@ class HrCustomMandate(models.Model):
         if len(check_leave_type) <= 0:
             leave_type_vals = {
                 'internal_mandate':'mandate',
-                'name': 'مهمة عمل',
+                'name': 'انتداب',
                 'validation_type': 'no_validation',
                 'type': 'paid_time_off',
                 'allocation_type':'no',
