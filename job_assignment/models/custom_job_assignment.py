@@ -107,8 +107,8 @@ class HrCustomJobAssignment(models.Model):
                 'holiday_status_id': check_leave_type,
                 'request_date_from': self.date_from,
                 'request_date_to': self.date_to,
-                'number_of_days': float(self.duration),
-                'number_of_days_display': float(self.duration)
+                'number_of_days': float(int(self.duration)),
+                'number_of_days_display': float(int(self.duration))
             }
             leave = self.env['hr.leave'].sudo().create(leave_vals)
             self.leave_id = leave.id
