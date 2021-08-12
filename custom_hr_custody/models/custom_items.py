@@ -138,10 +138,14 @@ class HrCustomCustodyItems(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        field_ids = {vals['field_id'] for vals in vals_list}
-        for field in self.env['ir.model.fields'].browse(field_ids):
-            _logger.info("field.required_quantity")
-            _logger.info(field.required_quantity)
+        _logger.info("field.required_quantity")
+        _logger.info(vals_list)
+        # field_ids = {vals['field_id'] for vals in vals_list}
+        # _logger.info("field.required_quantity")
+        # _logger.info(field.required_quantity)
+        # for field in self.env['ir.model.fields'].browse(field_ids):
+        #     _logger.info("field.required_quantity")
+        #     _logger.info(field.required_quantity)
             # if field.state != 'manual':
             #     raise UserError(_('Properties of base fields cannot be altered in this manner! '
             #                       'Please modify them through Python code, '
