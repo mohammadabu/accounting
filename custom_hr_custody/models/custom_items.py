@@ -78,7 +78,7 @@ class HrCustomCustodyItems(models.Model):
     description = fields.Text()
 
     def write(self,values):
-        rtn = super(HrCustomCustodyItems,self).write(values)
+        rtn = super(HrCustomCustodyItems,self).write(values)    
         required_quantity = int(self.required_quantity)
         custody_used = int(self.custody_used)
         amount_remaining = int(self.amount_remaining)
@@ -134,6 +134,25 @@ class HrCustomCustodyItems(models.Model):
     #         raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
     #         return False
     #     return rtn     
+
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        field_ids = {vals['field_id'] for vals in vals_list}
+        for field in self.env['ir.model.fields'].browse(field_ids):
+            _logger.info("field.required_quantity")
+            _logger.info(field.required_quantity)
+            # if field.state != 'manual':
+            #     raise UserError(_('Properties of base fields cannot be altered in this manner! '
+            #                       'Please modify them through Python code, '
+            #                       'preferably through a custom addon!'))
+        # recs = super().create(vals_list)
+        rtn = super(HrCustomCustodyItems,self).create(vals)
+        # self.flush()
+        # self.pool.setup_models(self._cr)
+        return rtn
+
+
 
 
     def unlink(self):
