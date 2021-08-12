@@ -41,6 +41,8 @@ class HrCustomJobAssignment(models.Model):
         ,compute='_compute_is_direct_manager'
     )
 
+    mandate_city = fields.Char()
+
     @api.depends('employee')
     def _compute_is_direct_manager(self):
         if self.employee.parent_id != False:
