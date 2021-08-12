@@ -113,48 +113,48 @@ class HrCustomCustodyItems(models.Model):
             raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
 
 
-    # @api.model
-    # def create(self,vals):
-    #     required_quantity = 0
-    #     custody_used = 0 
-    #     amount_remaining = 0 
-    #     rtn = super(HrCustomCustodyItems,self).create(vals)
-    #     try:     
-    #         required_quantity = rtn.required_quantity 
-    #         custody_used = rtn.custody_used
-    #         amount_remaining = rtn.amount_remaining
-    #     except:
-    #         required_quantity = 0
-    #         custody_used = 0 
-    #         amount_remaining = 0 
-    #     if required_quantity < custody_used:
-    #         raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
-    #         return False
-    #     elif amount_remaining < 0:
-    #         raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
-    #         return False
-    #     return rtn     
+    @api.model
+    def create(self,vals):
+        required_quantity = 0
+        custody_used = 0 
+        amount_remaining = 0 
+        rtn = super(HrCustomCustodyItems,self).create(vals)
+        try:     
+            required_quantity = rtn.required_quantity 
+            custody_used = rtn.custody_used
+            amount_remaining = rtn.amount_remaining
+        except:
+            required_quantity = 0
+            custody_used = 0 
+            amount_remaining = 0 
+        if required_quantity < custody_used:
+            raise exceptions.UserError(_('The required quantity is less than the quantity used'))
+            return False
+        elif amount_remaining < 0:
+            raise exceptions.UserError(_('The remaining quantity is less than zero'))
+            return False
+        return rtn     
 
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        _logger.info("field.required_quantity")
-        _logger.info(self.required_quantity)
-        # field_ids = {vals['field_id'] for vals in vals_list}
-        # _logger.info("field.required_quantity")
-        # _logger.info(field.required_quantity)
-        # for field in self.env['ir.model.fields'].browse(field_ids):
-        #     _logger.info("field.required_quantity")
-        #     _logger.info(field.required_quantity)
-            # if field.state != 'manual':
-            #     raise UserError(_('Properties of base fields cannot be altered in this manner! '
-            #                       'Please modify them through Python code, '
-            #                       'preferably through a custom addon!'))
-        # recs = super().create(vals_list)
-        rtn = super(HrCustomCustodyItems,self).create(vals_list)
-        # self.flush()
-        # self.pool.setup_models(self._cr)
-        return rtn
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     _logger.info("field.required_quantity")
+    #     _logger.info(self.required_quantity)
+    #     # field_ids = {vals['field_id'] for vals in vals_list}
+    #     # _logger.info("field.required_quantity")
+    #     # _logger.info(field.required_quantity)
+    #     # for field in self.env['ir.model.fields'].browse(field_ids):
+    #     #     _logger.info("field.required_quantity")
+    #     #     _logger.info(field.required_quantity)
+    #         # if field.state != 'manual':
+    #         #     raise UserError(_('Properties of base fields cannot be altered in this manner! '
+    #         #                       'Please modify them through Python code, '
+    #         #                       'preferably through a custom addon!'))
+    #     # recs = super().create(vals_list)
+    #     rtn = super(HrCustomCustodyItems,self).create(vals_list)
+    #     # self.flush()
+    #     # self.pool.setup_models(self._cr)
+    #     return rtn
 
 
 
