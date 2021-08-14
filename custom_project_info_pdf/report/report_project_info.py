@@ -3,7 +3,7 @@ from odoo import models, fields, api
 
 
 class ReportProjectInfo(models.AbstractModel):
-    _name = 'report.custom_project_info_pdf.report_project_pdf'
+    _name = 'report.custom_project_info_pdf.report_project_info'
 
     def get_project_info(self, docs):
 
@@ -20,7 +20,7 @@ class ReportProjectInfo(models.AbstractModel):
         # else:
         #     rec = self.env['account.analytic.line'].search([('user_id', '=', docs.employee[0].id)])
 
-        rec = self.env['project.project'].search([])
+        rec = self.env['project.project'].sudo().search([])
 
 
         records = []
@@ -35,7 +35,7 @@ class ReportProjectInfo(models.AbstractModel):
 
     @api.model
     def _get_report_values(self, docids, data=None):
-        docs = self.env['project_info.wizard'].browse(self.env.context.get('active_id'))
+        docs = self.env['project_info.wizard'].sudo().browse(self.env.context.get('active_id'))
         # identification = []
         # for i in self.env['hr.employee'].search([('user_id', '=', docs.employee[0].id)]):
         #     if i:
