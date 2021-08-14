@@ -26,17 +26,10 @@ class ProjectInfo(models.TransientModel):
     _name = 'project_info.wizard'
 
 
-    stages = fields.Many2many('project.project.stages','project_id')
-    employee = fields.Many2one('res.users', string="Employee", required=True)
-    from_date = fields.Date(string="Starting Date")
-    to_date = fields.Date(string="Ending Date")
-
+    stages = fields.Many2many('project.project.stages','id')
     def print_project_info(self):
         data = {
             'stages': self.from_date,
-            'start_date': self.from_date,
-            'end_date': self.to_date,
-            'employee': self.employee.id
         }
         return self.env.ref('custom_project_info_pdf.action_report_print_project_info').report_action(self, data=data)
 

@@ -6,13 +6,12 @@ class ReportProjectInfo(models.AbstractModel):
     _name = 'report.custom_project_info_pdf.report_project_info'
 
     def get_project_info(self, docs):
-        # rec = ''
-        # if len(docs.stages) > 0 :
-        #     rec = self.env['project.project'].sudo().search([('active','=',1),('project_stage','in',docs.stages)])
-        # else:
-        #     rec = self.env['project.project'].sudo().search([('active','=',1)])
-
-        rec = self.env['project.project'].sudo().search([('active','=',1)])
+        rec = ''
+        if len(docs.stages) > 0 :
+            rec = self.env['project.project'].sudo().search([('active','=',1),('project_stage','in',docs.stages)])
+        else:
+            rec = self.env['project.project'].sudo().search([('active','=',1)])
+               
 
         records = []
         for r in rec:
