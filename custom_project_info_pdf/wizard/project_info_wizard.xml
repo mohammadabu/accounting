@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="project_info_report_view" model="ir.ui.view">
+            <field name="name">project_info.wizard</field>
+            <field name="model">project_info.wizard</field>
+            <field name="arch" type="xml">
+               <form>
+                   <group>
+                        <group string="Select Employee">
+                                <field name="employee"/>
+                        </group>
+                       <group string="Select Date">
+                                <field name="from_date"/>
+                                <field name="to_date"/>
+                        </group>
+                        <footer>
+                            <button string="Print Project Info" name="print_project_info" type="object" class="btn-primary"/>
+                            <button string="Discard" class="btn-default" special="cancel"/>
+                        </footer>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_print_project_info_wizard" model="ir.actions.act_window">
+            <field name="name">project_info.wizard</field>
+            <field name="res_model">project_info.wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_info_report_view"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem name="Print Project Info" id="print_project_info" action="action_print_project_info_wizard" parent="project.menu_main_pm"/>
+    </data>
+</odoo>
+
+
+
