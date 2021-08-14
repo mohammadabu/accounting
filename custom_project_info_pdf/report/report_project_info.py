@@ -8,7 +8,7 @@ class ReportProjectInfo(models.AbstractModel):
     def get_project_info(self, docs):
         rec = ''
         if len(docs.stages) > 0 :
-            arr = {}
+            arr = []
             for stage in docs.stages:
                 arr.append(stage.id)    
             rec = self.env['project.project'].sudo().search([('active','=',1),('project_stage','in',arr)])
