@@ -6,6 +6,7 @@
                 <t t-foreach="docs" t-as="o">
                     <div class="page">
                         <div style="padding-bottom:50px !important;" class="oe_structure"/>
+                        <h1 style="text-align:center;">Outsourcing</h1>
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
