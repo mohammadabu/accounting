@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_services_info">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <div style="padding-bottom:50px !important;" class="oe_structure"/>
+                        <h1 style="text-align:center;">Managed Services</h1>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th style="width:25%;">Services Number</th>
+                                    <th style="width:25%;">Services Name</th>
+                                    <th style="width:25%;">Services Stage</th>
+                                    <th style="width:25%;">Associated Opportunity Value</th>
+                                </tr>
+                                <tr t-foreach="services_info" t-as="t">
+                                    <td><span t-esc="t['name_seq']"/></td>
+                                    <td><span t-esc="t['name']"/></td>
+                                    <td><span t-esc="t['stage']"/></td>
+                                    <td><span t-esc="t['parent_opportunity']"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

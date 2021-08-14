@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="services_info_report_view" model="ir.ui.view">
+            <field name="name">services_info.wizard</field>
+            <field name="model">services_info.wizard</field>
+            <field name="arch" type="xml">
+               <form>
+                   <group>
+                        <group string="Select Stages">
+                            <field name="stages" widget="many2many_tags"/>
+                        </group>
+                        <footer>
+                            <button string="Print Services Info" name="print_services_info" type="object" class="btn-primary"/>
+                            <button string="Discard" class="btn-default" special="cancel"/>
+                        </footer>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_print_services_info_wizard" model="ir.actions.act_window">
+            <field name="name">services_info.wizard</field>
+            <field name="res_model">services_info.wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="services_info_report_view"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem name="Print Services Info" groups="services.group_services_manager" id="print_services_info" action="action_print_services_info_wizard" parent="services.menu_main_pm"/>
+    </data>
+</odoo>
+
+
+
