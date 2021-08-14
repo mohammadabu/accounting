@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="outsourcing_info_report_view" model="ir.ui.view">
+            <field name="name">outsourcing_info.wizard</field>
+            <field name="model">outsourcing_info.wizard</field>
+            <field name="arch" type="xml">
+               <form>
+                   <group>
+                        <group string="Select Stages">
+                            <field name="stages" widget="many2many_tags"/>
+                        </group>
+                        <footer>
+                            <button string="Print Outsourcing Info" name="print_outsourcing_info" type="object" class="btn-primary"/>
+                            <button string="Discard" class="btn-default" special="cancel"/>
+                        </footer>
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_print_outsourcing_info_wizard" model="ir.actions.act_window">
+            <field name="name">outsourcing_info.wizard</field>
+            <field name="res_model">outsourcing_info.wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="outsourcing_info_report_view"/>
+            <field name="target">new</field>
+        </record>
+        <menuitem name="Print Outsourcing Info" groups="outsourcing.group_outsourcing_manager" id="print_outsourcing_info" action="action_print_outsourcing_info_wizard" parent="outsourcing.menu_main_pm"/>
+    </data>
+</odoo>
+
+
+

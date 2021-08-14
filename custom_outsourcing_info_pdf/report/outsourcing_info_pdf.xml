@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <report
+            id="action_report_print_outsourcing_info"
+            model="outsourcing_info.wizard"
+            report_type="qweb-pdf"
+            string="Outsourcing Info"
+            name="custom_outsourcing_info_pdf.report_outsourcing_info"
+            file="custom_outsourcing_info_pdf.report_outsourcing_info"
+            menu="False"
+        />
+</odoo>
