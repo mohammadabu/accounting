@@ -75,5 +75,5 @@ class ReportProjectInfo(models.AbstractModel):
         return {
             'doc_ids': self.ids,
             'docs': docs,
-            'project_info': timesheets[0],
+            'project_info': project_info[0],
         }
