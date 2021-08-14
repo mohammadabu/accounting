@@ -20,7 +20,7 @@ class ReportProjectInfo(models.AbstractModel):
         # else:
         #     rec = self.env['account.analytic.line'].search([('user_id', '=', docs.employee[0].id)])
 
-        rec = self.env['project.project'].sudo().search([])
+        rec = self.env['project.project'].sudo().search([('active','=',1)])
 
 
         records = []
