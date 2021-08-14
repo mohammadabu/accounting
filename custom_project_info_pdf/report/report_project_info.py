@@ -25,11 +25,13 @@ class ReportProjectInfo(models.AbstractModel):
 
         records = []
         for r in rec:
-            vals = {'name_seq': r.name_seq,
+            vals = {
+                    'name_seq': r.name_seq,
                     'name': r.name,
                     'stage': r.project_stage.name,
-                    'parent_opportunity	': r.parent_opportunity.name,
-                    }
+                    # 'parent_opportunity	': r.parent_opportunity.name,
+                    'parent_opportunity	': 'sadsadasdsa',
+                }
             records.append(vals)
         return [records]
 

@@ -13,13 +13,13 @@
                                     <th>Project Number</th>
                                     <th>Project Name</th>
                                     <th >Project Stage</th>
-                                    <!-- <th >Associated Opportunity Value</th> -->
+                                    <th >Associated Opportunity Value</th>
                                 </tr>
                                 <tr t-foreach="project_info" t-as="t">
                                     <td><span t-esc="t['name_seq']"/></td>
                                     <td ><span t-esc="t['name']"/></td>
                                     <td ><span t-esc="t['stage']"/></td>
-                                    <!-- <td ><span t-esc="t['parent_opportunity']"/></td> -->
+                                    <td ><span t-esc="t['parent_opportunity']"/></td>
                                 </tr>
                             </tbody>
                         </table>
