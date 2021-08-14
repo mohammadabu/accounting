@@ -128,11 +128,12 @@ class HrCustomCustodyItems(models.Model):
             custody_used = 0 
             amount_remaining = 0 
         if required_quantity < custody_used:
-            raise exceptions.UserError(_('The required quantity is less than the quantity used'))
-            return False
+            # raise exceptions.UserError(_('The required quantity is less than the quantity used'))
+            raise exceptions.Warning("Please fill in Medical Reasons Description")
+
         elif amount_remaining < 0:
-            raise exceptions.UserError(_('The remaining quantity is less than zero'))
-            return False
+            # raise exceptions.UserError(_('The remaining quantity is less than zero'))
+            raise exceptions.Warning("Please fill in Medical Reasons Description")
         return rtn     
 
 
