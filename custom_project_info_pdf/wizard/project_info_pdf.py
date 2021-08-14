@@ -26,7 +26,7 @@ class ProjectInfo(models.TransientModel):
     _name = 'project_info.wizard'
 
 
-    stages = fields.Many2many('project.project.stages')
+    stages = fields.Many2many('project.project.stages','project_id')
     employee = fields.Many2one('res.users', string="Employee", required=True)
     from_date = fields.Date(string="Starting Date")
     to_date = fields.Date(string="Ending Date")
