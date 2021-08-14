@@ -19,9 +19,11 @@ class ReportProjectInfo(models.AbstractModel):
         #                                                     ('date', '<=', docs.to_date)])
         # else:
         #     rec = self.env['account.analytic.line'].search([('user_id', '=', docs.employee[0].id)])
-
-        rec = self.env['project.project'].sudo().search([('active','=',1)])
-
+        rec = ''
+        if len(docs.stages) > 0 :
+            rec = self.env['project.project'].sudo().search([('active','=',1),('project_stage','in',docs.stages)])
+        else:
+            rec = self.env['project.project'].sudo().search([('active','=',1)])   
 
         records = []
         for r in rec:

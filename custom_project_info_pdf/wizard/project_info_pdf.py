@@ -25,12 +25,15 @@ from odoo import models, fields
 class ProjectInfo(models.TransientModel):
     _name = 'project_info.wizard'
 
+
+    stages = fields.Many2many('project.project.stages')
     employee = fields.Many2one('res.users', string="Employee", required=True)
     from_date = fields.Date(string="Starting Date")
     to_date = fields.Date(string="Ending Date")
 
     def print_project_info(self):
         data = {
+            'stages': self.from_date,
             'start_date': self.from_date,
             'end_date': self.to_date,
             'employee': self.employee.id

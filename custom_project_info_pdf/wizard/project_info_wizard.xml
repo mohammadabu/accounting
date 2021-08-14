@@ -7,13 +7,13 @@
             <field name="arch" type="xml">
                <form>
                    <group>
-                        <group string="Select Employee">
-                                <field name="employee"/>
+                        <group string="Select Stages">
+                            <field name="stages" widget="many2many_tags"/>
                         </group>
-                       <group string="Select Date">
+                       <!-- <group string="Select Date">
                                 <field name="from_date"/>
                                 <field name="to_date"/>
-                        </group>
+                        </group> -->
                         <footer>
                             <button string="Print Project Info" name="print_project_info" type="object" class="btn-primary"/>
                             <button string="Discard" class="btn-default" special="cancel"/>
