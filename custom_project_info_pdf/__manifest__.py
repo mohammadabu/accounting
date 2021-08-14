@@ -2,7 +2,7 @@
 {
     'name': 'Project PDF Report',
     'version': '13.0.1.0.0',
-    'depends': ['project'],
+    'depends': ['project','custom_project'],
     'data': [
         'report/report_project_info.xml',
         'report/project_info_pdf.xml',

@@ -25,11 +25,10 @@ from odoo import models, fields
 class ProjectInfo(models.TransientModel):
     _name = 'project_info.wizard'
 
-
-    stages = fields.Many2many('project.project.stages','id')
+    stages = fields.Many2many('project.project.stages')
     def print_project_info(self):
         data = {
-            'stages': self.from_date,
+            'stages': self.stages,
         }
         return self.env.ref('custom_project_info_pdf.action_report_print_project_info').report_action(self, data=data)
 
