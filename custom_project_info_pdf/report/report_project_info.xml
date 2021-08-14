@@ -7,19 +7,19 @@
                     <div class="page">
                         <div style="padding-bottom:50px !important;" class="oe_structure"/>
                         <h2 align="center">TimeSheet Report by Employees</h2>
-                        <table class="table table-condensed">
+                        <table class="table table-bordered">
                             <tbody>
                                 <tr>
                                     <th>Project Number</th>
                                     <th>Project Name</th>
-                                    <!-- <th >Project Stage</th> -->
+                                    <th >Project Stage</th>
                                     <th >Associated Opportunity Value</th>
                                 </tr>
                                 <tr t-foreach="project_info" t-as="t">
-                                    <td style='width="25%"'><span t-esc="t['name_seq']"/></td>
-                                    <td style='width="25%"'><span t-esc="t['name']"/></td>
-                                    <td style='width="25%"'><span t-esc="t['parent_opportunity']"/></td>
-                                    <td style='width="25%"'><span t-esc="t['stage']"/></td>
+                                    <td><span t-esc="t['name_seq']"/></td>
+                                    <td><span t-esc="t['name']"/></td>
+                                    <td><span t-esc="t['stage']"/></td>
+                                    <td><span t-esc="t['parent_opportunity']"/></td>
                                 </tr>
                             </tbody>
                         </table>
