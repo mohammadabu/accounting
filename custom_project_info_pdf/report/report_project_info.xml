@@ -10,10 +10,10 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <th>Project Number</th>
-                                    <th>Project Name</th>
-                                    <th >Project Stage</th>
-                                    <th >Associated Opportunity Value</th>
+                                    <th style="width:25%;">Project Number</th>
+                                    <th style="width:25%;">Project Name</th>
+                                    <th style="width:25%;">Project Stage</th>
+                                    <th style="width:25%;">Associated Opportunity Value</th>
                                 </tr>
                                 <tr t-foreach="project_info" t-as="t">
                                     <td><span t-esc="t['name_seq']"/></td>
