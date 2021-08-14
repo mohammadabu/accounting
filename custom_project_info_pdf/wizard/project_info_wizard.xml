@@ -31,7 +31,7 @@
             <field name="view_id" ref="project_info_report_view"/>
             <field name="target">new</field>
         </record>
-        <menuitem name="Print Project Info" id="print_project_info" action="action_print_project_info_wizard" parent="project.menu_main_pm"/>
+        <menuitem name="Print Project Info" groups="project.group_project_manager" id="print_project_info" action="action_print_project_info_wizard" parent="project.menu_main_pm"/>
     </data>
 </odoo>
 
