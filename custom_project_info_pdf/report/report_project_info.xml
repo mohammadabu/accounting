@@ -18,8 +18,8 @@
                                 <tr t-foreach="project_info" t-as="t">
                                     <td style='width="25%"'><span t-esc="t['name_seq']"/></td>
                                     <td style='width="25%"'><span t-esc="t['name']"/></td>
-                                    <!-- <td style='width="25%"'><span t-esc="t['stage']"/></td> -->
                                     <td style='width="25%"'><span t-esc="t['parent_opportunity']"/></td>
+                                    <td style='width="25%"'><span t-esc="t['stage']"/></td>
                                 </tr>
                             </tbody>
                         </table>

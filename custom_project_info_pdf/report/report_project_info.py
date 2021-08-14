@@ -29,8 +29,7 @@ class ReportProjectInfo(models.AbstractModel):
                     'name_seq': r.name_seq,
                     'name': r.name,
                     'stage': r.project_stage.name,
-                    # 'parent_opportunity	': r.parent_opportunity.name,
-                    'parent_opportunity	': 'sadsadasdsa',
+                    'parent_opportunity': r.parent_opportunity.name,
                 }
             records.append(vals)
         return [records]
