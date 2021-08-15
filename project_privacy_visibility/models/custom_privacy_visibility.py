@@ -24,7 +24,7 @@ class CustomPrivacyVisibility(models.Model):
     @api.depends('department')
     def _compute_hide_product_id(self):
         arr_dep = []
-        for dep in self.department.id:
+        for dep in self.department:
             arr_dep.append(dep.id)
         employee = self.env['hr.employee'].sudo().search([('user_id','=',self.env.user.id),('department_id','in',arr_dep)])
         if len(employee) > 0 :
