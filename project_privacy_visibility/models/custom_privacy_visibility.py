@@ -67,7 +67,7 @@ class CustomPrivacyVisibility(models.Model):
                             break
         
             # check department domain
-             
+
         
         
         self.user_emails = all_user_emails
@@ -102,9 +102,9 @@ class CustomPrivacyVisibility(models.Model):
                     if user_email.login != False:
                         if all_user_emails != False:
                             if user_email.login not in all_user_emails:
-                                all_user_emails = all_user_emails + "," + user_email.login
+                                all_user_emails = all_user_emails + "," + "#" + user_email.login + "#"
                         else:
-                            all_user_emails = user_email.login
+                            all_user_emails = "#" + user_email.login + "#"
 
             if self.department.manager_id != False:
                 manager_department = self.department.manager_id
@@ -114,9 +114,9 @@ class CustomPrivacyVisibility(models.Model):
                     if user_email_dep.login != False:
                         if all_user_emails != False:
                             if user_email_dep.login not in all_user_emails:
-                                all_user_emails = all_user_emails + "," + user_email_dep.login
+                                all_user_emails = all_user_emails + "," + "#" + user_email_dep.login + "#"
                         else:
-                            all_user_emails = user_email_dep.login  
+                            all_user_emails = "#" + user_email_dep.login + "#" 
 
                     # get all parent manager of department
                     i = 0
@@ -130,9 +130,9 @@ class CustomPrivacyVisibility(models.Model):
                                 if manager_department.parent_id.user_id != False:
                                     if all_user_emails != False:
                                         if manager_department.parent_id.user_id.login not in all_user_emails:
-                                            all_user_emails = all_user_emails + "," + manager_department.parent_id.user_id.login
+                                            all_user_emails = all_user_emails + "," + "#" + manager_department.parent_id.user_id.login + "#" 
                                     else:
-                                        all_user_emails = manager_department.parent_id.user_id.login 
+                                        all_user_emails = "#" + manager_department.parent_id.user_id.login + "#"
                                 manager_department = manager_department.parent_id 
                                 _logger.info(manager_department)   
                             count_final = count_final + 1                    
@@ -161,9 +161,9 @@ class CustomPrivacyVisibility(models.Model):
                             if user_email.login != False:
                                 if all_user_emails != False:
                                     if user_email.login not in all_user_emails:
-                                        all_user_emails = all_user_emails + "," + user_email.login
+                                        all_user_emails = all_user_emails + "," + "#" + user_email.login + "#"
                                 else:
-                                    all_user_emails = user_email.login
+                                    all_user_emails = "#" + user_email.login + "#"
                     _logger.info("department.manager_id")
                     department = self.env['hr.department'].sudo().search([('id','=',department)])
                     _logger.info(department)
@@ -178,9 +178,9 @@ class CustomPrivacyVisibility(models.Model):
                             if user_email_dep.login != False:
                                 if all_user_emails != False:
                                     if user_email_dep.login not in all_user_emails:
-                                        all_user_emails = all_user_emails + "," + user_email_dep.login
+                                        all_user_emails = all_user_emails + "," + "#" + user_email_dep.login + "#"
                                 else:
-                                    all_user_emails = user_email_dep.login 
+                                    all_user_emails = "#" + user_email_dep.login + "#"
 
                     # get all parent manager of department
                     manager_department = department.manager_id
@@ -195,9 +195,9 @@ class CustomPrivacyVisibility(models.Model):
                                 if manager_department.parent_id.user_id != False:
                                     if all_user_emails != False:
                                         if manager_department.parent_id.user_id.login not in all_user_emails:
-                                            all_user_emails = all_user_emails + "," + manager_department.parent_id.user_id.login
+                                            all_user_emails = all_user_emails + "," + "#" + manager_department.parent_id.user_id.login + "#"
                                     else:
-                                        all_user_emails = manager_department.parent_id.user_id.login 
+                                        all_user_emails = "#" + manager_department.parent_id.user_id.login + "#"
                                 manager_department = manager_department.parent_id 
                                 _logger.info(manager_department)   
                             count_final = count_final + 1                    
