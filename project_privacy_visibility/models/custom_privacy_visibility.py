@@ -131,7 +131,7 @@ class CustomPrivacyVisibility(models.Model):
                             count_final = count_final + 1                    
                         else:
                             break
-        return  all_user_emails
+        self.user_emails =  all_user_emails
 
     @api.model
     def create(self,vals):
@@ -161,19 +161,41 @@ class CustomPrivacyVisibility(models.Model):
                     department = self.env['hr.department'].sudo().search([('id','=',department)])
                     _logger.info(department)
                     _logger.info(department.manager_id)
-                    if department.manager_id != False:
-                        manager_department = department.manager_id
-                        _logger.info(manager_department)
-                        if manager_department.user_id != False:
-                            _logger.info(manager_department.user_id)
-                            # get manager of department
-                            user_email_dep = self.env['res.users'].search([('id','=',manager_department.user_id.id)])
-                            if user_email_dep.login != False:
-                                if all_user_emails != False:
-                                    if user_email_dep.login not in all_user_emails:
-                                        all_user_emails = all_user_emails + "," + user_email_dep.login
-                                else:
-                                    all_user_emails = user_email_dep.login                
+                    # if department.manager_id != False:
+                    #     manager_department = department.manager_id
+                    #     _logger.info(manager_department)
+                    #     if manager_department.user_id != False:
+                    #         _logger.info(manager_department.user_id)
+                    #         # get manager of department
+                    #         user_email_dep = self.env['res.users'].search([('id','=',manager_department.user_id.id)])
+                    #         if user_email_dep.login != False:
+                    #             if all_user_emails != False:
+                    #                 if user_email_dep.login not in all_user_emails:
+                    #                     all_user_emails = all_user_emails + "," + user_email_dep.login
+                    #             else:
+                    #                 all_user_emails = user_email_dep.login 
+
+                    # get all parent manager of department
+                    manager_department = department.manager_id
+                    i = 0
+                    count_final = 0
+                    while i <= 10:
+                        if count_final < 200:
+                            _logger.info("start")
+                            _logger.info(manager_department.parent_id)
+                            _logger.info(manager_department.parent_id.name)
+                            if len(manager_department.parent_id) > 0:
+                                if manager_department.parent_id.user_id != False:
+                                    if all_user_emails != False:
+                                        if manager_department.parent_id.user_id.login not in all_user_emails:
+                                            all_user_emails = all_user_emails + "," + manager_department.parent_id.user_id.login
+                                    else:
+                                        all_user_emails = manager_department.parent_id.user_id.login 
+                                manager_department = manager_department.parent_id 
+                                _logger.info(manager_department)   
+                            count_final = count_final + 1                    
+                        else:
+                            break                               
 
                 vals['user_emails'] = all_user_emails
         except:
