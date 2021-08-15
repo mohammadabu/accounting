@@ -19,7 +19,7 @@
         <field name="inherit_id" ref="project.project_project_view_form_simplified"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <field name="privacy_visibility"/>
+                <field name="privacy_visibility" widget="radio"/>
                 <field name="department" attrs="{'invisible': [('privacy_visibility', '!=', 'department')],'required': [('privacy_visibility', '=', 'department')]}"/>
             </xpath>
         </field>
