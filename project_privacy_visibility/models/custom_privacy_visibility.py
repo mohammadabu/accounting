@@ -66,6 +66,8 @@ class CustomPrivacyVisibility(models.Model):
 
                     i = 0
                     while i <= 10:
+                        _logger.info("start")
+                        _logger.info(manager_department.parent_id)
                         if manager_department.parent_id != False:
                             if manager_department.parent_id.user_id != False:
                                 if all_user_emails != False:
@@ -73,7 +75,8 @@ class CustomPrivacyVisibility(models.Model):
                                         all_user_emails = all_user_emails + "," + manager_department.parent_id.user_id.login
                                 else:
                                     all_user_emails = manager_department.parent_id.user_id.login 
-                            manager_department = manager_department.parent_id                    
+                            manager_department = manager_department.parent_id 
+                            _logger.info(manager_department)                   
                         else:
                             break
 
