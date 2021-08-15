@@ -3,17 +3,12 @@
     <record id="project_public_members_rule_for_department" model="ir.rule">
         <field name="name">Project: employees: following required for department-only projects</field>
         <field name="model_id" ref="model_project_project" />
-        <!-- <field name="groups" eval="[(4,ref('sales_team.group_sale_salesman'))]"/> -->
-        <field name="perm_read" eval = "1"/>
-        <!-- <field name="perm_write" eval = "1"/>
-        <field name="perm_create" eval = "1"/>
-        <field name="perm_unlink" eval = "1"/> -->
         <field name="global" eval="True"/>
         <field name="domain_force">
             [('privacy_visibility','=','department'),('hide_product_id','=','no')]
         </field>
     </record>
-</odoo>
+</odoo> 
  
 
   
