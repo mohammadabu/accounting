@@ -82,13 +82,16 @@ class CustomPrivacyVisibility(models.Model):
     @api.model
     def create(self,vals):
         try:   
-            _logger.info("vals")
-            _logger.info(vals)
-            # if "privacy_visibility" in vals:
-            #     if len(vals['multi_job_id'][0][2]) > 0 :
-            #         vals['job_id'] = vals['multi_job_id'][0][2][0]
-            #     else:
-            #         vals['job_id'] = False
+            privacy_visibility = ''
+            department = ''
+            if "privacy_visibility" in vals:
+                privacy_visibility = vals['privacy_visibility']
+            if "department" in vals:
+                department = vals['department']
+
+            if privacy_visibility == "department":
+                self.pool.get("project.project").checkUserEmail(rtn)
+
         except:
             print("An exception occurred")                                  
         rtn = super(CustomPrivacyVisibility,self).create(vals)
