@@ -66,8 +66,17 @@ class CustomPrivacyVisibility(models.Model):
 
                     i = 0
                     while i <= 10:
-                        _logger.info("test 111221")
-                        break    
+                        if manager_department.parent_id != False:
+                            if manager_department.parent_id.user_id != False:
+                                if all_user_emails != False:
+                                    if manager_department.parent_id.user_id.login not in all_user_emails:
+                                        all_user_emails = all_user_emails + "," + manager_department.parent_id.user_id.login
+                                else:
+                                    all_user_emails = manager_department.parent_id.user_id.login 
+                            manager_department = manager_department.parent_id                    
+                        else:
+                            break
+
 
         self.user_emails = all_user_emails
                 
@@ -81,9 +90,7 @@ class CustomPrivacyVisibility(models.Model):
         rtn = super(CustomPrivacyVisibility,self).write(values)
         after_edit_privacy_visibility = self.privacy_visibility
         after_edit_department = self.department.id
-        _logger.info("sadsadasdsas12321312332121332213dasad")
         if befory_edit_privacy_visibility != after_edit_privacy_visibility or before_edit_department != after_edit_department:
-            _logger.info("sadsadasdsasdasad")
             self.pool.get("project.project").checkUserEmail(self)
         return rtn     
 
