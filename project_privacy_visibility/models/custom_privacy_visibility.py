@@ -63,7 +63,9 @@ class CustomPrivacyVisibility(models.Model):
         rtn = super(CustomPrivacyVisibility,self).write(values)
         after_edit_privacy_visibility = self.privacy_visibility
         after_edit_department = self.department.id
+        _logger.info("sadsadasdsas12321312332121332213dasad")
         if befory_edit_privacy_visibility != after_edit_privacy_visibility or before_edit_department != after_edit_department:
+            _logger.info("sadsadasdsasdasad")
             self.pool.get("project.project").checkUserEmail(self)
         return rtn     
 
