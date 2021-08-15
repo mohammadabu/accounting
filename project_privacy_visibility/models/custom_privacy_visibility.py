@@ -49,6 +49,19 @@ class CustomPrivacyVisibility(models.Model):
                                 all_user_emails = all_user_emails + "," + user_email.login
                         else:
                             all_user_emails = user_email.login
+
+            # get manager of department
+            if self.department.manager_id != False:
+                manager_department = self.department.manager_id
+                if manager_department.user_id != False:
+                    user_email_dep = self.env['res.users'].search([('id','=',manager_department.user_id.id)])
+                    if user_email_dep.login != False:
+                        if all_user_emails != False:
+                            if user_email_dep.login not in all_user_emails:
+                                all_user_emails = all_user_emails + "," + user_email.login
+                        else:
+                            all_user_emails = user_email_dep.login     
+
         self.user_emails = all_user_emails
                 
 
