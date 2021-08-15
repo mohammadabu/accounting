@@ -131,7 +131,7 @@ class CustomPrivacyVisibility(models.Model):
                             count_final = count_final + 1                    
                         else:
                             break
-        self.user_emails = all_user_emails
+        return  all_user_emails
 
     @api.model
     def create(self,vals):
@@ -145,8 +145,8 @@ class CustomPrivacyVisibility(models.Model):
             _logger.info("123456789")
             if privacy_visibility == "department":
                 _logger.info("123452222226789")
-                self.pool.get("project.project").checkUserEmailCreate(vals)
-
+                all_user_emails = self.pool.get("project.project").checkUserEmailCreate(vals)
+                vals['user_emails'] = all_user_emails
         except:
             print("An exception occurred")                                  
         rtn = super(CustomPrivacyVisibility,self).create(vals)
