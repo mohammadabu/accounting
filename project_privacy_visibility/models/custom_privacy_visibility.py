@@ -69,7 +69,7 @@ class CustomPrivacyVisibility(models.Model):
 
 
 
-    def write(self,values):
+    def write(self,values): 
         befory_edit_privacy_visibility = self.privacy_visibility
         before_edit_department = self.department.id
         rtn = super(CustomPrivacyVisibility,self).write(values)
@@ -79,5 +79,19 @@ class CustomPrivacyVisibility(models.Model):
             self.pool.get("project.project").checkUserEmail(self)
         return rtn     
 
+    @api.model
+    def create(self,vals):
+        try:   
+            _logger.info("vals")
+            _logger.info(vals)
+            # if "privacy_visibility" in vals:
+            #     if len(vals['multi_job_id'][0][2]) > 0 :
+            #         vals['job_id'] = vals['multi_job_id'][0][2][0]
+            #     else:
+            #         vals['job_id'] = False
+        except:
+            print("An exception occurred")                                  
+        rtn = super(CustomPrivacyVisibility,self).create(vals)
+        return rtn 
 
  
