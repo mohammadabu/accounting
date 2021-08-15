@@ -83,6 +83,8 @@ class CustomPrivacyVisibility(models.Model):
 
     def checkUserEmailCreate(self):            
         all_user_emails = False
+        _logger.info("1234512321432132131231231231421312412412412")
+        _logger.info(self.privacy_visibility)
         if self.privacy_visibility == "department":
             project_department = self.department.id
             # get all employee department
