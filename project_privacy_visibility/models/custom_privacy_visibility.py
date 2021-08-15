@@ -34,24 +34,22 @@ class CustomPrivacyVisibility(models.Model):
             self.hide_product_id = 'yes'    
 
 
-    def checkUserEmail(self):
-        all_project = self.env['project.project'].sudo().search([])
-        for project in all_project:
-            all_user_emails = ''
-            if project.privacy_visibility == "department":
-                project_department = project.department.id
-                # get all employee department
-                employees = self.env['hr.employee'].sudo().search([('department_id','=',project_department)])
-                for emp in employees:
-                    if emp.user_id != False:
-                        user_email = self.env['res.users'].search([('id','=',emp.user_id.id)])
-                        if user_email.login != False:
-                            if all_user_emails != False:
-                                if user_email.login not in all_user_emails:
-                                    all_user_emails = all_user_emails + "," + user_email.login
-                            else:
-                                all_user_emails = user_email.login
-            project.user_emails = all_user_emails
+    def checkUserEmail(self):            
+        all_user_emails = ''
+        if self.privacy_visibility == "department":
+            project_department = self.department.id
+            # get all employee department
+            employees = self.env['hr.employee'].sudo().search([('department_id','=',project_department)])
+            for emp in employees:
+                if emp.user_id != False:
+                    user_email = self.env['res.users'].search([('id','=',emp.user_id.id)])
+                    if user_email.login != False:
+                        if all_user_emails != False:
+                            if user_email.login not in all_user_emails:
+                                all_user_emails = all_user_emails + "," + user_email.login
+                        else:
+                            all_user_emails = user_email.login
+        self.user_emails = all_user_emails
                 
 
 
