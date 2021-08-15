@@ -5,6 +5,5 @@
     'data': [
         'views/custom_privacy_visibility_view.xml',
         'security/privacy_visibility_security.xml',
-        # 'security/ir.model.access.csv',
     ],
 }
