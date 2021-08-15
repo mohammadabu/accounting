@@ -3,10 +3,10 @@
     <record id="project_public_members_rule_for_department" model="ir.rule">
         <field name="name">Project: employees: following required for department-only projects</field>
         <field name="model_id" ref="model_project_project" />
-        <!-- <field name="global" eval="True"/> -->
-         <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        <field name="global" eval="True"/>
+         <!-- <field name="groups" eval="[(4, ref('base.group_portal'))]"/> -->
         <field name="domain_force">
-            ['|','&amp;',('privacy_visibility','=','department'),('hide_product_id','=','no'),('id','=',6)]
+            [('privacy_visibility','=','department'),('hide_product_id','=','no')]
         </field>
     </record>
 
