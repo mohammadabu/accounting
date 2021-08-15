@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 
 class CustomPrivacyVisibility(models.Model):
 
-    _inherit = 'crm.lead'
+    _inherit = 'project.project'
 
     privacy_visibility = fields.Selection(selection_add=[('department', 'Department')])
 
