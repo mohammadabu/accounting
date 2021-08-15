@@ -65,18 +65,21 @@ class CustomPrivacyVisibility(models.Model):
                     # get all parent manager of department
 
                     i = 0
+                    count_final = 0
                     while i <= 10:
-                        _logger.info("start")
-                        _logger.info(manager_department.parent_id)
-                        if manager_department.parent_id.id != False:
-                            if manager_department.parent_id.user_id != False:
-                                if all_user_emails != False:
-                                    if manager_department.parent_id.user_id.login not in all_user_emails:
-                                        all_user_emails = all_user_emails + "," + manager_department.parent_id.user_id.login
-                                else:
-                                    all_user_emails = manager_department.parent_id.user_id.login 
-                            manager_department = manager_department.parent_id 
-                            _logger.info(manager_department)                   
+                        if count_final < 200:
+                            _logger.info("start")
+                            _logger.info(manager_department.parent_id)
+                            if manager_department.parent_id.id != False:
+                                if manager_department.parent_id.user_id != False:
+                                    if all_user_emails != False:
+                                        if manager_department.parent_id.user_id.login not in all_user_emails:
+                                            all_user_emails = all_user_emails + "," + manager_department.parent_id.user_id.login
+                                    else:
+                                        all_user_emails = manager_department.parent_id.user_id.login 
+                                manager_department = manager_department.parent_id 
+                                _logger.info(manager_department)   
+                            count_final = count_final + 1                    
                         else:
                             break
 
