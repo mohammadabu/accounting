@@ -15,6 +15,8 @@ class CustomPrivacyVisibility(models.Model):
 
     user_emails = fields.Text()
 
+    user_emails_department = fields.Text()
+
     def checkUserEmail(self):            
         all_user_emails = False
         if self.privacy_visibility == "department":
@@ -63,6 +65,11 @@ class CustomPrivacyVisibility(models.Model):
                             count_final = count_final + 1                    
                         else:
                             break
+        
+            # check department domain
+             
+        
+        
         self.user_emails = all_user_emails
                 
 

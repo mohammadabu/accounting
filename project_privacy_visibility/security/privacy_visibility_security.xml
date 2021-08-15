@@ -10,7 +10,7 @@
         <field name="perm_create" eval = "1"/>
         <field name="perm_unlink" eval = "1"/>
         <field name="domain_force">
-            [('privacy_visibility','=','department'),('user_emails','like','#2#')]
+            [('user_emails','like','#'+str(user.login)+'#')]
         </field>
     </record>
     <!-- <record id="project_task_public_members_rule_for_department" model="ir.rule">
