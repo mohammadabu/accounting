@@ -58,7 +58,7 @@ class CustomPrivacyVisibility(models.Model):
                     if user_email_dep.login != False:
                         if all_user_emails != False:
                             if user_email_dep.login not in all_user_emails:
-                                all_user_emails = all_user_emails + "," + user_email.login
+                                all_user_emails = all_user_emails + "," + user_email_dep.login
                         else:
                             all_user_emails = user_email_dep.login     
 
