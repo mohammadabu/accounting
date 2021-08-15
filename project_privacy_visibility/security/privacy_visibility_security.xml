@@ -7,7 +7,7 @@
         <field name="groups" eval="[(4,ref('project.group_project_user'))]"/>
         <field name="perm_read" eval = "1"/>
         <field name="domain_force">
-            [('privacy_visibility','=','department'),('hide_product_id','=','no')]
+            [('privacy_visibility','=','department')]
         </field>
     </record>
 
