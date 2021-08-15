@@ -13,6 +13,8 @@ class CustomPrivacyVisibility(models.Model):
 
     department = fields.Many2one('hr.department')
 
+    user_emails = fields.Text()
+
     hide_product_id = fields.Selection(
         [
             ('yes', 'yes'),
