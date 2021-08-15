@@ -144,8 +144,21 @@ class CustomPrivacyVisibility(models.Model):
                 department = vals['department']
             _logger.info("123456789")
             if privacy_visibility == "department":
-                _logger.info("123452222226789")
-                all_user_emails = self.pool.get("project.project").checkUserEmailCreate(vals)
+                all_user_emails = False
+                if privacy_visibility == "department":
+                    project_department = department.id
+                    # get all employee department
+                    employees = self.env['hr.employee'].sudo().search([('department_id','=',project_department)])
+                    for emp in employees:
+                        if emp.user_id != False:
+                            user_email = self.env['res.users'].search([('id','=',emp.user_id.id)])
+                            if user_email.login != False:
+                                if all_user_emails != False:
+                                    if user_email.login not in all_user_emails:
+                                        all_user_emails = all_user_emails + "," + user_email.login
+                                else:
+                                    all_user_emails = user_email.login
+
                 vals['user_emails'] = all_user_emails
         except:
             print("An exception occurred")                                  
