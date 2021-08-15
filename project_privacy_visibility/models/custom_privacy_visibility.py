@@ -23,7 +23,7 @@ class CustomPrivacyVisibility(models.Model):
     )
     @api.depends('department')
     def _compute_hide_product_id(self):
-        employee = self.env['hr.employee'].sudo().search([('user_id','=',self.env.user.id),('department_id','=',self.department.id)])
+        employee = self.env['hr.employee'].sudo().search([('user_id','=',self.env.user.id),('department_id','in',[self.department.id])])
         if len(employee) > 0 :
             self.hide_product_id = 'no'
         else:
