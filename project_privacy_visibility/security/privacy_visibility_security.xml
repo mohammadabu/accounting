@@ -5,7 +5,7 @@
         <field name="model_id" ref="model_project_project" />
         <field name="global" eval="True"/>
         <field name="domain_force">
-            ['|','&nbsp;',('privacy_visibility','=','department'),('hide_product_id','=','no'),('name','=','Project Template(do not delete this project)')]
+            ['|','&amp;',('privacy_visibility','=','department'),('hide_product_id','=','no'),('name','=','Project Template(do not delete this project)')]
         </field>
     </record>
 </odoo> 
