@@ -145,6 +145,9 @@ class CustomPrivacyVisibility(models.Model):
             _logger.info("123456789")
             if privacy_visibility == "department":
                 all_user_emails = False
+                _logger.info("department")
+                _logger.info(privacy_visibility)
+                _logger.info(department)
                 if privacy_visibility == "department":
                     project_department = department.id
                     # get all employee department
