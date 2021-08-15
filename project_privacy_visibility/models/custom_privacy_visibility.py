@@ -144,24 +144,31 @@ class CustomPrivacyVisibility(models.Model):
                 department = vals['department']
             if privacy_visibility == "department":
                 all_user_emails = False
-                _logger.info("department")
-                _logger.info(privacy_visibility)
-                _logger.info(department)
                 if privacy_visibility == "department":
-                    # project_department = department.id
                     project_department = department
-                    _logger.info(project_department)
                     # get all employee department
-                    employees = self.env['hr.employee'].sudo().search([('department_id','=',project_department)])
-                    for emp in employees:
-                        if emp.user_id != False:
-                            user_email = self.env['res.users'].search([('id','=',emp.user_id.id)])
-                            if user_email.login != False:
+                    # employees = self.env['hr.employee'].sudo().search([('department_id','=',project_department)])
+                    # for emp in employees:
+                    #     if emp.user_id != False:
+                    #         user_email = self.env['res.users'].search([('id','=',emp.user_id.id)])
+                    #         if user_email.login != False:
+                    #             if all_user_emails != False:
+                    #                 if user_email.login not in all_user_emails:
+                    #                     all_user_emails = all_user_emails + "," + user_email.login
+                    #             else:
+                    #                 all_user_emails = user_email.login
+
+                    if department.manager_id != False:
+                        manager_department = department.manager_id
+                        if manager_department.user_id != False:
+                            # get manager of department
+                            user_email_dep = self.env['res.users'].search([('id','=',manager_department.user_id.id)])
+                            if user_email_dep.login != False:
                                 if all_user_emails != False:
-                                    if user_email.login not in all_user_emails:
-                                        all_user_emails = all_user_emails + "," + user_email.login
+                                    if user_email_dep.login not in all_user_emails:
+                                        all_user_emails = all_user_emails + "," + user_email_dep.login
                                 else:
-                                    all_user_emails = user_email.login
+                                    all_user_emails = user_email_dep.login                
 
                 vals['user_emails'] = all_user_emails
         except:
