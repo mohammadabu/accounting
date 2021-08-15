@@ -158,8 +158,9 @@ class CustomPrivacyVisibility(models.Model):
                     #             else:
                     #                 all_user_emails = user_email.login
                     _logger.info("department.manager_id")
-                    _logger.info(department.manager_id)
                     department = self.env['hr.department'].sudo().search([('id','=',department)])
+                    _logger.info(department)
+                    _logger.info(department.manager_id)
                     if department.manager_id != False:
                         manager_department = department.manager_id
                         _logger.info(manager_department)
