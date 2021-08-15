@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='privacy_visibility']" position="after">
                 <field name="department" attrs="{'invisible': [('privacy_visibility', '!=', 'department')],'required': [('privacy_visibility', '=', 'department')]}"/>
+                <field name="hide_product_id"/>
             </xpath>
         </field>
     </record>
