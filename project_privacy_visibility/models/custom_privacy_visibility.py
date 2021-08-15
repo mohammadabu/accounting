@@ -15,25 +15,6 @@ class CustomPrivacyVisibility(models.Model):
 
     user_emails = fields.Text()
 
-    hide_product_id = fields.Selection(
-        [
-            ('yes', 'yes'),
-            ('no','no')
-        ]
-        ,compute='_compute_hide_product_id'
-    )
-    @api.depends('department')
-    def _compute_hide_product_id(self):
-        arr_dep = []
-        for dep in self.department:
-            arr_dep.append(dep.id)
-        employee = self.env['hr.employee'].sudo().search([('user_id','=',self.env.user.id),('department_id','in',arr_dep)])
-        if len(employee) > 0 :
-            self.hide_product_id = 'no'
-        else:
-            self.hide_product_id = 'yes'    
-
-
     def checkUserEmail(self):            
         all_user_emails = False
         if self.privacy_visibility == "department":
