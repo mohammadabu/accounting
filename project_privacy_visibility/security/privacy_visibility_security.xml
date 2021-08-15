@@ -10,7 +10,8 @@
         <field name="perm_create" eval = "1"/>
         <field name="perm_unlink" eval = "1"/>
         <field name="domain_force">
-            ['&amp;',('privacy_visibility','=','department'),('hide_product_id','=','no')]
+            <!-- ['&amp;',('privacy_visibility','=','department'),('hide_product_id','=','no')] -->
+            [('privacy_visibility','=','department')]
         </field>
     </record>
 
@@ -25,7 +26,8 @@
         <field name="perm_create" eval = "1"/>
         <field name="perm_unlink" eval = "1"/>
         <field name="domain_force">
-            ['&amp;',('project_id.privacy_visibility','=','department'),('project_id.hide_product_id','=','no')]
+            <!-- ['&amp;',('project_id.privacy_visibility','=','department'),('project_id.hide_product_id','=','no')] -->
+            [('project_id.privacy_visibility','=','department')]
         </field>
     </record>
 
