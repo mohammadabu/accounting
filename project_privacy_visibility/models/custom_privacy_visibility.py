@@ -142,7 +142,6 @@ class CustomPrivacyVisibility(models.Model):
                 privacy_visibility = vals['privacy_visibility']
             if "department" in vals:
                 department = vals['department']
-            _logger.info("123456789")
             if privacy_visibility == "department":
                 all_user_emails = False
                 _logger.info("department")
@@ -150,6 +149,7 @@ class CustomPrivacyVisibility(models.Model):
                 _logger.info(department)
                 if privacy_visibility == "department":
                     project_department = department.id
+                    _logger.info(project_department)
                     # get all employee department
                     employees = self.env['hr.employee'].sudo().search([('department_id','=',project_department)])
                     for emp in employees:
