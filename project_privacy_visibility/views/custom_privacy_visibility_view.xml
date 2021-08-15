@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="custom_project_custom_privacy_visibility_view" model="ir.ui.view">
+        <field name="name">custom.project.custom.privacy.visibility.view</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='privacy_visibility']" position="after">
+                <field name="department" attrs="{'invisible': [('privacy_visibility', '!=', 'department')],'required': [('privacy_visibility', '=', 'department')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
