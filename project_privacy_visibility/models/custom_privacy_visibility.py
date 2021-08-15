@@ -35,7 +35,7 @@ class CustomPrivacyVisibility(models.Model):
 
 
     def checkUserEmail(self):            
-        all_user_emails = ''
+        all_user_emails = False
         if self.privacy_visibility == "department":
             project_department = self.department.id
             # get all employee department
