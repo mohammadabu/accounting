@@ -8,23 +8,6 @@
             ['&amp;',('privacy_visibility','=','department'),('hide_product_id','=','no')]
         </field>
     </record>
-
-    
-    <!-- <record id="projec_tasks_public_members_rule_for_department" model="ir.rule">
-        <field name="name">user_project_tasks_users_only_tasks</field>
-        <field name="model_id" ref="model_project_task" />
-        <field name="global" eval="True"/>
-        <field name="perm_read" eval = "1"/>
-        <field name="perm_write" eval = "1"/>
-        <field name="perm_create" eval = "1"/>
-        <field name="perm_unlink" eval = "1"/>
-        <field name="domain_force">
-            ['&amp;',('project_id.privacy_visibility','=','department'),('project_id.hide_product_id','=','no')]
-        </field>
-    </record> -->
-
-
-
 </odoo> 
  
 
