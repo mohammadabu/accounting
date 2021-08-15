@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data>
         <record model="ir.rule" id="project_public_members_rule_for_department">
             <field name="name">Project: employees: following required for department-only projects</field>
             <field name="model_id" ref="model_project_project"/>
