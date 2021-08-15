@@ -68,7 +68,7 @@ class CustomPrivacyVisibility(models.Model):
                     while i <= 10:
                         _logger.info("start")
                         _logger.info(manager_department.parent_id)
-                        if manager_department.parent_id != False:
+                        if manager_department.parent_id.id != False:
                             if manager_department.parent_id.user_id != False:
                                 if all_user_emails != False:
                                     if manager_department.parent_id.user_id.login not in all_user_emails:
