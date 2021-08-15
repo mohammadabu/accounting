@@ -145,7 +145,7 @@ class CustomPrivacyVisibility(models.Model):
             _logger.info("123456789")
             if privacy_visibility == "department":
                 _logger.info("123452222226789")
-                self.pool.get("project.project").checkUserEmail(vals)
+                self.pool.get("project.project").checkUserEmailCreate(vals)
 
         except:
             print("An exception occurred")                                  
