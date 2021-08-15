@@ -8,6 +8,7 @@
         <!-- <field name="perm_write" eval = "1"/>
         <field name="perm_create" eval = "1"/>
         <field name="perm_unlink" eval = "1"/> -->
+        <field name="global" eval="True"/>
         <field name="domain_force">
             [('privacy_visibility','=','department'),('hide_product_id','=','no')]
         </field>
@@ -15,3 +16,4 @@
 </odoo>
  
 
+ 
