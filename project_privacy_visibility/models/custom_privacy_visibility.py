@@ -70,7 +70,7 @@ class CustomPrivacyVisibility(models.Model):
         
             # check department domain
             # user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.env.user.id)],limit=1) 
-            all_parent = self.env['hr.department'].sudo().search([('department_id','child_of',[67])])         
+            all_parent = self.env['hr.department'].sudo().search([('parent_id','child_of',[67])])         
             _logger.info("all_parent") 
             _logger.info(all_parent) 
         
