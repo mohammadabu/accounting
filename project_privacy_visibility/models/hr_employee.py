@@ -39,6 +39,7 @@ class CustomHrEmployee(models.Model):
             
             if "user_id" in vals:
                 user_id = vals['user_id']
+
             _logger.info("user_id")
             _logger.info(user_id)    
             # update department
@@ -59,12 +60,9 @@ class CustomHrEmployee(models.Model):
         employee_id = self.id
         employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)],limit=1)
 
-        if user_id != False:
-            employee_info = self.env['hr.employee'].sudo().search([('user_id','=',user_id)],limit=1)
-
-        user_id = ''
-        if employee_info.user_id != False:
-            user_id = employee_info.user_id.id
+        if employee_info.user_id != False or user_id != False:
+            if user_id == False:
+                user_id = employee_info.user_id.id
             user_id_string = "#" + str(user_id)+ "#"
             if befory_edit_department != False:
                 project_before = self.env['project.project'].sudo().search([('user_emails','like',user_id_string),('department','=',befory_edit_department)])
