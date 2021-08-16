@@ -22,9 +22,8 @@
             <xpath expr="//field[@name='name']" position="after">
                 <field name="privacy_visibility" widget="radio"/>
                 <field name="user_department"/>
-                <field name="user"/>
                 <!-- <field name="department" domain="[('parent_id', 'child_of', [user_department])]" attrs="{'invisible': [('privacy_visibility', '!=', 'department')],'required': [('privacy_visibility', '=', 'department')]}"/> -->
-                <field name="department" domain="[('parent_id', 'child_of', [user.employee.id])]" attrs="{'invisible': [('privacy_visibility', '!=', 'department')],'required': [('privacy_visibility', '=', 'department')]}"/>
+                <field name="department" domain="[('parent_id', 'child_of', [user.id])]" attrs="{'invisible': [('privacy_visibility', '!=', 'department')],'required': [('privacy_visibility', '=', 'department')]}"/>
             </xpath>
         </field>
     </record>  
