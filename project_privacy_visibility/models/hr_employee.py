@@ -24,6 +24,28 @@ class CustomHrEmployee(models.Model):
             self.pool.get("hr.employee").updateParentEmails(self,before_edit_parent_id,after_edit_parent_id)
         return rtn     
 
+    @api.model
+    def create(self,vals):
+        try:   
+            department = ''
+            parent_id = ''
+            if "department_id" in vals:
+                department = vals['department_id']
+            if "parent_id" in vals:
+                parent_id = vals['parent_id']
+
+            # update department
+            if department != False and department != "":
+                self.pool.get("hr.employee").updateDepartmentEmails(self,False,department)
+
+            # update parent
+            if parent_id != False and parent_id != "":
+                self.pool.get("hr.employee").updateParentEmails(self,False,parent_id)    
+        except:
+            print("An exception occurred")                                  
+        rtn = super(CustomHrEmployee,self).create(vals)
+        return rtn 
+
 
     def updateDepartmentEmails(self,befory_edit_department,after_edit_department):
         employee_id = self.id
@@ -32,11 +54,12 @@ class CustomHrEmployee(models.Model):
         if employee_info.user_id != False:
             user_id = employee_info.user_id.id
             user_id_string = "#" + str(user_id)+ "#"
-            project_before = self.env['project.project'].sudo().search([('user_emails','like',user_id_string),('department','=',befory_edit_department)])
-            for project in project_before:
-                user_email = project.user_emails
-                user_email = user_email.replace(user_id_string,"") 
-                project.user_emails =  user_email
+            if befory_edit_department != False:
+                project_before = self.env['project.project'].sudo().search([('user_emails','like',user_id_string),('department','=',befory_edit_department)])
+                for project in project_before:
+                    user_email = project.user_emails
+                    user_email = user_email.replace(user_id_string,"") 
+                    project.user_emails =  user_email
 
             project_after = self.env['project.project'].sudo().search([('department','=',after_edit_department)])
             for project_af in project_after:
@@ -48,5 +71,5 @@ class CustomHrEmployee(models.Model):
                     user_email = user_id_string
                 project_af.user_emails =  user_email            
 
-    def updateDepartmentEmails(self,before_edit_parent_id,after_edit_parent_id):
+    def updateParentEmails(self,before_edit_parent_id,after_edit_parent_id):
         _logger.info("111")
