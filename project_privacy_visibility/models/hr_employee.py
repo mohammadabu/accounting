@@ -28,16 +28,21 @@ class CustomHrEmployee(models.Model):
         if employee_info.user_id != False:
             user_id = employee_info.user_id.id
             user_id_string = "#" + str(user_id)+ "#"
-            project_before = self.env['project.project'].sudo().search([('user_emails','like',user_id_string)])
-            _logger.info("project_before")
-            _logger.info(user_id_string)
-            _logger.info(project_before)
+            project_before = self.env['project.project'].sudo().search([('user_emails','like',user_id_string),('department','=',befory_edit_department)])
             for project in project_before:
                 user_email = project.user_emails
-                _logger.info(user_email)
                 user_email = user_email.replace(user_id_string,"") 
-                _logger.info(user_email)
-                project.user_emails =  user_email        
+                project.user_emails =  user_email
+
+            project_after = self.env['project.project'].sudo().search([('department','=',after_edit_department)])
+            for project_af in project_after:
+                user_email = project_af.user_emails
+                if user_email != False:
+                    if user_id_string not in user_email:
+                        user_email = user_email + "," + user_id_string
+                else:
+                    user_email = user_id_string
+                project_af.user_emails =  user_email            
 
 
 
