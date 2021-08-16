@@ -15,11 +15,7 @@ class CustomPrivacyVisibility(models.Model):
 
     user_emails = fields.Text()
 
-    user_emails_department = fields.Text()
-
-
     user_department = fields.Integer(compute='_compute_user_department')
-
 
     current_user = fields.Many2one('res.users', default=lambda self : self.env.uid)
 
