@@ -18,6 +18,19 @@ class CustomPrivacyVisibility(models.Model):
     user_emails_department = fields.Text()
 
 
+    user_department = fields.Integer(compute='_compute_user_department')
+
+
+    def _compute_user_department(self):
+        user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.env.user.id)],limit=1) 
+        if len(user_employee) > 0:
+            self.user_department = int(user_employee.department_id.id)
+        else:
+            self.user_department = 0   
+
+
+
+
     def checkUserEmail(self):  
 
         all_user_emails = False
@@ -77,8 +90,6 @@ class CustomPrivacyVisibility(models.Model):
         
         self.user_emails = all_user_emails
                 
-
-
 
 
     def write(self,values): 
