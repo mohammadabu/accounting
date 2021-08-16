@@ -29,9 +29,14 @@ class CustomHrEmployee(models.Model):
             user_id = employee_info.user_id.id
             user_id_string = "#" + str(user_id)+ "#"
             project_before = self.env['project.project'].sudo().search([('user_emails','like',user_id_string)])
+            _logger.info("project_before")
+            _logger.info(user_id_string)
+            _logger.info(project_before)
             for project in project_before:
                 user_email = project.user_emails
-                user_email = user_email.replace(user_email,"",10)       
+                _logger.info(user_email)
+                user_email = user_email.replace(user_email," ",10) 
+                _logger.info(user_email)
                 project.user_emails =  user_email        
 
 
