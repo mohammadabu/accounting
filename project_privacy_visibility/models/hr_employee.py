@@ -12,7 +12,7 @@ class CustomHrEmployee(models.Model):
     def write(self,values): 
         befory_edit_department = self.department_id.id
         before_edit_parent_id = self.parent_id.id
-        rtn = super(CustomPrivacyVisibility,self).write(values)
+        rtn = super(CustomHrEmployee,self).write(values)
         after_edit_department = self.department_id.id
         after_edit_parent_id = self.parent_id.id
         # update department
