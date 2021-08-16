@@ -22,7 +22,7 @@ class CustomHrEmployee(models.Model):
             user_id_edit = ''
             if before_edit_user_id != after_edit_user_id:
                 user_id_edit = after_edit_user_id
-            else
+            else:
                 user_id_edit = False    
             self.pool.get("hr.employee").updateDepartmentEmails(self,befory_edit_department,after_edit_department,user_id_edit)
 
