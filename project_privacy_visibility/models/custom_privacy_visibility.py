@@ -22,7 +22,10 @@ class CustomPrivacyVisibility(models.Model):
 
 
     def _compute_user_department(self):
+        _logger.info("_compute_user_department")
+        _logger.info(self.env.user.id)
         user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.env.user.id)],limit=1) 
+        _logger.info(user_employee)
         if len(user_employee) > 0:
             self.user_department = int(user_employee.department_id.id)
         else:
@@ -86,7 +89,6 @@ class CustomPrivacyVisibility(models.Model):
             all_parent = self.env['hr.department'].sudo().search([('parent_id','child_of',[41])])         
             _logger.info("all_parent") 
             _logger.info(all_parent) 
-        
         
         self.user_emails = all_user_emails
                 
