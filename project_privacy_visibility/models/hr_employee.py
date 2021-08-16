@@ -35,7 +35,7 @@ class CustomHrEmployee(models.Model):
             for project in project_before:
                 user_email = project.user_emails
                 _logger.info(user_email)
-                user_email = user_email.replace(user_email," ",10) 
+                user_email = user_email.replace(user_id_string,"") 
                 _logger.info(user_email)
                 project.user_emails =  user_email        
 
