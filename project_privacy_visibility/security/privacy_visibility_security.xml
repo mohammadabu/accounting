@@ -11,7 +11,7 @@
         <field name="perm_unlink" eval = "0"/>
         <field name="domain_force">
             [('user_emails','like',"#"+str(user.id)+"#")] 
-        </field> 
+        </field>  
     </record> 
     <record id="project_public_admin_rule_for_department" model="ir.rule">
         <field name="name">Project: admin: following required for department-only projects</field>
@@ -25,6 +25,8 @@
             [('user_emails','like',"#"+str(user.id)+"#")] 
         </field>
     </record>
+    <delete id="project.project_project_manager_rule" model="ir.rule"/>
+    <delete id="project.project_manager_all_project_tasks_rule" model="ir.rule"/>
 </odoo> 
  
 
