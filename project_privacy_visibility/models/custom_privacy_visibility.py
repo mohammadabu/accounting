@@ -21,6 +21,16 @@ class CustomPrivacyVisibility(models.Model):
     user_department = fields.Integer(compute='_compute_user_department')
 
 
+    current_user = fields.Many2one('res.users', compute='_get_current_user')
+
+    @api.depends()
+    def _get_current_user(self):
+        for rec in self:
+            rec.current_user = self.env.user
+        # i think this work too so you don't have to loop
+        self.update({'current_user' : self.env.user.id})
+
+
     def _compute_user_department(self):
         _logger.info("_compute_user_department")
         _logger.info(self.env.user.id)
