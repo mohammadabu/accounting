@@ -23,9 +23,10 @@ class CustomHrEmployee(models.Model):
 
     def updateDepartmentEmails(self,befory_edit_department,after_edit_department):
         employee_id = self.id
+        employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)],limit=1)
         user_id = ''
-        if employee_id.user_id != False:
-            user_id = employee_id.user_id.id
+        if employee_info.user_id != False:
+            user_id = employee_info.user_id.id
             user_id_string = "#" + str(user_id)+ "#"
             project_before = self.env['project.project'].sudo().search([('user_emails','like',user_id_string)])
             for project in project_before:
