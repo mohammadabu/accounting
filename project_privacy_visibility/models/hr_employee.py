@@ -18,13 +18,8 @@ class CustomHrEmployee(models.Model):
         after_edit_parent_id = self.parent_id.id
         after_edit_user_id = self.user_id.id
         # update department
-        if befory_edit_department != after_edit_department or before_edit_user_id != after_edit_user_id:
-            user_id_edit = ''
-            if before_edit_user_id != after_edit_user_id:
-                user_id_edit = after_edit_user_id
-            else:
-                user_id_edit = False    
-            self.pool.get("hr.employee").updateDepartmentEmails(self,befory_edit_department,after_edit_department,user_id_edit)
+        if befory_edit_department != after_edit_department or before_edit_user_id != after_edit_user_id:  
+            self.pool.get("hr.employee").updateDepartmentEmails(self,befory_edit_department,after_edit_department)
 
         # update parent
         if before_edit_parent_id != after_edit_parent_id:
@@ -57,7 +52,7 @@ class CustomHrEmployee(models.Model):
         return rtn 
 
 
-    def updateDepartmentEmails(self,befory_edit_department,after_edit_department,after_edit_user_id):
+    def updateDepartmentEmails(self,befory_edit_department,after_edit_department):
         employee_id = self.id
         employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)],limit=1)
         user_id = ''
