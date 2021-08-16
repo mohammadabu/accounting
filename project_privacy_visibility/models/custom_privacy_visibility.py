@@ -29,7 +29,7 @@ class CustomPrivacyVisibility(models.Model):
         if len(user_employee) > 0:
             self.user_department = int(user_employee.department_id.id)
         else:
-            self.user_department = 0   
+            self.user_department = 0    
 
 
 
