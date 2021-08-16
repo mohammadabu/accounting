@@ -19,7 +19,7 @@ class CustomPrivacyVisibility(models.Model):
 
     def checkUserEmail(self):  
 
-        pos_test = self.env['hr.employee'].sudo().search([('parent_id','child_of',[124])])         
+        pos_test = self.env['hr.employee'].sudo().search([('parent_id','child_of',[335])])         
         _logger.info("pos_test") 
         _logger.info(pos_test) 
         all_user_emails = False
