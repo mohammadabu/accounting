@@ -12,12 +12,19 @@ class CustomHrEmployee(models.Model):
     def write(self,values): 
         befory_edit_department = self.department_id.id
         before_edit_parent_id = self.parent_id.id
+        before_edit_user_id = self.user_id.id
         rtn = super(CustomHrEmployee,self).write(values)
         after_edit_department = self.department_id.id
         after_edit_parent_id = self.parent_id.id
+        after_edit_user_id = self.user_id.id
         # update department
-        if befory_edit_department != after_edit_department:
-            self.pool.get("hr.employee").updateDepartmentEmails(self,befory_edit_department,after_edit_department)
+        if befory_edit_department != after_edit_department or before_edit_user_id != after_edit_user_id:
+            user_id_edit = ''
+            if before_edit_user_id != after_edit_user_id:
+                user_id_edit = after_edit_user_id
+            else
+                user_id_edit = False    
+            self.pool.get("hr.employee").updateDepartmentEmails(self,befory_edit_department,after_edit_department,user_id_edit)
 
         # update parent
         if before_edit_parent_id != after_edit_parent_id:
@@ -29,13 +36,16 @@ class CustomHrEmployee(models.Model):
         try:   
             department = ''
             parent_id = ''
+            user_id = ''
             if "department_id" in vals:
                 department = vals['department_id']
             if "parent_id" in vals:
                 parent_id = vals['parent_id']
-
+            
+            if "user_id" in vals:
+                user_id = vals['user_id']
             # update department
-            if department != False and department != "":
+            if department != False and department != "" and user_id != False and user_id != "":
                 self.pool.get("hr.employee").updateDepartmentEmails(self,False,department)
 
             # update parent
@@ -47,7 +57,7 @@ class CustomHrEmployee(models.Model):
         return rtn 
 
 
-    def updateDepartmentEmails(self,befory_edit_department,after_edit_department):
+    def updateDepartmentEmails(self,befory_edit_department,after_edit_department,after_edit_user_id):
         employee_id = self.id
         employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)],limit=1)
         user_id = ''
