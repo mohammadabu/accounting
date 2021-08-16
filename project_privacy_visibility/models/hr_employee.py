@@ -39,9 +39,12 @@ class CustomHrEmployee(models.Model):
             
             if "user_id" in vals:
                 user_id = vals['user_id']
+            _logger.info("user_id")
+            _logger.info(user_id)    
             # update department
             if department != False and department != "" and user_id != False and user_id != "":
-                self.pool.get("hr.employee").updateDepartmentEmails(self,False,department)
+                _logger.info(user_id)
+                self.pool.get("hr.employee").updateDepartmentEmails(self,False,department,user_id)
 
             # update parent
             if parent_id != False and parent_id != "":
@@ -52,9 +55,13 @@ class CustomHrEmployee(models.Model):
         return rtn 
 
 
-    def updateDepartmentEmails(self,befory_edit_department,after_edit_department):
+    def updateDepartmentEmails(self,befory_edit_department,after_edit_department,user_id = False):
         employee_id = self.id
         employee_info = self.env['hr.employee'].sudo().search([('id','=',employee_id)],limit=1)
+
+        if user_id != False:
+            employee_info = self.env['hr.employee'].sudo().search([('user_id','=',user_id)],limit=1)
+
         user_id = ''
         if employee_info.user_id != False:
             user_id = employee_info.user_id.id
