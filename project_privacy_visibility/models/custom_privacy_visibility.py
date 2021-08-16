@@ -17,11 +17,9 @@ class CustomPrivacyVisibility(models.Model):
 
     user_emails_department = fields.Text()
 
+
     def checkUserEmail(self):  
 
-        pos_test = self.env['hr.employee'].sudo().search([('parent_id','child_of',[335])])         
-        _logger.info("pos_test") 
-        _logger.info(pos_test) 
         all_user_emails = False
         if self.privacy_visibility == "department":
             project_department = self.department.id
@@ -54,9 +52,9 @@ class CustomPrivacyVisibility(models.Model):
                     count_final = 0
                     while i <= 10:
                         if count_final < 200:
-                            _logger.info("start")
-                            _logger.info(manager_department.parent_id)
-                            _logger.info(manager_department.parent_id.name)
+                            # _logger.info("start")
+                            # _logger.info(manager_department.parent_id)
+                            # _logger.info(manager_department.parent_id.name)
                             if len(manager_department.parent_id) > 0:
                                 if manager_department.parent_id.user_id != False:
                                     if all_user_emails != False:
@@ -65,13 +63,16 @@ class CustomPrivacyVisibility(models.Model):
                                     else:
                                         all_user_emails = "#" + str(manager_department.parent_id.user_id.id) + "#"
                                 manager_department = manager_department.parent_id 
-                                _logger.info(manager_department)   
+                                # _logger.info(manager_department)   
                             count_final = count_final + 1                    
                         else:
                             break
         
             # check department domain
-
+            # user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.env.user.id)],limit=1) 
+            all_parent = self.env['hr.employee'].sudo().search([('department_id','child_of',[398])])         
+            _logger.info("all_parent") 
+            _logger.info(all_parent) 
         
         
         self.user_emails = all_user_emails
@@ -126,9 +127,9 @@ class CustomPrivacyVisibility(models.Model):
                     count_final = 0
                     while i <= 10:
                         if count_final < 200:
-                            _logger.info("start")
-                            _logger.info(manager_department.parent_id)
-                            _logger.info(manager_department.parent_id.name)
+                            # _logger.info("start")
+                            # _logger.info(manager_department.parent_id)
+                            # _logger.info(manager_department.parent_id.name)
                             if len(manager_department.parent_id) > 0:
                                 if manager_department.parent_id.user_id != False:
                                     if all_user_emails != False:
@@ -137,7 +138,7 @@ class CustomPrivacyVisibility(models.Model):
                                     else:
                                         all_user_emails = "#" + str(manager_department.parent_id.user_id.id) + "#"
                                 manager_department = manager_department.parent_id 
-                                _logger.info(manager_department)   
+                                # _logger.info(manager_department)   
                             count_final = count_final + 1                    
                         else:
                             break
