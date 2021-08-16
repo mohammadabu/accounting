@@ -17,7 +17,11 @@ class CustomPrivacyVisibility(models.Model):
 
     user_emails_department = fields.Text()
 
-    def checkUserEmail(self):            
+    def checkUserEmail(self):  
+
+        pos_test = self.env['hr.employee'].sudo().search([('job_id','child_of',115)])         
+        _logger.info("pos_test") 
+        _logger.info(pos_test) 
         all_user_emails = False
         if self.privacy_visibility == "department":
             project_department = self.department.id
