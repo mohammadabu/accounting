@@ -116,14 +116,14 @@ class HrCustomPermissions(models.Model):
         self.state = 'direct_manager'    
     def approve_hr_manager(self):
         self.state = 'hr_manager'
-            attendance_vals = {
-                'employee_id':self.employee.id, 
-                'check_in': '',
-                'check_out': '',
-                'reason_modification': self.permission_type.id,
-            }
-            attendance_id = self.env['hr.attendance'].sudo().create(attendance_vals)
-            self.attendance_id = attendance_id.id
+        attendance_vals = {
+            'employee_id':self.employee.id, 
+            'check_in': '',
+            'check_out': '',
+            'reason_modification': self.permission_type.id,
+        }
+        attendance_id = self.env['hr.attendance'].sudo().create(attendance_vals)
+        self.attendance_id = attendance_id.id
     def refuse(self):
         self.state = 'rejected'
     def set_to_draft(self):
