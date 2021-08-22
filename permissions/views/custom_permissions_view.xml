@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_permissions_form_view" model="ir.ui.view">
+            <field name="name">hr.permissions.form</field>
+            <field name="model">hr.permissions</field>
+            <field name="arch" type="xml">
+                <form string="Custody">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,direct_manager,hr_manager"/>
+                        <button string="Send For Approval" type="object" name="sent"
+                                class="oe_highlight"
+                                attrs="{'invisible': [('state','not in',('draft'))]}"/>   
+                        <button string="Direct Manager Approve" attrs="{'invisible': ['|',('is_direct_manager', '=', 'no'),('state','not in',('to_approve'))]}" type="object" name="approve_direct_manager"
+                                class="oe_highlight"
+                                />
+                        <button string="Hr Manager Approve" attrs="{'invisible': [('state', 'not in', 'direct_manager')]}" groups="permissions.permissions_manager_group" type="object" name="approve_hr_manager"
+                                class="oe_highlight"
+                                />             
+                        <button string="Refuse" groups="permissions.permissions_manager_group"
+                                type="object" name="refuse"
+                                attrs="{'invisible': ['|',('state','not in',('direct_manager','hr_manager')),('is_direct_manager','=','yes')]}" class="btn-primary"
+                                />
+                        <button string="Refuse" 
+                                type="object" name="refuse"
+                                attrs="{'invisible': ['|',('state','not in',('to_approve','direct_manager','hr_manager')),('is_direct_manager','=','no')]}" class="btn-primary"
+                                />
+                        <button string="Set to Draft" type="object" name="set_to_draft"
+                                attrs="{'invisible': [('state','not in',('rejected'))]}"/>
+                    </header>
+                    <sheet>
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="permission_type"/>
+                                <field name="employee"/>
+                                <field name="date"/>
+                                <field name="hour_from" />
+                                <field name="hour_to" />
+                            </group>
+                            <group>
+                                <field name="mandate_city"/>
+                                <field name="note"/>
+                                <field name="time_request" attrs="{'invisible': [('time_request', '=', False)]}"/>
+                                <field name="attachments"/>
+                                <field name="is_direct_manager" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_permissions_tree_view" model="ir.ui.view">
+            <field name="name">hr.permissions.tree</field>
+            <field name="model">hr.permissions</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="permission_type"/>
+                    <field name="employee"/>
+                    <field name="date"/>
+                    <field name="hour_from" />
+                    <field name="hour_to" />
+                    <field name="time_request"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_permissions_search_view" model="ir.ui.view">
+            <field name="name">hr.permissions.search</field>
+            <field name="model">hr.permissions</field>
+            <field name="arch" type="xml">
+                <search string="Permissions">
+                    <field name="name"/>
+                    <field name="permission_type"/>
+                    <field name="employee"/>
+                    <field name="date"/>
+                    <field name="hour_from" />
+                    <field name="hour_to" />
+                    <field name="time_request"/>
+                    <field name="state"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_permissions" model="ir.actions.act_window">
+            <field name="name">Permissions</field>
+            <field name="res_model">hr.permissions</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to Create a New Record.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Permissions"
+                  id="custom_hr_emp_permissions"
+                  parent="hr.menu_hr_root"
+                  action="action_permissions"
+                  sequence="92"/>
+
+    </data>
+</odoo>
