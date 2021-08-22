@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_attendances_reason_modification_tree_view" model="ir.ui.view">
+            <field name="name">hr.attendances.reason.modification.tree.view</field>
+            <field name="model">hr.attendance.reason.modification</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_attendances_reason_modification_form_view" model="ir.ui.view">
+            <field name="name">hr.attendances.reason.modification.form.view</field>
+            <field name="model">hr.attendance.reason.modification</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hr_attendances_reason_modification" model="ir.actions.act_window">
+            <field name="name">Reason for changing attendance</field>
+            <field name="res_model">hr.attendance.reason.modification</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+
+        <menuitem name="Reason for changing attendance" action="action_hr_attendances_reason_modification" id="menu_attendances_reason_modification"
+                  sequence="29"
+                  parent="hr_attendance.menu_hr_attendance_manage_attendances"/>
+    </data>
+</odoo>
