@@ -97,7 +97,7 @@
             </field>
         </record>
 
-        <menuitem action="action_project_request" id="project_request_menu" parent="project_management.project_request_main_menu"
+        <menuitem action="action_project_request" id="project_request_menu" parent="project_management.project_management_main_menu"
                   name="Project Requests" sequence="2"/>          
     </data>
 </odoo>
