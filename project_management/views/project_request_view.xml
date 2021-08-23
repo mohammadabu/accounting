@@ -63,6 +63,22 @@
                                     </tree>
                                 </field>
                             </page>
+                            <page name="objectives" string="Objectives">
+                                <field name="objectives">
+                                    <tree editable="bottom">
+                                        <field name="name" />
+                                        <field name="request_id"  invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page name="deliverables" string="Deliverables">
+                                <field name="deliverables">
+                                    <tree editable="bottom">
+                                        <field name="name" />
+                                        <field name="request_id"  invisible="1"/>
+                                    </tree>
+                                </field>
+                            </page>
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">

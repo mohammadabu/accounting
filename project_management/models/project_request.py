@@ -29,6 +29,8 @@ class ProjectRequest(models.Model):
     #     self.request_date = datetime.today()
 
     justifications = fields.One2many('project.request.justification','request_id',ondelete='cascade') 
+    objectives = fields.One2many('project.main.objectives','request_id',ondelete='cascade') 
+    deliverables = fields.One2many('project.main.deliverables','request_id',ondelete='cascade') 
 
     @api.model
     def create(self,vals):
@@ -41,6 +43,8 @@ class ProjectRequest(models.Model):
         for current in self:
             current_id = current.id
             self.env['project.request.justification'].sudo().search([('request_id','=',current_id)]).unlink()
+            self.env['project.main.objectives'].sudo().search([('request_id','=',current_id)]).unlink()
+            self.env['project.main.deliverables'].sudo().search([('request_id','=',current_id)]).unlink()
         rtn = super(ProjectRequest, self).unlink()
         return rtn
 
@@ -50,3 +54,17 @@ class ProjectRequestJustification(models.Model):
 
     name  = fields.Char(string="Justifications")
     request_id = fields.Many2one('project.request') 
+
+class ProjectMainObjectives(models.Model):
+
+    _name = 'project.main.objectives' 
+
+    name  = fields.Char(string="Objectives")
+    request_id = fields.Many2one('project.request')
+
+class ProjectMainDeliverables(models.Model):
+
+    _name = 'project.main.deliverables' 
+
+    name  = fields.Char(string="Deliverables")
+    request_id = fields.Many2one('project.request')         
