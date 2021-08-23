@@ -98,10 +98,10 @@
         </record>
         <menuitem id="project_management_main_menu"
                 web_icon="project_management,static/description/architect.png"
-                name="Projects" sequence="20"/>
+                name="Project Management" sequence="20"/>
 
 
         <menuitem action="action_project_management" id="project_management_menu" parent="project_management.project_management_main_menu"
-                  name="Project Management" sequence="1"/>          
+                  name="Projects" sequence="1"/>          
     </data>
 </odoo>
