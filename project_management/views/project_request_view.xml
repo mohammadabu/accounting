@@ -56,7 +56,12 @@
                                 <field name="project_description"/>
                             </page>
                             <page name="justifications" string="Justifications">
-                                <field name="justifications"/>
+                                <field name="justifications">
+                                    <tree editable="bottom">
+                                        <field name="name" />
+                                        <field name="request_id"  invisible="1"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>
