@@ -28,10 +28,11 @@ class ProjectRequest(models.Model):
         self.request_date = datetime.today()
 
 
-    justifications = fields.One2many('project.request.justification',ondelete='cascade') 
+    justifications = fields.One2many('project.request.justification','request_id',ondelete='cascade') 
 
 class ProjectRequestJustification(models.Model):
 
     _name = 'project.request.justification' 
 
     name  = fields.Char(string="Justifications")
+    request_id = fields.Many2one('project.request') 
