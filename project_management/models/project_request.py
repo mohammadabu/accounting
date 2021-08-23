@@ -34,10 +34,9 @@ class ProjectRequest(models.Model):
     justifications      = fields.One2many('project.request.justification','request_id',ondelete='cascade') 
     objectives          = fields.One2many('project.main.objectives','request_id',ondelete='cascade') 
     deliverables        = fields.One2many('project.main.deliverables','request_id',ondelete='cascade') 
-
-
-    user_department = fields.Integer(compute='_compute_user_department')
-    current_user = fields.Many2one('res.users', default=lambda self : self.env.uid)
+    user_department     = fields.Integer(compute='_compute_user_department')
+    current_user        = fields.Many2one('res.users', default=lambda self : self.env.uid)
+    
     @api.depends('current_user')
     def _compute_user_department(self):
         user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.current_user.id)],limit=1) 
