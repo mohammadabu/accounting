@@ -4,6 +4,7 @@
     'depends': ['base', 'mail'],
     'data': [
         'views/project_management_view.xml',
+        'views/project_request_view.xml',
         # 'security/project_management_view.xml',
         'security/ir.model.access.csv',
     ],
