@@ -28,7 +28,7 @@ class ProjectRequest(models.Model):
         self.request_date = datetime.today()
 
 
-    justifications = fields.One2many('project.request.justification', 'Project Request Justification',ondelete='cascade') 
+    justifications = fields.One2many('project.request.justification',ondelete='cascade') 
 
 class ProjectRequestJustification(models.Model):
 
