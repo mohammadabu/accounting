@@ -36,7 +36,7 @@
                             <group>
                                 <field name="project_type" />
                                 <field name="estimated_budget" />
-                                <field name="request_date" />
+                                <field name="request_date" attrs="{'invisible': [('request_date', '=', False)]}" />
                             </group>
                         </group>
                         <notebook>
