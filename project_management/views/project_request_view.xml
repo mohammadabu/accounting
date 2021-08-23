@@ -55,6 +55,9 @@
                             <page name="project_description" string="Description">
                                 <field name="project_description"/>
                             </page>
+                            <page name="justifications" string="Justifications">
+                                <field name="justifications"/>
+                            </page>
                         </notebook>
                     </sheet>
                     <div class="oe_chatter">
