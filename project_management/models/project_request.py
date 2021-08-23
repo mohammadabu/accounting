@@ -20,7 +20,7 @@ class ProjectRequest(models.Model):
         if len(employee) > 0 :
             return employee.id
         else:
-            return False 
+            return False  
 
     name                = fields.Char(string="Project Name",required=True,track_visibility=1)
     owner_name          = fields.Many2one('hr.employee',string='Owner Project Name',required=True,default=_getDefaultEmployee,track_visibility=1)
@@ -39,11 +39,12 @@ class ProjectRequest(models.Model):
     
     @api.depends('current_user')
     def _compute_user_department(self):
-        user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.current_user.id)],limit=1) 
-        if len(user_employee) > 0:
-            self.user_department = int(user_employee.department_id.id)
-        else:
-            self.user_department = 0 
+        # user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.current_user.id)],limit=1) 
+        # if len(user_employee) > 0:
+        #     self.user_department = int(user_employee.department_id.id)
+        # else:
+        #     self.user_department = 0 
+        self.user_department = 0    
 
 
     @api.model
