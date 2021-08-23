@@ -22,12 +22,27 @@ class ProjectRequest(models.Model):
     estimated_budget    = fields.Float(string="Estimated budget",required=True,track_visibility=1)
     project_type        = fields.Selection([('internal', 'Internal'),('external', 'External')],required=True,track_visibility=1)
     project_description = fields.Html()  
-    request_date        = fields.Date(compute='_compute_request_date')
-    @api.depends()
-    def _compute_request_date(self):
-        self.request_date = datetime.today()
+    # request_date        = fields.Date(compute='_compute_request_date')
+    request_date        = fields.Date(readonly=True)
+    # @api.depends()
+    # def _compute_request_date(self):
+    #     self.request_date = datetime.today()
 
     justifications = fields.One2many('project.request.justification','request_id',ondelete='cascade') 
+
+    @api.model
+    def create(self,vals):
+        vals['request_date'] = datetime.today()
+        rtn = super(ProjectRequest,self).create(vals)
+        return rtn
+
+
+    def unlink(self):
+        for current in self:
+            current_id = current.id
+            self.env['project.request.justification'].sudo().search([('request_id','=',current_id)]).unlink()
+        rtn = super(ProjectRequest, self).unlink()
+        return rtn
 
 class ProjectRequestJustification(models.Model):
 
