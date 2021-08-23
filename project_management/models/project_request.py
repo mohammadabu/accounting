@@ -35,8 +35,8 @@ class ProjectRequest(models.Model):
     objectives          = fields.One2many('project.main.objectives','request_id',ondelete='cascade') 
     deliverables        = fields.One2many('project.main.deliverables','request_id',ondelete='cascade') 
     # user_department     = fields.Integer(compute='_compute_user_department')
-    user_department     = fields.Integer()
-    current_user        = fields.Many2one('res.users', default=lambda self : self.env.uid)
+    # user_department     = fields.Integer()
+    # current_user        = fields.Many2one('res.users', default=lambda self : self.env.uid)
     
     # @api.depends('current_user')
     # def _compute_user_department(self):
