@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_project_management_manager,Access project management manager,model_project_management,,1,1,1,1
 access_project_request_manager,Access project request manager,model_project_request,,1,1,1,1
+access_project_request_justification_manager,Access project request justification manager,model_project_request_justification,,1,1,1,1
