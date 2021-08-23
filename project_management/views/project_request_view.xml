@@ -57,7 +57,7 @@
                             </page>
                             <page name="justifications" string="Justifications">
                                 <field name="justifications">
-                                    <tree editable="bottom">
+                                    <tree>
                                         <field name="name" />
                                         <field name="request_id"  invisible="1"/>
                                     </tree>
