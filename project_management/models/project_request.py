@@ -21,7 +21,7 @@ class ProjectRequest(models.Model):
     expected_end        = fields.Date(string="Expected end date",required=True)
     estimated_budget    = fields.Float(string="Estimated budget",required=True)
     project_type        = fields.Selection([('internal', 'Internal'),('external', 'External')],required=True)
-    project_description = fields.Text()
+    project_description = fields.Html()  
     request_date        = fields.Date(compute='_compute_request_date')
     @api.depends()
     def _compute_request_date(self):
