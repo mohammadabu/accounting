@@ -24,7 +24,7 @@
                     <sheet>
                         <!-- <field name="state" invisible="1"/> -->
                         <h1>
-                            <field name="project_name" />
+                            <field name="name" />
                         </h1>
                         <group>
                             <group>

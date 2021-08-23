@@ -14,7 +14,7 @@ class ProjectRequest(models.Model):
     _description = 'Project Request'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    project_name        = fields.Char(required=True)
+    name                = fields.Char(string="Project Name",required=True)
     owner_name          = fields.Many2one('hr.employee',string='Owner Project Name',required=True)
     owner_dept          = fields.Many2one('hr.employee',string='Owner Dept.',required=True)
     expected_start      = fields.Date(string="Expected start date",required=True)
