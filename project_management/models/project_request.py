@@ -42,7 +42,8 @@ class ProjectRequest(models.Model):
     # def _compute_user_login(self):
     #     self.current_user = self.env.uid
 
-    @api.depends('current_user')
+    # @api.depends('current_user')
+    @api.depends('')
     def _compute_user_department(self):
         current_user = self.env.uid
         # user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.current_user.id)],limit=1)
