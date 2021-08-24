@@ -23,7 +23,7 @@ class ProjectRequest(models.Model):
             return False  
 
     name                = fields.Char(string="Project Name",required=True,track_visibility=1)
-    owner_dept          = fields.Many2one('hr.department',string='Owner Dept.')
+    owner_dept          = fields.Many2one('hr.department',string='Owner Dept.'،index=True)
     owner_name          = fields.Many2one('hr.employee',string='Owner Project Name',required=True,default=_getDefaultEmployee,track_visibility=1)
     expected_start      = fields.Date(string="Expected start date",required=True,track_visibility=1)
     expected_end        = fields.Date(string="Expected end date",required=True,track_visibility=1)

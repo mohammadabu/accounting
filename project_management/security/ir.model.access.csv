@@ -4,4 +4,3 @@ access_project_request_manager,Access project request manager,model_project_requ
 access_project_request_justification_manager,Access project request justification manager,model_project_request_justification,,1,1,1,1
 access_project_main_objectives_manager,Access project main objectives manager,model_project_main_objectives,,1,1,1,1
 access_project_main_deliverables_manager,Access project main deliverables manager,model_project_main_deliverables,,1,1,1,1
-access_hr_department_manager,Access hr department manager,model_hr_department,,1,1,1,1
