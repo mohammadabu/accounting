@@ -23,38 +23,26 @@
                     </header> -->
                     <sheet>
                         <!-- <field name="state" invisible="1"/> -->
-                        <h1>
+                        <!-- <h1>
                             <field name="name" />
-                        </h1>
+                        </h1> -->
                         <group>
                             <group>
                                 <!-- <field name="user_department" invisible="1"/> -->
-                                <field name="owner_name" />
+                                <!-- <field name="owner_name" /> -->
                                 <!-- <field name="owner_dept"  domain="[('parent_id', 'child_of', [user_department])]" /> -->
                                 <field name="owner_dept"/>
-                                <field name="expected_start" />
-                                <field name="expected_end"/>
+                                <!-- <field name="expected_start" /> -->
+                                <!-- <field name="expected_end"/> -->
                             </group>
-                            <group>
+                            <!-- <group>
                                 <field name="project_type" />
                                 <field name="estimated_budget" />
                                 <field name="request_date" attrs="{'invisible': [('request_date', '=', False)]}" />
-                            </group>
+                            </group> -->
                         </group>
-                        <notebook>
-                            <!-- <page name="custody_lines" string="Items of custody">
-                                <field name="state" invisible="1" />
-                                <field name="custody_lines" attrs="{'readonly':[('state','not in',('draft',))]}">
-                                    <tree editable="bottom">
-                                        <field name="custody_item" />
-                                        <field name="custody_qty" />
-                                        <field name="custody_products_category"/>
-                                        <field name="custody_note"/>
-                                        <field name="custody_id"  invisible="1"/>
-                                    </tree>
-                                </field>
-                            </page> -->
-                            <page name="project_description" string="Description">
+                        <!-- <notebook> -->
+                            <!-- <page name="project_description" string="Description">
                                 <field name="project_description"/>
                             </page>
                             <page name="justifications" string="Justifications">
@@ -80,8 +68,8 @@
                                         <field name="request_id"  invisible="1"/>
                                     </tree>
                                 </field>
-                            </page>
-                        </notebook>
+                            </page> -->
+                        <!-- </notebook> -->
                     </sheet>
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
