@@ -28,7 +28,7 @@
                         </h1>
                         <group>
                             <group>
-                                <field name="user_department" invisible="1"/>
+                                <field name="user_department" />
                                 <field name="owner_name" />
                                 <field name="owner_department"  domain="[('parent_id', 'child_of', [user_department])]" />
                                 <field name="expected_start" />
