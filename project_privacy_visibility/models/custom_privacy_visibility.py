@@ -220,7 +220,9 @@ class CustomPrivacyVisibility(models.Model):
 
                 vals['user_emails'] = all_user_emails
         except:
-            print("An exception occurred")                                  
+            print("An exception occurred")   
+            _logger.info("vals")      
+            _logger.info(vals)                             
         rtn = super(CustomPrivacyVisibility,self).create(vals)
         return rtn 
 
