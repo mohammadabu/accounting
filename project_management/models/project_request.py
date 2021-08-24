@@ -46,13 +46,14 @@ class ProjectRequest(models.Model):
     # @api.depends('current_user')
     @api.depends('')
     def _compute_user_department(self):
-        current_user = self.env.uid
-        # user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.current_user.id)],limit=1)
-        user_employee = self.env['hr.employee'].sudo().search([('user_id','=',current_user.id)],limit=1) 
-        if len(user_employee) > 0:
-            self.user_department = int(user_employee.department_id.id)
-        else:
-            self.user_department = 0 
+        # current_user = self.env.uid
+        # # user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.current_user.id)],limit=1)
+        # user_employee = self.env['hr.employee'].sudo().search([('user_id','=',current_user.id)],limit=1) 
+        # if len(user_employee) > 0:
+        #     self.user_department = int(user_employee.department_id.id)
+        # else:
+        #     self.user_department = 0 
+        self.user_department = 0     
 
 
     @api.model
