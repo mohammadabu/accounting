@@ -20,11 +20,19 @@ class ProjectRequest(models.Model):
         if len(employee) > 0 :
             return employee.id
         else:
-            return False  
+            return False
+
+    def _getDefaultDepartment(self):
+        user_id = self.env.user.id
+        employee = self.env['hr.employee'].sudo().search([('user_id','=',user_id)],limit=1)
+        if len(employee) > 0 :
+            return employee.department_id.id
+        else:
+            return False          
 
     name                = fields.Char(string="Project Name",required=True,track_visibility=1)
-    owner_department    = fields.Many2one('hr.department',string='Owner Dept.',index=True)
-    owner_name          = fields.Many2one('hr.employee',string='Owner Project Name',required=True,default=_getDefaultEmployee,track_visibility=1)
+    owner_department    = fields.Many2one('hr.department',string='Owner Dept.',index=True,required=True,default=_getDefaultEmployee,track_visibility=1)
+    owner_name          = fields.Many2one('hr.employee',string='Owner Project Name',required=True,default=_getDefaultDepartment,track_visibility=1)
     expected_start      = fields.Date(string="Expected start date",required=True,track_visibility=1)
     expected_end        = fields.Date(string="Expected end date",required=True,track_visibility=1)
     estimated_budget    = fields.Float(string="Estimated budget",required=True,track_visibility=1)
