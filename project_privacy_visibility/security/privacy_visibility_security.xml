@@ -55,6 +55,7 @@
 
     <delete id="project.project_project_manager_rule" model="ir.rule"/>
     <delete id="project.project_manager_all_project_tasks_rule" model="ir.rule"/>
+    <delete id="project.project_public_members_rule" model="ir.rule"/>
 </odoo> 
  
 
