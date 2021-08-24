@@ -25,7 +25,11 @@ class ProjectRequest(models.Model):
     def _getDefaultDepartment(self):
         user_id = self.env.user.id
         employee = self.env['hr.employee'].sudo().search([('user_id','=',user_id)],limit=1)
+        _logger.info("_getDefaultDepartment")
+        _logger.info(employee)
         if len(employee) > 0 :
+            _logger.info(employee.department_id)
+            _logger.info(employee.department_id.id)
             return employee.department_id.id
         else:
             return False          
