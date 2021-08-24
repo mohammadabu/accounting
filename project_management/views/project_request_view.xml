@@ -31,7 +31,7 @@
                                 <!-- <field name="user_department" invisible="1"/> -->
                                 <!-- <field name="owner_name" /> -->
                                 <!-- <field name="owner_dept"  domain="[('parent_id', 'child_of', [user_department])]" /> -->
-                                <field name="owner_dept"/>
+                                <field name="owner_dept_test"/>
                                 <!-- <field name="expected_start" /> -->
                                 <!-- <field name="expected_end"/> -->
                             </group>
