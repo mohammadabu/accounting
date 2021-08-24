@@ -57,6 +57,12 @@ class ProjectRequest(models.Model):
 
     @api.model
     def create(self,vals):
+        user_department = 0
+        current_user = self.env.uid
+        user_employee = self.env['hr.employee'].sudo().search([('user_id','=',current_user)],limit=1) 
+        if len(user_employee) > 0:
+            user_department = int(user_employee.department_id.id)
+        vals['user_department'] = user_department
         vals['request_date'] = datetime.today()
         rtn = super(ProjectRequest,self).create(vals)
         return rtn 
