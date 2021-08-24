@@ -36,24 +36,23 @@ class ProjectRequest(models.Model):
     deliverables        = fields.One2many('project.main.deliverables','request_id',ondelete='cascade') 
 
     user_department     = fields.Integer(compute='_compute_user_department')
-    # current_user        = fields.Many2one('res.users',compute='_compute_user_login')
+    current_user        = fields.Many2one('res.users',compute='_compute_user_login')
     
 
-    # @api.depends()
-    # def _compute_user_login(self):
-    #     self.current_user = self.env.uid
+    @api.depends()
+    def _compute_user_login(self):
+        self.current_user = self.env.uid
 
     # @api.depends('current_user')
-    @api.depends('')
+    @api.depends()
     def _compute_user_department(self):
         # current_user = self.env.uid
-        # # user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.current_user.id)],limit=1)
+        user_employee = self.env['hr.employee'].sudo().search([('user_id','=',self.current_user.id)],limit=1)
         # user_employee = self.env['hr.employee'].sudo().search([('user_id','=',current_user.id)],limit=1) 
-        # if len(user_employee) > 0:
-        #     self.user_department = int(user_employee.department_id.id)
-        # else:
-        #     self.user_department = 0 
-        self.user_department = 0     
+        if len(user_employee) > 0:
+            self.user_department = int(user_employee.department_id.id)
+        else:
+            self.user_department = 0 
 
 
     @api.model
