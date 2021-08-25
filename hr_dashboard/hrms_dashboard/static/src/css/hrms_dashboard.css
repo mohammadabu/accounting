@@ -307,7 +307,6 @@ rect:hover {  fill:#934da5; }
     color: #fff;
 }
 .employee-experience {
-
     width: 100%;
     text-align: center;
     padding-top: 3%;
@@ -319,7 +318,7 @@ rect:hover {  fill:#934da5; }
     padding: 9% 0% 4%;
     text-align: center;
     border-right: 1px solid #4d769b;
-    margin-top: 2%;
+    margin-top: 0% !important;
     float: left;
     border-top: 1px solid #4d769b;
 
@@ -333,7 +332,7 @@ rect:hover {  fill:#934da5; }
     margin-right: 10%;
     padding: 9% 0% 7%;
     text-align: center;
-    margin-top: 2%;
+    margin-top: 0% !important;
     float: left;
     border-top: 1px solid #4d769b;
 }
