@@ -1019,3 +1019,12 @@ h4 .stat-count {
 .text-align {
   margin-left: 17px;
 }
+
+.employee-links h4{
+    text-align: center;
+    color: white;
+}
+.employee-links ul{
+    text-align: center;
+    color: #126f42;
+}
