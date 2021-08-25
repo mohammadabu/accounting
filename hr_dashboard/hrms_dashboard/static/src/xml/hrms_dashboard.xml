@@ -105,7 +105,7 @@
                     </div>
                 </div>
             </div> -->
-            <div class="col-md-2 col-sm-6 hr_timesheets oh-payslip oh-timesheets">
+            <!-- <div class="col-md-2 col-sm-6 hr_timesheets oh-payslip oh-timesheets">
                 <div class="oh-card">
                     <div class="oh-card-body">
                         <div class="stat-widget-one">
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-2 col-sm-6 hr_contract oh-payslip oh-contracts">
                 <div class="oh-card">
                     <div class="oh-card-body">
