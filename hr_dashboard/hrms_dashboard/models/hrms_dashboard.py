@@ -82,8 +82,8 @@ class Employee(models.Model):
             else:
                 experience = False
 
-            if employee[0]['department_id']:
-                department = employee[0]['department_id']['name']
+            if employee.department_id:
+                department = employee.department_id.name
             else:
                 department = False  
 
