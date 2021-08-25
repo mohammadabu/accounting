@@ -46,15 +46,6 @@
                             <p class="text-light" style="color:#b6b6b6 !important">No manager has been selected for you</p>
                         </t>
                     </div>
-                    <div class="employee-department">
-                        <t t-if="widget.login_employee['department']">
-                            <p class="text-light">Department </p>
-                            <p><t t-esc="widget.login_employee['department']"/></p>
-                        </t>
-                        <t t-if="!widget.login_employee['department']">
-                            <p class="text-light" style="color:#b6b6b6 !important">No department has been selected for you</p>
-                        </t>
-                    </div>
                     <div class="employee-experience">
                         <t t-if="widget.login_employee['experience']">
                             <p class="text-light">Joined </p>
@@ -99,35 +90,12 @@
                             <li><a target="_blank" title="مصلحة الجمارك " href="">مصلحة الجمارك </a></li>
                         </ul>
                     </div> -->
+                    <div class="employee-department">
+                        <a class='btn-emp-more-info'>Show More Info</a>
+                    </div>
                 </div>
                 </div></div>
             </div>
-            <!-- <div class="col-md-2 col-sm-6 hr_payslip oh-payslip" >
-                <div class="oh-card">
-                    <div class="oh-card-body">
-                        <div class="stat-widget-one">
-                            <div class="stat-icon"><i class="fa fa-money"/></div>
-                            <div class="stat-content">
-                                <div class="stat-text">Payslips</div>
-                                <div class="stat-digit"><t t-esc="widget.login_employee['payslip_count']"/></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="col-md-2 col-sm-6 hr_timesheets oh-payslip oh-timesheets">
-                <div class="oh-card">
-                    <div class="oh-card-body">
-                        <div class="stat-widget-one">
-                            <div class="stat-icon"><i class="fa fa-clock-o"/></div>
-                            <div class="stat-content">
-                                <div class="stat-text">Timesheets</div>
-                                <div class="stat-digit"><t t-esc="widget.login_employee['emp_timesheets']"/></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="col-md-2 col-sm-6 hr_contract oh-payslip oh-contracts">
                 <div class="oh-card">
                     <div class="oh-card-body">
