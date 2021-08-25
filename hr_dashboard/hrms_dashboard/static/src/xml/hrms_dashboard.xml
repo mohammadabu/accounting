@@ -74,8 +74,9 @@
                         </t> -->
                     </div>
                     <div class="employee-links">
-                        <p class="text-light">Department </p>
-                        <p>sadasdsadasdsadsa</p>
+                        <ul class="links_list">                                              	
+                            <li><a target="_blank" title="مصلحة الجمارك " href="">مصلحة الجمارك </a></li>
+                        </ul>
                     </div>
                 </div>
                 </div></div>

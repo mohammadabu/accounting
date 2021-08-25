@@ -324,6 +324,15 @@ rect:hover {  fill:#934da5; }
     border-top: 1px solid #4d769b;
 
 }
+
+.employee-links{
+    border-top: 1px solid #4d769b;
+    width: 100%;
+    padding-top: 8%;
+    float: left;
+}
+
+
 .employee-country p {
     margin: 0px 0 1px !important;
     color: #fff;
