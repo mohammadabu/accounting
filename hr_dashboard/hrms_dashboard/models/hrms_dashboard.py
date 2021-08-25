@@ -82,9 +82,9 @@ class Employee(models.Model):
             else:
                 experience = False
 
-            if employee[0]['department_id']:
-                department_id = self.env['hr.department'].sudo().search_read([('id', '=', employee[0]['department_id']['id'])], limit=1)
-                department = department_id.name
+            employee_relations = self.env['hr.employee'].sudo().search([('user_id', '=', uid)], limit=1)
+            if employee_relations.department_id:
+                department = employee_relations.department_id.name
             else:
                 department = False  
 
