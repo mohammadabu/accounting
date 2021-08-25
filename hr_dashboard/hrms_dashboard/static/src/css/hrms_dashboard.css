@@ -287,9 +287,9 @@ rect:hover {  fill:#934da5; }
 .employee-department {
     width: 100%;
     text-align: center;
-    padding-top: 8%;
+    padding-top: 3%;
     float: left;
-    padding-bottom: 3%;
+    /* padding-bottom: 3%; */
     border-bottom: 1px solid #4d769b;
 }
 
@@ -310,10 +310,8 @@ rect:hover {  fill:#934da5; }
 
     width: 100%;
     text-align: center;
-    padding-top: 8%;
+    padding-top: 3%;
     float: left;
-    padding-bottom: 3%;
-
 }
 .employee-country {
     width: 40%;
