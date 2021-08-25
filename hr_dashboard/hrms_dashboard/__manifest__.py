@@ -31,7 +31,7 @@
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.openhrms.com",
     'depends': ['hr', 'hr_holidays', 'hr_timesheet', 'hr_attendance', 'hr_timesheet_attendance',
-                'hr_recruitment', 'event',],
+                'hr_recruitment'],
     'external_dependencies': {
         'python': ['pandas'],
     },

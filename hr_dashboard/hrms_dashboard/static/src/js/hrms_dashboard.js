@@ -138,7 +138,6 @@ var HrDashboard = AbstractAction.extend({
     get_emp_image_url: function(employee){
         return window.location.origin + '/web/image?model=hr.employee&field=image_1920&id='+employee;
     },
-
     update_attendance: function () {
         var self = this;
         this._rpc({
@@ -192,6 +191,7 @@ var HrDashboard = AbstractAction.extend({
         });
 
     },
+
     leaves_request_month: function(e) {
         var self = this;
         e.stopPropagation();
