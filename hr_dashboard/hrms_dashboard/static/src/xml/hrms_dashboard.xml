@@ -6,7 +6,7 @@
             </div>
         </div>
     </t>
-    <t t-name="LoginEmployeeDetails">
+    <t t-name="LoginEmployeeDetails"> 
         <link rel="stylesheet" href="/hrms_dashboard/static/src/css/hrms_dashboard.css"/>
         <div class="row main-section">
             <div class="col-md-2 col-sm-2 dummy"></div>
@@ -92,7 +92,7 @@
                 </div>
                 </div></div>
             </div>
-            <div class="col-md-2 col-sm-6 hr_payslip oh-payslip" >
+            <!-- <div class="col-md-2 col-sm-6 hr_payslip oh-payslip" >
                 <div class="oh-card">
                     <div class="oh-card-body">
                         <div class="stat-widget-one">
@@ -104,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-2 col-sm-6 hr_timesheets oh-payslip oh-timesheets">
                 <div class="oh-card">
                     <div class="oh-card-body">

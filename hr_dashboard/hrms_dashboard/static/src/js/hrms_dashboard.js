@@ -15,7 +15,7 @@ var HrDashboard = AbstractAction.extend({
     cssLibs: [
         '/hrms_dashboard/static/src/css/lib/nv.d3.css'
     ],
-    jsLibs: [
+    jsLibs: [ 
         '/hrms_dashboard/static/src/js/lib/d3.min.js'
     ],
     events: {
@@ -134,9 +134,6 @@ var HrDashboard = AbstractAction.extend({
     update_cp: function() {
         var self = this;
         console.log("UPDATE_CP")
-//        this.update_control_panel(
-//            {breadcrumbs: self.breadcrumbs}, {clear: true}
-//        );
     },
 
     get_emp_image_url: function(employee){
@@ -173,33 +170,23 @@ var HrDashboard = AbstractAction.extend({
 
     },
 
-    hr_payslip: function(e){
-        var self = this;
-        e.stopPropagation();
-        e.preventDefault();
-        var options = {
-            on_reverse_breadcrumb: this.on_reverse_breadcrumb,
-        };
-        this.do_action({
-            name: _t("Employee Payslips"),
-            type: 'ir.actions.act_window',
-            res_model: 'hr.payslip',
-            view_mode: 'tree,form,calendar',
-            views: [[false, 'list'],[false, 'form']],
-            domain: [['employee_id','=', this.login_employee.id]],
-            target: 'current'
-        }, options)
-        // this.do_action({
-        //     name: _t("Employee"),
-        //     type: 'ir.actions.act_window',
-        //     res_model: 'hr.employee',
-        //     view_mode: 'form',
-        //     view_type: 'form',
-        //     views: [[false, 'form']],
-        //     res_id: this.login_employee.id,
-        //     target: 'current'
-        // }, options)
-    },
+    // hr_payslip: function(e){
+    //     var self = this;
+    //     e.stopPropagation();
+    //     e.preventDefault();
+    //     var options = {
+    //         on_reverse_breadcrumb: this.on_reverse_breadcrumb,
+    //     };
+    //     this.do_action({
+    //         name: _t("Employee Payslips"),
+    //         type: 'ir.actions.act_window',
+    //         res_model: 'hr.payslip',
+    //         view_mode: 'tree,form,calendar',
+    //         views: [[false, 'list'],[false, 'form']],
+    //         domain: [['employee_id','=', this.login_employee.id]],
+    //         target: 'current'
+    //     }, options)
+    // },
 
     hr_contract: function(e){
         var self = this;
@@ -924,7 +911,6 @@ var HrDashboard = AbstractAction.extend({
                     leg= legend(tF);  // create the legend.
         });
     },
-
 });
 
 

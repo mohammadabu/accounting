@@ -9,7 +9,7 @@ from odoo import models, fields, api, _
 from odoo.http import request
 from odoo.tools import float_utils
 
-ROUNDING_FACTOR = 16
+ROUNDING_FACTOR = 16 
 
 
 class HrLeave(models.Model):
@@ -172,8 +172,8 @@ class Employee(models.Model):
     def get_dept_employee(self):
         cr = self._cr
         cr.execute("""select department_id, hr_department.name,count(*) 
-from hr_employee join hr_department on hr_department.id=hr_employee.department_id 
-group by hr_employee.department_id,hr_department.name""")
+            from hr_employee join hr_department on hr_department.id=hr_employee.department_id 
+            group by hr_employee.department_id,hr_department.name""")
         dat = cr.fetchall()
         data = []
         for i in range(0, len(dat)):
