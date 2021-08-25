@@ -75,17 +75,17 @@
                             <p class="text-light"><t t-esc="widget.login_employee['country_id'][1]"/></p>
                         </t>
                         <t t-if="!widget.login_employee['country_id']">
-                            <p class="text-light" style="color:#b6b6b6 !important">Check-out (Today)</p>
+                            <p class="text-light" style="color:#b6b6b6 !important">Check-in (Today)</p>
                             <p style="color:#b6b6b6 !important">- - -</p>
                         </t>
                     </div>
                     <div class="employee-mobile">
                         <t t-if="widget.login_employee['mobile_phone']">
-                            <p>Mobile</p>
+                            <p>Check-out (Today)</p>
                             <p class="text-light"><t t-esc="widget.login_employee['mobile_phone']"/></p>
                         </t>
                         <t t-if="!widget.login_employee['mobile_phone']">
-                            <p class="text-light" style="color:#b6b6b6 !important">Mobile</p>
+                            <p class="text-light" style="color:#b6b6b6 !important">Check-out (Today)</p>
                             <p style="color:#b6b6b6 !important">- - -</p>
                         </t>
                     </div>
