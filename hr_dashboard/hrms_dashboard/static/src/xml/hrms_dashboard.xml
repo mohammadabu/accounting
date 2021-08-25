@@ -70,15 +70,17 @@
                         </t>
                     </div>
                     <div class="employee-country">
-                        <t t-if="widget.login_employee['country_id']">
+                        <p class="text-light">Check-in (Today)</p>
+                        <p>8:00 Am</p>
+                        <!-- <t t-if="widget.login_employee['country_id']">
                             <p class="text-light">Check-in (Today)</p>
-                            <!-- <p class="text-light"><t t-esc="widget.login_employee['country_id'][1]"/></p> -->
+                            <p class="text-light"><t t-esc="widget.login_employee['country_id'][1]"/></p>
                             <p>8:00 Am</p>
-                        </t>
-                        <t t-if="!widget.login_employee['country_id']">
+                        </t> -->
+                        <!-- <t t-if="!widget.login_employee['country_id']">
                             <p class="text-light" style="color:#b6b6b6 !important">Check-in (Today)</p>
                             <p style="color:#b6b6b6 !important">- - -</p>
-                        </t>
+                        </t> -->
                     </div>
                     <div class="employee-mobile">
                         <t t-if="widget.login_employee['mobile_phone']">
