@@ -42,9 +42,9 @@ var HrDashboard = AbstractAction.extend({
         this.date_from = moment().subtract(1, 'week');
         this.date_to = moment();
         this.dashboards_templates = ['LoginEmployeeDetails', 'ManagerDashboard', 'EmployeeDashboard'];
-        this.employee_birthday = [];
-        this.upcoming_events = [];
-        this.announcements = [];
+        // this.employee_birthday = [];
+        // this.upcoming_events = [];
+        // this.announcements = [];
     },
 
     willStart: function() {
@@ -82,16 +82,17 @@ var HrDashboard = AbstractAction.extend({
         }).then(function(result) {
             self.login_employee =  result[0];
         });
-        var def2 = self._rpc({
-            model: "hr.employee",
-            method: "get_upcoming",
-        })
-        .then(function (res) {
-            self.employee_birthday = res['birthday'];
-            self.upcoming_events = res['event'];
-            self.announcements = res['announcement'];
-        });
-        return $.when(def0, def1, def2);
+        // var def2 = self._rpc({
+        //     model: "hr.employee",
+        //     method: "get_upcoming",
+        // })
+        // .then(function (res) {
+        //     self.employee_birthday = res['birthday'];
+        //     self.upcoming_events = res['event'];
+        //     self.announcements = res['announcement'];
+        // });
+        // return $.when(def0, def1, def2);
+        return $.when(def0, def1);
     },
 
     render_dashboards: function() {

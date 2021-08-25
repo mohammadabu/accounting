@@ -157,12 +157,6 @@ msgstr "الموظف"
 msgid "Employee Broadfactor"
 msgstr "موظف مذيع"
 
-#. module: hrms_dashboard
-#. openerp-web
-#: code:addons/hrms_dashboard/static/src/js/hrms_dashboard.js:0
-#, python-format
-msgid "Employee Payslips"
-msgstr "كشوف الموظفين"
 
 #. module: hrms_dashboard
 #. openerp-web
@@ -320,13 +314,6 @@ msgstr "عبر الانترنت"
 #, python-format
 msgid "Other"
 msgstr "آخر"
-
-#. module: hrms_dashboard
-#. openerp-web
-#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
-#, python-format
-msgid "Payslips"
-msgstr "كشوف"
 
 #. module: hrms_dashboard
 #. openerp-web

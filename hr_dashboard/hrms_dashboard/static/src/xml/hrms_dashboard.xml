@@ -323,7 +323,7 @@
                     <div class="hr_notification_head">
                     Upcoming Birthdays
                     </div>
-                    <div class="col-xs-12 text-align">
+                    <!-- <div class="col-xs-12 text-align">
                         <t t-foreach="widget.employee_birthday" t-as="employee">
                         <div class="col-sm-12 col-lg-12" style="padding:0;">
                             <div class="text-color">
@@ -340,7 +340,7 @@
                                 </div></div></div></div>
                             </div>
                         </t>
-                    </div>
+                    </div> -->
                  </div>
             </div>
             <div class="col-md-4 col-lg-3">
@@ -350,7 +350,7 @@
                         Upcoming Events
                         </div>
                     </div>
-                    <div class="col-xs-12 text-align">
+                    <!-- <div class="col-xs-12 text-align">
                         <t t-foreach="widget.upcoming_events" t-as="event">
                         <div class="col-sm-12 col-lg-12" style="padding:0;">
                             <div class="text-color">
@@ -368,7 +368,7 @@
                                 </div></div></div></div>
                             </div>
                         </t>
-                    </div>
+                    </div> -->
                  </div>
             </div>
             <div class="col-md-4 col-lg-4">
@@ -378,7 +378,7 @@
                         Announcements
                         </div>
                     </div>
-                    <div class="col-xs-12 text-align">
+                    <!-- <div class="col-xs-12 text-align">
                         <t t-foreach="widget.announcements" t-as="announcement">
                         <div class="col-sm-12 col-lg-12" style="padding:0;">
                             <div class="text-color">
@@ -390,7 +390,7 @@
                                 </div></div></div></div>
                             </div>
                         </t>
-                    </div>
+                    </div> -->
                  </div>
             </div>
         </div>
