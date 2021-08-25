@@ -309,7 +309,7 @@ rect:hover {  fill:#934da5; }
 .employee-experience {
     width: 100%;
     text-align: center;
-    padding-top: 3%;
+    padding-top: 3% !important;
     float: left;
 }
 .employee-country {
