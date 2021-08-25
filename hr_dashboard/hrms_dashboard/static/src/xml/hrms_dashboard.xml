@@ -38,12 +38,12 @@
                         </t>
                     </div>
                     <div class="employee-department">
-                        <t t-if="widget.login_employee['department']">
-                            <p class="text-light">Department </p>
-                            <p><t t-esc="widget.login_employee['department']"/></p>
+                        <t t-if="widget.login_employee['manager']">
+                            <p class="text-light">Manager </p>
+                            <p><t t-esc="widget.login_employee['manager']"/></p>
                         </t>
-                        <t t-if="!widget.login_employee['department']">
-                            <p class="text-light" style="color:#b6b6b6 !important">No department has been selected for you</p>
+                        <t t-if="!widget.login_employee['manager']">
+                            <p class="text-light" style="color:#b6b6b6 !important">No manager has been selected for you</p>
                         </t>
                     </div>
                     <div class="employee-department">

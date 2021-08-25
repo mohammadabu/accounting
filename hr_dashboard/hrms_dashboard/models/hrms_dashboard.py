@@ -86,7 +86,12 @@ class Employee(models.Model):
             if employee_relations.department_id:
                 department = employee_relations.department_id.name
             else:
-                department = False  
+                department = False
+
+            if employee_relations.parent_id:
+                manager = employee_relations.parent_id.name
+            else:
+                manager = False      
 
             if employee:
                 data = {
@@ -100,7 +105,8 @@ class Employee(models.Model):
                     'timesheet_view_id': timesheet_view_id,
                     'experience': experience,
                     'age': age,
-                    'department':department
+                    'department':department,
+                    'manager':manager
                 }
                 employee[0].update(data)
             return employee
