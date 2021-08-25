@@ -31,7 +31,7 @@
                     <div class="employee-department">
                         <t t-if="widget.login_employee['department_id']">
                             <p class="text-light">Department </p>
-                            <p><t t-esc="widget.login_employee['department_id']"/></p>
+                            <p><t t-esc="widget.login_employee['department_id']['name']"/></p>
                         </t>
                         <t t-if="!widget.login_employee['department_id']">
                             <p class="text-light" style="color:#b6b6b6 !important">No department has been selected for you</p>
