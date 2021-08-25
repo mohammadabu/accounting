@@ -283,6 +283,16 @@ rect:hover {  fill:#934da5; }
     margin: 0px 0 4px !important;
     color: #fff;
 }
+
+.employee-department {
+    width: 100%;
+    text-align: center;
+    padding-top: 8%;
+    float: left;
+    padding-bottom: 3%;
+    border-bottom: 1px solid #4d769b;
+}
+
 .employee-age {
     width: 40%;
     margin-right: 10%;

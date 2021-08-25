@@ -28,40 +28,15 @@
                     </t>
                 </div>
                 <div class="employee-details">
-                    <div class="employee-gender">
-                        <t t-if="widget.login_employee['gender'] == 'male'">
-                            <p><i class="fa fa-mars"></i></p>
-                            <p class="text-light">Male</p>
-                        </t>
-                        <t t-if="widget.login_employee['gender'] == 'female'">
-                            <p><i class="fa fa-venus"></i></p>
-                            <p class="text-light">Female</p>
-                        </t>
-                        <t t-if="widget.login_employee['gender'] == 'other'">
-                            Other
-                            <p class="text-light">Other</p>
-                        </t>
-                        <t t-if="!widget.login_employee['gender']">
-                            <p class="text-light" style="color:#b6b6b6 !important">Gender</p>
-                            <p class="text-light" style="color:#b6b6b6 !important">---</p>
-                        </t>
-                    </div>
-                    
-
-                    <div class="employee-gender">
-                        <t t-if="widget.login_employee['experience']">
+                    <div class="employee-department">
+                        <t t-if="widget.login_employee['department_id']">
                             <p class="text-light">Department </p>
-                            <!-- <p><t t-esc="widget.login_employee['experience']"/></p> -->
-                            <p>sasdasasadsadsasdaasd</p>
+                            <p><t t-esc="widget.login_employee['department_id']"/></p>
                         </t>
-                        <t t-if="!widget.login_employee['experience']">
+                        <t t-if="!widget.login_employee['department_id']">
                             <p class="text-light" style="color:#b6b6b6 !important">No department has been selected for you</p>
                         </t>
                     </div>
-
-
-
-
                     <div class="employee-experience">
                         <t t-if="widget.login_employee['experience']">
                             <p class="text-light">Joined </p>
