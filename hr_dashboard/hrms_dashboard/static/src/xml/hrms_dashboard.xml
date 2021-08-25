@@ -28,35 +28,19 @@
                     </t>
                 </div>
                 <div class="employee-details">
-                    <div class="employee-gender">
-                        <t t-if="widget.login_employee['gender'] == 'male'">
-                            <p><i class="fa fa-mars"></i></p>
-                            <p class="text-light">Male</p>
+                    <div class="employee-experience">
+                        <t t-if="widget.login_employee['experience']">
+                            <p class="text-light">Joined </p>
+                            <p><t t-esc="widget.login_employee['experience']"/></p>
+                            <p>Ago</p>
                         </t>
-                        <t t-if="widget.login_employee['gender'] == 'female'">
-                            <p><i class="fa fa-venus"></i></p>
-                            <p class="text-light">Female</p>
-                        </t>
-                        <t t-if="widget.login_employee['gender'] == 'other'">
-                            Other
-                            <p class="text-light">Other</p>
-                        </t>
-                        <t t-if="!widget.login_employee['gender']">
-                            <p class="text-light" style="color:#b6b6b6 !important">Gender</p>
-                            <p class="text-light" style="color:#b6b6b6 !important">---</p>
-                        </t>
-
-                    </div>
-                    <div class="employee-age">
-                        <t t-if="widget.login_employee['age']">
-                            <p class="text-light"><t t-esc="widget.login_employee['age']"/></p>
-                            <p>Age</p>
-                        </t>
-                        <t t-if="!widget.login_employee['age']">
-                            <p class="text-light" style="color:#b6b6b6 !important">DOB</p>
-                            <p style="color:#b6b6b6 !important">--/--/----</p>
+                        <t t-if="!widget.login_employee['experience']">
+                            <p class="text-light" style="color:#b6b6b6 !important">Joined</p>
+                            <p class="text-light" style="color:#b6b6b6 !important">Date</p>
+                            <p class="text-light" style="color:#b6b6b6 !important">--/--/----</p>
                         </t>
                     </div>
+                    
                     <div class="employee-experience">
                         <t t-if="widget.login_employee['experience']">
                             <p class="text-light">Joined </p>
@@ -412,7 +396,6 @@
         </div>
 
     </t>
-
     <t t-name="EmployeeWarning">
         <div>
             <p>Error : Could not find employee linked to user</p>
