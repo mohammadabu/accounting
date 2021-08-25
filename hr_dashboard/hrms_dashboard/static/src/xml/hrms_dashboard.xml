@@ -50,12 +50,13 @@
                         </t>
                     </div>
                     <div class="employee-country">
-                        <t t-if="widget.login_employee['country_id']">
-                            <p class="text-light">Nationality</p>
-                            <p class="text-light"><t t-esc="widget.login_employee['country_id'][1]"/></p>
+                        <t t-if="widget.login_employee['mobile_phone']">
+                            <p>Check-out (Today)</p>
+                            <!-- <p class="text-light"><t t-esc="widget.login_employee['mobile_phone']"/></p> -->
+                            <p>4:00 Pm</p>
                         </t>
-                        <t t-if="!widget.login_employee['country_id']">
-                            <p class="text-light" style="color:#b6b6b6 !important">Nationality</p>
+                        <t t-if="!widget.login_employee['mobile_phone']">
+                            <p class="text-light" style="color:#b6b6b6 !important">Check-out (Today)</p>
                             <p style="color:#b6b6b6 !important">- - -</p>
                         </t>
                     </div>
