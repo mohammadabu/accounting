@@ -289,7 +289,7 @@
             <div class="row main-section">
                 <div class="col-md-2 col-sm-2 dummy"></div>
 
-                <div class="col-sm-5 col-lg-5 monthly_join_resign_trend">
+                <!-- <div class="col-sm-5 col-lg-5 monthly_join_resign_trend">
                     <div class="oh-card text-color">
                         <div class="oh-card-body pb-0">
                             <h4 class="mb-0">
@@ -299,9 +299,9 @@
                         </div>
                         <div class="join_resign_trend" />
                     </div>
-                </div>
+                </div> -->
 
-                <div class="col-sm-5 col-lg-5  monthly_attrition_rate">
+                <!-- <div class="col-sm-5 col-lg-5  monthly_attrition_rate">
                     <div class="oh-card text-color">
                         <div class="oh-card-body pb-0">
                             <h4 class="mb-0">
@@ -311,7 +311,7 @@
                         </div>
                         <div class="attrition_rate" />
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </t>

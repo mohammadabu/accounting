@@ -115,8 +115,6 @@ var HrDashboard = AbstractAction.extend({
         if (this.login_employee){
             self.render_department_employee();
             self.render_leave_graph();
-            self.update_join_resign_trends();
-            self.update_monthly_attrition();
             self.update_leave_trend();
         }
     },
@@ -170,25 +168,6 @@ var HrDashboard = AbstractAction.extend({
         });
 
     },
-
-    // hr_payslip: function(e){
-    //     var self = this;
-    //     e.stopPropagation();
-    //     e.preventDefault();
-    //     var options = {
-    //         on_reverse_breadcrumb: this.on_reverse_breadcrumb,
-    //     };
-    //     this.do_action({
-    //         name: _t("Employee Payslips"),
-    //         type: 'ir.actions.act_window',
-    //         res_model: 'hr.payslip',
-    //         view_mode: 'tree,form,calendar',
-    //         views: [[false, 'list'],[false, 'form']],
-    //         domain: [['employee_id','=', this.login_employee.id]],
-    //         target: 'current'
-    //     }, options)
-    // },
-
     hr_contract: function(e){
         var self = this;
         e.stopPropagation();
@@ -213,7 +192,6 @@ var HrDashboard = AbstractAction.extend({
         });
 
     },
-
     leaves_request_month: function(e) {
         var self = this;
         e.stopPropagation();
@@ -236,7 +214,6 @@ var HrDashboard = AbstractAction.extend({
             target: 'current'
         }, options)
     },
-
     leaves_request_today: function(e) {
         var self = this;
         var date = new Date();
@@ -316,7 +293,6 @@ var HrDashboard = AbstractAction.extend({
             target: 'current'
         }, options)
     },
-
     hr_timesheets: function(e) {
          var self = this;
         e.stopPropagation();
@@ -337,7 +313,6 @@ var HrDashboard = AbstractAction.extend({
             target: 'current'
         }, options)
     },
-
     job_applications_to_approve: function(event){
         var self = this;
         event.stopPropagation();
@@ -356,7 +331,6 @@ var HrDashboard = AbstractAction.extend({
             target: 'current'
         }, options)
     },
-
     render_department_employee:function(){
         var self = this;
         var w = 200;
@@ -406,197 +380,6 @@ var HrDashboard = AbstractAction.extend({
         });
 
     },
-
-    update_join_resign_trends: function(){
-        var elem = this.$('.join_resign_trend');
-        var colors = ['#70cac1', '#659d4e', '#208cc2', '#4d6cb1', '#584999', '#8e559e', '#cf3650', '#f65337', '#fe7139',
-        '#ffa433', '#ffc25b', '#f8e54b'];
-        var color = d3.scale.ordinal().range(colors);
-        rpc.query({
-            model: "hr.employee",
-            method: "join_resign_trends",
-        }).then(function (data) {
-            data.forEach(function(d) {
-              d.values.forEach(function(d) {
-                d.l_month = d.l_month;
-                d.count = +d.count;
-              });
-            });
-            var margin = {top: 30, right: 10, bottom: 30, left: 30},
-                width = 400 - margin.left - margin.right,
-                height = 250 - margin.top - margin.bottom;
-
-            // Set the ranges
-            var x = d3.scale.ordinal()
-                .rangeRoundBands([0, width], 1);
-
-            var y = d3.scale.linear()
-                .range([height, 0]);
-
-            // Define the axes
-            var xAxis = d3.svg.axis().scale(x)
-                .orient("bottom");
-
-            var yAxis = d3.svg.axis().scale(y)
-                .orient("left").ticks(5);
-
-            x.domain(data[0].values.map(function(d) { return d.l_month; }));
-            y.domain([0, d3.max(data[0].values, d => d.count)])
-
-            var svg = d3.select(elem[0]).append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-            // Add the X Axis
-            svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis);
-
-            // Add the Y Axis
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis);
-
-
-            var line = d3.svg.line()
-                .x(function(d) {return x(d.l_month); })
-                .y(function(d) {return y(d.count); });
-
-            let lines = svg.append('g')
-              .attr('class', 'lines');
-
-            lines.selectAll('.line-group')
-                .data(data).enter()
-                .append('g')
-                .attr('class', 'line-group')
-                .append('path')
-                .attr('class', 'line')
-                .attr('d', function(d) { return line(d.values); })
-                .style('stroke', (d, i) => color(i));
-
-            lines.selectAll("circle-group")
-                .data(data).enter()
-                .append("g")
-                .selectAll("circle")
-                .data(function(d) { return d.values;}).enter()
-                .append("g")
-                .attr("class", "circle")
-                .append("circle")
-                .attr("cx", function(d) { return x(d.l_month)})
-                .attr("cy", function(d) { return y(d.count)})
-                .attr("r", 3);
-
-            var legend = d3.select(elem[0]).append("div").attr('class','legend');
-
-            var tr = legend.selectAll("div").data(data).enter().append("div");
-
-            tr.append("span").attr('class','legend_col').append("svg").attr("width", '16').attr("height", '16').append("rect")
-                .attr("width", '16').attr("height", '16')
-                .attr("fill",function(d, i){ return color(i) });
-
-            tr.append("span").attr('class','legend_col').text(function(d){ return d.name;});
-        });
-    },
-
-    update_monthly_attrition: function(){
-        var elem = this.$('.attrition_rate');
-        var colors = ['#70cac1', '#659d4e', '#208cc2', '#4d6cb1', '#584999', '#8e559e', '#cf3650', '#f65337', '#fe7139',
-        '#ffa433', '#ffc25b', '#f8e54b'];
-        var color = d3.scale.ordinal().range(colors);
-        rpc.query({
-            model: "hr.employee",
-            method: "get_attrition_rate",
-        }).then(function (data) {
-            var margin = {top: 30, right: 20, bottom: 30, left: 80},
-                width = 500 - margin.left - margin.right,
-                height = 250 - margin.top - margin.bottom;
-
-            // Set the ranges
-            var x = d3.scale.ordinal()
-                .rangeRoundBands([0, width], 1);
-
-            var y = d3.scale.linear()
-                .range([height, 0]);
-
-            // Define the axes
-            var xAxis = d3.svg.axis().scale(x)
-                .orient("bottom");
-
-            var yAxis = d3.svg.axis().scale(y)
-                .orient("left").ticks(5);
-
-            var valueline = d3.svg.line()
-                .x(function(d) { return x(d.month); })
-                .y(function(d) { return y(d.attrition_rate); });
-
-
-            var svg = d3.select(elem[0]).append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-            x.domain(data.map(function(d) { return d.month; }));
-            y.domain([0, d3.max(data, function(d) { return d.attrition_rate; })]);
-
-            // Add the X Axis
-            svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis);
-
-            // Add the Y Axis
-            svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis);
-
-            svg.append("path")
-                .attr("class", "line")
-                .attr("d", valueline(data));
-
-            // Add the scatterplot
-            svg.selectAll("dot")
-                .data(data)
-                .enter().append("circle")
-                .attr("r", 3)
-                .attr("cx", function(d) { return x(d.month); })
-                .attr("cy", function(d) { return y(d.attrition_rate); })
-                .on("mouseover", function() { tooltip.style("display", null);
-                    d3.select(this).transition().duration(500).ease("elastic").attr('r', 3 * 2)
-                 })
-                .on("mouseout", function() { tooltip.style("display", "none");
-                    d3.select(this).transition().duration(500).ease("in-out").attr('r', 3)
-                })
-                .on("mousemove", function(d) {
-                    var xPosition = d3.mouse(this)[0] - 15;
-                    var yPosition = d3.mouse(this)[1] - 25;
-                    tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-                    tooltip.select("text").text(d.attrition_rate);
-                });
-
-            var tooltip = svg.append("g")
-                  .attr("class", "tooltip")
-                  .style("display", "none");
-
-                tooltip.append("rect")
-                  .attr("width", 30)
-                  .attr("height", 20)
-                  .attr("fill", "black")
-                  .style("opacity", 0.5);
-
-                tooltip.append("text")
-                  .attr("x", 15)
-                  .attr("dy", "1.2em")
-                  .style("text-anchor", "middle")
-                  .attr("font-size", "12px")
-                  .attr("font-weight", "bold");
-
-        });
-    },
-
     update_leave_trend: function(){
         var self = this;
         rpc.query({
