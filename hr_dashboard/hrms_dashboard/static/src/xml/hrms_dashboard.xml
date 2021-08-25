@@ -29,11 +29,11 @@
                 </div>
                 <div class="employee-details">
                     <div class="employee-department">
-                        <t t-if="widget.login_employee['department_id']">
+                        <t t-if="widget.login_employee['department']">
                             <p class="text-light">Department </p>
-                            <p><t t-esc="widget.login_employee['department_id']['name']"/></p>
+                            <p><t t-esc="widget.login_employee['department']"/></p>
                         </t>
-                        <t t-if="!widget.login_employee['department_id']">
+                        <t t-if="!widget.login_employee['department']">
                             <p class="text-light" style="color:#b6b6b6 !important">No department has been selected for you</p>
                         </t>
                     </div>

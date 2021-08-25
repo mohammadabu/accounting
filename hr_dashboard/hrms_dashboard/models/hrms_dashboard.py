@@ -81,6 +81,12 @@ class Employee(models.Model):
                 experience = '{} years {} months {} days'.format(years, months, days)
             else:
                 experience = False
+
+            if employee[0]['department_id']:
+                department = employee[0]['department_id']['name']
+            else:
+                department = False  
+
             if employee:
                 data = {
                     'broad_factor': broad_factor if broad_factor else 0,
@@ -92,7 +98,8 @@ class Employee(models.Model):
                     'job_applications': job_applications,
                     'timesheet_view_id': timesheet_view_id,
                     'experience': experience,
-                    'age': age
+                    'age': age,
+                    'department':department
                 }
                 employee[0].update(data)
             return employee
