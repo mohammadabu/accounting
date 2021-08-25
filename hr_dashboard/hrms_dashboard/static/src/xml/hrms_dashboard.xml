@@ -70,6 +70,17 @@
                         </t>
                     </div>
                     <div class="employee-country">
+                        <t t-if="widget.login_employee['mobile_phone']">
+                            <p>Check-out (Today)</p>
+                            <!-- <p class="text-light"><t t-esc="widget.login_employee['mobile_phone']"/></p> -->
+                            <p>4:00 Pm</p>
+                        </t>
+                        <t t-if="!widget.login_employee['mobile_phone']">
+                            <p class="text-light" style="color:#b6b6b6 !important">Check-out (Today)</p>
+                            <p style="color:#b6b6b6 !important">- - -</p>
+                        </t>
+                    </div>
+                    <div class="employee-mobile">
                         <p class="text-light">Check-in <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>(Today)</p>
                         <p>8:00 Am</p>
                         <!-- <t t-if="widget.login_employee['country_id']">
@@ -81,17 +92,6 @@
                             <p class="text-light" style="color:#b6b6b6 !important">Check-in (Today)</p>
                             <p style="color:#b6b6b6 !important">- - -</p>
                         </t> -->
-                    </div>
-                    <div class="employee-mobile">
-                        <t t-if="widget.login_employee['mobile_phone']">
-                            <p>Check-out (Today)</p>
-                            <!-- <p class="text-light"><t t-esc="widget.login_employee['mobile_phone']"/></p> -->
-                            <p>4:00 Pm</p>
-                        </t>
-                        <t t-if="!widget.login_employee['mobile_phone']">
-                            <p class="text-light" style="color:#b6b6b6 !important">Check-out (Today)</p>
-                            <p style="color:#b6b6b6 !important">- - -</p>
-                        </t>
                     </div>
                 </div>
                 </div></div>
