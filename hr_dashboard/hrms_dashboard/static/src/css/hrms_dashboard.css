@@ -473,12 +473,18 @@ rect:hover {  fill:#934da5; }
 }
 
 .oh-attendance .stat-icon{
-    background: #70cac1 !important;
+    background: #659d4e !important;
 }
 .oh-attendance .stat-widget-one .stat-text {
-    color: #70cac1;
+    color: #659d4e;
 }
 
+.oh-project .stat-icon{
+    background: #208cc2 !important;
+}
+.oh-project .stat-widget-one .stat-text {
+    color: #208cc2;
+}
 
 
 .leave-manager {
