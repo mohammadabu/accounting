@@ -122,14 +122,13 @@
                     </div>
                 </div>
             </t>
-            <div class="col-md-2 col-sm-6 employee_notes oh-payslip oh-contracts">
+            <div class="col-md-2 col-sm-6 employee_notes oh-payslip oh-notes">
                 <div class="oh-card">
                     <div class="oh-card-body">
                         <div class="stat-widget-one">
-                            <div class="stat-icon"><i class="fa fa-fw fa-book"/></div>
+                            <div class="stat-icon"><i class="fa fa-fw fa-sticky-note"/></div>
                             <div class="stat-content">
                                 <div class="stat-text">Notes</div>
-                                <!-- <div class="stat-digit"><t t-esc="widget.login_employee['projects_count']"/></div> -->
                             </div>
                         </div>
                     </div>

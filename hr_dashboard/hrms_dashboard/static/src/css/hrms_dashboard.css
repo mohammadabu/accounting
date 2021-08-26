@@ -487,6 +487,14 @@ rect:hover {  fill:#934da5; }
 }
 
 
+.oh-notes .stat-icon{
+    background: #584999 !important;
+}
+.oh-notes .stat-widget-one .stat-text {
+    color: #584999;
+}
+
+
 .leave-manager {
 
     background-color: #fff;
