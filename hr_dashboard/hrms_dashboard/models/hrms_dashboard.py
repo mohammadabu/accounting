@@ -75,9 +75,18 @@ class Employee(models.Model):
             else:
                 experience = False
 
-
+            user_roles = self.env['res.users'].sudo().search([('id', '=', uid)], limit=1)
+            
+            if user_roles.has_group('project.group_project_manager') or user_roles.has_group('project.group_project_user'):
+                projects_count = self.env['project.project'].search_count([('user_emails', 'like', '#'+str(uid)+'#')])
+                used_project = True
+            else:
+                used_project = False
+                projects_count = 0
             if employee:
                 data = {
+                    'projects_count':projects_count,
+                    'used_project':used_project,
                     'attendance_count':attendance_count,
                     'time_off_count':time_off_count,
                     'experience': experience,
