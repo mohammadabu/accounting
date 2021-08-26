@@ -36,52 +36,53 @@ class Employee(models.Model):
     @api.model
     def get_user_employee_details(self):
         uid = request.session.uid
-        employee = self.env['hr.employee'].sudo().search_read([('user_id', '=', uid)], limit=1)
-        leaves_to_approve = self.env['hr.leave'].sudo().search_count([('state', 'in', ['confirm', 'validate1'])])
-        today = datetime.strftime(datetime.today(), '%Y-%m-%d')
-        query = """
-        select count(id)
-        from hr_leave
-        WHERE (hr_leave.date_from::DATE,hr_leave.date_to::DATE) OVERLAPS ('%s', '%s') and 
-        state='validate'""" % (today, today)
-        cr = self._cr
-        cr.execute(query)
-        leaves_today = cr.fetchall()
-        first_day = date.today().replace(day=1)
-        last_day = (date.today() + relativedelta(months=1, day=1)) - timedelta(1)
-        query = """
-                select count(id)
-                from hr_leave
-                WHERE (hr_leave.date_from::DATE,hr_leave.date_to::DATE) OVERLAPS ('%s', '%s')
-                and  state='validate'""" % (first_day, last_day)
-        cr = self._cr
-        cr.execute(query)
-        leaves_this_month = cr.fetchall()
-        leaves_alloc_req = self.env['hr.leave.allocation'].sudo().search_count(
-            [('state', 'in', ['confirm', 'validate1'])])
-        timesheet_count = self.env['account.analytic.line'].sudo().search_count(
-            [('project_id', '!=', False), ('user_id', '=', uid)])
-        timesheet_view_id = self.env.ref('hr_timesheet.hr_timesheet_line_search')
-        job_applications = self.env['hr.applicant'].sudo().search_count([])
-        if employee:
-            sql = """select broad_factor from hr_employee_broad_factor where id =%s"""
-            self.env.cr.execute(sql, (employee[0]['id'],))
-            result = self.env.cr.dictfetchall()
-            broad_factor = result[0]['broad_factor']
-            if employee[0]['birthday']:
-                diff = relativedelta(datetime.today(), employee[0]['birthday'])
-                age = diff.years
-            else:
-                age = False
-            if employee[0]['joining_date']:
-                diff = relativedelta(datetime.today(), employee[0]['joining_date'])
-                years = diff.years
-                months = diff.months
-                days = diff.days
-                experience = '{} years {} months {} days'.format(years, months, days)
-            else:
-                experience = False
+        # employee = self.env['hr.employee'].sudo().search_read([('user_id', '=', uid)], limit=1)
+        # leaves_to_approve = self.env['hr.leave'].sudo().search_count([('state', 'in', ['confirm', 'validate1'])])
+        # today = datetime.strftime(datetime.today(), '%Y-%m-%d')
+        # query = """
+        # select count(id)
+        # from hr_leave
+        # WHERE (hr_leave.date_from::DATE,hr_leave.date_to::DATE) OVERLAPS ('%s', '%s') and 
+        # state='validate'""" % (today, today)
+        # cr = self._cr
+        # cr.execute(query)
+        # leaves_today = cr.fetchall()
+        # first_day = date.today().replace(day=1)
+        # last_day = (date.today() + relativedelta(months=1, day=1)) - timedelta(1)
+        # query = """
+        #         select count(id)
+        #         from hr_leave
+        #         WHERE (hr_leave.date_from::DATE,hr_leave.date_to::DATE) OVERLAPS ('%s', '%s')
+        #         and  state='validate'""" % (first_day, last_day)
+        # cr = self._cr
+        # cr.execute(query)
+        # leaves_this_month = cr.fetchall()
+        # leaves_alloc_req = self.env['hr.leave.allocation'].sudo().search_count(
+        #     [('state', 'in', ['confirm', 'validate1'])])
+        # timesheet_count = self.env['account.analytic.line'].sudo().search_count(
+        #     [('project_id', '!=', False), ('user_id', '=', uid)])
+        # timesheet_view_id = self.env.ref('hr_timesheet.hr_timesheet_line_search')
+        # job_applications = self.env['hr.applicant'].sudo().search_count([])
+        # if employee:
+        #     sql = """select broad_factor from hr_employee_broad_factor where id =%s"""
+        #     self.env.cr.execute(sql, (employee[0]['id'],))
+        #     result = self.env.cr.dictfetchall()
+        #     broad_factor = result[0]['broad_factor']
+        #     if employee[0]['birthday']:
+        #         diff = relativedelta(datetime.today(), employee[0]['birthday'])
+        #         age = diff.years
+        #     else:
+        #         age = False
+        #     if employee[0]['joining_date']:
+        #         diff = relativedelta(datetime.today(), employee[0]['joining_date'])
+        #         years = diff.years
+        #         months = diff.months
+        #         days = diff.days
+        #         experience = '{} years {} months {} days'.format(years, months, days)
+        #     else:
+        #         experience = False
 
+            
             employee_relations = self.env['hr.employee'].sudo().search([('user_id', '=', uid)], limit=1)
             if employee_relations.department_id:
                 department = employee_relations.department_id.name
@@ -92,19 +93,28 @@ class Employee(models.Model):
                 manager = employee_relations.parent_id.name
             else:
                 manager = False      
+            if employee_relations.joining_date:
+                diff = relativedelta(datetime.today(), employee_relations.joining_date)
+                years = diff.years
+                months = diff.months
+                days = diff.days
+                experience = '{} years {} months {} days'.format(years, months, days)
+            else:
+                experience = False
+
 
             if employee:
                 data = {
-                    'broad_factor': broad_factor if broad_factor else 0,
-                    'leaves_to_approve': leaves_to_approve,
-                    'leaves_today': leaves_today,
-                    'leaves_this_month': leaves_this_month,
-                    'leaves_alloc_req': leaves_alloc_req,
-                    'emp_timesheets': timesheet_count,
-                    'job_applications': job_applications,
-                    'timesheet_view_id': timesheet_view_id,
+                    # 'broad_factor': broad_factor if broad_factor else 0,
+                    # 'leaves_to_approve': leaves_to_approve,
+                    # 'leaves_today': leaves_today,
+                    # 'leaves_this_month': leaves_this_month,
+                    # 'leaves_alloc_req': leaves_alloc_req,
+                    # 'emp_timesheets': timesheet_count,
+                    # 'job_applications': job_applications,
+                    # 'timesheet_view_id': timesheet_view_id,
+                    # 'age': age,
                     'experience': experience,
-                    'age': age,
                     'department':department,
                     'manager':manager
                 }
