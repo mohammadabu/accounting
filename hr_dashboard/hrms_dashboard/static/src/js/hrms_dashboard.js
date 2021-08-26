@@ -283,7 +283,7 @@ var HrDashboard = AbstractAction.extend({
             name: _t("Attendance"),
             type: 'ir.actions.act_window',
             res_model: 'project.project',
-            view_mode: 'tree,form,calendar',
+            view_mode: 'kanban,tree,calendar',
             views: [[false, 'list'],[false, 'form']],
             // domain: [['employee_id','=', this.login_employee.id]],
             target: 'current',
