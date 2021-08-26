@@ -313,7 +313,7 @@ var HrDashboard = AbstractAction.extend({
         this.do_action({
             name: _t("Employee"),
             type: 'ir.actions.act_window',
-            target: 'new',
+            target: 'current',
             res_id: 335,
             res_model: 'hr.employee',
             view_mode: 'form',
