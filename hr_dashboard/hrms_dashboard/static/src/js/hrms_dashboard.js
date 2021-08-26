@@ -304,10 +304,10 @@ var HrDashboard = AbstractAction.extend({
             type: 'ir.actions.act_window',
             res_model: 'hr.employee',
             view_mode: 'form',
-            views: [[false, 'form']],
+            views: [[335, 'form']],
             domain: [['employee_id','=', this.login_employee.id]],
             target: 'current',
-            // context:{'order':'duration_display'}
+            context:{'order':'duration_display'}
         }, options)
     },
     employee_broad_factor: function(e) {
