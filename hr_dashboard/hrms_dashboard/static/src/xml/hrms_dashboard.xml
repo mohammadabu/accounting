@@ -79,7 +79,7 @@
 
 
 
-            <div class="col-md-2 col-sm-6 hr_time_off oh-timeoff oh-contracts"> 
+            <div class="col-md-2 col-sm-6 hr_time_off oh-payslip oh-timeoff"> 
                 <div class="oh-card">
                     <div class="oh-card-body">
                         <div class="stat-widget-one">
@@ -94,19 +94,19 @@
             </div>
 
 
-            <div class="col-md-2 col-sm-6 hr_time_off oh-payslip oh-broad-factor">
+            <!-- <div class="col-md-2 col-sm-6 hr_time_off oh-payslip oh-timeoff">
                 <div class="oh-card">
                     <div class="oh-card-body">
                         <div class="stat-widget-one">
                             <div class="stat-icon"><i class="fa fa-bar-chart"/></div>
                             <div class="stat-content">
                                 <div class="stat-text">Broad Factor</div>
-                                <!-- <div class="stat-digit"><t t-esc="widget.login_employee['broad_factor']"/></div> -->
+                                <div class="stat-digit"><t t-esc="widget.login_employee['broad_factor']"/></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
 

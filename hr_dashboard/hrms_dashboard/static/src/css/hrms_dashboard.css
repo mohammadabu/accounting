@@ -477,54 +477,11 @@ rect:hover {  fill:#934da5; }
 }
 
 
-
-
-
-.oh-timeoff {
-
-    margin-top: 1.5%;
-
-}
-.oh-timeoff .stat-icon {
-
-    width: 30%;
-    height: 85px;
-    text-align: center;
-    padding-top: 15%;
-    background: #ff8762;
-    color: #fff;
-
-}
-.oh-timeoff .oh-card {
-
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    will-change: transform, box-shadow;
-    box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
-
-}
-
-.oh-timeoff .stat-icon {
-
-    width: 30%;
-    height: 85px;
-    text-align: center;
-    padding-top: 15%;
-
-}
-
-
-
-
-
-
 .oh-timesheets .stat-icon{
     background: #5ebade !important;
 }
 .oh-contracts .stat-icon{
     background: #b298e1 !important;
-}
-.oh-broad-factor .stat-icon{
-    background: #70cac1 !important;
 }
 .oh-timesheets .stat-widget-one .stat-text {
     color: #5ebade;
@@ -532,9 +489,24 @@ rect:hover {  fill:#934da5; }
 .oh-contracts .stat-widget-one .stat-text {
     color: #b298e1;
 }
+
+
+/* .oh-broad-factor .stat-icon{
+    background: #70cac1 !important;
+}
 .oh-broad-factor .stat-widget-one .stat-text {
     color: #70cac1;
+} */
+
+.oh-timeoff .stat-icon{
+    background: #70cac1 !important;
 }
+.oh-timeoff .stat-widget-one .stat-text {
+    color: #70cac1;
+}
+
+
+
 .leave-manager {
 
     background-color: #fff;
