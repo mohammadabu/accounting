@@ -83,42 +83,42 @@ class Employee(models.Model):
         #         experience = False
 
             
-            employee_relations = self.env['hr.employee'].sudo().search([('user_id', '=', uid)], limit=1)
-            if employee_relations.department_id:
-                department = employee_relations.department_id.name
-            else:
-                department = False
+        employee_relations = self.env['hr.employee'].sudo().search([('user_id', '=', uid)], limit=1)
+        if employee_relations.department_id:
+            department = employee_relations.department_id.name
+        else:
+            department = False
 
-            if employee_relations.parent_id:
-                manager = employee_relations.parent_id.name
-            else:
-                manager = False      
-            if employee_relations.joining_date:
-                diff = relativedelta(datetime.today(), employee_relations.joining_date)
-                years = diff.years
-                months = diff.months
-                days = diff.days
-                experience = '{} years {} months {} days'.format(years, months, days)
-            else:
-                experience = False
+        if employee_relations.parent_id:
+            manager = employee_relations.parent_id.name
+        else:
+            manager = False      
+        if employee_relations.joining_date:
+            diff = relativedelta(datetime.today(), employee_relations.joining_date)
+            years = diff.years
+            months = diff.months
+            days = diff.days
+            experience = '{} years {} months {} days'.format(years, months, days)
+        else:
+            experience = False
 
 
-            if employee:
-                data = {
-                    # 'broad_factor': broad_factor if broad_factor else 0,
-                    # 'leaves_to_approve': leaves_to_approve,
-                    # 'leaves_today': leaves_today,
-                    # 'leaves_this_month': leaves_this_month,
-                    # 'leaves_alloc_req': leaves_alloc_req,
-                    # 'emp_timesheets': timesheet_count,
-                    # 'job_applications': job_applications,
-                    # 'timesheet_view_id': timesheet_view_id,
-                    # 'age': age,
-                    'experience': experience,
-                    'department':department,
-                    'manager':manager
-                }
-                employee[0].update(data)
+        if employee:
+            data = {
+                # 'broad_factor': broad_factor if broad_factor else 0,
+                # 'leaves_to_approve': leaves_to_approve,
+                # 'leaves_today': leaves_today,
+                # 'leaves_this_month': leaves_this_month,
+                # 'leaves_alloc_req': leaves_alloc_req,
+                # 'emp_timesheets': timesheet_count,
+                # 'job_applications': job_applications,
+                # 'timesheet_view_id': timesheet_view_id,
+                # 'age': age,
+                'experience': experience,
+                'department':department,
+                'manager':manager
+            }
+            employee[0].update(data)
             return employee
         else:
             return False
