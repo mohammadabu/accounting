@@ -313,19 +313,16 @@ var HrDashboard = AbstractAction.extend({
         this.do_action({
             name: _t("Employee"),
             type: 'ir.actions.act_window',
-            target: 'current',
+            target: 'new',
             res_id: 335,
             res_model: 'hr.employee',
             view_mode: 'form',
             views: [[false, 'form']],
-            flags:{
-                mode:'readonly'
-            },
+            // flags:{
+            //     mode:'readonly'
+            // },
             // domain: [['employee_id','=', this.login_employee.id]],
         }, options)
-
-
-
     },
     employee_broad_factor: function(e) {
         console.log("broad_factor")
