@@ -279,7 +279,7 @@ var HrDashboard = AbstractAction.extend({
         var options = {
             on_reverse_breadcrumb: this.on_reverse_breadcrumb,
         };
-        this.do_action('project.view_project_kanban');
+        this.do_action('project.open_view_project_all');
 
         // this.do_action({
         //     name: _t("Project"),
