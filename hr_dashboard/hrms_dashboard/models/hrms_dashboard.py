@@ -103,7 +103,7 @@ class Employee(models.Model):
             experience = False
 
 
-        if employee:
+        if employee_relations:
             data = {
                 # 'broad_factor': broad_factor if broad_factor else 0,
                 # 'leaves_to_approve': leaves_to_approve,
@@ -118,8 +118,8 @@ class Employee(models.Model):
                 'department':department,
                 'manager':manager
             }
-            employee[0].update(data)
-            return employee
+            employee_relations.update(data)
+            return employee_relations
         else:
             return False
 
