@@ -299,29 +299,14 @@ var HrDashboard = AbstractAction.extend({
         var options = {
             on_reverse_breadcrumb: this.on_reverse_breadcrumb,
         };
-        // this.do_action({
-        //     name: _t("Employee"),
-        //     type: 'ir.actions.act_window',
-        //     res_model: 'hr.employee',
-        //     view_mode: 'form',
-        //     views: [[335, 'form']],
-        //     domain: [['employee_id','=', this.login_employee.id]],
-        //     target: 'current',
-        //     context:{'order':'duration_display'}
-        // }, options)
-
         this.do_action({
             name: _t("Employee"),
             type: 'ir.actions.act_window',
             target: 'current',
-            res_id: 335,
+            res_id: this.login_employee.id,
             res_model: 'hr.employee',
             view_mode: 'form',
             views: [[false, 'form']],
-            // flags:{
-            //     mode:'readonly'
-            // },
-            // domain: [['employee_id','=', this.login_employee.id]],
         }, options)
     },
     employee_broad_factor: function(e) {
