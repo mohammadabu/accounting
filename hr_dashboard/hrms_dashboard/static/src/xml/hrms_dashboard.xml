@@ -94,11 +94,11 @@
             </div>
 
 
-            <div class="col-md-2 col-sm-6 hr_attendance oh-payslip oh-contracts">
+            <div class="col-md-2 col-sm-6 hr_attendance oh-payslip oh-attendance">
                 <div class="oh-card">
                     <div class="oh-card-body">
                         <div class="stat-widget-one">
-                            <div class="stat-icon"><i class="fa fa-fw fa-book"/></div>
+                            <div class="stat-icon"><i class="fa fa-fw fa-check"/></div>
                             <div class="stat-content">
                                 <div class="stat-text">Attendance</div>
                                 <div class="stat-digit"><t t-esc="widget.login_employee['attendance_count']"/></div>
