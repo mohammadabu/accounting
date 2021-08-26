@@ -290,6 +290,15 @@ var HrDashboard = AbstractAction.extend({
         var options = {
             on_reverse_breadcrumb: this.on_reverse_breadcrumb,
         };
+        this.do_action('note.action_note_note');
+    },
+    hr_employee:function(e){
+        var self = this;
+        e.stopPropagation();
+        e.preventDefault();
+        var options = {
+            on_reverse_breadcrumb: this.on_reverse_breadcrumb,
+        };
         this.do_action({
             name: _t("Employee"),
             type: 'ir.actions.act_window',
@@ -300,15 +309,6 @@ var HrDashboard = AbstractAction.extend({
             target: 'current',
             // context:{'order':'duration_display'}
         }, options)
-    },
-    hr_employee:function(e){
-        var self = this;
-        e.stopPropagation();
-        e.preventDefault();
-        var options = {
-            on_reverse_breadcrumb: this.on_reverse_breadcrumb,
-        };
-        this.do_action('note.action_note_note');
     },
     employee_broad_factor: function(e) {
         console.log("broad_factor")
