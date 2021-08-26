@@ -101,7 +101,7 @@
                     </div>
                 </div>
             </div>
-            <t t-if="widget.login_employee['used_project']">
+            <!-- <t t-if="widget.login_employee['used_project']"> -->
                 <div class="col-md-2 col-sm-6 employee_project oh-payslip oh-contracts">
                     <div class="oh-card">
                         <div class="oh-card-body">
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-            </t>
+            <!-- </t> -->
             <div class="col-md-2 col-sm-6 employee_notes oh-payslip oh-contracts">
                 <div class="oh-card">
                     <div class="oh-card-body">
