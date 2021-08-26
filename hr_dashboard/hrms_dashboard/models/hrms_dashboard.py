@@ -38,7 +38,7 @@ class Employee(models.Model):
         uid = request.session.uid
         employee = self.env['hr.employee'].sudo().search_read([('user_id', '=', uid)], limit=1)
         if employee:
-            time_off_count = self.env['hr.leave'].sudo().search_count([('employee_id', '=', employee[0]['id'])])
+            time_off_count = self.env['hr.leave'].search_count([('employee_id', '=', employee[0]['id'])])
             if employee[0]['birthday']:
                 diff = relativedelta(datetime.today(), employee[0]['birthday'])
                 age = diff.years
