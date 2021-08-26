@@ -279,16 +279,18 @@ var HrDashboard = AbstractAction.extend({
         var options = {
             on_reverse_breadcrumb: this.on_reverse_breadcrumb,
         };
-        this.do_action({
-            name: _t("Attendance"),
-            type: 'ir.actions.act_window',
-            res_model: 'project.project',
-            view_mode: 'kanban,tree,calendar',
-            views: [[false,'kanban']],
-            // domain: [['employee_id','=', this.login_employee.id]],
-            target: 'current',
-            // context:{'order':'duration_display'}
-        }, options)
+        this.do_action('project.view_project_kanban');
+
+        // this.do_action({
+        //     name: _t("Project"),
+        //     type: 'ir.actions.act_window',
+        //     res_model: 'project.project',
+        //     view_mode: 'kanban,tree,calendar',
+        //     views: [[false,'kanban']],
+        //     // domain: [['employee_id','=', this.login_employee.id]],
+        //     target: 'current',
+        //     // context:{'order':'duration_display'}
+        // }, options)
     },
     employee_broad_factor: function(e) {
         console.log("broad_factor")
