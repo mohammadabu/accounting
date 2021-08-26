@@ -19,6 +19,7 @@ var HrDashboard = AbstractAction.extend({
         '/hrms_dashboard/static/src/js/lib/d3.min.js'
     ],
     events: {
+        'click .hr_time_off':'employee_hr_time_off',
         'click .login_broad_factor': 'employee_broad_factor',
         'click .hr_leave_request_approve': 'leaves_to_approve',
         'click .hr_leave_allocations_approve': 'leave_allocations_to_approve',
@@ -230,6 +231,25 @@ var HrDashboard = AbstractAction.extend({
             views: [[false, 'list'],[false, 'form']],
             domain: [['date_from','<=', date], ['date_to', '>=', date], ['state','=','validate']],
             target: 'current'
+        }, options)
+    },
+
+    employee_hr_time_off:function(e){
+        var self = this;
+        e.stopPropagation();
+        e.preventDefault();
+        var options = {
+            on_reverse_breadcrumb: this.on_reverse_breadcrumb,
+        };
+        this.do_action({
+            name: _t("Time Off"),
+            type: 'ir.actions.act_window',
+            res_model: 'hr.leave',
+            view_mode: 'tree,form,calendar',
+            views: [[false, 'list'],[false, 'form']],
+            domain: [['employee_id','=', this.login_employee.id]],
+            target: 'current',
+            context:{'order':'duration_display'}
         }, options)
     },
     employee_broad_factor: function(e) {
