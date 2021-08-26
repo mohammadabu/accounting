@@ -118,8 +118,8 @@ class Employee(models.Model):
                 'department':department,
                 'manager':manager
             }
-            employee_relations.update(data)
-            return employee_relations
+            # employee_relations.update(data)
+            return data
         else:
             return False
 
