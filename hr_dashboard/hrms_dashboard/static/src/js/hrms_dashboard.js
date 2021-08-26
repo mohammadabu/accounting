@@ -272,7 +272,7 @@ var HrDashboard = AbstractAction.extend({
             // context:{'order':'duration_display'}
         }, options)
     },
-    employee_projectfunction(e){
+    employee_project:function(e){
         var self = this;
         e.stopPropagation();
         e.preventDefault();
