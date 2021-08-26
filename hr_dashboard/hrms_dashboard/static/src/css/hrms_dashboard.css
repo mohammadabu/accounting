@@ -372,6 +372,42 @@ rect:hover {  fill:#934da5; }
     box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
 
 }
+
+
+.oh-attendance {
+
+    margin-top: 1.5%;
+
+}
+.oh-attendance .stat-icon {
+
+    width: 30%;
+    height: 85px;
+    text-align: center;
+    padding-top: 15%;
+    background: #ff8762;
+    color: #fff;
+
+}
+.oh-attendance .oh-card {
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    will-change: transform, box-shadow;
+    box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .stat-widget-one .stat-text {
 
     font-size: 14px;
