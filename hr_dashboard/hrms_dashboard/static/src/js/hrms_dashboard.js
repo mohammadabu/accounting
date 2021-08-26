@@ -23,6 +23,7 @@ var HrDashboard = AbstractAction.extend({
         'click .hr_attendance':'employee_hr_attendance',
         'click .employee_project':'employee_project',
         'click .employee_notes':'employee_notes',
+        'click .hr_employee':'hr_employee',
         'click .login_broad_factor': 'employee_broad_factor',
         'click .hr_leave_request_approve': 'leaves_to_approve',
         'click .hr_leave_allocations_approve': 'leave_allocations_to_approve',
@@ -283,6 +284,24 @@ var HrDashboard = AbstractAction.extend({
         this.do_action('project.open_view_project_all');
     },
     employee_notes:function(e){
+        var self = this;
+        e.stopPropagation();
+        e.preventDefault();
+        var options = {
+            on_reverse_breadcrumb: this.on_reverse_breadcrumb,
+        };
+        this.do_action({
+            name: _t("Employee"),
+            type: 'ir.actions.act_window',
+            res_model: 'hr.employee',
+            view_mode: 'form',
+            views: [[false, 'form']],
+            domain: [['employee_id','=', this.login_employee.id]],
+            target: 'current',
+            // context:{'order':'duration_display'}
+        }, options)
+    },
+    hr_employee:function(e){
         var self = this;
         e.stopPropagation();
         e.preventDefault();
