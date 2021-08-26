@@ -22,6 +22,7 @@ var HrDashboard = AbstractAction.extend({
         'click .hr_time_off':'employee_hr_time_off',
         'click .hr_attendance':'employee_hr_attendance',
         'click .employee_project':'employee_project',
+        'click .employee_notes':'employee_notes',
         'click .login_broad_factor': 'employee_broad_factor',
         'click .hr_leave_request_approve': 'leaves_to_approve',
         'click .hr_leave_allocations_approve': 'leave_allocations_to_approve',
@@ -280,17 +281,15 @@ var HrDashboard = AbstractAction.extend({
             on_reverse_breadcrumb: this.on_reverse_breadcrumb,
         };
         this.do_action('project.open_view_project_all');
-
-        // this.do_action({
-        //     name: _t("Project"),
-        //     type: 'ir.actions.act_window',
-        //     res_model: 'project.project',
-        //     view_mode: 'kanban,tree,calendar',
-        //     views: [[false,'kanban']],
-        //     // domain: [['employee_id','=', this.login_employee.id]],
-        //     target: 'current',
-        //     // context:{'order':'duration_display'}
-        // }, options)
+    },
+    employee_notes:function(e){
+        var self = this;
+        e.stopPropagation();
+        e.preventDefault();
+        var options = {
+            on_reverse_breadcrumb: this.on_reverse_breadcrumb,
+        };
+        this.do_action('note.action_note_note');
     },
     employee_broad_factor: function(e) {
         console.log("broad_factor")
