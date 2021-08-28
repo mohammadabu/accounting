@@ -77,7 +77,18 @@
             </div>
 
 
-
+            <div style="position: fixed;left: 220px;">
+                <ul style="display: flex;">
+                        <li style="">Link 1</li>   
+                        <li>Link 2</li>   
+                        <li>Link 3</li>   
+                        <li>Link 4</li>   
+                        <li>Link 5</li>  
+                        <li>Link 6</li> 
+                        <li>Link 7</li> 
+                    
+                </ul>
+            </div>
             <div class="col-md-2 col-sm-6 hr_employee oh-payslip oh-employee"> 
                 <div class="oh-card">
                     <div class="oh-card-body">
