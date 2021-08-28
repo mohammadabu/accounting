@@ -90,24 +90,27 @@
                 </ul>
             </div> -->
             <div class="col-md-2 col-sm-6">
+                <p>Important Link</p>
+            </div>
+            <div class="col-md-1 col-sm-3">
                 <li style="">Link 1</li> 
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-md-1 col-sm-3">
                 <li style="">Link 1</li> 
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-md-1 col-sm-3">
                 <li style="">Link 1</li> 
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-md-1 col-sm-3">
                 <li style="">Link 1</li> 
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-md-1 col-sm-3">
                 <li style="">Link 1</li> 
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-md-1 col-sm-3">
                 <li style="">Link 1</li> 
             </div>
-            <div class="col-md-2 col-sm-6">
+            <div class="col-md-1 col-sm-3">
                 <li style="">Link 1</li> 
             </div>
             <div class="col-md-2 col-sm-6 hr_employee oh-payslip oh-employee"> 
