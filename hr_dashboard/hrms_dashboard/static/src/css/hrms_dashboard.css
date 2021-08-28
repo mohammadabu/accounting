@@ -1099,3 +1099,15 @@ h4 .stat-count {
     text-align: center;
     color: #126f42;
 }
+
+.important-link{
+    padding: 26px 0px 0px 0px;
+    text-align: center;
+    font-size: 16px;
+}
+.important-link-p{
+    padding: 26px 0px 0px 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
