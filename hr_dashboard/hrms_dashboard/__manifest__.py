@@ -7,7 +7,6 @@
         'python': ['pandas'],
     },
     'data': [
-        'security/ir.model.access.csv',
         'views/dashboard_views.xml',
     ],
     'qweb': ["static/src/xml/hrms_dashboard.xml"],
