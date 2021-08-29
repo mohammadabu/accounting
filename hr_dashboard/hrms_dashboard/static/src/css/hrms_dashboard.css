@@ -1115,6 +1115,7 @@ h4 .stat-count {
 }
 .important-link a{
     cursor: pointer;
+    color: #666 !important;
 }
 .important-link a:hover{
     color: #126f42 !important;
