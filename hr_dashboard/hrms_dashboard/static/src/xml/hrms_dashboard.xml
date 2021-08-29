@@ -108,7 +108,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon"><i class="fa fa-fw fa-user"/></div>
                             <div class="stat-content">
-                                <div class="stat-text">Employee</div> 
+                                <div class="stat-text">My Information</div> 
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon"><i class="fa fa-fw fa-level-down"/></div>
                             <div class="stat-content">
-                                <div class="stat-text">Time off</div>
+                                <div class="stat-text">My Time off</div>
                                 <div class="stat-digit"><t t-esc="widget.login_employee['time_off_count']"/></div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon"><i class="fa fa-fw fa-check"/></div>
                             <div class="stat-content">
-                                <div class="stat-text">Attendance</div>
+                                <div class="stat-text">My Attendance</div>
                                 <div class="stat-digit"><t t-esc="widget.login_employee['attendance_count']"/></div>
                             </div>
                         </div>
@@ -147,7 +147,7 @@
                             <div class="stat-widget-one">
                                 <div class="stat-icon"><i class="fa fa-fw fa-product-hunt"/></div>
                                 <div class="stat-content">
-                                    <div class="stat-text">Projects</div>
+                                    <div class="stat-text">My Projects</div>
                                     <div class="stat-digit"><t t-esc="widget.login_employee['projects_count']"/></div>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon"><i class="fa fa-fw fa-sticky-note"/></div>
                             <div class="stat-content">
-                                <div class="stat-text">Notes</div>
+                                <div class="stat-text">My Notes</div>
                             </div>
                         </div>
                     </div>

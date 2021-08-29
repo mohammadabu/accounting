@@ -136,35 +136,35 @@ msgstr "موقع إتمام"
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
 #, python-format
-msgid "Attendance"
+msgid "My Attendance"
 msgstr "حضوري"
 
 #. module: hrms_dashboard
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
 #, python-format
-msgid "Projects"
+msgid "My Projects"
 msgstr "مشاريعي"
 
 #. module: hrms_dashboard
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
 #, python-format
-msgid "Notes"
+msgid "My Notes"
 msgstr "ملاحظاتي"
 
 #. module: hrms_dashboard
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
 #, python-format
-msgid "Time off"
+msgid "My Time off"
 msgstr "إجازاتي"
 
 #. module: hrms_dashboard
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
 #, python-format
-msgid "Employee"
+msgid "My Information"
 msgstr "معلوماتي"
 
 #. module: hrms_dashboard
