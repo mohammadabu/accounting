@@ -9,9 +9,9 @@
             <xpath expr="//kanban/templates/div[@class='oe_kanban_global_click']" position="attributes">
                 <attribute name="class"/>
             </xpath>
-            <!-- <xpath expr="//kanban/templates/div[0]" position="attributes">
+            <xpath expr="//kanban/templates/div[0]" position="attributes">
                 <attribute name="class">o_kanban_record_has_image_fill o_hr_kanban_record</attribute>
-            </xpath> -->
+            </xpath>
         </field>
     </record>
 </odoo>
