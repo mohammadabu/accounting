@@ -79,7 +79,7 @@
                 <p>Important Link</p>
             </div>
             <div class="col-md-1 col-sm-3 important-link">
-                <a href='https://etmam-services.housing.gov.sa/'>Etmam platform</a>
+                <a href='https://etmam-services.housing.gov.sa/' class="stat-text">Etmam platform</a>
             </div>
             <div class="col-md-1 col-sm-3 important-link">
                 <a href='https://etmam.housing.gov.sa/'>Etmam Website</a>
