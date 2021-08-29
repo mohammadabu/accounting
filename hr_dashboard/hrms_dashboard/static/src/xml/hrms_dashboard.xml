@@ -225,7 +225,7 @@
     <t t-name="ManagerDashboard">
         <div class="employee_dashboard_main">
             <div class="row main-section">
-                <div class="col-md-2 col-sm-2 dummy"></div>
+                <div class="col-md-2 col-sm-2 dummy" style="min-height: auto !important;"></div>
                 <div class="col-sm-3 col-lg-3" style="padding-left: 0px;">
                 <div class="col-sm-12 col-lg-12 leave-manager">
                     <div class="row" style="margin:0px">
