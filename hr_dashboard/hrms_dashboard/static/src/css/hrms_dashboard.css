@@ -180,8 +180,11 @@ rect:hover {  fill:#934da5; }
 
 .oh_dashboards {
     background-color: #f8faff !important;
-    padding: 16px 0px 16px 16px  !important;
+    padding: 0px !important;
 
+}
+.container-fluid.o_hr_dashboard {
+    padding: 16px 0px 16px 16px  !important;
 }
 .employee-prof {
 
