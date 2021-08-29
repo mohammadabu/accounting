@@ -2,7 +2,8 @@
 <templates id="template" xml:space="preserve">
     <t t-name="HrDashboardMain">
         <div class="oh_dashboards">
-            <div class="container-fluid o_hr_dashboard">
+            <!-- <div class="container-fluid o_hr_dashboard"> -->
+            <div class="container-fluid">
             </div>
         </div>
     </t>
