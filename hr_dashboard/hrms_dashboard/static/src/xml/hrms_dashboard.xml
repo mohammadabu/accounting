@@ -69,14 +69,14 @@
                         </t>
                     </div>
                     <div class="employee-mobile">
-                        <p class="text-light">Check-in <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>(Today)</p>
+                        <p class="text-light">Check-in<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>(Today)</p>
                         <p>8:00 Am</p>
                     </div>                    
                 </div>
                 </div></div>
             </div>
             <div class="col-md-2 col-sm-6 important-link-p">  
-                <p>Important Link</p>
+                <p>Important Links</p>
             </div>
             <div class="col-md-1 col-sm-3 important-link">
                 <a href='https://etmam-services.housing.gov.sa/' class="stat-text">Etmam platform</a>
@@ -108,7 +108,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon"><i class="fa fa-fw fa-user"/></div>
                             <div class="stat-content">
-                                <div class="stat-text"><t t-esc="widget.translate['Employee']"/> </div> 
+                                <div class="stat-text">Employee</div> 
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon"><i class="fa fa-fw fa-level-down"/></div>
                             <div class="stat-content">
-                                <div class="stat-text"><t t-esc="widget.translate['Time off']"/></div>
+                                <div class="stat-text">Time off</div>
                                 <div class="stat-digit"><t t-esc="widget.login_employee['time_off_count']"/></div>
                             </div>
                         </div>
@@ -147,7 +147,7 @@
                             <div class="stat-widget-one">
                                 <div class="stat-icon"><i class="fa fa-fw fa-product-hunt"/></div>
                                 <div class="stat-content">
-                                    <div class="stat-text">Project</div>
+                                    <div class="stat-text">Projects</div>
                                     <div class="stat-digit"><t t-esc="widget.login_employee['projects_count']"/></div>
                                 </div>
                             </div>

@@ -75,3 +75,154 @@ msgstr "نوع الإجازة"
 #, python-format
 msgid "Etmam platform"
 msgstr "منصة اتمام"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Important Links"
+msgstr "روابط مهمة"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Check-out (Today)"
+msgstr "خروج (اليوم)"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Check-in"
+msgstr "دخول"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "(Today)"
+msgstr "(اليوم)"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Manager"
+msgstr "المدير"
+
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "No manager has been selected for you"
+msgstr "لم يتم اختيار أي مدير لك"
+
+
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Department"
+msgstr "القسم"
+
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Department"
+msgstr "No department has been selected for you"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Etmam Website"
+msgstr "موقع إتمام"
+
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Attendance"
+msgstr "حضوري"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Projects"
+msgstr "مشاريعي"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Notes"
+msgstr "ملاحظاتي"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Time off"
+msgstr "إجازاتي"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Employee"
+msgstr "معلوماتي"
+
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Departments"
+msgstr "الاقسام"
+
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Monthly Leave Analysis"
+msgstr "تحليل الإجازة الشهرية"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Monthly Leave Analysis"
+msgstr "تحليل الإجازة الشهرية"
+
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "My Leave Analysis"
+msgstr "تحليل إجازتي"
+
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Error : Could not find employee linked to user"
+msgstr "خطأ: تعذر العثور على موظف مرتبط بالمستخدم"
+
+#. module: hrms_dashboard
+#. openerp-web
+#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
+#, python-format
+msgid "Please contact system admin for the setup"
+msgstr "يرجى الاتصال بمسؤول النظام للإعداد"
+
+
