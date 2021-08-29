@@ -5,8 +5,8 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
         <field name="arch" type="xml">
-            <xpath expr="//kanban/div[@class='o_kanban_record_has_image_fill']" position="replace">
-                <div class="o_kanban_record_has_image_fill o_hr_kanban_record">
+            <xpath expr="//kanban/div[@class='o_kanban_record_has_image_fill']" position="attributes">
+                <attribute name="class">o_kanban_record_has_image_fill</attribute>
             </xpath>
         </field>
     </record>
