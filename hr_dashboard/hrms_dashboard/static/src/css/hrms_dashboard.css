@@ -1113,3 +1113,9 @@ h4 .stat-count {
     font-weight: bold;
     font-size: 18px;
 }
+.important-link a{
+    cursor: pointer;
+}
+.important-link a:hover{
+    color: #126f42;
+}
