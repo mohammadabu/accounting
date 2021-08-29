@@ -4,7 +4,7 @@
         <field name="name">hr_employee_customization_view_form</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
-        <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_user') ])]"/>
+        <!-- <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_user') ])]"/> -->
         <field name="arch" type="xml">
             <xpath expr="//kanban/templates/div[@class='oe_kanban_global_click']" position="attributes">
                 <attribute name="class"/>
