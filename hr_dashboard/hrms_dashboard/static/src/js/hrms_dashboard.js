@@ -86,6 +86,11 @@ var HrDashboard = AbstractAction.extend({
                 method: 'get_user_employee_details'
         }).then(function(result) {
             self.login_employee =  result[0];
+            let translate = {
+                'Employee' :_t('Employee'),
+                'Time off' :_t('Time off')
+            }
+            self.translate = translate 
         });
         // var def2 = self._rpc({
         //     model: "hr.employee",

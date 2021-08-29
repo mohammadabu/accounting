@@ -108,7 +108,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon"><i class="fa fa-fw fa-user"/></div>
                             <div class="stat-content">
-                                <div class="stat-text">Employee</div>
+                                <div class="stat-text"><t t-esc="widget.translate['Employee']"/> </div> 
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                         <div class="stat-widget-one">
                             <div class="stat-icon"><i class="fa fa-fw fa-level-down"/></div>
                             <div class="stat-content">
-                                <div class="stat-text">Time off</div>
+                                <div class="stat-text"><t t-esc="widget.translate['Time off']"/></div>
                                 <div class="stat-digit"><t t-esc="widget.login_employee['time_off_count']"/></div>
                             </div>
                         </div>
