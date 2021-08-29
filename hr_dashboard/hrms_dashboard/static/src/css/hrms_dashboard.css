@@ -180,7 +180,7 @@ rect:hover {  fill:#934da5; }
 
 .oh_dashboards {
     background-color: #f8faff !important;
-    padding: 0px !important;
+    padding: 16px 0px 16px 16px  !important;
 
 }
 .employee-prof {
