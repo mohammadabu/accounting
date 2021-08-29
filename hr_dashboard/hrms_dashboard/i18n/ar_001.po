@@ -94,7 +94,7 @@ msgstr "خروج (اليوم)"
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
 #, python-format
-msgid "Check-in (Today)"
+msgid "Check-in<![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>(Today)"
 msgstr "(اليوم)دخول"
 
 #. module: hrms_dashboard
