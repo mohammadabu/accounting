@@ -8,7 +8,6 @@
     },
     'data': [
         'security/ir.model.access.csv',
-        'report/broadfactor.xml',
         'views/dashboard_views.xml',
     ],
     'qweb': ["static/src/xml/hrms_dashboard.xml"],
