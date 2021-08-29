@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
         <field name="arch" type="xml">
             <xpath expr="//kanban/templates/div[@class='oe_kanban_global_click']" position="attributes">
-                <attribute name="class">o_kanban_record_has_image_fill</attribute>
+                <attribute name="class">testtest</attribute>
             </xpath>
         </field>
     </record>
