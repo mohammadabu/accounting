@@ -109,7 +109,6 @@
                             <div class="stat-icon"><i class="fa fa-fw fa-user"/></div>
                             <div class="stat-content">
                                 <div class="stat-text">Employee</div>
-                                <!-- <div class="stat-digit"><t t-esc="widget.login_employee['time_off_count']"/></div> -->
                             </div>
                         </div>
                     </div>
@@ -128,8 +127,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="col-md-2 col-sm-6 hr_attendance oh-payslip oh-attendance">
                 <div class="oh-card">
                     <div class="oh-card-body">
@@ -170,56 +167,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-md-2 col-sm-6 hr_contract oh-payslip oh-contracts">
-                <div class="oh-card">
-                    <div class="oh-card-body">
-                        <div class="stat-widget-one">
-                            <div class="stat-icon"><i class="fa fa-fw fa-book"/></div>
-                            <div class="stat-content">
-                                <div class="stat-text">Contracts</div>
-                                <div class="stat-digit"><t t-esc="widget.login_employee['contracts_count']"/></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="col-md-2 col-sm-6 login_broad_factor oh-payslip oh-broad-factor">
-                <div class="oh-card">
-                    <div class="oh-card-body">
-                        <div class="stat-widget-one">
-                            <div class="stat-icon"><i class="fa fa-bar-chart"/></div>
-                            <div class="stat-content">
-                                <div class="stat-text">Broad Factor</div>
-                                <div class="stat-digit"><t t-esc="widget.login_employee['broad_factor']"/></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="col-md-2 col-sm-2 hr_attendance_login">
-                <div class="oh-card">
-                    <div class="oh-card-body">
-                        <div class="stat-widget-one">
-                            <t t-if="widget.login_employee['attendance_state'] =='checked_out'">
-                                <div class="stat-icon hr_attendance_btn">
-                                    <i class="fa fa-sign-in o_hr_attendance_sign_in_out_icon"/>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="stat-text">Check In</div>
-                                </div>
-                            </t>
-                            <t t-if="widget.login_employee['attendance_state'] =='checked_in'">
-                                <div class="stat-icon hr_attendance_btn">
-                                    <i class="fa fa-sign-out o_hr_attendance_sign_in_out_icon"/>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="stat-text">Check out</div>
-                                </div>
-                            </t>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </t>
     <t t-name="ManagerDashboard">
@@ -227,72 +174,68 @@
             <div class="row main-section">
                 <div class="col-md-2 col-sm-2 dummy" style="min-height: auto !important;"></div>
                 <div class="col-sm-3 col-lg-3" >
-                <div class="col-sm-12 col-lg-12 leave-manager">
-                    <div class="row" style="margin:0px">
-                    <div class="col-sm-6 col-lg-6 hr_leave_request_approve" >
-                        <div class=" text-color">
-                            <!-- <div class="oh-card-body pb-0">
-                                <p class="stat-title">Leave Requests</p>
-                                <h4 class="mb-0">
-                                    <p class="stat-count"><t t-esc="widget.login_employee.leaves_to_approve"/></p>
-                                </h4>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-6" style="padding:0px">
+                    <!-- <div class="col-sm-12 col-lg-12 leave-manager">
                         <div class="row" style="margin:0px">
-                        <div class="col-sm-12 col-lg-12 leaves_request_today">
-                            <div class=" text-color">
-                                <!-- <div class="oh-card-body">
-                                     <p class="stat-title">Today</p>
-                                    <h4 class="mb-0">
-                                        <p class="stat-count"><t t-esc="widget.login_employee.leaves_today"/></p>
-                                    </h4>
-                                </div> -->
+                            <div class="col-sm-6 col-lg-6 hr_leave_request_approve" >
+                                <div class=" text-color">
+                                    <div class="oh-card-body pb-0">
+                                        <p class="stat-title">Leave Requests</p>
+                                        <h4 class="mb-0">
+                                            <p class="stat-count"><t t-esc="widget.login_employee.leaves_to_approve"/></p>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-6" style="padding:0px">
+                                <div class="row" style="margin:0px">
+                                    <div class="col-sm-12 col-lg-12 leaves_request_today">
+                                        <div class=" text-color">
+                                            <div class="oh-card-body">
+                                                <p class="stat-title">Today</p>
+                                                <h4 class="mb-0">
+                                                    <p class="stat-count"><t t-esc="widget.login_employee.leaves_today"/></p>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12 leaves_request_month">
+                                        <div class=" text-color">
+                                            <div class="oh-card-body">
+                                                <p class="stat-title">This Month</p>
+                                                <h4 class="mb-0">
+                                                    <p class="stat-count"><t t-esc="widget.login_employee.leaves_this_month"/></p>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="col-sm-12 col-lg-12 leaves_request_month">
-                            <div class=" text-color">
-                                <!-- <div class="oh-card-body">
-                                    <p class="stat-title">This Month</p>
-                                    <h4 class="mb-0">
-
-                                    <p class="stat-count"><t t-esc="widget.login_employee.leaves_this_month"/></p>
-                                    </h4>
-
-                                </div> -->
+                    </div> -->
+                    <div class="col-sm-12 col-lg-12" style="padding-right: 0;">
+                        <div class="row" style="margin:0px">
+                            <div class="col-sm-12 col-lg-12 hr_leave_allocations_approve">
+                                <div class="oh-card text-color">
+                                    <div class="oh-card-body pb-0">
+                                        <p class="stat-title">Leave Allocation Requests</p>
+                                        <h4 class="mb-0">
+                                            <p class="stat-count"><t t-esc="widget.login_employee.leaves_alloc_req"/></p>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-12 hr_job_application_approve">
+                                <div class="oh-card text-color">
+                                    <div class="oh-card-body pb-0">
+                                        <p class="stat-title">Job Applications</p>
+                                        <h4 class="mb-0">
+                                            <p class="stat-count"><t t-esc="widget.login_employee.job_applications"/></p>
+                                        </h4>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                            </div>
                     </div>
-                        </div>
-                </div>
-                <div class="col-sm-12 col-lg-12" style="padding-right: 0;">
-                    <div class="row" style="margin:0px">
-                    <div class="col-sm-12 col-lg-12 hr_leave_allocations_approve">
-                        <!-- <div class="oh-card text-color">
-                            <div class="oh-card-body pb-0">
-                                <p class="stat-title">Leave Allocation Requests</p>
-                                 <h4 class="mb-0">
-                                    <p class="stat-count"><t t-esc="widget.login_employee.leaves_alloc_req"/></p>
-                                </h4>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="col-sm-12 col-lg-12 hr_job_application_approve">
-                        <!-- <div class="oh-card text-color">
-                            <div class="oh-card-body pb-0">
-                                <p class="stat-title">Job Applications</p>
-                                <h4 class="mb-0">
-                                    <p class="stat-count"><t t-esc="widget.login_employee.job_applications"/></p>
-                                </h4>
-
-                            </div>
-                        </div> -->
-                    </div>
-                        </div>
-                </div>
                 </div>
                 <div class="col-sm-7 col-lg-7">
                     <div class="col-sm-12 col-lg-12  graph_view" style="padding:0">
@@ -369,12 +312,12 @@
     <t t-name="EmployeeDashboard">
         <div class="row main-section">
             <div class="col-md-2 col-sm-2 dummy"></div>
-            <div class="col-md-4 col-lg-3">
+            <!-- <div class="col-md-4 col-lg-3">
                 <div class="hr_notification" >
                     <div class="hr_notification_head">
                     Upcoming Birthdays
                     </div>
-                    <!-- <div class="col-xs-12 text-align">
+                    <div class="col-xs-12 text-align">
                         <t t-foreach="widget.employee_birthday" t-as="employee">
                         <div class="col-sm-12 col-lg-12" style="padding:0;">
                             <div class="text-color">
@@ -391,17 +334,17 @@
                                 </div></div></div></div>
                             </div>
                         </t>
-                    </div> -->
+                    </div>
                  </div>
-            </div>
-            <div class="col-md-4 col-lg-3">
+            </div> -->
+            <!-- <div class="col-md-4 col-lg-3">
                 <div class="col-xs-12  hr_notification" style="padding: 0;">
                     <div class="col-xs-12" style="padding:0;">
                         <div class="hr_notification_head">
                         Upcoming Events
                         </div>
                     </div>
-                    <!-- <div class="col-xs-12 text-align">
+                    <div class="col-xs-12 text-align">
                         <t t-foreach="widget.upcoming_events" t-as="event">
                         <div class="col-sm-12 col-lg-12" style="padding:0;">
                             <div class="text-color">
@@ -419,17 +362,17 @@
                                 </div></div></div></div>
                             </div>
                         </t>
-                    </div> -->
+                    </div>
                  </div>
-            </div>
-            <div class="col-md-4 col-lg-4">
+            </div> -->
+            <!-- <div class="col-md-4 col-lg-4">
                 <div class="col-xs-12  hr_notification" style="padding: 0;">
                     <div class="col-xs-12" style="padding:0;">
                         <div class="hr_notification_head">
                         Announcements
                         </div>
                     </div>
-                    <!-- <div class="col-xs-12 text-align">
+                    <div class="col-xs-12 text-align">
                         <t t-foreach="widget.announcements" t-as="announcement">
                         <div class="col-sm-12 col-lg-12" style="padding:0;">
                             <div class="text-color">
@@ -441,9 +384,9 @@
                                 </div></div></div></div>
                             </div>
                         </t>
-                    </div> -->
+                    </div>
                  </div>
-            </div>
+            </div> -->
         </div>
         <div class="row main-section">
              <div class="col-md-2 col-sm-2 dummy"></div>
