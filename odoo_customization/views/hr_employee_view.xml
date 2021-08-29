@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="hr_employee_customization_view_form" model="ir.ui.view">
-        <field name="name">hr_employee_customization_view_form</field>
+    <record id="hr_employee_customization_view_form_1" model="ir.ui.view">
+        <field name="name">hr_employee_customization_view_form_1</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
-        <!-- <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_user') ])]"/> -->
         <field name="arch" type="xml">
             <xpath expr="//kanban" position="replace">
                 <kanban class="o_hr_employee_kanban">
