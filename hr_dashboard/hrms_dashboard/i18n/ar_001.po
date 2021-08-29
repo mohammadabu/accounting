@@ -94,15 +94,8 @@ msgstr "خروج (اليوم)"
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
 #, python-format
-msgid "Check-in"
-msgstr "دخول"
-
-#. module: hrms_dashboard
-#. openerp-web
-#: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
-#, python-format
-msgid "(Today)"
-msgstr "(اليوم)"
+msgid "Check-in (Today)"
+msgstr "(اليوم)دخول"
 
 #. module: hrms_dashboard
 #. openerp-web
@@ -111,7 +104,6 @@ msgstr "(اليوم)"
 msgid "Manager"
 msgstr "المدير"
 
-
 #. module: hrms_dashboard
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
@@ -119,15 +111,12 @@ msgstr "المدير"
 msgid "No manager has been selected for you"
 msgstr "لم يتم اختيار أي مدير لك"
 
-
-
 #. module: hrms_dashboard
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
 #, python-format
 msgid "Department"
 msgstr "القسم"
-
 
 #. module: hrms_dashboard
 #. openerp-web
@@ -142,7 +131,6 @@ msgstr "No department has been selected for you"
 #, python-format
 msgid "Etmam Website"
 msgstr "موقع إتمام"
-
 
 #. module: hrms_dashboard
 #. openerp-web
@@ -179,7 +167,6 @@ msgstr "إجازاتي"
 msgid "Employee"
 msgstr "معلوماتي"
 
-
 #. module: hrms_dashboard
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
@@ -187,7 +174,6 @@ msgstr "معلوماتي"
 msgid "Departments"
 msgstr "الاقسام"
 
-
 #. module: hrms_dashboard
 #. openerp-web
 #: code:addons/hrms_dashboard/static/src/xml/hrms_dashboard.xml:0
@@ -201,7 +187,6 @@ msgstr "تحليل الإجازة الشهرية"
 #, python-format
 msgid "Monthly Leave Analysis"
 msgstr "تحليل الإجازة الشهرية"
-
 
 #. module: hrms_dashboard
 #. openerp-web
@@ -209,7 +194,6 @@ msgstr "تحليل الإجازة الشهرية"
 #, python-format
 msgid "My Leave Analysis"
 msgstr "تحليل إجازتي"
-
 
 #. module: hrms_dashboard
 #. openerp-web
