@@ -2,7 +2,7 @@
 {
     'name': "Employee Dashboard",
     'version': '13.0',
-    'depends': ['hr', 'hr_holidays', 'hr_timesheet', 'hr_attendance','project','project_privacy_visibility','note'],
+    'depends': ['hr', 'hr_holidays', 'hr_timesheet', 'hr_attendance','project','project_privacy_visibility','note','hr_employee_updation'],
     'external_dependencies': {
         'python': ['pandas'],
     },
