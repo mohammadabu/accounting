@@ -1,8 +1,8 @@
 from odoo import fields, models , api
 
 
-class HrLeaveType(models.Model):
-    _inherit = 'hr.leave.type'
+class HrEmployee(models.Model):
+    _inherit = 'hr.employee'
 
     check_hr_manager = fields.Selection(
         [
