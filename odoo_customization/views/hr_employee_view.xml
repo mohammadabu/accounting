@@ -12,7 +12,7 @@
                    <field name="check_hr_manager" invisible="1"/>
                    <templates>
                        <t t-name="kanban-box">
-                        <div  t-attf-class="o_kanban_record_has_image_fill o_hr_kanban_record #{record.check_hr_manager.raw_value ? 'oe_kanban_global_click' : ''}">
+                        <div  t-attf-class="o_kanban_record_has_image_fill o_hr_kanban_record #{record.check_hr_manager.raw_value == 'yes' ? 'oe_kanban_global_click' : ''}">
                             <field name="image_128" widget="image" class="o_kanban_image_fill_left" options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
                                 <div class="oe_kanban_details">
                                 <div class="o_kanban_record_top">
