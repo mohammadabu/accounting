@@ -276,7 +276,8 @@ var HrDashboard = AbstractAction.extend({
             views: [[false, 'list'],[false, 'form']],
             domain: [['employee_id','=', this.login_employee.id]],
             target: 'current',
-            // context:{'order':'duration_display'}
+            context: dict(self._context, create=False)
+
         }, options)
     },
     employee_project:function(e){
