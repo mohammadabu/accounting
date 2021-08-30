@@ -310,7 +310,7 @@ var HrDashboard = AbstractAction.extend({
             res_model: 'hr.employee',
             view_mode: 'form',
             views: [[false, 'form']],
-            context: {'create':false,'update':false}
+            context: {'create':false,'edit':false}
         }, options)
     },
     employee_broad_factor: function(e) {
