@@ -128,7 +128,6 @@ var HrDashboard = AbstractAction.extend({
             self.update_leave_trend();
         }
     },
-
     on_reverse_breadcrumb: function() {console.log("ON_REVERSE_BREADCRUMB")
         var self = this;
         web_client.do_push_state({});
@@ -139,12 +138,10 @@ var HrDashboard = AbstractAction.extend({
             self.render_graphs();
         });
     },
-
     update_cp: function() {
         var self = this;
         console.log("UPDATE_CP")
     },
-
     get_emp_image_url: function(employee){
         return window.location.origin + '/web/image?model=hr.employee&field=image_1920&id='+employee;
     },

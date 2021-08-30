@@ -39,7 +39,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="o_kanban_record_has_image_fill o_hr_kanban_record" groups="hr.group_hr_user">
+                        <!-- <div class="o_kanban_record_has_image_fill o_hr_kanban_record" groups="hr.group_hr_user">
                             <field name="image_128" widget="image" class="o_kanban_image_fill_left" options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
                                 <div class="oe_kanban_details">
                                 <div class="o_kanban_record_top">
@@ -66,7 +66,7 @@
                                     <li t-if="record.work_phone.raw_value" class="o_force_ltr"><field name="work_phone"/></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                        </t>
                    </templates>
                </kanban>
