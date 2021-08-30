@@ -6,5 +6,6 @@
         'views/hr_employee_view.xml',
         'security/groups.xml',
         'security/security.xml',
+        'security/ir.model.access.csv'
     ],
 }
