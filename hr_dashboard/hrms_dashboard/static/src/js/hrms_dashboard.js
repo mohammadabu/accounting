@@ -201,7 +201,6 @@ var HrDashboard = AbstractAction.extend({
         });
 
     },
-
     leaves_request_month: function(e) {
         var self = this;
         e.stopPropagation();
@@ -242,7 +241,6 @@ var HrDashboard = AbstractAction.extend({
             target: 'current'
         }, options)
     },
-
     employee_hr_time_off:function(e){
         var self = this;
         e.stopPropagation();
@@ -277,7 +275,6 @@ var HrDashboard = AbstractAction.extend({
             domain: [['employee_id','=', this.login_employee.id]],
             target: 'current',
             context: {'create':false}
-
         }, options)
     },
     employee_project:function(e){
@@ -558,7 +555,6 @@ var HrDashboard = AbstractAction.extend({
 
         });
     },
-
     render_leave_graph:function(){
         var self = this;
 //        var color = d3.scale.category10();
@@ -779,10 +775,6 @@ var HrDashboard = AbstractAction.extend({
         });
     },
 });
-
-
 core.action_registry.add('hr_dashboard', HrDashboard);
-
 return HrDashboard;
-
 });

@@ -4,5 +4,7 @@
     'depends': ['base','hr','hr_holidays','hr_attendance'],
     'data': [
         'views/hr_employee_view.xml',
+        'security/groups.xml',
+        'security/security.xml',
     ],
 }
