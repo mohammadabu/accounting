@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 
 class HrCustomCustody(models.Model):
 
-    _name = 'hr.custody'
+    _name = 'hr.custody' 
     _description = 'Hr Custody'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
@@ -25,12 +25,12 @@ class HrCustomCustody(models.Model):
     notes = fields.Text()
     state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('approved', 'Approved'),
                             ('rejected', 'Refused')], string='Status', default='draft',
-                            track_visibility='always')
+                            track_visibility='always',readonly=True)
 
     custody_lines = fields.One2many('hr.custody.lines', 'custody_id',ondelete='cascade')      
 
     rejected_reason = fields.Text(string='Rejected Reason', copy=False, readonly=1, help="Reason for the rejection")                   
-    # new
+
     delivery_date = fields.Date()
     def sent(self):
         self.state = 'to_approve'                         
@@ -96,10 +96,8 @@ class HrCustomCustodyLines(models.Model):
     _sql_constraints = [('custody_item', 'unique (custody_id,custody_item)',     
                  'Duplicate Items in Custody line not allowed !')]
 
-    custody_item = fields.Many2one('hr.custody.items',string="Items")
-    # new
+    custody_item = fields.Many2one('hr.custody.items',string="Items") 
     custody_products_category = fields.Many2one('product.category','Products Category', related='custody_item.products_category',readonly=True)
     custody_qty = fields.Integer(string="Quantity")
     custody_id = fields.Many2one('hr.custody',string="Custody Id") 
-    # new
     custody_note = fields.Char(string="Note")

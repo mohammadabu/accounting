@@ -8,12 +8,8 @@
         'views/custody_employee_view.xml',
         'views/custom_custody_view.xml',
         'views/custom_items_view.xml',
-        # 'views/hr_employee_view.xml',
-        # 'views/notification_mail.xml',
-        # 'reports/custody_report.xml'
         'security/ir.model.access.csv',
     ],
-    # 'images': ['static/description/banner.png'],
     'installable': True,
     'auto_install': False,
     'application': False,

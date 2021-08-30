@@ -4,25 +4,24 @@
         <record id="hr_custody_form_view" model="ir.ui.view">
             <field name="name">hr.custody.form</field>
             <field name="model">hr.custody</field>
-            <field name="arch" type="xml">
-                <form string="Custody">
+            <field name="arch" type="xml"> 
+                <form >
                     <header>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved"/>
                         <button string="Send For Approval" type="object" name="sent"
-                                class="oe_highlight"
+                                class="btn-primary"
                                 attrs="{'invisible': [('state','not in',('draft'))]}"/>   
                         <button string="Approve" groups="hr.group_hr_manager" type="object" name="approve"
-                                class="oe_highlight"
+                                class="btn-primary"
                                 attrs="{'invisible': [('state','not in',('to_approve'))]}"/>     
                         <button string="Refuse" groups="hr.group_hr_manager" type="action"
                                 name="%(custom_hr_custody.wizard_reason_act)d"
                                 attrs="{'invisible': [('state','not in',('to_approve','approved'))]}" class="btn-primary"
                                 context="{'reject_id':id,'model_id':'hr.custody'}"/>   
                         <button string="Set to Draft" type="object" name="set_to_draft"
-                                attrs="{'invisible': [('state','not in',('rejected'))]}"/>
+                                attrs="{'invisible': [('state','not in',('rejected'))]}" class="btn-primary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,to_approve,approved"/>        
                     </header>
                     <sheet>
-                        <field name="state" invisible="1"/>
                         <h1>
                             <field name="name" />
                         </h1>
@@ -30,19 +29,16 @@
                             <group>
                                 <field name="employee" />
                                 <field name="reason" />
-                                <!-- # new -->
-                                <field name="delivery_date" required="1"/>
+                                <field name="delivery_date" attrs="{'invisible': [('state', '!=', 'approved')],'required':[('state', '=', 'approved')]}"/>
                                 <field name="rejected_reason" attrs="{'invisible': [('state','not in',('rejected'))]}"/>
                             </group>
                         </group>
                         <notebook>
                             <page name="custody_lines" string="Items of custody">
-                                <field name="state" invisible="1" />
                                 <field name="custody_lines" attrs="{'readonly':[('state','not in',('draft',))]}">
                                     <tree editable="bottom">
                                         <field name="custody_item" />
                                         <field name="custody_qty" />
-                                        <!-- # new -->
                                         <field name="custody_products_category"/>
                                         <field name="custody_note"/>
                                         <field name="custody_id"  invisible="1"/>
@@ -67,10 +63,10 @@
             <field name="model">hr.custody</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="state" invisible="1"/>
                     <field name="name"/>
                     <field name="employee"/>
                     <field name="reason"/>
+                    <field name="state" />
                 </tree>
             </field>
         </record>
@@ -80,10 +76,10 @@
             <field name="model">hr.custody</field>
             <field name="arch" type="xml">
                 <search string="Custody">
-                    <field name="state" invisible="1"/>
                     <field name="name"/>
                     <field name="employee"/>
                     <field name="reason"/>
+                    <field name="state" />
                 </search>
             </field>
         </record>

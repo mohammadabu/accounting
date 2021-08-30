@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 
 class HrCustomCustodyItems(models.Model):
 
-    _name = 'hr.custody.items'
+    _name = 'hr.custody.items' 
     _description = 'Hr Custody Items'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     @api.onchange('products','required_quantity')
@@ -61,15 +61,11 @@ class HrCustomCustodyItems(models.Model):
             rec.custody_quantity = qty_used
             rec.custody_used = custody_used
             rec.amount_remaining = qty - (qty_used + this_required_quantity)
-            # new 
             if rec.products != False:
                 rec.name = rec.products.name
-
     name = fields.Char(required=True)
     products = fields.Many2one('product.template')
-    # new
     products_category = fields.Many2one('product.category','Products Category', related='products.categ_id',readonly=True)
-
     quantity = fields.Integer(compute="onchange_products")
     custody_quantity = fields.Integer(compute="onchange_products")
     custody_used = fields.Integer(compute="onchange_products")
@@ -77,8 +73,9 @@ class HrCustomCustodyItems(models.Model):
     amount_remaining = fields.Integer(compute="onchange_products")
     description = fields.Text()
 
+
     def write(self,values):
-        rtn = super(HrCustomCustodyItems,self).write(values)    
+        rtn = super(HrCustomCustodyItems,self).write(values)
         required_quantity = int(self.required_quantity)
         custody_used = int(self.custody_used)
         amount_remaining = int(self.amount_remaining)
@@ -92,26 +89,6 @@ class HrCustomCustodyItems(models.Model):
         elif amount_remaining < 0:
             raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
         return rtn    
-
-
-    # @api.constrains('required_quantity','custody_used','amount_remaining')
-    # def _validate_work_hours(self):
-    #     required_quantity = 0
-    #     custody_used = 0 
-    #     amount_remaining = 0 
-    #     try:     
-    #         required_quantity = self.required_quantity 
-    #         custody_used = self.custody_used
-    #         amount_remaining = self.amount_remaining
-    #     except:
-    #         required_quantity = 0
-    #         custody_used = 0 
-    #         amount_remaining = 0 
-    #     if required_quantity < custody_used:
-    #         raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
-    #     elif amount_remaining < 0:
-    #         raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
-
 
     @api.model
     def create(self,vals):
@@ -128,36 +105,10 @@ class HrCustomCustodyItems(models.Model):
             custody_used = 0 
             amount_remaining = 0 
         if required_quantity < custody_used:
-            # raise exceptions.UserError(_('The required quantity is less than the quantity used'))
-            raise exceptions.Warning("Please fill in Medical Reasons Description")
-
+            raise exceptions.ValidationError(_('The required quantity is less than the quantity used'))
         elif amount_remaining < 0:
-            # raise exceptions.UserError(_('The remaining quantity is less than zero'))
-            raise exceptions.Warning("Please fill in Medical Reasons Description")
+            raise exceptions.ValidationError(_('The remaining quantity is less than zero'))
         return rtn     
-
-
-    # @api.model_create_multi
-    # def create(self, vals_list):
-    #     _logger.info("field.required_quantity")
-    #     _logger.info(self.required_quantity)
-    #     # field_ids = {vals['field_id'] for vals in vals_list}
-    #     # _logger.info("field.required_quantity")
-    #     # _logger.info(field.required_quantity)
-    #     # for field in self.env['ir.model.fields'].browse(field_ids):
-    #     #     _logger.info("field.required_quantity")
-    #     #     _logger.info(field.required_quantity)
-    #         # if field.state != 'manual':
-    #         #     raise UserError(_('Properties of base fields cannot be altered in this manner! '
-    #         #                       'Please modify them through Python code, '
-    #         #                       'preferably through a custom addon!'))
-    #     # recs = super().create(vals_list)
-    #     rtn = super(HrCustomCustodyItems,self).create(vals_list)
-    #     # self.flush()
-    #     # self.pool.setup_models(self._cr)
-    #     return rtn
-
-
 
 
     def unlink(self):
