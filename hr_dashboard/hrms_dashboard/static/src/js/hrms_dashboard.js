@@ -776,3 +776,4 @@ var HrDashboard = AbstractAction.extend({
 core.action_registry.add('hr_dashboard', HrDashboard);
 return HrDashboard;
 });
+ 
