@@ -276,7 +276,7 @@ var HrDashboard = AbstractAction.extend({
             views: [[false, 'list'],[false, 'form']],
             domain: [['employee_id','=', this.login_employee.id]],
             target: 'current',
-            context: dict(self._context, create=False)
+            context: {'create':false}
 
         }, options)
     },
