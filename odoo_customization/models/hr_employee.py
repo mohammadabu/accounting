@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import fields, models , api
 
 
 class HrLeaveType(models.Model):
@@ -10,7 +10,7 @@ class HrLeaveType(models.Model):
             ('no','no')
         ]
         ,compute='_compute_hr_manager'
-    )
+    ) 
 
     @api.depends()
     def _compute_hr_manager(self):
