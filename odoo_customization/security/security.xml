@@ -1,20 +1,14 @@
 <odoo>
-    <!-- <record id="hr.menu_hr_root" model="ir.ui.menu">
-        <field name="groups_id" eval="[(6, 0, [ref('group_manager')])]"/>
-    </record>
-    <record id="contacts.menu_contacts" model="ir.ui.menu">
-        <field name="groups_id" eval="[(6, 0, [ref('group_manager_1')])]"/>
-    </record> -->
     <record id="hr_expense.menu_hr_expense_root" model="ir.ui.menu">
         <field name="groups_id" eval="[(6, 0, [ref('group_manager_2')])]"/>
     </record>
-    <!-- <record id="note.menu_note_notes" model="ir.ui.menu">
+    <record id="hr_attendance.menu_hr_attendance_root" model="ir.ui.menu">
         <field name="groups_id" eval="[(6, 0, [ref('group_manager_3')])]"/>
     </record>
-    <record id="base.menu_board_root" model="ir.ui.menu">
+    <record id="hr_holidays.menu_hr_holidays_root" model="ir.ui.menu">
         <field name="groups_id" eval="[(6, 0, [ref('group_manager_4')])]"/>
     </record>
-    <record id="calendar.mail_menu_calendar" model="ir.ui.menu">
+    <record id="utm.menu_link_tracker_root" model="ir.ui.menu">
         <field name="groups_id" eval="[(6, 0, [ref('group_manager_5')])]"/>
-    </record> -->
+    </record>
 </odoo>
