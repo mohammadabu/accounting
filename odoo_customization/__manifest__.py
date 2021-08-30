@@ -4,6 +4,5 @@
     'depends': ['base','hr','hr_holidays','hr_attendance'],
     'data': [
         'views/hr_employee_view.xml',
-        'security/ir.model.access.csv'
     ],
 }
