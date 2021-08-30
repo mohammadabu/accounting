@@ -14,10 +14,9 @@ class HrEmployee(models.Model):
 
     @api.depends()
     def _compute_hr_manager(self):
-        # uid = self.env.user.id
-        # user = self.env['res.users'].sudo().search([('id', '=', uid)], limit=1)
-        # if user.has_group('hr.group_hr_manager'):
-        #     return 'yes'
-        # else:
-        #     return 'no'
-        return 'yes'   
+        uid = self.env.user.id
+        user = self.env['res.users'].sudo().search([('id', '=', uid)], limit=1)
+        if user.has_group('hr.group_hr_manager'):
+            self.check_hr_manager =  'yes'
+        else:
+            self.check_hr_manager =  'no'
