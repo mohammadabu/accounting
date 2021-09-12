@@ -132,6 +132,7 @@ class HrCustomPermissions(models.Model):
             'check_out': check_out_date,
             'reason_modification': self.permission_type.id,
         }
+        _logger.info(attendance_vals)
         attendance_id = self.env['hr.attendance'].sudo().create(attendance_vals)
         self.attendance_id = attendance_id.id        
     def refuse(self):
