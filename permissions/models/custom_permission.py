@@ -117,11 +117,6 @@ class HrCustomPermissions(models.Model):
         self.state = 'to_approve'     
     def approve_direct_manager(self):
         self.state = 'direct_manager'   
-        # hour_from = self.hour_from
-        # hour_to = self.hour_to
-        # date = self.date
-        # check_in_date = str(date) + " : " + hour_from
-        # check_out_date = str(date) + " : " + hour_to
         check_in_date = str(self.from_date)
         check_out_date = str(self.to_date)
         _logger.info(check_in_date)

@@ -1,0 +1,354 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* permissions
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0-20210503\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-12 08:31+0000\n"
+"PO-Revision-Date: 2021-09-12 08:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_needaction
+msgid "Action Needed"
+msgstr "الإجراءات اللازمة"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__activity_ids
+msgid "Activities"
+msgstr "أنشطة"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "زخرفة استثناء النشاط"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__attachments
+msgid "Attachments"
+msgstr "مرفقات"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__attendance_id
+msgid "Attendance"
+msgstr "الحضور"
+
+#. module: permissions
+#: model_terms:ir.actions.act_window,help:permissions.action_permissions
+msgid "Click to Create a New Record."
+msgstr "انقر لإنشاء سجل جديد."
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: permissions
+#: model_terms:ir.ui.view,arch_db:permissions.hr_permissions_form_view
+msgid "Custody"
+msgstr "عهدة"
+
+#. module: permissions
+#: model_terms:ir.ui.view,arch_db:permissions.hr_permissions_form_view
+msgid "Direct Manager Approve"
+msgstr "موافقة المدير المباشر"
+
+#. module: permissions
+#: model:ir.model.fields.selection,name:permissions.selection__hr_permissions__state__direct_manager
+msgid "Direct Manager Approved"
+msgstr "تمت الموافقة من المدير المباشر"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: permissions
+#: model:ir.model.fields.selection,name:permissions.selection__hr_permissions__state__draft
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__employee
+msgid "Employee"
+msgstr "موظف"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_follower_ids
+msgid "Followers"
+msgstr "متابعون"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "المتابعون (القنوات)"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__from_date
+msgid "From Date"
+msgstr "من تاريخ"
+
+#. module: permissions
+#: model:ir.model,name:permissions.model_hr_permissions
+msgid "Hr Permissions"
+msgstr "أذونات الموارد البشرية"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__id
+msgid "ID"
+msgstr ""
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: permissions
+#: model:ir.model.fields,help:permissions.field_hr_permissions__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "رمز للإشارة إلى نشاط استثناء."
+
+#. module: permissions
+#: model:ir.model.fields,help:permissions.field_hr_permissions__message_needaction
+#: model:ir.model.fields,help:permissions.field_hr_permissions__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "إذا تم تحديدها ، فإن الرسائل الجديدة تتطلب انتباهك."
+
+#. module: permissions
+#: model:ir.model.fields,help:permissions.field_hr_permissions__message_has_error
+#: model:ir.model.fields,help:permissions.field_hr_permissions__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا تم تحديده ، فإن بعض الرسائل بها خطأ في التسليم."
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__is_direct_manager
+msgid "Is Direct Manager"
+msgstr "مدير مباشر"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_is_follower
+msgid "Is Follower"
+msgstr "متابع"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "المرفق الرئيسي"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__mandate_city
+msgid "Mandate City"
+msgstr "مدينة الانتداب"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي للنشاط التالي"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__note
+msgid "Note"
+msgstr "ملحوظة"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: permissions
+#: model:ir.model.fields,help:permissions.field_hr_permissions__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
+
+#. module: permissions
+#: model:ir.model.fields,help:permissions.field_hr_permissions__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: permissions
+#: model:ir.model.fields,help:permissions.field_hr_permissions__message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل غير المقروءة"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__permission_type
+msgid "Permission Type"
+msgstr "نوع الإذن"
+
+#. module: permissions
+#: model:ir.actions.act_window,name:permissions.action_permissions
+#: model:ir.ui.menu,name:permissions.custom_hr_emp_permissions
+#: model_terms:ir.ui.view,arch_db:permissions.hr_permissions_search_view
+msgid "Permissions"
+msgstr "استئذانات"
+
+#. module: permissions
+#: model:res.groups,name:permissions.permissions_manager_group
+msgid "Permissions Manager"
+msgstr "مدير الأذونات"
+
+#. module: permissions
+#: model_terms:ir.ui.view,arch_db:permissions.hr_permissions_form_view
+msgid "Refuse"
+msgstr "رفض"
+
+#. module: permissions
+#: model:ir.model.fields.selection,name:permissions.selection__hr_permissions__state__rejected
+msgid "Refused"
+msgstr "مرفوض"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__activity_user_id
+msgid "Responsible User"
+msgstr "مستخدم مسؤول"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطأ في تسليم الرسائل القصيرة"
+
+#. module: permissions
+#: model_terms:ir.ui.view,arch_db:permissions.hr_permissions_form_view
+msgid "Send For Approval"
+msgstr "أرسل للموافقة"
+
+#. module: permissions
+#: model_terms:ir.ui.view,arch_db:permissions.hr_permissions_form_view
+msgid "Set to Draft"
+msgstr "تعيين إلى مسودة"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: permissions
+#: model:ir.model.fields,help:permissions.field_hr_permissions__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__time_request
+msgid "Time of the request"
+msgstr "وقت الطلب"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__to_date
+msgid "To Date"
+msgstr "الى تاريخ"
+
+#. module: permissions
+#: model:ir.model.fields,help:permissions.field_hr_permissions__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع نشاط الاستثناء المسجل."
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_unread
+msgid "Unread Messages"
+msgstr "رسائل غير مقروءة"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عداد الرسائل غير المقروءة"
+
+#. module: permissions
+#: model:ir.model.fields.selection,name:permissions.selection__hr_permissions__state__to_approve
+msgid "Waiting For Approval"
+msgstr "بانتظار الموافقة"
+
+#. module: permissions
+#: model:ir.model.fields,field_description:permissions.field_hr_permissions__website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: permissions
+#: model:ir.model.fields,help:permissions.field_hr_permissions__website_message_ids
+msgid "Website communication history"
+msgstr "سجل اتصال الموقع"
+
+#. module: permissions
+#: model:ir.model.fields.selection,name:permissions.selection__hr_permissions__is_direct_manager__no
+msgid "no"
+msgstr "لا"
+
+#. module: permissions
+#: model:ir.model.fields.selection,name:permissions.selection__hr_permissions__is_direct_manager__yes
+msgid "yes"
+msgstr "نعم"
