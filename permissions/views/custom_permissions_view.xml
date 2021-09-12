@@ -29,9 +29,11 @@
                             <group>
                                 <field name="permission_type"/>
                                 <field name="employee"/>
-                                <field name="date"/>
+                                <!-- <field name="date"/>
                                 <field name="hour_from" />
-                                <field name="hour_to" />
+                                <field name="hour_to" /> -->
+                                <field name="from_date"/>
+                                <field name="to_date"/>
                             </group>
                             <group>
                                 <field name="mandate_city"/>
@@ -58,9 +60,11 @@
                     <field name="name"/>
                     <field name="permission_type"/>
                     <field name="employee"/>
-                    <field name="date"/>
+                    <!-- <field name="date"/>
                     <field name="hour_from" />
-                    <field name="hour_to" />
+                    <field name="hour_to" /> -->
+                    <field name="from_date"/>
+                    <field name="to_date"/>
                     <field name="time_request"/>
                     <field name="state"/>
                 </tree>
@@ -75,9 +79,11 @@
                     <field name="name"/>
                     <field name="permission_type"/>
                     <field name="employee"/>
-                    <field name="date"/>
+                    <!-- <field name="date"/>
                     <field name="hour_from" />
-                    <field name="hour_to" />
+                    <field name="hour_to" /> -->
+                    <field name="from_date"/>
+                    <field name="to_date"/>
                     <field name="time_request"/>
                     <field name="state"/>
                 </search>
