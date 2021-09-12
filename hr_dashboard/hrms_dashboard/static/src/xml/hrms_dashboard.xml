@@ -78,29 +78,17 @@
             <div class="col-md-2 col-sm-6 important-link-p">  
                 <p>Important Links</p>
             </div>
-            <div class="col-md-1 col-sm-3 important-link">
+            <div class="col-md-2 col-sm-3 important-link">
                 <a href='https://etmam-services.housing.gov.sa/' target="_blank" class="stat-text">Etmam platform</a>
             </div>
-            <div class="col-md-1 col-sm-3 important-link">
+            <div class="col-md-2 col-sm-3 important-link">
                 <a href='https://etmam.housing.gov.sa/' target="_blank">Etmam Website</a>
             </div>
-            <div class="col-md-1 col-sm-3 important-link">
+            <div class="col-md-2 col-sm-3 important-link">
                <!-- <a>منصة اتمام</a>  -->
             </div>
-            <div class="col-md-1 col-sm-3 important-link">
+            <div class="col-md-2 col-sm-3 important-link">
                 <!-- <a>منصة اتمام</a> -->
-            </div>
-            <div class="col-md-1 col-sm-3 important-link">
-                <!-- <a>منصة اتمام</a> -->
-            </div>
-            <div class="col-md-1 col-sm-3 important-link">
-                <!-- <a>منصة اتمام</a>  -->
-            </div>
-            <div class="col-md-1 col-sm-3 important-link">
-                <!-- <a>منصة اتمام</a> -->
-            </div>
-            <div class="col-md-2 col-sm-12">
-                
             </div>
             <div class="col-md-2 col-sm-6 hr_employee oh-payslip oh-employee"> 
                 <div class="oh-card">

@@ -23,7 +23,7 @@ class HrCustomPermissions(models.Model):
     name = fields.Char(required=True)
     employee = fields.Many2one('hr.employee',required=True, readonly=True ,states={'draft': [('readonly', False)]},default=_getDefaultEmployee)
     state = fields.Selection([('draft', 'Draft'), ('to_approve', 'Waiting For Approval'), ('direct_manager', 'Direct Manager Approved'),
-                            ('hr_manager', 'Hr Approved'),('rejected', 'Refused')],
+                            ('rejected', 'Refused')],
                             string='Status', default='draft',track_visibility='always',readonly=True)
      
     date = fields.Date(required=True)
@@ -113,9 +113,7 @@ class HrCustomPermissions(models.Model):
     def sent(self):
         self.state = 'to_approve'     
     def approve_direct_manager(self):
-        self.state = 'direct_manager'    
-    def approve_hr_manager(self):
-        self.state = 'hr_manager'
+        self.state = 'direct_manager'   
         hour_from = self.hour_from
         hour_to = self.hour_to
         date = self.date
@@ -128,7 +126,7 @@ class HrCustomPermissions(models.Model):
             'reason_modification': self.permission_type.id,
         }
         attendance_id = self.env['hr.attendance'].sudo().create(attendance_vals)
-        self.attendance_id = attendance_id.id
+        self.attendance_id = attendance_id.id        
     def refuse(self):
         self.state = 'rejected'
     def set_to_draft(self):
